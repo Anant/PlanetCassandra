@@ -1,6 +1,7 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import PostCardGrid from "../components/PostCardGrid/PostCardGrid";
+import Layout from "../components/Layout/Layout";
 import { useStaticQuery, graphql } from "gatsby"
 
 const IndexPage: React.FC<PageProps> = () => {
@@ -19,9 +20,10 @@ const IndexPage: React.FC<PageProps> = () => {
   const cardData = data.allWpPost.nodes;
 
   return (
-    <main>
+    <Layout>
+      <h1>Title</h1>
       <PostCardGrid cardData={cardData} />
-    </main>
+    </Layout>
   )
 }
 

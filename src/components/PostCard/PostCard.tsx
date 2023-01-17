@@ -8,7 +8,7 @@ interface Props {
 
 const PostCard: React.FC<Props> = (props: Props) => {
   const { title, date } = props;
-
+  //Add SEO Metadata
   return (
     <Card>
       <CardContent>
