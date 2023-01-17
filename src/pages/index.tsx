@@ -1,28 +1,25 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import PostCardGrid from "../components/PostCardGrid/PostCardGrid";
+import HeroSection from "../components/Hero/Hero";
+import DidYouKnowSection from "../components/DYK Section/DYK";
 import Layout from "../components/Layout/Layout";
 import { useStaticQuery, graphql } from "gatsby"
+import { Grid } from "@mui/material";
+
 
 const IndexPage: React.FC<PageProps> = () => {
   
-  const data = useStaticQuery(graphql`
-    {
-      allWpPost {
-        nodes {
-          title
-          date
-        }
-      }
-    }
-  `)
-  
-  const cardData = data.allWpPost.nodes;
 
   return (
     <Layout>
-      <h1>Title</h1>
-      <PostCardGrid cardData={cardData} />
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <HeroSection />
+        </Grid>
+        <Grid item xs={12}>
+          <DidYouKnowSection />
+        </Grid>
+      </Grid>
     </Layout>
   )
 }
