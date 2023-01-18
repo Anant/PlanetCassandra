@@ -43,6 +43,9 @@ const config: GatsbyConfig = {
         type:{
           Post:{
             limit:50
+          },
+          Page:{
+            limit:0
           }
         }
       },
