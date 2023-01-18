@@ -75,6 +75,23 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        //Add to ENV File
+        apiKey: `keyKQYgOjqgVIh48D`,
+        tables: [
+          {
+            baseId: 'appKPpuxHmcbNwiY5',
+            tableName: `Company`,
+          },
+          {
+            baseId: 'appXnvVlKiaI5Qv4A',
+            tableName: `Glossary Main Page`,
+          },
+        ],
+      },
+    },
   ]
 };
 
