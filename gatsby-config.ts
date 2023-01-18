@@ -39,8 +39,12 @@ const config: GatsbyConfig = {
          * The full URL of the WordPress site's GraphQL API.
          * Example : 'https://www.example-site.com/graphql'
          */
-        url: `https://anantstage.wpengine.com/graphql`,
-        excludedRoutes: ["**/pages"],
+        url: `https://anant.us/graphql`,
+        type:{
+          Post:{
+            limit:50
+          }
+        }
       },
     }
   ]
