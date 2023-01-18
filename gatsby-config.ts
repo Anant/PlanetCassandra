@@ -35,21 +35,46 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        /*
-         * The full URL of the WordPress site's GraphQL API.
-         * Example : 'https://www.example-site.com/graphql'
-         */
+        //Create auth and add it to ENV file
         url: `https://anantstage.wpengine.com/graphql`,
         type:{
           Post:{
-            limit:50
+            limit:5
           },
           Page:{
             limit:0
           }
         }
       },
-    }
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        //Add to ENV File
+        url: `https://ttrss.anant.systems/public.php?op=rss&id=-4&limit=500&key=k7ojwf5bd4b2e7638ff`,
+        name: `TTRS`,
+        // Optional
+        // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
+        parserOption: {
+          customFields: {
+            item: ["entry:summary"],
+          },
+        },
+      },
+    },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        //Add to ENV File
+        apiKey: `keywCPmbBc1h5ssPV`,
+        tables: [
+          {
+            baseId: `app0cewpKFiSqkmVe`,
+            tableName: `Repos`,
+          },
+        ],
+      },
+    },
   ]
 };
 
