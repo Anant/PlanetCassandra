@@ -39,7 +39,7 @@ const config: GatsbyConfig = {
          * The full URL of the WordPress site's GraphQL API.
          * Example : 'https://www.example-site.com/graphql'
          */
-        url: `https://anant.us/graphql`,
+        url: `https://anantstage.wpengine.com/graphql`,
         type:{
           Post:{
             limit:50
