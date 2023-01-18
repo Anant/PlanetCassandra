@@ -34,7 +34,7 @@ interface LastEditedByNode {
   }
 const Events: React.FC<Props> = (props: Props) => {
   const { data } = props;
-  console.log(data.allWpCategory.nodes[0].contentNodes.nodes)
+  //console.log(data.allWpCategory.nodes[0].contentNodes.nodes)
 
   return (
     <Layout>
