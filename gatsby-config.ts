@@ -40,6 +40,7 @@ const config: GatsbyConfig = {
          * Example : 'https://www.example-site.com/graphql'
          */
         url: `https://anantstage.wpengine.com/graphql`,
+        excludedRoutes: ["**/pages"],
       },
     }
   ]
