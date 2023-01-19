@@ -7,14 +7,16 @@ import {
     Card,
     CardMedia,
     CardContent,
+    Button
 } from '@mui/material';
 import '../Carousel/styles.css'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 
 interface Props {
     items: Array<{
         title: string;
         image: string;
+        slug: string;
     }>;
 }
 
@@ -53,6 +55,11 @@ const Carousel: React.FC<Props> = ({ items }) => {
                                 <Typography variant="h5" className={'title'}>
                                     {items[currentIndex].title}
                                 </Typography>
+                                <Button>
+                                    <Link to={`/post/${items[currentIndex].slug}`}>
+                                    Read
+                                    </Link>
+                                </Button>
                             </CardContent>
                         </Card>
                     </Grid>

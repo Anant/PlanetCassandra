@@ -6,11 +6,12 @@ interface PostSinglePageProps {
   pageContext: {
       id: string;
       title: string;
+      content: string;
       tags: string[];
   };
 }
 
-const PostSinglePage: React.FC<PostSinglePageProps> = ({ pageContext: { id, title, tags } }) => {
+const PostSinglePage: React.FC<PostSinglePageProps> = ({ pageContext: { id, title, tags, content } }) => {
   console.log(tags)  
   return (
       <>
@@ -20,6 +21,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({ pageContext: { id, titl
       </Helmet>
       <div>
         <h1>Post with id: {id}</h1>
+        <p>{content}</p>
       </div>
       </>
     )

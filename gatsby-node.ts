@@ -35,6 +35,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           slug: string;
           title: string;
           id: string;
+          content: string;
           tags: {
             nodes: {
               name: string;
@@ -50,6 +51,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           slug
           title
           id
+          content
           tags {
             nodes {
               name
@@ -75,7 +77,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
       context: {
         id: node.id,
         title: node.title,
-        tags: node.tags?.nodes.map(tag => tag.name)
+        tags: node.tags?.nodes.map(tag => tag.name),
+        content: node.content
       },
     });
   });

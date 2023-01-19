@@ -7,6 +7,7 @@ interface AllWpPostData {
     allWpPost: {
         nodes: {
             title: string;
+            slug: string;
             featuredImage: {
                 node: {
                     publicUrl: string;
@@ -22,9 +23,10 @@ const HeroSection = () => {
     const { allWpPost } = useStaticQuery(query);
 
     //Mapping the results from the query and skiping the ones that don't have an image
-    const items = allWpPost.nodes.map(({ title, featuredImage }: { title: string; featuredImage: { node: { publicUrl: string } } }) => ({
+    const items = allWpPost.nodes.map(({ title, featuredImage, slug }: { title: string; slug:string; featuredImage: { node: { publicUrl: string } } }) => ({
         title,
         image: featuredImage?.node?.publicUrl,
+        slug
     }));
 
     return (
@@ -54,6 +56,7 @@ query GET_POSTS {
     allWpPost {
       nodes {
         title
+        slug
         featuredImage {
           node {
             publicUrl
