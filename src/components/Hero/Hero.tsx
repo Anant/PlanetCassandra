@@ -11,6 +11,14 @@ interface AllWpPostData {
             featuredImage: {
                 node: {
                     publicUrl: string;
+                    localFile: {
+                        relativePath: string;
+                        childImageSharp: {
+                            fluid: {
+                                src: string;
+                            }
+                        }
+                    }
                 }
             }
         }[]
@@ -23,9 +31,9 @@ const HeroSection = () => {
     const { allWpPost } = useStaticQuery(query);
 
     //Mapping the results from the query and skiping the ones that don't have an image
-    const items = allWpPost.nodes.map(({ title, featuredImage, slug }: { title: string; slug:string; featuredImage: { node: { publicUrl: string } } }) => ({
+    const items = allWpPost.nodes.map(({ title, featuredImage, slug }: AllWpPostData['allWpPost']['nodes'][0]) => ({
         title,
-        image: featuredImage?.node?.publicUrl,
+        image: featuredImage?.node?.localFile?.childImageSharp?.fluid?.src,
         slug
     }));
 
@@ -60,6 +68,14 @@ query GET_POSTS {
         featuredImage {
           node {
             publicUrl
+            localFile {
+              relativePath
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  src
+                }
+              }
+            }
           }
         }
       }
