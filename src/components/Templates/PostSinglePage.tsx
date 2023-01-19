@@ -1,6 +1,7 @@
 // @ts-ignore
 import { Helmet } from "react-helmet"
 import React from "react"
+import Layout from "../Layout/Layout";
 
 interface PostSinglePageProps {
   pageContext: {
@@ -14,7 +15,7 @@ interface PostSinglePageProps {
 const PostSinglePage: React.FC<PostSinglePageProps> = ({ pageContext: { id, title, tags, content } }) => {
   console.log(tags)  
   return (
-      <>
+      <Layout>
       <Helmet>
         <title>{title}</title>
         <meta name={title} content={tags.join(",")} />
@@ -23,7 +24,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({ pageContext: { id, titl
         <h1>Post with id: {id}</h1>
         <p>{content}</p>
       </div>
-      </>
+      </Layout>
     )
   }
   
