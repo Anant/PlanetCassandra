@@ -9,6 +9,7 @@ import {
     CardContent,
 } from '@mui/material';
 import '../Carousel/styles.css'
+import { graphql, useStaticQuery } from 'gatsby'
 
 interface Props {
     items: Array<{
@@ -20,17 +21,17 @@ interface Props {
 
 
 const Carousel: React.FC<Props> = ({ items }) => {
-
-
+    //We need to set up gatsby-source-filesystem 
+    const  path  = useStaticQuery(query);
     
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handlePrev = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + items.length - 1) % items.length);
+        setCurrentIndex((prevIndex) => (prevIndex + items.length - 1) % 4);
     };
 
     const handleNext = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % 4);
     };
 
     //Need to refactor for production
@@ -76,5 +77,15 @@ const Carousel: React.FC<Props> = ({ items }) => {
         </div>
     );
 };
+
+export const query = graphql`
+    query {
+      site {
+        siteMetadata {
+          siteUrl
+        }
+      }
+    }
+  `;
 
 export default Carousel;
