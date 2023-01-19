@@ -1,0 +1,12 @@
+.root {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+.root > * {
+    margin: 10px;
+  }
+
+.selected{
+    background-color: blue;
+  }

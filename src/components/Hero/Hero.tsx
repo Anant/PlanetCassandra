@@ -1,26 +1,86 @@
 import React from 'react';
-import { Grid, Typography, Button } from '@mui/material'
+import { graphql, useStaticQuery } from 'gatsby'
+import { Grid, Typography, Button, Container } from '@mui/material'
+import Carousel from './Carousel/Carousel';
+
+interface AllWpPostData {
+    allWpPost: {
+        nodes: {
+            title: string;
+            slug: string;
+            featuredImage: {
+                node: {
+                    publicUrl: string;
+                    localFile: {
+                        relativePath: string;
+                        childImageSharp: {
+                            fluid: {
+                                src: string;
+                            }
+                        }
+                    }
+                }
+            }
+        }[]
+    }
+}
 
 
 const HeroSection = () => {
+
+    const { allWpPost } = useStaticQuery(query);
+
+    //Mapping the results from the query and skiping the ones that don't have an image
+    const items = allWpPost.nodes.map(({ title, featuredImage, slug }: AllWpPostData['allWpPost']['nodes'][0]) => ({
+        title,
+        image: featuredImage?.node?.localFile?.childImageSharp?.fluid?.src,
+        slug
+    }));
+
     return (
-        <Grid container>
+        <Container>
+        <Grid container maxWidth="lg">
             <Grid item xs={12} md={6}>
                 <Typography variant="h3" component="h1">
                     Welcome to Planet Cassandra
                 </Typography>
                 <Typography variant="subtitle1">
-                The best knowledge base on Apache Cassandra to help platform leaders, architects, engineers, and operators to build scalable platforms
+                    The best knowledge base on Apache Cassandra to help platform leaders, architects, engineers, and operators to build scalable platforms
                 </Typography>
                 <Button variant="contained" color="primary">
                     Get Started
                 </Button>
             </Grid>
             <Grid item xs={12} md={6}>
-                <img src="image1.jpg" alt="Image 1" />
+                <Carousel items={items} />
             </Grid>
         </Grid>
+        </Container>
     )
 }
+
+export const query = graphql`
+query GET_POSTS {
+    allWpPost {
+      nodes {
+        title
+        slug
+        featuredImage {
+          node {
+            publicUrl
+            localFile {
+              relativePath
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default HeroSection;
