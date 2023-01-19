@@ -1,7 +1,7 @@
-import React from 'react'
-import Navigation from '../Navigation/Navigation';
+import React from "react";
+import Navigation from "../Navigation/Navigation";
 
-import { Container, Grid } from '@mui/material'
+import { Container, Grid } from "@mui/material";
 
 interface Props {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Navigation />
       {children}
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
