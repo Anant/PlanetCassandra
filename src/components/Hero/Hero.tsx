@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby'
-import { Grid, Typography, Button } from '@mui/material'
+import { Grid, Typography, Button, Container } from '@mui/material'
 import Carousel from './Carousel/Carousel';
 
 interface AllWpPostData {
@@ -16,6 +16,7 @@ interface AllWpPostData {
     }
 }
 
+
 const HeroSection = () => {
 
     const { allWpPost } = useStaticQuery(query);
@@ -27,7 +28,8 @@ const HeroSection = () => {
     }));
 
     return (
-        <Grid container>
+        <Container>
+        <Grid container maxWidth="lg">
             <Grid item xs={12} md={6}>
                 <Typography variant="h3" component="h1">
                     Welcome to Planet Cassandra
@@ -43,6 +45,7 @@ const HeroSection = () => {
                 <Carousel items={items} />
             </Grid>
         </Grid>
+        </Container>
     )
 }
 

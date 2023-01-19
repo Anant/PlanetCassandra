@@ -21,7 +21,6 @@ interface Props {
 
 const Carousel: React.FC<Props> = ({ items }) => {
 
-    console.log(items)
 
     
     const [currentIndex, setCurrentIndex] = useState(0);

@@ -9,10 +9,10 @@ interface Props {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <Container maxWidth="lg">
+    <>
       <Navigation />
       {children}
-    </Container>
+    </>
   )
 }
 
