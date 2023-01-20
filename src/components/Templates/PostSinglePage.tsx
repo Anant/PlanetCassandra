@@ -16,7 +16,6 @@ interface PostSinglePageProps {
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
   pageContext: { id, title, tags, content },
 }) => {
-  console.log(tags);
   return (
     <Layout>
       <Helmet>
