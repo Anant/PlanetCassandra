@@ -78,3 +78,4 @@ package-lock.json
 # probably add this later
 db/links.json
 db/jobPosts.json
+gatsby-types.d.ts
