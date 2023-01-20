@@ -1,53 +1,78 @@
 import React, { useState } from 'react';
 import { Grid, Typography, Container, Button, Card, CardContent } from '@mui/material'
+import { useStaticQuery, graphql } from "gatsby"
+import TagPosts from './TagPosts';
 import './tagStyles.css';
 
-
-interface Props {
-    tags: string[];
-    data: {
-        id: string;
-        title: string;
-        tag: string;
-    }[];
+interface Data {
+    id: string;
+    title: string;
+    tag: string;
 }
 
-const TagSection: React.FC<Props> = ({ tags, data }) => {
-    const [selectedTag, setSelectedTag] = useState<string | null>(tags[0]);
+interface AllWpTagData {
+    data: Data[];
+    allWpTag: {
+        nodes: {
+            name: string;
+            id: string;
+            posts: {
+                nodes: {
+                    title: string;
+                }[]
+            }
+        }[]
+    }
+}
 
-    const handleClick = (tag: string) => {
-        setSelectedTag(tag);
+const TagSection = () => {
+    const { allWpTag }: AllWpTagData = useStaticQuery(query);
+    const tags = allWpTag.nodes
+    
+
+    const [selectedTag, setSelectedTag] = useState<string | null>(tags[0].name);
+    const selectedTagData = allWpTag.nodes.filter(node => node.name === selectedTag);
+    const posts = selectedTagData.length > 0 ? selectedTagData[0].posts.nodes : [];
+
+    const handleClick = (tag: { name: string; id: string }) => {
+        setSelectedTag(tag.name);
     };
-
-    const filteredData = selectedTag
-        ? data.filter(d => d.tag === selectedTag)
-        : data;
-
+   
     return (
         <Container>
             <Grid>
                 {tags.map(tag => (
                     <Button
-                        key={tag}
+                        key={tag.id}
                         onClick={() => handleClick(tag)}
-                        className={selectedTag === tag ? `selected` : ''}
+                        className={selectedTag === tag.name ? `selected` : ''}
                     >
-                        {tag}
+                        {tag.name}
                     </Button>
                 ))}
             </Grid>
             <Grid>
-                {filteredData.map(d => (
-                    <Card key={d.id}>
-                        <CardContent>
-                            <h2>{d.title}</h2>
-                            <p>Tag: {d.tag}</p>
-                        </CardContent>
-                    </Card>
-                ))}
+            {selectedTag ? <TagPosts tag={selectedTag} posts={posts} /> : null}
             </Grid>
         </Container>
     );
 };
+
+export const query = graphql`
+query GET_TAGS {
+    allWpTag(sort: {count: DESC}, filter: {count: {ne: null}}, limit: 5) {
+      nodes {
+        name
+        id
+        count
+        posts {
+          nodes {
+            title
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default TagSection;
