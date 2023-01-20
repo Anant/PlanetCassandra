@@ -11,7 +11,9 @@ const Search = () => {
     <Box
       onClick={() => setChecked(!checked)}
       sx={{
-        marginRight: 5,
+        marginX: 5,
+        cursor: "pointer",
+        paddingY: 1,
         width: 30,
         border: 1,
         borderColor: "white",
