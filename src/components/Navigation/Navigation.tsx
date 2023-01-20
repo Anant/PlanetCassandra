@@ -8,7 +8,7 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
-//import Search from "../SearchBar/SearchBar";
+import SearchBar from "../SearchBar/SearchBar";
 import ToggleButton from "../ToggleButton/ToggleButton";
 const pages = ["What's New", "Events", "Use Cases"];
 
@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
           component="a"
           href="/"
           sx={{
-            mr: 2,
+            marginLeft: 5,
             display: { xs: "none", md: "flex" },
             fontFamily: "monospace",
             fontWeight: 700,
@@ -130,7 +130,7 @@ function ResponsiveAppBar() {
             </Button>
           ))}
         </Box>
-        {/* <Search /> */}
+        <SearchBar />
         <Box
           sx={{
             flexGrow: 1,
