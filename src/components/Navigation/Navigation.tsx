@@ -10,6 +10,8 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import SearchBar from "../SearchBar/SearchBar";
 import ToggleButton from "../ToggleButton/ToggleButton";
+import { Logo } from "../../images/LogoWithText.png";
+import { StaticImage } from "gatsby-plugin-image";
 const pages = ["What's New", "Events", "Use Cases"];
 
 function ResponsiveAppBar() {
@@ -34,7 +36,7 @@ function ResponsiveAppBar() {
       position="static"
     >
       <Toolbar disableGutters>
-        <Typography
+        {/* <Typography
           variant="h6"
           noWrap
           component="a"
@@ -51,7 +53,14 @@ function ResponsiveAppBar() {
           }}
         >
           Planet Cassandra
-        </Typography>
+        </Typography> */}
+        <StaticImage
+          src="../../images/LogoWithText.png"
+          alt="A dinosaur"
+          placeholder="blurred"
+          height={30}
+          style={{ marginLeft: 110 }}
+        />
 
         <Box
           sx={{
@@ -93,25 +102,7 @@ function ResponsiveAppBar() {
             ))}
           </Menu>
         </Box>
-        <Typography
-          variant="h5"
-          noWrap
-          component="a"
-          href=""
-          sx={{
-            mr: 2,
-            display: { xs: "flex", md: "none" },
-            flexGrow: 1,
-            fontFamily: "monospace",
-            fontWeight: 300,
-            fontSize: 20,
-            letterSpacing: ".1rem",
-            color: "black",
-            textDecoration: "none",
-          }}
-        >
-          Planet Cassandra
-        </Typography>
+
         <Box
           sx={{
             flexGrow: 1,
@@ -139,13 +130,11 @@ function ResponsiveAppBar() {
           }}
         >
           <Button
-            onClick={handleCloseNavMenu}
             sx={{ my: 2, color: "black", fontSize: 12, display: "block" }}
           >
             Contribute
           </Button>
           <Button
-            onClick={handleCloseNavMenu}
             sx={{ my: 2, color: "black", fontSize: 12, display: "block" }}
           >
             Contact
