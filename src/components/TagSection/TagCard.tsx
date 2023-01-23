@@ -32,7 +32,7 @@ const TagCard: React.FC<Props> = ({ post }) => {
       />
       <CardContent sx={{ paddingInline: 0 }}>
         <Typography
-          sx={{ height: 100 }}
+          sx={{ height: 100, color: "#5ab1bb" }}
           gutterBottom
           variant="h6"
           component="div"
