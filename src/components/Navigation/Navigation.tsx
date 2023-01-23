@@ -10,7 +10,6 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import SearchBar from "../SearchBar/SearchBar";
 import ToggleButton from "../ToggleButton/ToggleButton";
-import { Logo } from "../../images/LogoWithText.png";
 import { StaticImage } from "gatsby-plugin-image";
 const pages = ["What's New", "Events", "Use Cases"];
 
