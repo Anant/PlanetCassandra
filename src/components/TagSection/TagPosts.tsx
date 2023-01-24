@@ -11,8 +11,8 @@ interface Props {
     author: {
       node: {
         name: string;
-      }
-    },
+      };
+    };
     featuredImage: {
       node: {
         localFile: {
@@ -21,11 +21,11 @@ interface Props {
           childImageSharp: {
             fluid: {
               src: string;
-            }
-          }
-        }
-      }
-    },
+            };
+          };
+        };
+      };
+    };
     excerpt: string;
   }[];
 }
@@ -33,15 +33,17 @@ interface Props {
 const TagPosts: React.FC<Props> = ({ tag, posts }) => {
   return (
     <Grid rowSpacing={3} columnSpacing={3} container>
-      {posts.length > 3 ? posts.slice(0, 3).map((post) => (
-        <Grid item xs={4} key={post.title}>
-          <TagCard post={post} />
-        </Grid>
-      )) : posts.map((post) => (
-        <Grid item xs={4} key={post.title}>
-          <TagCard post={post} />
-        </Grid>
-      ))}
+      {posts.length > 3
+        ? posts.slice(0, 3).map((post) => (
+            <Grid item xs={12} md={6} lg={4} key={post.title}>
+              <TagCard post={post} />
+            </Grid>
+          ))
+        : posts.map((post) => (
+            <Grid item xs={12} md={6} lg={4} key={post.title}>
+              <TagCard post={post} />
+            </Grid>
+          ))}
     </Grid>
   );
 };

@@ -14,8 +14,8 @@ interface Props {
     author: {
       node: {
         name: string;
-      }
-    },
+      };
+    };
     featuredImage: {
       node: {
         localFile: {
@@ -24,24 +24,31 @@ interface Props {
           childImageSharp: {
             fluid: {
               src: string;
-            }
-          }
-        }
-      }
-    },
+            };
+          };
+        };
+      };
+    };
     excerpt: string;
   };
 }
 
 const removeLinks = (html: string) => {
   return html.replace(/<a\b[^>]*>(.*?)<\/a>/i, "");
-}
+};
 
 const TagCard: React.FC<Props> = ({ post }) => {
   //console.log(post.featuredImage.node.localFile.childImageSharp.fluid.src)
   const excerptWithoutLinks = removeLinks(post.excerpt);
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: 5, padding: 3 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        borderRadius: 5,
+        padding: 3,
+        margin: { xs: "auto", lg: 0 },
+      }}
+    >
       <Typography
         sx={{
           color: "#5AB1BB",
@@ -60,7 +67,10 @@ const TagCard: React.FC<Props> = ({ post }) => {
         alt="A dinosaur"
         placeholder="blurred"
       /> */}
-      <img src={post.featuredImage.node.localFile.childImageSharp.fluid.src} alt={post.title} />
+      <img
+        src={post.featuredImage.node.localFile.childImageSharp.fluid.src}
+        alt={post.title}
+      />
       <CardContent sx={{ paddingInline: 0 }}>
         <Typography
           sx={{ height: 100, color: "#5ab1bb" }}
@@ -70,7 +80,11 @@ const TagCard: React.FC<Props> = ({ post }) => {
         >
           {post.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary" dangerouslySetInnerHTML={{ __html: excerptWithoutLinks }} />
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          dangerouslySetInnerHTML={{ __html: excerptWithoutLinks }}
+        />
       </CardContent>
       <CardActions
         sx={{
