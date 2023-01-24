@@ -51,7 +51,14 @@ const TagSection = () => {
     <Container>
       <Grid sx={{ marginY: 3 }} rowSpacing={3} columnSpacing={1} container>
         {tags.map((tag) => (
-          <Grid key={tag.id} item md={2} xs={4}>
+          <Grid
+            sx={{ textAlign: "center" }}
+            key={tag.id}
+            padding={0}
+            item
+            md={2}
+            xs={4}
+          >
             <Button
               sx={{
                 backgroundColor: "#344D67",
@@ -60,6 +67,7 @@ const TagSection = () => {
                 padding: 1,
                 minWidth: 150,
                 textAlign: "center",
+                fontSize: 12,
                 ":hover": {
                   backgroundColor: "#5ab1bb",
                   color: "white",

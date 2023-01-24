@@ -14,7 +14,7 @@ const TagPosts: React.FC<Props> = ({ tag, posts }) => {
   return (
     <Grid rowSpacing={3} columnSpacing={3} container>
       {posts.map((post) => (
-        <Grid item xs={4} key={post.title}>
+        <Grid item xs={12} md={6} lg={4} key={post.title}>
           <TagCard post={post} />
         </Grid>
       ))}

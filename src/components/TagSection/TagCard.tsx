@@ -13,7 +13,14 @@ interface Props {
 }
 const TagCard: React.FC<Props> = ({ post }) => {
   return (
-    <Card sx={{ maxWidth: 345, borderRadius: 5, padding: 3 }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        borderRadius: 5,
+        padding: 3,
+        margin: { xs: "auto", lg: 0 },
+      }}
+    >
       <Typography
         sx={{
           color: "#5AB1BB",
