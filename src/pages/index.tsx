@@ -4,11 +4,11 @@ import HeroSection from "../components/Hero/Hero";
 import DidYouKnowSection from "../components/DYK Section/DYK";
 import Layout from "../components/Layout/Layout";
 import TagSection from "../components/TagSection/TagSection";
+import UpcomingEvents from "../components/UpcomingEvents/UpcomingEvents";
 import { useStaticQuery, graphql } from "gatsby";
 import { Grid } from "@mui/material";
 
 const IndexPage: React.FC<PageProps> = () => {
-
   return (
     <Layout>
       <Grid container spacing={3}>
@@ -19,7 +19,10 @@ const IndexPage: React.FC<PageProps> = () => {
           <DidYouKnowSection />
         </Grid>
         <Grid item xs={12}>
-          <TagSection/>
+          <TagSection />
+        </Grid>
+        <Grid item xs={12}>
+          <UpcomingEvents />
         </Grid>
       </Grid>
     </Layout>
