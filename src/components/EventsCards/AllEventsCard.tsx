@@ -2,7 +2,7 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 const data = [
   {
@@ -60,7 +60,7 @@ const EventCard: React.FC = () => {
           </Box>
         );
       })}
-      <Box sx={{ display: "flex", justifyContent: "end", marginTop: 2 }}>
+      <Grid marginTop={2} container justifyContent="end">
         <Button
           sx={{
             borderRadius: 50,
@@ -74,7 +74,7 @@ const EventCard: React.FC = () => {
         >
           See all events
         </Button>
-      </Box>
+      </Grid>
     </Card>
   );
 };
