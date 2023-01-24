@@ -33,8 +33,8 @@ interface Props {
 const TagPosts: React.FC<Props> = ({ tag, posts }) => {
   return (
     <Grid rowSpacing={3} columnSpacing={3} container>
-      {posts.length > 3
-        ? posts.slice(0, 3).map((post) => (
+      {posts.length > 1
+        ? posts.slice(0, 1).map((post) => (
             <Grid item xs={12} md={6} lg={4} key={post.title}>
               <TagCard post={post} />
             </Grid>
