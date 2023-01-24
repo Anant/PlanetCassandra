@@ -14,12 +14,7 @@ const DidYouKnowSection = () => {
           paddingY: 3,
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
+        <Grid justifyContent="center" container>
           <Typography
             color={"white"}
             align={"center"}
@@ -31,7 +26,7 @@ const DidYouKnowSection = () => {
           <Typography marginX={1} align={"center"} variant="h5" gutterBottom>
             Know?
           </Typography>
-        </Box>
+        </Grid>
 
         <Typography align={"center"} variant="subtitle2" gutterBottom>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
