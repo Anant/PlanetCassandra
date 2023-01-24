@@ -47,10 +47,9 @@ const HeroSection = () => {
       <Grid
         sx={{
           height: 700,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
         }}
+        justifyContent="center"
+        alignItems="center"
         container
         maxWidth="lg"
       >
@@ -58,11 +57,7 @@ const HeroSection = () => {
           <Typography variant="h3" component="h1">
             Welcome to
           </Typography>
-          <Box
-            sx={{
-              display: "flex",
-            }}
-          >
+          <Grid container>
             <Typography
               fontWeight={"bold"}
               color="#344D67"
@@ -82,7 +77,7 @@ const HeroSection = () => {
             >
               Cassandra
             </Typography>
-          </Box>
+          </Grid>
           <Typography
             sx={{
               marginTop: 5,
