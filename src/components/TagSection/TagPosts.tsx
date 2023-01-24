@@ -7,13 +7,37 @@ interface Props {
   tag: string;
   posts: {
     title: string;
+    slug: string;
+    author: {
+      node: {
+        name: string;
+      }
+    },
+    featuredImage: {
+      node: {
+        localFile: {
+          relativePath: string;
+          absolutePath: string;
+          childImageSharp: {
+            fluid: {
+              src: string;
+            }
+          }
+        }
+      }
+    },
+    excerpt: string;
   }[];
 }
 
 const TagPosts: React.FC<Props> = ({ tag, posts }) => {
   return (
     <Grid rowSpacing={3} columnSpacing={3} container>
-      {posts.map((post) => (
+      {posts.length > 3 ? posts.slice(0, 3).map((post) => (
+        <Grid item xs={4} key={post.title}>
+          <TagCard post={post} />
+        </Grid>
+      )) : posts.map((post) => (
         <Grid item xs={4} key={post.title}>
           <TagCard post={post} />
         </Grid>
