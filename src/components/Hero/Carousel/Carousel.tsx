@@ -33,7 +33,6 @@ const Carousel: React.FC<Props> = ({ items }) => {
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
   };
-
   return (
     <div className={"root"}>
       <img src={items[currentIndex].image} alt="Logo" />

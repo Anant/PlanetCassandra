@@ -69,7 +69,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-airtable`,
       options: {
         //Add to ENV File
-        apiKey: `keywCPmbBc1h5ssPV`,
+        apiKey: `keyyRNiY9jP5OcGBA`,
         tables: [
           {
             baseId: `app0cewpKFiSqkmVe`,

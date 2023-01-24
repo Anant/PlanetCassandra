@@ -5,13 +5,41 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StaticImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
 
 interface Props {
   post: {
     title: string;
+    slug: string;
+    author: {
+      node: {
+        name: string;
+      };
+    };
+    featuredImage: {
+      node: {
+        localFile: {
+          relativePath: string;
+          absolutePath: string;
+          childImageSharp: {
+            fluid: {
+              src: string;
+            };
+          };
+        };
+      };
+    };
+    excerpt: string;
   };
 }
+
+const removeLinks = (html: string) => {
+  return html.replace(/<a\b[^>]*>(.*?)<\/a>/i, "");
+};
+
 const TagCard: React.FC<Props> = ({ post }) => {
+  //console.log(post.featuredImage.node.localFile.childImageSharp.fluid.src)
+  const excerptWithoutLinks = removeLinks(post.excerpt);
   return (
     <Card
       sx={{
@@ -31,11 +59,17 @@ const TagCard: React.FC<Props> = ({ post }) => {
       >
         Featured article :
       </Typography>
+      {/* 
+      We need to learn how to use this
       <StaticImage
         style={{ borderRadius: 5 }}
-        src="../../images/PostTag.jpg"
+        src={post.featuredImage.node.localFile.childImageSharp.fluid.src}
         alt="A dinosaur"
         placeholder="blurred"
+      /> */}
+      <img
+        src={post.featuredImage.node.localFile.childImageSharp.fluid.src}
+        alt={post.title}
       />
       <CardContent sx={{ paddingInline: 0 }}>
         <Typography
@@ -46,12 +80,11 @@ const TagCard: React.FC<Props> = ({ post }) => {
         >
           {post.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-          cum ducimus expedita recusandae esse nihil, aliquid quo quia atque
-          quibusdam amet inventore pariatur, consectetur earum dolore a
-          exercitationem laborum tempora.
-        </Typography>
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          dangerouslySetInnerHTML={{ __html: excerptWithoutLinks }}
+        />
       </CardContent>
       <CardActions
         sx={{
@@ -71,7 +104,12 @@ const TagCard: React.FC<Props> = ({ post }) => {
           }}
           variant="contained"
         >
-          Continue reading
+          <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to={`/post/${post.slug}`}
+          >
+            Continue reading
+          </Link>
         </Button>{" "}
         <Button
           sx={{
@@ -84,7 +122,12 @@ const TagCard: React.FC<Props> = ({ post }) => {
           }}
           variant="contained"
         >
-          See all articles
+          <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to={`/posts`}
+          >
+            See all articles
+          </Link>
         </Button>
       </CardActions>
     </Card>

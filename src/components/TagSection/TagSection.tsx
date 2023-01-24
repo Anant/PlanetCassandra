@@ -14,19 +14,36 @@ import "./tagStyles.css";
 interface Data {
   id: string;
   title: string;
-  tag: string;
+  slug: string;
+  author: {
+    node: {
+      name: string;
+    }
+  };
+  featuredImage: {
+    node: {
+      localFile: {
+        relativePath: string;
+        absolutePath: string;
+        childImageSharp: {
+          fluid: {
+            src: string;
+          }
+        }
+      }
+    }
+  };
+  excerpt: string;
 }
 
 interface AllWpTagData {
-  data: Data[];
   allWpTag: {
     nodes: {
       name: string;
       id: string;
+      count: number;
       posts: {
-        nodes: {
-          title: string;
-        }[];
+        nodes: Data[];
       };
     }[];
   };
@@ -90,20 +107,40 @@ const TagSection = () => {
 };
 
 export const query = graphql`
-  query GET_TAGS {
-    allWpTag(sort: { count: DESC }, filter: { count: { ne: null } }, limit: 5) {
-      nodes {
-        name
-        id
-        count
-        posts {
-          nodes {
-            title
+query GET_TAGS {
+  allWpTag(sort: {count: DESC}, filter: {count: {ne: null}}, limit: 5) {
+    nodes {
+      name
+      id
+      count
+      posts {
+        nodes {
+          title
+          slug
+          author {
+            node {
+              name
+            }
           }
+          featuredImage {
+            node {
+              localFile {
+                relativePath
+                absolutePath
+                childImageSharp {
+                  fluid(quality: 100, cropFocus: EAST, maxHeight: 200, maxWidth: 350) {
+                    src
+                  }
+                }
+              }
+            }
+          }
+          excerpt
         }
       }
     }
   }
+}
 `;
 
 export default TagSection;
