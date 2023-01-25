@@ -20,7 +20,7 @@ const UpcomingEvents = () => {
         </Typography>
         <Grid rowSpacing={3} container>
           <Grid item xs={12} md={8}>
-            <EventCard />
+            <EventCard width="70%" />
           </Grid>
           <Grid item xs={12} md={4}>
             <AllEventsCard />
