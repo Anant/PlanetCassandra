@@ -5,10 +5,14 @@ import CardContent from "@mui/material/CardContent";
 import { Box, Typography, Button } from "@mui/material";
 import { StaticImage } from "gatsby-plugin-image";
 import { CiFacebook, CiLinkedin, CiTwitter } from "react-icons/ci";
-
-const EventCard: React.FC = () => {
+interface Props {
+  width: string;
+}
+const EventCard = ({ width }: Props) => {
   return (
-    <Card sx={{ width: "70%", borderRadius: 5, margin: { xs: "auto", md: 0 } }}>
+    <Card
+      sx={{ width: { width }, borderRadius: 5, margin: { xs: "auto", md: 0 } }}
+    >
       <StaticImage
         style={{ borderRadius: 5, height: 200 }}
         src="../../images/PostTag.jpg"

@@ -5,6 +5,7 @@ import DidYouKnowSection from "../components/DYK Section/DYK";
 import Layout from "../components/Layout/Layout";
 import TagSection from "../components/TagSection/TagSection";
 import UpcomingEvents from "../components/UpcomingEvents/UpcomingEvents";
+import UseCases from "../components/UseCases/UseCases";
 import { useStaticQuery, graphql } from "gatsby";
 import { Grid } from "@mui/material";
 
@@ -23,6 +24,9 @@ const IndexPage: React.FC<PageProps> = () => {
         </Grid>
         <Grid item xs={12}>
           <UpcomingEvents />
+        </Grid>
+        <Grid item xs={12}>
+          <UseCases />
         </Grid>
       </Grid>
     </Layout>
