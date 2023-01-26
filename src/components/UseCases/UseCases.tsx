@@ -18,9 +18,9 @@ interface allAirtableData {
 }
 
 const UseCases = () => {
-  const  {allAirtable}:allAirtableData = useStaticQuery(query);
+  // const  {allAirtable}:allAirtableData = useStaticQuery(query);
   
-  const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({Name:node.data.Name, Description:node.data.Description}));
+  // const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({Name:node.data.Name, Description:node.data.Description}));
   
   return (
     <Grid container>
@@ -37,11 +37,11 @@ const UseCases = () => {
           Cassandra Use Cases :
         </Typography>
         <Grid rowSpacing={3} columnSpacing={3} container>
-          {filteredAirtable.map((useCase) => (
+          {/* {filteredAirtable.map((useCase) => (
             <Grid item xs={12} md={6} key={useCase.Name}>
               <UseCaseCard name={useCase.Name} description={useCase.Description} width={"100%"} />
             </Grid>
-          ))}
+          ))} */}
         </Grid>
         <Grid marginTop={2} container justifyContent="end">
           <Button
