@@ -1,8 +1,27 @@
 import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import { Grid, Typography, Button, Container, Box } from "@mui/material";
 import EventCard from "../EventsCards/EventCard";
+import UseCaseCard from "./UseCaseCard";
+
+interface allAirtableData {
+  allAirtable: {
+    nodes: {
+      table: string;
+      data: {
+        Company_Logo_Filename: string;
+        Description: string;
+        Name:string
+      }
+    }[];
+  }
+}
+
 const UseCases = () => {
-  const cases = [1, 2, 3, 4, 5, 6];
+  const  {allAirtable}:allAirtableData = useStaticQuery(query);
+  
+  const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({Name:node.data.Name, Description:node.data.Description}));
+  
   return (
     <Grid container>
       <Container
@@ -18,9 +37,9 @@ const UseCases = () => {
           Cassandra Use Cases :
         </Typography>
         <Grid rowSpacing={3} columnSpacing={3} container>
-          {cases.map((useCase) => (
-            <Grid item xs={12} md={6} key={useCase}>
-              <EventCard width={"100%"} />
+          {filteredAirtable.map((useCase) => (
+            <Grid item xs={12} md={6} key={useCase.Name}>
+              <UseCaseCard name={useCase.Name} description={useCase.Description} width={"100%"} />
             </Grid>
           ))}
         </Grid>
@@ -43,5 +62,20 @@ const UseCases = () => {
     </Grid>
   );
 };
+
+export const query = graphql`
+query MyQuery {
+  allAirtable(filter: {table: {eq: "Company"}}) {
+    nodes {
+      table
+      data {
+        Company_Logo_Filename
+        Description
+        Name
+      }
+    }
+  }
+}
+`;
 
 export default UseCases;
