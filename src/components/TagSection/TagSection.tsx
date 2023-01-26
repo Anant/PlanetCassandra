@@ -128,7 +128,7 @@ query GET_TAGS {
                 relativePath
                 absolutePath
                 childImageSharp {
-                  fluid(quality: 100, cropFocus: EAST, maxHeight: 200, maxWidth: 350) {
+                  fluid(quality: 100, cropFocus: EAST, maxHeight: 200, maxWidth: 330) {
                     src
                   }
                 }

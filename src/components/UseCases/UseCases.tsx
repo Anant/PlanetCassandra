@@ -18,9 +18,8 @@ interface allAirtableData {
 }
 
 const UseCases = () => {
-  // const  {allAirtable}:allAirtableData = useStaticQuery(query);
-  
-  // const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({Name:node.data.Name, Description:node.data.Description}));
+  const {allAirtable}:allAirtableData = useStaticQuery(query);
+  const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({Name:node.data.Name, Description:node.data.Description}));
   
   return (
     <Grid container>
@@ -37,11 +36,11 @@ const UseCases = () => {
           Cassandra Use Cases :
         </Typography>
         <Grid rowSpacing={3} columnSpacing={3} container>
-          {/* {filteredAirtable.map((useCase) => (
+          {filteredAirtable.map((useCase) => (
             <Grid item xs={12} md={6} key={useCase.Name}>
               <UseCaseCard name={useCase.Name} description={useCase.Description} width={"100%"} />
             </Grid>
-          ))} */}
+          ))}
         </Grid>
         <Grid marginTop={2} container justifyContent="end">
           <Button
@@ -63,13 +62,12 @@ const UseCases = () => {
   );
 };
 
-export const query = graphql`
-query MyQuery {
+const query = graphql`
+query UseCasesData {
   allAirtable(filter: {table: {eq: "Company"}}) {
     nodes {
       table
       data {
-        Company_Logo_Filename
         Description
         Name
       }

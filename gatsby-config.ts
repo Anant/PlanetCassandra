@@ -78,7 +78,6 @@ const config: GatsbyConfig = {
         ],
       },
     },
-    
     {
       resolve: `gatsby-source-airtable`,
       options: {
