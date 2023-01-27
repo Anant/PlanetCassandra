@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Typography, Container, Box } from "@mui/material";
 import { StaticImage } from "gatsby-plugin-image";
 import "../Footer/index.css";
-import { Input } from "antd";
+import { Input, ConfigProvider } from "antd";
 import { AiOutlineSend } from "react-icons/ai";
 
 const Footer = () => {
@@ -20,7 +20,12 @@ const Footer = () => {
           container
           maxWidth="lg"
         >
-          <Grid item xs={12} md={6}>
+          <Grid
+            sx={{ textAlign: { xs: "center", md: "start" } }}
+            item
+            xs={12}
+            md={6}
+          >
             <StaticImage
               src="../../images/GrayLogoWithText.png"
               alt="A dinosaur"
@@ -33,6 +38,7 @@ const Footer = () => {
                 justifyContent: "space-between",
                 marginTop: 5,
                 width: "60%",
+                marginInline: { xs: "auto", md: 0 },
               }}
             >
               <Typography color={"white"}>What's New?</Typography>
@@ -76,18 +82,26 @@ const Footer = () => {
               <Typography marginBottom={2} variant="h4" color={"white"}>
                 Stay Tuned!
               </Typography>
-              <Typography variant="subtitle2" color={"white"}>
+              <Typography variant="subtitle2" color={"black"}>
                 Sign up to our newsletter and never miss out on anything related
                 to Cassandra.
               </Typography>
-              <Typography variant="subtitle2" color={"white"}>
+              <Typography variant="subtitle2" color={"black"}>
                 Our newsletter is sent once a week, every Thursday
               </Typography>
-              <Search
-                style={{ marginTop: 10 }}
-                placeholder="Email Adress..."
-                enterButton={<AiOutlineSend />}
-              />
+              <ConfigProvider
+                theme={{
+                  token: {
+                    colorPrimary: "#344D67",
+                  },
+                }}
+              >
+                <Search
+                  style={{ marginTop: 10 }}
+                  placeholder="Email Adress..."
+                  enterButton={<AiOutlineSend color="#5AB1BB" />}
+                />
+              </ConfigProvider>
             </Box>
           </Grid>
         </Grid>
