@@ -3,20 +3,21 @@ import '../styles/global.css';
 import type { HeadFC, PageProps } from 'gatsby';
 import { Grid } from '@mui/material';
 
-import HeroSection from '../components/Hero/Hero';
-import DidYouKnowSection from '../components/DYK Section/DYK';
-import Layout from '../components/Layout/Layout';
-import TagSection from '../components/TagSection/TagSection';
-import UpcomingEvents from '../components/UpcomingEvents/UpcomingEvents';
-import UseCases from '../components/UseCases/UseCases';
-import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
-import { useStaticQuery, graphql } from 'gatsby';
-import CommunitySection from '../components/CommunitySection/CommunitySection';
+import HeroSection from "../components/Hero/Hero";
+import DidYouKnowSection from "../components/DYK Section/DYK";
+import Layout from "../components/Layout/Layout";
+import TagSection from "../components/TagSection/TagSection";
+import UpcomingEvents from "../components/UpcomingEvents/UpcomingEvents";
+import UseCases from "../components/UseCases/UseCases";
+import YoutubeSection from "../components/YoutubeSection/YoutubeSection";
+import Footer from "../components/Footer/Footer";
+import CommunitySection from "../components/CommunitySection/CommunitySection";
+import { useStaticQuery, graphql } from "gatsby";
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <Grid container spacing={3}>
+      <Grid container>
         <Grid item xs={12}>
           <HeroSection />
         </Grid>
@@ -37,6 +38,9 @@ const IndexPage: React.FC<PageProps> = () => {
         </Grid>
         <Grid item xs={12}>
           <CommunitySection />
+        </Grid>
+        <Grid item xs={12}>
+          <Footer />
         </Grid>
       </Grid>
     </Layout>
