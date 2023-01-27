@@ -18,7 +18,7 @@ interface Data {
   author: {
     node: {
       name: string;
-    }
+    };
   };
   featuredImage: {
     node: {
@@ -28,10 +28,10 @@ interface Data {
         childImageSharp: {
           fluid: {
             src: string;
-          }
-        }
-      }
-    }
+          };
+        };
+      };
+    };
   };
   excerpt: string;
 }
@@ -65,7 +65,7 @@ const TagSection = () => {
   };
 
   return (
-    <Container>
+    <Container sx={{ paddingY: 3 }}>
       <Grid sx={{ marginY: 3 }} rowSpacing={3} columnSpacing={1} container>
         {tags.map((tag) => (
           <Grid
@@ -107,40 +107,45 @@ const TagSection = () => {
 };
 
 export const query = graphql`
-query GET_TAGS {
-  allWpTag(sort: {count: DESC}, filter: {count: {ne: null}}, limit: 5) {
-    nodes {
-      name
-      id
-      count
-      posts {
-        nodes {
-          title
-          slug
-          author {
-            node {
-              name
+  query GET_TAGS {
+    allWpTag(sort: { count: DESC }, filter: { count: { ne: null } }, limit: 5) {
+      nodes {
+        name
+        id
+        count
+        posts {
+          nodes {
+            title
+            slug
+            author {
+              node {
+                name
+              }
             }
-          }
-          featuredImage {
-            node {
-              localFile {
-                relativePath
-                absolutePath
-                childImageSharp {
-                  fluid(quality: 100, cropFocus: EAST, maxHeight: 200, maxWidth: 330) {
-                    src
+            featuredImage {
+              node {
+                localFile {
+                  relativePath
+                  absolutePath
+                  childImageSharp {
+                    fluid(
+                      quality: 100
+                      cropFocus: EAST
+                      maxHeight: 200
+                      maxWidth: 330
+                    ) {
+                      src
+                    }
                   }
                 }
               }
             }
+            excerpt
           }
-          excerpt
         }
       }
     }
   }
-}
 `;
 
 export default TagSection;
