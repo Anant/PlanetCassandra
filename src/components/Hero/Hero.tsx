@@ -1,9 +1,8 @@
-import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Grid, Typography, Button, Container, Box } from '@mui/material';
-import Carousel from './Carousel/Carousel';
-import SendIcon from '@mui/icons-material/Send';
-
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
+import { Grid, Typography, Button, Container, Box } from "@mui/material";
+import Carousel from "./Carousel/Carousel";
+import SendIcon from "@mui/icons-material/Send";
 interface AllWpPostData {
   allWpPost: {
     nodes: {
@@ -35,7 +34,7 @@ const HeroSection = () => {
       title,
       featuredImage,
       slug,
-    }: AllWpPostData['allWpPost']['nodes'][0]) => ({
+    }: AllWpPostData["allWpPost"]["nodes"][0]) => ({
       title,
       image: featuredImage?.node?.localFile?.childImageSharp?.fluid?.src,
       slug,
@@ -63,7 +62,7 @@ const HeroSection = () => {
           </Typography>
           <Grid container>
             <Typography
-              fontWeight={'bold'}
+              fontWeight={"bold"}
               color="#344D67"
               component="h1"
               variant="h3"
@@ -73,11 +72,11 @@ const HeroSection = () => {
               Planet.
             </Typography>
             <Typography
-              fontWeight={'bold'}
+              fontWeight={"bold"}
               component="h1"
               variant="h3"
               color="#5AB1BB"
-              align={'center'}
+              align={"center"}
               gutterBottom
               className="Font_Poppins_Bold"
             >
@@ -103,7 +102,7 @@ const HeroSection = () => {
             <Button
               sx={{
                 borderRadius: 50,
-                backgroundColor: '#5AB1BB',
+                backgroundColor: "#5AB1BB",
               }}
               variant="contained"
               endIcon={<SendIcon />}
@@ -114,7 +113,7 @@ const HeroSection = () => {
               sx={{
                 borderRadius: 50,
                 marginLeft: 10,
-                backgroundColor: '#344D67',
+                backgroundColor: "#344D67",
               }}
               variant="contained"
               endIcon={<SendIcon />}
