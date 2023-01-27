@@ -43,13 +43,11 @@ const HeroSection = () => {
   );
 
   return (
-    <Container>
+    <Container sx={{ paddingY: 10 }}>
       <Grid
-        sx={{
-          height: 700,
-        }}
         justifyContent="center"
         alignItems="center"
+        rowSpacing={5}
         container
         maxWidth="lg"
       >
