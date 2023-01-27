@@ -31,7 +31,7 @@ const CommunitySection = () => {
             align={'center'}
             variant="h5"
             gutterBottom
-            className="Lato_Bold"
+            className="Font_Lato_Bold"
             sx={{
               fontSize: '25px',
             }}
@@ -43,7 +43,7 @@ const CommunitySection = () => {
             align={'center'}
             variant="h5"
             gutterBottom
-            className="Lato_Bold"
+            className="Font_Lato_Bold"
             sx={{
               color: '#344D67',
               fontSize: '25px',
@@ -57,7 +57,7 @@ const CommunitySection = () => {
           align={'center'}
           variant="subtitle2"
           gutterBottom
-          className="Lato_Light"
+          className="Font_Lato_Light"
           sx={{
             fontSize: '20px',
             fontWeight: 100,

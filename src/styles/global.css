@@ -1,29 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;700&display=swap');
-.Lato_Light {
+.Font_Lato_Light {
   font-family: 'Lato', sans-serif;
   font-weight: 300;
 }
-.Lato_Bold {
+.Font_Lato_Bold {
   font-family: 'Lato', sans-serif;
   font-weight: 700;
 }
-.Montserrat_Regular {
+.Font_Montserrat_Regular {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
 }
-.Montserrat_Bold {
+.Font_Montserrat_Bold {
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
-.Poppins_Regular {
+.Font_Poppins_Regular {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
 }
-.Poppins_SemiBold {
+.Font_Poppins_SemiBold {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
-.Poppins_Bold {
+.Font_Poppins_Bold {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }

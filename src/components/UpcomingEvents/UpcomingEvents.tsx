@@ -15,7 +15,7 @@ const UpcomingEvents = () => {
           sx={{ marginBottom: 3, textAlign: { xs: 'center', md: 'start' } }}
           color="white"
           variant="h4"
-          className="Poppins_Regular"
+          className="Font_Poppins_Regular"
         >
           Upcoming Events :
         </Typography>

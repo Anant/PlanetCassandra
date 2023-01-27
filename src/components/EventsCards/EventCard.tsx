@@ -30,7 +30,7 @@ const EventCard = ({ width }: Props) => {
             Title
           </Typography>
           <Typography
-            className="Poppins_Regular"
+            className="Font_Poppins_Regular"
             variant="body2"
             color="text.secondary"
           >

@@ -34,7 +34,7 @@ const UseCaseCard = ({ name, description, width }: Props) => {
           </Typography>
           <Typography
             variant="body2"
-            className="Montserrat_Regular"
+            className="Font_Montserrat_Regular"
             color="text.secondary"
           >
             {description}

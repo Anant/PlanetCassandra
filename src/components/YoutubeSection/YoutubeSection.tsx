@@ -23,7 +23,7 @@ const YoutubeSection = () => {
                 component="h1"
                 variant="h3"
                 gutterBottom
-                className="Poppins_Regular"
+                className="Font_Poppins_Regular"
               >
                 pro in
               </Typography>
@@ -35,7 +35,7 @@ const YoutubeSection = () => {
                 color="#5AB1BB"
                 align={'center'}
                 gutterBottom
-                className="Poppins_Bold"
+                className="Font_Poppins_Bold"
               >
                 Cassandra?
               </Typography>
@@ -45,7 +45,7 @@ const YoutubeSection = () => {
                 marginTop: 5,
               }}
               variant="subtitle1"
-              className="Lato_Light"
+              className="Font_Lato_Light"
             >
               Visit our YouTube channel and look through our extensive library
               of tutorials, quick fixes, pro tips, tricks and lunch ideas from

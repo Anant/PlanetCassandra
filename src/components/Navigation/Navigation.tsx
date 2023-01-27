@@ -113,7 +113,7 @@ function ResponsiveAppBar() {
             <Button
               key={page}
               onClick={handleCloseNavMenu}
-              className="Poppins_Regular"
+              className="Font_Poppins_Regular"
               sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
             >
               {page}
@@ -131,12 +131,12 @@ function ResponsiveAppBar() {
         >
           <Button
             sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
-            className="Poppins_Regular"
+            className="Font_Poppins_Regular"
           >
             Contribute
           </Button>
           <Button
-            className="Poppins_Regular"
+            className="Font_Poppins_Regular"
             sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
           >
             Contact

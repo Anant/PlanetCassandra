@@ -20,7 +20,7 @@ const DidYouKnowSection = () => {
             align={'center'}
             variant="h5"
             gutterBottom
-            className="Lato_Bold"
+            className="Font_Lato_Bold"
           >
             Did You
           </Typography>
@@ -30,7 +30,7 @@ const DidYouKnowSection = () => {
         </Grid>
 
         <Typography
-          className="Lato_Light"
+          className="Font_Lato_Light"
           align={'center'}
           variant="subtitle2"
           gutterBottom
