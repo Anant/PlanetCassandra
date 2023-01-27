@@ -17,7 +17,7 @@ interface allAirtableData {
   }
 }
 
-const UseCases = () => {
+const UseCases: React.FC = () => {
   const {allAirtable}:allAirtableData = useStaticQuery(query);
   const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({Name:node.data.Name, Description:node.data.Description}));
   

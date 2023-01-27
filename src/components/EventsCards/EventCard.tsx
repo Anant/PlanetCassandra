@@ -7,8 +7,10 @@ import { StaticImage } from "gatsby-plugin-image";
 import { CiFacebook, CiLinkedin, CiTwitter } from "react-icons/ci";
 interface Props {
   width: string;
+  eventName: string;
+  eventDescription: string;
 }
-const EventCard = ({ width }: Props) => {
+const EventCard = ({ width, eventDescription, eventName }: Props) => {
   return (
     <Card
       sx={{ width: { width }, borderRadius: 5, margin: { xs: "auto", md: 0 } }}
@@ -27,13 +29,10 @@ const EventCard = ({ width }: Props) => {
             variant="h6"
             component="div"
           >
-            Title
+            {eventName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-            cum ducimus expedita recusandae esse nihil, aliquid quo quia atque
-            quibusdam amet inventore pariatur, consectetur earum dolore a
-            exercitationem laborum tempora.
+            {eventDescription}
           </Typography>
         </CardContent>
         <CardActions
