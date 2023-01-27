@@ -1,9 +1,9 @@
-import React from "react";
-import { Grid, Typography, Container } from "@mui/material";
+import React from 'react';
+import { Grid, Typography, Container } from '@mui/material';
 
 const YoutubeSection = () => {
   return (
-    <Grid sx={{ backgroundColor: "#F9F8F8", paddingY: 10 }}>
+    <Grid sx={{ backgroundColor: '#F9F8F8', paddingY: 10 }}>
       <Container>
         <Grid
           justifyContent="center"
@@ -18,22 +18,24 @@ const YoutubeSection = () => {
             </Typography>
             <Grid container>
               <Typography
-                fontWeight={"bold"}
+                fontWeight={'bold'}
                 color="#344D67"
                 component="h1"
                 variant="h3"
                 gutterBottom
+                className="Poppins_Regular"
               >
                 pro in
               </Typography>
               <Typography
                 marginLeft={2}
-                fontWeight={"bold"}
+                fontWeight={'bold'}
                 component="h1"
                 variant="h3"
                 color="#5AB1BB"
-                align={"center"}
+                align={'center'}
                 gutterBottom
+                className="Poppins_Bold"
               >
                 Cassandra?
               </Typography>
@@ -43,6 +45,7 @@ const YoutubeSection = () => {
                 marginTop: 5,
               }}
               variant="subtitle1"
+              className="Lato_Light"
             >
               Visit our YouTube channel and look through our extensive library
               of tutorials, quick fixes, pro tips, tricks and lunch ideas from

@@ -1,8 +1,8 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { Grid, Typography, Button, Container, Box } from "@mui/material";
-import Carousel from "./Carousel/Carousel";
-import SendIcon from "@mui/icons-material/Send";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Grid, Typography, Button, Container, Box } from '@mui/material';
+import Carousel from './Carousel/Carousel';
+import SendIcon from '@mui/icons-material/Send';
 
 interface AllWpPostData {
   allWpPost: {
@@ -35,7 +35,7 @@ const HeroSection = () => {
       title,
       featuredImage,
       slug,
-    }: AllWpPostData["allWpPost"]["nodes"][0]) => ({
+    }: AllWpPostData['allWpPost']['nodes'][0]) => ({
       title,
       image: featuredImage?.node?.localFile?.childImageSharp?.fluid?.src,
       slug,
@@ -54,26 +54,28 @@ const HeroSection = () => {
         maxWidth="lg"
       >
         <Grid item xs={12} md={6}>
-          <Typography variant="h3" component="h1">
+          <Typography variant="h3" component="h1" className="Poppins_Regular">
             Welcome to
           </Typography>
           <Grid container>
             <Typography
-              fontWeight={"bold"}
+              fontWeight={'bold'}
               color="#344D67"
               component="h1"
               variant="h3"
               gutterBottom
+              className="Poppins_Bold"
             >
               Planet.
             </Typography>
             <Typography
-              fontWeight={"bold"}
+              fontWeight={'bold'}
               component="h1"
               variant="h3"
               color="#5AB1BB"
-              align={"center"}
+              align={'center'}
               gutterBottom
+              className="Poppins_Bold"
             >
               Cassandra
             </Typography>
@@ -83,6 +85,7 @@ const HeroSection = () => {
               marginTop: 5,
             }}
             variant="subtitle1"
+            className="Lato_Light"
           >
             The best knowledge base on Apache Cassandra to help platform
             leaders, architects, engineers, and operators to build scalable
@@ -96,7 +99,7 @@ const HeroSection = () => {
             <Button
               sx={{
                 borderRadius: 50,
-                backgroundColor: "#5AB1BB",
+                backgroundColor: '#5AB1BB',
               }}
               variant="contained"
               endIcon={<SendIcon />}
@@ -107,7 +110,7 @@ const HeroSection = () => {
               sx={{
                 borderRadius: 50,
                 marginLeft: 10,
-                backgroundColor: "#344D67",
+                backgroundColor: '#344D67',
               }}
               variant="contained"
               endIcon={<SendIcon />}

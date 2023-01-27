@@ -1,4 +1,5 @@
 import * as React from 'react';
+import '../styles/global.css';
 import type { HeadFC, PageProps } from 'gatsby';
 import { Grid } from '@mui/material';
 

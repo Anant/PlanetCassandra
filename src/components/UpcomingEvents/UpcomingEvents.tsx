@@ -1,8 +1,8 @@
-import React from "react";
-import { Grid, Typography, Button, Container, Box } from "@mui/material";
-import EventCard from "../EventsCards/EventCard";
-import AllEventsCard from "../EventsCards/AllEventsCard";
-import "./index.css";
+import React from 'react';
+import { Grid, Typography, Button, Container, Box } from '@mui/material';
+import EventCard from '../EventsCards/EventCard';
+import AllEventsCard from '../EventsCards/AllEventsCard';
+import './index.css';
 const UpcomingEvents = () => {
   return (
     <Grid className="bgImage" container>
@@ -12,9 +12,10 @@ const UpcomingEvents = () => {
         }}
       >
         <Typography
-          sx={{ marginBottom: 3, textAlign: { xs: "center", md: "start" } }}
+          sx={{ marginBottom: 3, textAlign: { xs: 'center', md: 'start' } }}
           color="white"
           variant="h4"
+          className="Poppins_Regular"
         >
           Upcoming Events :
         </Typography>
