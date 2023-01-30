@@ -123,7 +123,7 @@ const HeroSection = () => {
         </Grid>
         <Grid item xs={12} md={6}>
           {/* <Carousel items={items} /> */}
-          <NewCarousel items={items} />
+          <NewCarousel items={items.slice(0, 4)} />
         </Grid>
       </Grid>
     </Container>

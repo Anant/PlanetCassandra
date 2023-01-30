@@ -35,7 +35,7 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
   return (
     <Carousel onChange={(e) => handleNext(e)}>
       {items.map((item, i) => (
-        <Paper>
+        <Paper key={i}>
           {item.image && isImageLoaded ? (
             <img
               src={items[currentIndex].image}
