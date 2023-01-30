@@ -1,4 +1,5 @@
 import * as React from "react";
+import "../styles/global.css";
 import type { HeadFC, PageProps } from "gatsby";
 import { Grid } from "@mui/material";
 
@@ -17,19 +18,19 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid className="heroBgImage" item xs={12}>
           <HeroSection />
         </Grid>
         <Grid item xs={12}>
           <DidYouKnowSection />
         </Grid>
-        <Grid item xs={12}>
+        <Grid className="tagSectionBgImage" item xs={12}>
           <TagSection />
         </Grid>
-        <Grid item xs={12}>
+        <Grid className="eventsBgImage" item xs={12}>
           <UpcomingEvents />
         </Grid>
-        <Grid item xs={12}>
+        <Grid className="useCasesBgImage" item xs={12}>
           <UseCases />
         </Grid>
         <Grid item xs={12}>
@@ -38,7 +39,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <Grid item xs={12}>
           <CommunitySection />
         </Grid>
-        <Grid item xs={12}>
+        <Grid className="footerBgImage" item xs={12}>
           <Footer />
         </Grid>
       </Grid>
