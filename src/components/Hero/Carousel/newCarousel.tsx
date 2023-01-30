@@ -26,66 +26,59 @@ interface Props {
 
 const NewCarousel: React.FC<Props> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
-  const handlePrev = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex + items.length - 1) % items.length
-    );
-  };
 
   const handleNext = (e: any) => {
     setCurrentIndex(e);
   };
   return (
-    <div className={"root"}>
-      <Carousel onChange={(e) => handleNext(e)}>
-        {items.map((item, i) => (
-          <Paper>
-            {item.image ? (
-              <img
-                src={items[currentIndex].image}
-                height="300px"
-                width={"100%"}
-                alt="Logo"
-              />
-            ) : (
-              <Skeleton variant="rectangular" width={"100%"} height={300} />
-            )}
-            <Typography
-              marginTop={2}
-              textAlign={"center"}
-              height="80px"
-              variant="h5"
-            >
-              {item.title}
-            </Typography>
+    <Carousel onChange={(e) => handleNext(e)}>
+      {items.map((item, i) => (
+        <Paper>
+          {item.image ? (
+            <img
+              src={items[currentIndex].image}
+              height="300px"
+              width={"100%"}
+              alt="Logo"
+            />
+          ) : (
+            <Skeleton variant="rectangular" width={"100%"} height={300} />
+          )}
+          <Typography
+            marginTop={2}
+            textAlign={"center"}
+            height="80px"
+            variant="h5"
+          >
+            {item.title}
+          </Typography>
 
-            <Link
-              style={{
-                display: "block",
-                textDecoration: "none",
-                color: "white",
-                margin: "auto",
-                textAlign: "center",
+          <Link
+            style={{
+              display: "block",
+              textDecoration: "none",
+              color: "white",
+              margin: "auto",
+              textAlign: "center",
+            }}
+            to={`/post/${items[currentIndex].slug}`}
+          >
+            <Button
+              sx={{
+                borderRadius: 50,
+                marginBottom: 2,
+
+                backgroundColor: "#344D67",
               }}
-              to={`/post/${items[currentIndex].slug}`}
+              variant="contained"
+              endIcon={<SendIcon />}
             >
-              <Button
-                sx={{
-                  borderRadius: 50,
-                  marginBottom: 2,
-
-                  backgroundColor: "#344D67",
-                }}
-                variant="contained"
-                endIcon={<SendIcon />}
-              >
-                Continue reading{" "}
-              </Button>
-            </Link>
-          </Paper>
-        ))}
-      </Carousel>
-    </div>
+              Continue reading{" "}
+            </Button>
+          </Link>
+        </Paper>
+      ))}
+    </Carousel>
   );
 };
 
