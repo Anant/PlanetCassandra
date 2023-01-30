@@ -1,9 +1,18 @@
 import React from "react";
 import { Grid, Typography, Container } from "@mui/material";
+import YouTube from "react-youtube";
 
 const YoutubeSection = () => {
+  const opts = {
+    height: "300",
+    width: "100%",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
   return (
-    <Grid sx={{ backgroundColor: "#F9F8F8", paddingY: 10 }}>
+    <Grid sx={{ backgroundColor: '#F9F8F8', paddingY: 10 }}>
       <Container>
         <Grid
           justifyContent="center"
@@ -18,31 +27,35 @@ const YoutubeSection = () => {
             </Typography>
             <Grid container>
               <Typography
-                fontWeight={"bold"}
+                fontWeight={'bold'}
                 color="#344D67"
                 component="h1"
                 variant="h3"
                 gutterBottom
+                className="Font_Poppins_Regular"
               >
                 pro in
               </Typography>
               <Typography
                 marginLeft={2}
-                fontWeight={"bold"}
+                fontWeight={'bold'}
                 component="h1"
                 variant="h3"
                 color="#5AB1BB"
-                align={"center"}
+                align={'center'}
                 gutterBottom
+                className="Font_Poppins_Bold"
               >
                 Cassandra?
               </Typography>
             </Grid>
             <Typography
+              className="myFont"
               sx={{
                 marginTop: 5,
               }}
               variant="subtitle1"
+              className="Font_Lato_Light"
             >
               Visit our YouTube channel and look through our extensive library
               of tutorials, quick fixes, pro tips, tricks and lunch ideas from
@@ -50,12 +63,7 @@ const YoutubeSection = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
-            <iframe
-              id="player"
-              width="600"
-              height="300"
-              src="https://www.youtube.com/embed/yQCDZDUzRJM"
-            ></iframe>
+            <YouTube videoId="yQCDZDUzRJM" opts={opts} />
           </Grid>
         </Grid>
       </Container>

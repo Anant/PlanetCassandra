@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Grid, Typography, Button, Container, Box } from "@mui/material";
 import Carousel from "./Carousel/Carousel";
 import SendIcon from "@mui/icons-material/Send";
-
 interface AllWpPostData {
   allWpPost: {
     nodes: {
@@ -54,7 +53,11 @@ const HeroSection = () => {
         maxWidth="lg"
       >
         <Grid item xs={12} md={6}>
-          <Typography variant="h3" component="h1">
+          <Typography
+            variant="h3"
+            component="h1"
+            className="Font_Poppins_Regular"
+          >
             Welcome to
           </Typography>
           <Grid container>
@@ -64,6 +67,7 @@ const HeroSection = () => {
               component="h1"
               variant="h3"
               gutterBottom
+              className="Font_Poppins_Bold"
             >
               Planet.
             </Typography>
@@ -74,6 +78,7 @@ const HeroSection = () => {
               color="#5AB1BB"
               align={"center"}
               gutterBottom
+              className="Font_Poppins_Bold"
             >
               Cassandra
             </Typography>
@@ -83,6 +88,7 @@ const HeroSection = () => {
               marginTop: 5,
             }}
             variant="subtitle1"
+            className="Font_Lato_Light"
           >
             The best knowledge base on Apache Cassandra to help platform
             leaders, architects, engineers, and operators to build scalable

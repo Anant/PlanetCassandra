@@ -30,11 +30,16 @@ const UpcomingEvents = () => {
   }));
 
   return (
-    <Grid className="bgImage" container>
-      <Container
-        sx={{
-          paddingY: 10,
-        }}
+    <Container
+      sx={{
+        paddingY: 10,
+      }}
+    >
+      <Typography
+        sx={{ marginBottom: 3, textAlign: { xs: "center", md: "start" } }}
+        color="white"
+        variant="h4"
+        className="Font_Poppins_Regular"
       >
         <Typography
           sx={{ marginBottom: 3, textAlign: { xs: "center", md: "start" } }}
@@ -85,8 +90,11 @@ const UpcomingEvents = () => {
             </Card>
           </Grid>
         </Grid>
-      </Container>
-    </Grid>
+        <Grid item xs={12} md={4}>
+          <AllEventsCard />
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 
