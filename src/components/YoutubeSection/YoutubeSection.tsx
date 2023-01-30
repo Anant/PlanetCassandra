@@ -6,10 +6,6 @@ const YoutubeSection = () => {
   const opts = {
     height: "300",
     width: "100%",
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
   };
   return (
     <Grid sx={{ backgroundColor: '#F9F8F8', paddingY: 10 }}>

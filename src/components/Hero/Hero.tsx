@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby";
 import { Grid, Typography, Button, Container, Box } from "@mui/material";
 import Carousel from "./Carousel/Carousel";
 import SendIcon from "@mui/icons-material/Send";
+import NewCarousel from "./Carousel/newCarousel";
 interface AllWpPostData {
   allWpPost: {
     nodes: {
@@ -42,13 +43,11 @@ const HeroSection = () => {
   );
 
   return (
-    <Container>
+    <Container sx={{ paddingY: 10 }}>
       <Grid
-        sx={{
-          height: 700,
-        }}
         justifyContent="center"
         alignItems="center"
+        rowSpacing={5}
         container
         maxWidth="lg"
       >
@@ -123,7 +122,8 @@ const HeroSection = () => {
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Carousel items={items} />
+          {/* <Carousel items={items} /> */}
+          <NewCarousel items={items} />
         </Grid>
       </Grid>
     </Container>
