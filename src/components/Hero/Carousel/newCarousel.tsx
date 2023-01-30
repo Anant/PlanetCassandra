@@ -26,20 +26,23 @@ interface Props {
 
 const NewCarousel: React.FC<Props> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(true);
 
   const handleNext = (e: any) => {
+    setIsImageLoaded(true);
     setCurrentIndex(e);
   };
   return (
     <Carousel onChange={(e) => handleNext(e)}>
       {items.map((item, i) => (
         <Paper>
-          {item.image ? (
+          {item.image && isImageLoaded ? (
             <img
               src={items[currentIndex].image}
               height="300px"
               width={"100%"}
               alt="Logo"
+              onError={() => setIsImageLoaded(false)}
             />
           ) : (
             <Skeleton variant="rectangular" width={"100%"} height={300} />
