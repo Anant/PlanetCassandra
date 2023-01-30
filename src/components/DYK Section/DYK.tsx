@@ -1,11 +1,11 @@
-import React from "react";
-import { Grid, Typography, Container, Box } from "@mui/material";
+import React from 'react';
+import { Grid, Typography, Container, Box } from '@mui/material';
 
 const DidYouKnowSection = () => {
   return (
     <Grid
       sx={{
-        backgroundColor: "#5AB1BB",
+        backgroundColor: '#5AB1BB',
       }}
       container
     >
@@ -16,19 +16,29 @@ const DidYouKnowSection = () => {
       >
         <Grid justifyContent="center" container>
           <Typography
-            color={"white"}
-            align={"center"}
+            color={'white'}
+            align={'center'}
             variant="h5"
             gutterBottom
+            className="Font_Lato_Bold"
           >
             Did You
           </Typography>
-          <Typography marginX={1} align={"center"} variant="h5" gutterBottom>
+          <Typography marginX={1} align={'center'} variant="h5" gutterBottom>
             Know?
           </Typography>
         </Grid>
 
-        <Typography align={"center"} variant="subtitle2" gutterBottom>
+        <Typography
+          className="Font_Lato_Light"
+          align={'center'}
+          variant="subtitle2"
+          gutterBottom
+          sx={{
+            fontSize: '20px',
+            fontWeight: 100,
+          }}
+        >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
           voluptate ipsa voluptatibus accusamus nobis nostrum doloribus quidem
           aut provident est neque debitis quos minima, error deleniti ipsum

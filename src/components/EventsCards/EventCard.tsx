@@ -1,57 +1,56 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import { Box, Typography, Button } from "@mui/material";
-import { StaticImage } from "gatsby-plugin-image";
-import { CiFacebook, CiLinkedin, CiTwitter } from "react-icons/ci";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import { Box, Typography, Button } from '@mui/material';
+import { StaticImage } from 'gatsby-plugin-image';
+import { CiFacebook, CiLinkedin, CiTwitter } from 'react-icons/ci';
 interface Props {
   width: string;
+  eventName: string;
+  eventDescription: string;
+  eventImg: string;
 }
-const EventCard = ({ width }: Props) => {
+const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
   return (
     <Card
-      sx={{ width: { width }, borderRadius: 5, margin: { xs: "auto", md: 0 } }}
+      sx={{ width: { width }, borderRadius: 5, margin: { xs: 'auto', md: 0 } }}
     >
-      <StaticImage
-        style={{ borderRadius: 5, height: 200 }}
-        src="../../images/PostTag.jpg"
-        alt="A dinosaur"
-        placeholder="blurred"
+      <img 
+      src={eventImg}
+      alt={eventName}
+      style={{ borderRadius: 5, height: 320 }}
       />
       <Box sx={{ padding: 3 }}>
         <CardContent sx={{ padding: 0 }}>
           <Typography
-            sx={{ color: "#5ab1bb" }}
+            sx={{ color: '#5ab1bb' }}
             gutterBottom
             variant="h6"
             component="div"
           >
-            Title
+            {eventName}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-            cum ducimus expedita recusandae esse nihil, aliquid quo quia atque
-            quibusdam amet inventore pariatur, consectetur earum dolore a
-            exercitationem laborum tempora.
+            {eventDescription}
           </Typography>
         </CardContent>
         <CardActions
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
+            display: 'flex',
+            justifyContent: 'space-between',
             paddingInline: 0,
-            alignItems: "center",
+            alignItems: 'center',
             marginTop: 3,
           }}
         >
           <Button
             sx={{
               borderRadius: 50,
-              backgroundColor: "#344D67",
+              backgroundColor: '#344D67',
               fontSize: 10,
-              "&:hover": {
-                backgroundColor: "#344D67",
+              '&:hover': {
+                backgroundColor: '#344D67',
               },
             }}
             variant="contained"
@@ -60,22 +59,22 @@ const EventCard = ({ width }: Props) => {
           </Button>
           <Box
             sx={{
-              display: "flex",
-              alignItems: "center",
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
             <CiFacebook
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               color="#32A5EE"
               size="24px"
             />
             <CiLinkedin
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               color="#32A5EE"
               size="24px"
             />
             <CiTwitter
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               color="#32A5EE"
               size="24px"
             />

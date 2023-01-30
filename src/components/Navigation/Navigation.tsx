@@ -1,17 +1,17 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import SearchBar from "../SearchBar/SearchBar";
-import ToggleButton from "../ToggleButton/ToggleButton";
-import { StaticImage } from "gatsby-plugin-image";
-const pages = ["What's New", "Events", "Use Cases"];
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import SearchBar from '../SearchBar/SearchBar';
+import ToggleButton from '../ToggleButton/ToggleButton';
+import { StaticImage } from 'gatsby-plugin-image';
+const pages = ["What's New", 'Events', 'Use Cases'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -29,8 +29,8 @@ function ResponsiveAppBar() {
   return (
     <AppBar
       sx={{
-        bgcolor: "#F9F8F8",
-        boxShadow: "none",
+        bgcolor: '#F9F8F8',
+        boxShadow: 'none',
       }}
       position="static"
     >
@@ -64,7 +64,7 @@ function ResponsiveAppBar() {
         <Box
           sx={{
             flexGrow: 1,
-            display: { xs: "flex", md: "none" },
+            display: { xs: 'flex', md: 'none' },
           }}
         >
           <IconButton
@@ -80,18 +80,18 @@ function ResponsiveAppBar() {
             id="menu-appbar"
             anchorEl={anchorElNav}
             anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
+              vertical: 'bottom',
+              horizontal: 'left',
             }}
             keepMounted
             transformOrigin={{
-              vertical: "top",
-              horizontal: "left",
+              vertical: 'top',
+              horizontal: 'left',
             }}
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
             sx={{
-              display: { xs: "block", md: "none" },
+              display: { xs: 'block', md: 'none' },
             }}
           >
             {pages.map((page) => (
@@ -105,15 +105,16 @@ function ResponsiveAppBar() {
         <Box
           sx={{
             flexGrow: 1,
-            justifyContent: "end",
-            display: { xs: "none", md: "flex" },
+            justifyContent: 'end',
+            display: { xs: 'none', md: 'flex' },
           }}
         >
           {pages.map((page) => (
             <Button
               key={page}
               onClick={handleCloseNavMenu}
-              sx={{ my: 2, color: "black", fontSize: 12, display: "block" }}
+              className="Font_Poppins_Regular"
+              sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
             >
               {page}
             </Button>
@@ -123,18 +124,20 @@ function ResponsiveAppBar() {
         <Box
           sx={{
             flexGrow: 1,
-            justifyContent: "end",
+            justifyContent: 'end',
             width: 10,
-            display: { xs: "none", md: "flex" },
+            display: { xs: 'none', md: 'flex' },
           }}
         >
           <Button
-            sx={{ my: 2, color: "black", fontSize: 12, display: "block" }}
+            sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
+            className="Font_Poppins_Regular"
           >
             Contribute
           </Button>
           <Button
-            sx={{ my: 2, color: "black", fontSize: 12, display: "block" }}
+            className="Font_Poppins_Regular"
+            sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
           >
             Contact
           </Button>

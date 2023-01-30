@@ -40,11 +40,6 @@ const Carousel: React.FC<Props> = ({ items }) => {
         <Grid className={"carousel"}>
           <Grid item xs={12} sm={10} md={8}>
             <Box className={"card"}>
-              <CardMedia
-                component="img"
-                className={"media"}
-                title={items[currentIndex].title}
-              />
               <CardContent className={"content"}>
                 <Typography variant="h5" className={"title"}>
                   {items[currentIndex].title}
