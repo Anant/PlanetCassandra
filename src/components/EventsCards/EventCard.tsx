@@ -7,17 +7,19 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { CiFacebook, CiLinkedin, CiTwitter } from 'react-icons/ci';
 interface Props {
   width: string;
+  eventName: string;
+  eventDescription: string;
+  eventImg: string;
 }
-const EventCard = ({ width }: Props) => {
+const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
   return (
     <Card
       sx={{ width: { width }, borderRadius: 5, margin: { xs: 'auto', md: 0 } }}
     >
-      <StaticImage
-        style={{ borderRadius: 5, height: 200 }}
-        src="../../images/PostTag.jpg"
-        alt="A dinosaur"
-        placeholder="blurred"
+      <img 
+      src={eventImg}
+      alt={eventName}
+      style={{ borderRadius: 5, height: 320 }}
       />
       <Box sx={{ padding: 3 }}>
         <CardContent sx={{ padding: 0 }}>
@@ -27,17 +29,10 @@ const EventCard = ({ width }: Props) => {
             variant="h6"
             component="div"
           >
-            Title
+            {eventName}
           </Typography>
-          <Typography
-            className="Font_Poppins_Regular"
-            variant="body2"
-            color="text.secondary"
-          >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-            cum ducimus expedita recusandae esse nihil, aliquid quo quia atque
-            quibusdam amet inventore pariatur, consectetur earum dolore a
-            exercitationem laborum tempora.
+          <Typography variant="body2" color="text.secondary">
+            {eventDescription}
           </Typography>
         </CardContent>
         <CardActions

@@ -38,7 +38,6 @@ const removeLinks = (html: string) => {
 };
 
 const TagCard: React.FC<Props> = ({ post }) => {
-  //console.log(post.featuredImage.node.localFile.childImageSharp.fluid.src)
   const excerptWithoutLinks = removeLinks(post.excerpt);
   return (
     <Card
