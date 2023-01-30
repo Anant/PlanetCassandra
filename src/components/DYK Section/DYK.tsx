@@ -34,6 +34,10 @@ const DidYouKnowSection = () => {
           align={'center'}
           variant="subtitle2"
           gutterBottom
+          sx={{
+            fontSize: '20px',
+            fontWeight: 100,
+          }}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
           voluptate ipsa voluptatibus accusamus nobis nostrum doloribus quidem
