@@ -9,17 +9,17 @@ interface Props {
   width: string;
   eventName: string;
   eventDescription: string;
+  eventImg: string;
 }
-const EventCard = ({ width, eventDescription, eventName }: Props) => {
+const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
   return (
     <Card
       sx={{ width: { width }, borderRadius: 5, margin: { xs: "auto", md: 0 } }}
     >
-      <StaticImage
-        style={{ borderRadius: 5, height: 200 }}
-        src="../../images/PostTag.jpg"
-        alt="A dinosaur"
-        placeholder="blurred"
+      <img 
+      src={eventImg}
+      alt={eventName}
+      style={{ borderRadius: 5, height: 320 }}
       />
       <Box sx={{ padding: 3 }}>
         <CardContent sx={{ padding: 0 }}>
