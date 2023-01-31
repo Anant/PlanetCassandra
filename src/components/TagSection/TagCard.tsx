@@ -56,14 +56,6 @@ const TagCard: React.FC<Props> = ({ post }) => {
       >
         Featured article :
       </Typography>
-      {/* 
-      We need to learn how to use this
-      <StaticImage
-        style={{ borderRadius: 5 }}
-        src={post.featuredImage.node.localFile.childImageSharp.fluid.src}
-        alt="A dinosaur"
-        placeholder="blurred"
-      /> */}
       <GatsbyImage
         image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
         alt={post.title}
