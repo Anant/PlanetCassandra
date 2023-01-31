@@ -4,6 +4,7 @@ import { Grid, Typography, Button, Container, Box } from "@mui/material";
 import Carousel from "./Carousel/Carousel";
 import SendIcon from "@mui/icons-material/Send";
 import NewCarousel from "./Carousel/newCarousel";
+
 interface AllWpPostData {
   allWpPost: {
     nodes: {
@@ -15,9 +16,7 @@ interface AllWpPostData {
           localFile: {
             relativePath: string;
             childImageSharp: {
-              fluid: {
-                src: string;
-              };
+              gatsbyImageData: string;
             };
           };
         };
@@ -25,6 +24,7 @@ interface AllWpPostData {
     }[];
   };
 }
+
 
 const HeroSection = () => {
   const { allWpPost } = useStaticQuery(query);
@@ -37,7 +37,7 @@ const HeroSection = () => {
       slug,
     }: AllWpPostData["allWpPost"]["nodes"][0]) => ({
       title,
-      image: featuredImage?.node?.localFile?.childImageSharp?.fluid?.src,
+      image: featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
       slug,
     })
   );
@@ -142,9 +142,7 @@ export const query = graphql`
             localFile {
               relativePath
               childImageSharp {
-                fluid(maxWidth: 800) {
-                  src
-                }
+                gatsbyImageData
               }
             }
           }

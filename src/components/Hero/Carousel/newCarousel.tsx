@@ -12,14 +12,16 @@ import {
 } from "@mui/material";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-
+import { GatsbyImage } from "gatsby-plugin-image"
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 import Carousel from "react-material-ui-carousel";
 import SendIcon from "@mui/icons-material/Send";
+
 
 interface Props {
   items: Array<{
     title: string;
-    image: string;
+    image: IGatsbyImageData;
     slug: string;
   }>;
 }
@@ -32,15 +34,15 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
     setIsImageLoaded(true);
     setCurrentIndex(e);
   };
+
+  console.log(items[currentIndex].image)
   return (
     <Carousel onChange={(e) => handleNext(e)}>
       {items.map((item, i) => (
         <Paper key={i}>
           {item.image && isImageLoaded ? (
-            <img
-              src={items[currentIndex].image}
-              height="300px"
-              width={"100%"}
+            <GatsbyImage
+              image={items[currentIndex].image}
               alt="Logo"
               onError={() => setIsImageLoaded(false)}
             />
