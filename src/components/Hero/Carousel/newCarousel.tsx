@@ -35,7 +35,6 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
     setCurrentIndex(e);
   };
 
-  console.log(items[currentIndex].image)
   return (
     <Carousel onChange={(e) => handleNext(e)}>
       {items.map((item, i) => (

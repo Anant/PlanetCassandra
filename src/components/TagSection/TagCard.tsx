@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImage } from "gatsby-plugin-image"
 
 interface Props {
   post: {
@@ -19,13 +21,9 @@ interface Props {
     featuredImage: {
       node: {
         localFile: {
-          relativePath: string;
-          absolutePath: string;
           childImageSharp: {
-            fluid: {
-              src: string;
-            };
-          };
+            gatsbyImageData:IGatsbyImageData
+          }
         };
       };
     };
@@ -66,8 +64,8 @@ const TagCard: React.FC<Props> = ({ post }) => {
         alt="A dinosaur"
         placeholder="blurred"
       /> */}
-      <img
-        src={post.featuredImage.node.localFile.childImageSharp.fluid.src}
+      <GatsbyImage
+        image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
         alt={post.title}
       />
       <CardContent sx={{ paddingInline: 0 }}>

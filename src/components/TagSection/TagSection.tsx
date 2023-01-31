@@ -10,6 +10,7 @@ import {
 import { useStaticQuery, graphql } from "gatsby";
 import TagPosts from "./TagPosts";
 import "./tagStyles.css";
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface Data {
   id: string;
@@ -23,13 +24,9 @@ interface Data {
   featuredImage: {
     node: {
       localFile: {
-        relativePath: string;
-        absolutePath: string;
         childImageSharp: {
-          fluid: {
-            src: string;
-          };
-        };
+          gatsbyImageData:IGatsbyImageData
+        }
       };
     };
   };
@@ -125,17 +122,8 @@ export const query = graphql`
             featuredImage {
               node {
                 localFile {
-                  relativePath
-                  absolutePath
                   childImageSharp {
-                    fluid(
-                      quality: 100
-                      cropFocus: EAST
-                      maxHeight: 200
-                      maxWidth: 330
-                    ) {
-                      src
-                    }
+                    gatsbyImageData
                   }
                 }
               }

@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Card, Col, Row, Tag } from "antd";
 import { Container, Grid } from "@mui/material";
 import TagCard from "./TagCard";
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 interface Props {
   tag: string;
   posts: {
@@ -16,13 +17,9 @@ interface Props {
     featuredImage: {
       node: {
         localFile: {
-          relativePath: string;
-          absolutePath: string;
           childImageSharp: {
-            fluid: {
-              src: string;
-            };
-          };
+            gatsbyImageData:IGatsbyImageData
+          }
         };
       };
     };
