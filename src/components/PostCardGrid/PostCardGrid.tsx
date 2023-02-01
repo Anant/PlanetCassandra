@@ -54,8 +54,10 @@ const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => 
 
   console.log(cardData)
   return (
-    <Container maxWidth="xl" className='p-2' >
-      
+    <Container maxWidth="xl" style={{
+      padding: '25px'
+    }} >
+
       <Grid container spacing={3}>
         {currentPosts.map((card, index) => (
           <Grid item xs={3} key={index}>
@@ -68,7 +70,11 @@ const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => 
           </Grid>
         ))}
       </Grid>
-      <Grid item className='flex justify-center p-10'>
+      <Grid item style={{
+        display: "flex",
+        justifyContent: "center",
+        padding: "30px"
+      }}>
         <Pagination
           count={totalPages}
           page={currentPage}
@@ -78,7 +84,7 @@ const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => 
         />
       </Grid>
     </Container>
-    
+
   );
 };
 
