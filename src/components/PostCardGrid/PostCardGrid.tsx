@@ -10,12 +10,15 @@ interface PostCardData {
     count: number;
   }[];
   author: {
-    avatar: {
-      url: string;
-    };
-    name: string;
+    node: {
+      avatar: {
+        url: string;
+      };
+      name: string;
+    }
   };
   date: string;
+  slug: string;
   title: string;
   featuredImage: {
     node: {
@@ -34,13 +37,20 @@ interface PostCardGridProps {
 }
 
 const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => {
+
   const { cardData } = props;
+  console.log(cardData)
   return (
     <Container maxWidth="xl" className='p-2'>
       <Grid container spacing={3}>
         {cardData.map((card, index) => (
           <Grid item xs={3} key={index}>
-            <PostCard title={card.title} date={card.date} thumbnail={card.featuredImage.node.localFile.childImageSharp.gatsbyImageData} />
+            <PostCard
+              title={card.title}
+              date={card.date}
+              thumbnail={card.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
+              slug={card.slug}
+            />
           </Grid>
         ))}
       </Grid>

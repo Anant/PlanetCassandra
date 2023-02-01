@@ -26,6 +26,7 @@ interface Props {
           };
         };
         date: string;
+        slug: string;
         title: string;
         featuredImage: {
           node: {
@@ -56,7 +57,7 @@ const Posts: React.FC<Props> = (props: Props) => {
 
 export const query = graphql`
   query Posts {
-    allWpPost {
+    allWpPost(sort: {date: DESC}) {
       totalCount
       nodes {
         categories {
@@ -75,6 +76,7 @@ export const query = graphql`
           }
         }
         date
+        slug
         title
         featuredImage {
           node {
