@@ -1,5 +1,6 @@
 import { GatsbyNode } from 'gatsby';
 import { resolve } from 'path';
+let getSlug = require("speakingurl")
 
 interface AllPostsData {
   allWpPost: {
@@ -82,5 +83,63 @@ export const createPages: GatsbyNode['createPages'] = async ({
       },
     });
   });
+
+  const allFeedTtrs: {
+    errors?: any;
+    data?: {
+      allFeedTtrs: {
+        totalCount: number;
+        nodes: {
+          title: string;
+          summary: string;
+          pubDate: string;
+          link: string;
+          id: string;
+          content: string;
+          author: string;
+        }[];
+      };
+    };
+  } = await graphql(`
+    query TTRSS {
+      allFeedTtrs {
+        totalCount
+        nodes {
+          title
+          summary
+          pubDate
+          link
+          id
+          content
+          author
+        }
+      }
+    }
+  `);
+
+  if (allFeedTtrs.errors) {
+    console.log(allFeedTtrs.errors);
+    throw new Error(allFeedTtrs.errors);
+  }
+  if (!allFeedTtrs.data) {
+    console.log("No data found!");
+    return;
+  }
+  allFeedTtrs.data.allFeedTtrs.nodes.forEach(node => {
+    createPage({
+      path: `/news/${getSlug(node.title)}`,
+      component: resolve(`src/components/Templates/NewsSinglePage.tsx`),
+      context: {
+        id: node.id,
+        title: node.title,
+        summary: node.summary,
+        pubDate: node.pubDate,
+        link: node.link,
+        content: node.content,
+        author: node.author
+      },
+    });
+  });
+
 };
 

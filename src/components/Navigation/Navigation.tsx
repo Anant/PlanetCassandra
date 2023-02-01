@@ -11,7 +11,8 @@ import MenuItem from '@mui/material/MenuItem';
 import SearchBar from '../SearchBar/SearchBar';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import { StaticImage } from 'gatsby-plugin-image';
-const pages = ["What's New", 'Events', 'Use Cases'];
+import { Link } from 'gatsby';
+const pages = ["What's New", 'Events', 'News', 'Use Cases'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -35,32 +36,15 @@ function ResponsiveAppBar() {
       position="static"
     >
       <Toolbar disableGutters>
-        {/* <Typography
-          variant="h6"
-          noWrap
-          component="a"
-          href="/"
-          sx={{
-            marginLeft: 5,
-            display: { xs: "none", md: "flex" },
-            fontFamily: "monospace",
-            fontWeight: 700,
-            fontSize: 20,
-            letterSpacing: ".3rem",
-            color: "black",
-            textDecoration: "none",
-          }}
-        >
-          Planet Cassandra
-        </Typography> */}
-        <StaticImage
-          src="../../images/LogoWithText.png"
-          alt="A dinosaur"
-          placeholder="blurred"
-          height={30}
-          style={{ marginLeft: 110 }}
-        />
-
+        <Link to='/'>
+          <StaticImage
+            src="../../images/LogoWithText.png"
+            alt="Planet Cassandra"
+            placeholder="blurred"
+            height={30}
+            style={{ marginLeft: 110 }}
+          />
+        </Link>
         <Box
           sx={{
             flexGrow: 1,
@@ -95,9 +79,9 @@ function ResponsiveAppBar() {
             }}
           >
             {pages.map((page) => (
-              <MenuItem key={page} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">{page}</Typography>
-              </MenuItem>
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
             ))}
           </Menu>
         </Box>
@@ -110,6 +94,7 @@ function ResponsiveAppBar() {
           }}
         >
           {pages.map((page) => (
+            <Link to={`/${page.toLowerCase()}`}>
             <Button
               key={page}
               onClick={handleCloseNavMenu}
@@ -118,6 +103,7 @@ function ResponsiveAppBar() {
             >
               {page}
             </Button>
+            </Link>
           ))}
         </Box>
         <SearchBar />

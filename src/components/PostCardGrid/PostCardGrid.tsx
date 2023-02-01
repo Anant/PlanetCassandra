@@ -51,8 +51,6 @@ const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => 
   const currentPosts = cardData.slice(indexOfFirstItem, indexOfLastItem);
 
 
-
-  console.log(cardData)
   return (
     <Container maxWidth="xl" style={{
       padding: '25px'
