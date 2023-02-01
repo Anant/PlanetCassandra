@@ -44,7 +44,7 @@ const config: GatsbyConfig = {
         //Create auth and add it to ENV file
         url: `https://anantstage.wpengine.com/graphql`,
         type: {
-          Post: process.env.NODE_ENV === "development" ? { limit: 5 } : { limit: 500 },
+          Post: process.env.NODE_ENV === "development" ? { limit: 500 } : { limit: 500 },
           Page: {
             limit: 0
           }

@@ -48,7 +48,7 @@ const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => 
             <PostCard
               title={card.title}
               date={card.date}
-              thumbnail={card.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
+              thumbnail={card?.featuredImage?.node.localFile.childImageSharp.gatsbyImageData}
               slug={card.slug}
             />
           </Grid>
