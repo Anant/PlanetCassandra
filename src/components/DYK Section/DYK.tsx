@@ -30,13 +30,12 @@ const DidYouKnowSection = () => {
         </Grid>
 
         <Typography
-          className="Font_Lato_Light"
+          className="Font_Lato_Bold"
           align={'center'}
           variant="subtitle2"
           gutterBottom
           sx={{
-            fontSize: '20px',
-            fontWeight: 100,
+            fontSize: '20px'
           }}
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
