@@ -1,5 +1,5 @@
-import React from 'react';
-import { Container, Grid } from '@mui/material';
+import React, { useState } from 'react';
+import { Container, Grid, Pagination } from '@mui/material';
 import PostCard from '../PostCard/PostCard';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
@@ -37,13 +37,27 @@ interface PostCardGridProps {
 }
 
 const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => {
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
   const { cardData } = props;
+  const totalPages = Math.ceil(cardData.length / itemsPerPage);
+
+  const handlePageChange = (event: any, value: number) => {
+    setCurrentPage(value);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentPosts = cardData.slice(indexOfFirstItem, indexOfLastItem);
+
+
+
   console.log(cardData)
   return (
-    <Container maxWidth="xl" className='p-2'>
+    <Container maxWidth="xl" className='p-2' >
+      
       <Grid container spacing={3}>
-        {cardData.map((card, index) => (
+        {currentPosts.map((card, index) => (
           <Grid item xs={3} key={index}>
             <PostCard
               title={card.title}
@@ -54,7 +68,17 @@ const PostCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => 
           </Grid>
         ))}
       </Grid>
+      <Grid item className='flex justify-center p-10'>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          color="primary"
+        />
+      </Grid>
     </Container>
+    
   );
 };
 

@@ -3,6 +3,7 @@ import { Avatar, Card, CardContent, Typography } from '@mui/material'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { Link } from "gatsby";
+import '../PostCard/postCard.css'
 
 interface Props {
   title: string;
