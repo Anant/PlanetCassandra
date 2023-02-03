@@ -22,14 +22,27 @@ interface AllPostsResult {
   errors?: any;
 }
 
+//Needs work i need to alter the schema so airtable gets the localfile and the nodes we create from the images
+//@ts-ignore
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+type Airtable implements Node {
+  localFile: File @link(by: "id", from: "localFile")
+}
+`
+  createTypes(typeDefs)
+}
+
+
 export const createPages: GatsbyNode['createPages'] = async ({
   actions,
   graphql,
   createNodeId,
   getCache,
 }) => {
-  const { createPage, createNode } = actions;
-  
+  const { createPage, createNode, createTypes } = actions;
+
 
   const allPosts: {
     errors?: any;
@@ -151,6 +164,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     data?: {
       allAirtable: {
         nodes: {
+          id: string;
           table: string;
           data: {
             id: string;
@@ -173,6 +187,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
       ) {
         nodes {
           table
+          id
           data {
             Title
             Publish_date
@@ -208,6 +223,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
   });
 
+
   allEvents.data.allAirtable.nodes.forEach(async node => {
     const coverImage = node.data.Cover_Image[0];
     if (!coverImage) {
@@ -217,7 +233,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
     const fileNode = await createRemoteFileNode({
       url: coverImage.url,
-      parentNodeId: node.data.id,
+      parentNodeId: node.id,
       createNode,
       createNodeId,
       getCache
