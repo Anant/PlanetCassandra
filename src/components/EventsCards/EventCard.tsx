@@ -5,19 +5,21 @@ import CardContent from '@mui/material/CardContent';
 import { Box, Typography, Button } from '@mui/material';
 import { StaticImage } from 'gatsby-plugin-image';
 import { CiFacebook, CiLinkedin, CiTwitter } from 'react-icons/ci';
+import { GatsbyImage } from "gatsby-plugin-image"
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 interface Props {
   width: string;
   eventName: string;
   eventDescription: string;
-  eventImg: string;
+  eventImg: IGatsbyImageData;
 }
 const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
   return (
     <Card
       sx={{ width: { width }, borderRadius: 5, margin: { xs: 'auto', md: 0 } }}
     >
-      <img 
-      src={eventImg}
+      <GatsbyImage 
+      image={eventImg}
       alt={eventName}
       style={{ borderRadius: 5, height: 320 }}
       />

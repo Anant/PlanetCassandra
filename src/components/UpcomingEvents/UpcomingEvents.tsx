@@ -3,10 +3,24 @@ import { Grid, Typography, Button, Container, Box, Card } from "@mui/material";
 import EventCard from "../EventsCards/EventCard";
 import AllEventsCard from "../EventsCards/AllEventsCard";
 import { useStaticQuery, graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image"
+import { IGatsbyImageData } from "gatsby-plugin-image";
 interface UseCasesData {
+  allFile: {
+    nodes: {
+      parent: {
+        id: string;
+        table: string;
+      };
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData;
+      };
+    }[];
+  };
   allAirtable: {
     nodes: {
       table: string;
+      id: string;
       data: {
         Title: string;
         Publish_date: string;
@@ -14,20 +28,21 @@ interface UseCasesData {
         Cover_Image: {
           url: string;
         }[];
-      }
+      };
     }[];
-  }
+  };
 }
 
 const UpcomingEvents = () => {
-  const { allAirtable }: UseCasesData = useStaticQuery(query);
+  const { allAirtable, allFile }: UseCasesData = useStaticQuery(query);
   const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({
     Title: node.data.Title,
     Date: node.data.Publish_date,
     Description: node.data.Eventbrite_Description,
-    ImageUrl: node.data.Cover_Image[0].url
+    ImageUrl: node.data.Cover_Image[0].url,
+    id: node.id
   }));
-
+  const matchingNode = allFile.nodes.find(node => node.parent.id === filteredAirtable[0].id);
   return (
     <Container sx={{ paddingY: 10 }}>
       <Typography
@@ -48,7 +63,8 @@ const UpcomingEvents = () => {
                 : filteredAirtable[0].Description
             }
             width="70%"
-            eventImg={filteredAirtable[0].ImageUrl}
+            // @ts-ignore
+            eventImg={matchingNode?.childImageSharp.gatsbyImageData || {}}
           />
         </Grid>
         <Grid item xs={12} md={4}>
@@ -80,12 +96,26 @@ const UpcomingEvents = () => {
 
 const query = graphql`
 query EventsData {
+  allFile(filter: {parent: {id: {ne: null}}}) {
+    nodes {
+      parent {
+        ... on Airtable {
+          id
+          table
+        }
+      }
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+  }
   allAirtable(
     filter: {table: {eq: "Content Production"}, data: {Title: {ne: null}, Publish_date: {ne: null}, Cover_Image: {elemMatch: {url: {ne: null}}}}}
     sort: {data: {Publish_date: DESC}}
   ) {
     nodes {
       table
+      id
       data {
         Title
         Publish_date

@@ -94,9 +94,8 @@ function ResponsiveAppBar() {
           }}
         >
           {pages.map((page) => (
-            <Link to={`/${page.toLowerCase()}`}>
+            <Link key={page} to={`/${page.toLowerCase()}`}>
             <Button
-              key={page}
               onClick={handleCloseNavMenu}
               className="Font_Poppins_Regular"
               sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
