@@ -1,7 +1,7 @@
 import React from 'react';
 import { Avatar, Card, CardContent, Typography } from '@mui/material'
 import { GatsbyImage } from "gatsby-plugin-image"
-import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { Link } from "gatsby";
 import '../PostCard/postCard.css'
 
@@ -25,7 +25,7 @@ const PostCard: React.FC<Props> = (props: Props) => {
             alt={title}
           />
         ) : (
-          <img
+          <StaticImage
             src="https://via.placeholder.com/640x360"
             className="w-full h-64 object-cover"
             alt="Placeholder"

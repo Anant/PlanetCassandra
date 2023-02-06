@@ -219,6 +219,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
         Title: node.data.Title,
         Publish_date: node.data.Publish_date,
         Eventbrite_Description: node.data.Eventbrite_Description,
+        CoverImage: node.data.Cover_Image
       },
     });
   });

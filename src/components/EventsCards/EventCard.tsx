@@ -7,6 +7,8 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { CiFacebook, CiLinkedin, CiTwitter } from 'react-icons/ci';
 import { GatsbyImage } from "gatsby-plugin-image"
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { Link } from "gatsby";
+import getSlug from "speakingurl";
 interface Props {
   width: string;
   eventName: string;
@@ -18,10 +20,10 @@ const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
     <Card
       sx={{ width: { width }, borderRadius: 5, margin: { xs: 'auto', md: 0 } }}
     >
-      <GatsbyImage 
-      image={eventImg}
-      alt={eventName}
-      style={{ borderRadius: 5, height: 320 }}
+      <GatsbyImage
+        image={eventImg}
+        alt={eventName}
+        style={{ borderRadius: 5, height: 320 }}
       />
       <Box sx={{ padding: 3 }}>
         <CardContent sx={{ padding: 0 }}>
@@ -46,19 +48,21 @@ const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
             marginTop: 3,
           }}
         >
-          <Button
-            sx={{
-              borderRadius: 50,
-              backgroundColor: '#344D67',
-              fontSize: 10,
-              '&:hover': {
+          <Link style={{ textDecoration: "none", color: "white" }} to={`/event/${getSlug(eventName)}`}>
+            <Button
+              sx={{
+                borderRadius: 50,
                 backgroundColor: '#344D67',
-              },
-            }}
-            variant="contained"
-          >
-            Go to Event
-          </Button>
+                fontSize: 10,
+                '&:hover': {
+                  backgroundColor: '#344D67',
+                },
+              }}
+              variant="contained"
+            >
+              Go to Event
+            </Button>
+          </Link>
           <Box
             sx={{
               display: 'flex',

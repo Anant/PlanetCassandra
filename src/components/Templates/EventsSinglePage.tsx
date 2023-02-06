@@ -4,18 +4,22 @@ import React from "react";
 import Layout from "../Layout/Layout";
 import { Container, Typography } from "@mui/material";
 
-interface PostSinglePageProps {
+interface EventsSinglePageProps {
     pageContext: {
-        Title: string;
-        Publish_date: string;
-        Eventbrite_Description: string;
+      Title: string;
+      Publish_date: string;
+      Eventbrite_Description: string;
+      Cover_Image: {
+        url: string;
+        filename: string;
+      };
     };
-}
+  }
 
-const EventsSinglePage: React.FC<PostSinglePageProps> = ({
-    pageContext: {  Title, Publish_date, Eventbrite_Description },
+const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
+    pageContext: {  Title, Publish_date, Eventbrite_Description, Cover_Image },
 }) => {
-    console.log(Eventbrite_Description)
+    console.log(Cover_Image)
     return (
         <Layout>
             <Container>
