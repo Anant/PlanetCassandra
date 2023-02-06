@@ -1,70 +1,123 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+// src/pages/posts.tsx
+import React, { useState } from 'react'
+import { useStaticQuery, graphql } from "gatsby";
 import Layout from '../components/Layout/Layout';
 import PostCardGrid from '../components/PostCardGrid/PostCardGrid';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { Container, Grid, Pagination } from '@mui/material';
+import EventCard from '../components/Event Card/EventCard';
 
-interface LastEditedByNode {
-    name: string;
-    id: string;
-  }
-  
-  interface ContentNode {
-    date: string;
-    slug: string;
-    lastEditedBy: {
-      node: LastEditedByNode;
-    };
-    uri: string;
-    link: string;
-  }
-  
-  interface WpCategoryNode {
-    name: string;
-    contentNodes: {
-      nodes: ContentNode[];
-    };
-  }
-  
-  interface Props {
-    data: {
-      allWpCategory: {
-        nodes: WpCategoryNode[];
+interface AllEventsData {
+  allFile: {
+    nodes: {
+      parent: {
+        id: string;
+        table: string;
       };
-    };
-  }
-const Events: React.FC<Props> = (props: Props) => {
-  const { data } = props;
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData;
+      };
+    }[];
+  };
+  allAirtable: {
+    nodes: {
+      table: string;
+      id: string;
+      data: {
+        Title: string;
+        Publish_date: string;
+        Eventbrite_Description: string;
+        Cover_Image: {
+          url: string;
+        }[];
+      };
+    }[];
+  };
+}
+
+const Events: React.FC<AllEventsData> = () => {
+  const { allAirtable, allFile }: AllEventsData = useStaticQuery(query);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12;
+  const cardData = allAirtable.nodes;
+  const images = allFile.nodes;
+  const totalPages = Math.ceil(cardData.length / itemsPerPage);
+  
+  const handlePageChange = (event: any, value: number) => {
+    setCurrentPage(value);
+  };
+  
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentPosts = cardData.slice(indexOfFirstItem, indexOfLastItem);
 
   return (
     <Layout>
-      {/* Follow the same principle as PostCard and PostCardGrid components */}
-      <h1>Events</h1>
+      <Container maxWidth="xl" style={{
+      padding: '25px'
+    }} >
+      <Grid container spacing={3}>
+        {currentPosts.map((card, index) => {
+          const image = images.find(img => img.parent.id === card.id);
+          return (
+            <Grid item xs={3} key={index}>
+              <EventCard
+                title={card.data.Title}
+                date={card.data.Publish_date}
+                thumbnail={image?.childImageSharp?.gatsbyImageData}
+              />
+            </Grid>
+          );
+        })}
+      </Grid>
+      <Grid item style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          color="primary"
+        />
+      </Grid>
+    </Container>
     </Layout>
   );
 };
 
-export const query = graphql`
-query MyQuery {
-    allWpCategory(filter: {name: {eq: "Events"}}) {
-      nodes {
-        name
-        contentNodes {
-          nodes {
-            date(fromNow: false)
-            slug
-            lastEditedBy {
-              node {
-                name
-                id
-              }
-            }
-            uri
-            link
-          }
+
+const query = graphql`
+{
+  allFile(filter: {parent: {id: {ne: null}}}) {
+    nodes {
+      parent {
+        ... on Airtable {
+          id
+          table
+        }
+      }
+      childImageSharp {
+        gatsbyImageData
+      }
+    }
+  }
+  allAirtable(
+    filter: {table: {eq: "Content Production"}, data: {Title: {ne: null}, Publish_date: {ne: null}, Cover_Image: {elemMatch: {url: {ne: null}}}}}
+    sort: {data: {Publish_date: DESC}}
+  ) {
+    nodes {
+      table
+      id
+      data {
+        Title
+        Publish_date
+        Eventbrite_Description
+        Cover_Image {
+          url
         }
       }
     }
   }
+}
 `;
 
 export default Events;
