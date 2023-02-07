@@ -12,7 +12,13 @@ import SearchBar from '../SearchBar/SearchBar';
 import ToggleButton from '../ToggleButton/ToggleButton';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
-const pages = ["What's New", 'Events', 'News', 'Use Cases'];
+const pages = [
+  { name: "What's New", route: "/whats-new" },
+  { name: "Events", route: "/events" },
+  { name: "News", route: "/news" },
+  { name: "Use Cases", route: "/usecases" },
+  { name: "Posts", route: "/posts" }
+];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -78,10 +84,12 @@ function ResponsiveAppBar() {
               display: { xs: 'block', md: 'none' },
             }}
           >
-            {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
+            {pages.map(({ name, route }) => (
+              <MenuItem key={name} onClick={handleCloseNavMenu}>
+                <Link key={name} to={route} style={{ textDecoration: "none" }}>
+                  <Typography textAlign="center">{name}</Typography>
+                </Link>
+              </MenuItem>
             ))}
           </Menu>
         </Box>
@@ -94,14 +102,14 @@ function ResponsiveAppBar() {
           }}
         >
           {pages.map((page) => (
-            <Link key={page} to={`/${page.toLowerCase()}`}>
-            <Button
-              onClick={handleCloseNavMenu}
-              className="Font_Poppins_Regular"
-              sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
-            >
-              {page}
-            </Button>
+            <Link key={page.name} to={page.route} style={{ textDecoration: "none" }}>
+              <Button
+                onClick={handleCloseNavMenu}
+                className="Font_Poppins_Regular"
+                sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
+              >
+                {page.name}
+              </Button>
             </Link>
           ))}
         </Box>
@@ -114,18 +122,22 @@ function ResponsiveAppBar() {
             display: { xs: 'none', md: 'flex' },
           }}
         >
-          <Button
-            sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
-            className="Font_Poppins_Regular"
-          >
-            Contribute
-          </Button>
-          <Button
-            className="Font_Poppins_Regular"
-            sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
-          >
-            Contact
-          </Button>
+          <Link style={{ textDecoration: "none" }} to={`/contribute`}>
+            <Button
+              sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
+              className="Font_Poppins_Regular"
+            >
+              Contribute
+            </Button>
+          </Link>
+          <Link style={{ textDecoration: "none" }} to={`/contact`}>
+            <Button
+              className="Font_Poppins_Regular"
+              sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
+            >
+              Contact
+            </Button>
+          </Link>
         </Box>
         <ToggleButton />
       </Toolbar>
