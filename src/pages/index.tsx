@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../styles/global.css";
 import type { HeadFC, PageProps } from "gatsby";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 
 import HeroSection from "../components/Hero/Hero";
 import DidYouKnowSection from "../components/DYK Section/DYK";
@@ -17,33 +17,36 @@ import { useStaticQuery, graphql } from "gatsby";
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
-      <Grid container>
-        <Grid className="heroBgImage" item xs={12}>
-          <HeroSection />
+
+        <Grid container >
+          <Grid className="heroBgImage" item xs={12}>
+            <HeroSection />
+          </Grid>
+          <Grid item xs={12}>
+            <DidYouKnowSection />
+          </Grid>
+          <Grid className="tagSectionBgImage" item xs={12}>
+            <TagSection />
+          </Grid>
+          <Grid className="eventsBgImage" item xs={12}>
+            <UpcomingEvents />
+          </Grid>
+          <Grid className="useCasesBgImage" item xs={12}>
+            <UseCases />
+          </Grid>
+          <Grid item xs={12}>
+            <YoutubeSection />
+          </Grid>
+          <Grid item xs={12}>
+            <CommunitySection />
+          </Grid>
+          <Grid className="footerBgImage" item xs={12}>
+            <Footer />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <DidYouKnowSection />
-        </Grid>
-        <Grid className="tagSectionBgImage" item xs={12}>
-          <TagSection />
-        </Grid>
-        <Grid className="eventsBgImage" item xs={12}>
-          <UpcomingEvents />
-        </Grid>
-        <Grid className="useCasesBgImage" item xs={12}>
-          <UseCases />
-        </Grid>
-        <Grid item xs={12}>
-          <YoutubeSection />
-        </Grid>
-        <Grid item xs={12}>
-          <CommunitySection />
-        </Grid>
-        <Grid className="footerBgImage" item xs={12}>
-          <Footer />
-        </Grid>
-      </Grid>
+
     </Layout>
+
   );
 };
 

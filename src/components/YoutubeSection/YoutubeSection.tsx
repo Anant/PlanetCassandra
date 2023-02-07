@@ -46,12 +46,12 @@ const YoutubeSection = () => {
               </Typography>
             </Grid>
             <Typography
-              className="myFont"
               sx={{
                 marginTop: 5,
+                fontSize: 15
               }}
               variant="subtitle1"
-              className="Font_Lato_Light"
+              className="Font_Lato_Bold"
             >
               Visit our YouTube channel and look through our extensive library
               of tutorials, quick fixes, pro tips, tricks and lunch ideas from

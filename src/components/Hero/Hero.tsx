@@ -4,6 +4,7 @@ import { Grid, Typography, Button, Container, Box } from "@mui/material";
 import Carousel from "./Carousel/Carousel";
 import SendIcon from "@mui/icons-material/Send";
 import NewCarousel from "./Carousel/newCarousel";
+import { Link } from "gatsby";
 
 interface AllWpPostData {
   allWpPost: {
@@ -85,9 +86,10 @@ const HeroSection = () => {
           <Typography
             sx={{
               marginTop: 5,
+              fontSize: 20
             }}
             variant="subtitle1"
-            className="Font_Lato_Light"
+            className="Font_Lato_Bold"
           >
             The best knowledge base on Apache Cassandra to help platform
             leaders, architects, engineers, and operators to build scalable
@@ -98,16 +100,21 @@ const HeroSection = () => {
               marginTop: 5,
             }}
           >
-            <Button
-              sx={{
-                borderRadius: 50,
-                backgroundColor: "#5AB1BB",
-              }}
-              variant="contained"
-              endIcon={<SendIcon />}
-            >
-              Get Started
-            </Button>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`https://www.datastax.com/dev/academy`}>
+              <Button
+                sx={{
+                  borderRadius: 50,
+                  backgroundColor: "#5AB1BB",
+                }}
+                variant="contained"
+                endIcon={<SendIcon />}
+                className="Font_Mulish_Button_L"
+              >
+
+                Get Started
+              </Button>
+            </Link>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`https://www.datastax.com/contact-us`}>
             <Button
               sx={{
                 borderRadius: 50,
@@ -116,9 +123,11 @@ const HeroSection = () => {
               }}
               variant="contained"
               endIcon={<SendIcon />}
+              className="Font_Mulish_Button_L"
             >
               Meet with us
             </Button>
+            </Link>
           </Box>
         </Grid>
         <Grid item xs={12} md={6}>

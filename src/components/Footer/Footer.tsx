@@ -50,9 +50,9 @@ const Footer = () => {
             color="#5AB1BB"
             variant="subtitle1"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias saepe
-            fugiat architecto, ut dolor labore eum quod animi magnam sapiente,
-            iure deserunt ipsa eligendi tenetur autem earum maxime rem nam.
+            Planet Cassandra is a hub for all things Apache Cassandra.
+            From tutorials and guides, to discussions and updates, we're here to help you get the most out of Cassandra. 
+            Connect with us and become part of our growing community today
           </Typography>
           <Typography
             sx={{

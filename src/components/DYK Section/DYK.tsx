@@ -38,10 +38,7 @@ const DidYouKnowSection = () => {
             fontSize: '20px'
           }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-          voluptate ipsa voluptatibus accusamus nobis nostrum doloribus quidem
-          aut provident est neque debitis quos minima, error deleniti ipsum
-          commodi culpa facilis.
+          Cassandra has a robust and active community of users and developers, who contribute to its development and use it in a variety of applications, ranging from e-commerce to real-time analytics.
         </Typography>
       </Container>
     </Grid>

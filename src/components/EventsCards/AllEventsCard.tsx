@@ -15,15 +15,39 @@ interface EventProps {
 const EventCard: React.FC<EventProps> = ({ title, date }) => {
   return (
     <Box sx={{ borderBottom: 1, padding: 1 }}>
-      <Link style={{ textDecoration: "none"}} to={`/event/${getSlug(title)}`}>
-        <Typography color="#5AB1BB">{title}</Typography>
+      <Link style={{ textDecoration: "none" }} to={`/event/${getSlug(title)}`}>
+        <Typography
+          sx={{
+            fontWeight: 700,
+            fontSize: 17
+          }}
+          color="#5AB1BB"
+        >
+          {title}
+        </Typography>
       </Link>
       <Box>
-        <Typography variant="subtitle2">
+        <Typography
+          sx={{
+            fontWeight: 700,
+            fontSize: 14,
+          }}
+          variant="subtitle2"
+          color="#000000CC"
+        >
           Online - {date}
         </Typography>
       </Box>
-      <Typography variant="subtitle2">at Youtube</Typography>
+      <Typography
+        sx={{
+          fontWeight: 700,
+          fontSize: 14,
+        }}
+        variant="subtitle2"
+        color="#5AB1BB"
+      >
+        at Youtube
+      </Typography>
     </Box>
   );
 };

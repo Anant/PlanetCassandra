@@ -244,5 +244,53 @@ export const createPages: GatsbyNode['createPages'] = async ({
       return;
     }
   });
+
+  //UseCases
+  const allUseCases: {
+    errors?: any;
+    data?: {
+      allAirtable: {
+        nodes: {
+          table: string;
+          data: {
+            Description: string;
+            Name: string;
+          }
+        }[];
+      };
+    };
+  } = await graphql(`
+    query UseCasesData {
+      allAirtable(filter: { table: { eq: "Company" } }) {
+        nodes {
+          table
+          data {
+            Description
+            Name
+          }
+        }
+      }
+    }
+  `);
+
+  if (allUseCases.errors) {
+    console.log(allUseCases.errors);
+    throw new Error(allUseCases.errors);
+  }
+  if (!allUseCases.data) {
+    console.log("No data found!");
+    return;
+  }
+  allUseCases.data.allAirtable.nodes.forEach(node => {
+    createPage({
+      path: `/use-cases/${getSlug(node.data.Name)}`,
+      component: resolve(`src/components/Templates/UseCaseSinglePage.tsx`),
+      context: {
+        Description: node.data.Description,
+        Name: node.data.Name
+      },
+    });
+  });
+
 };
 

@@ -22,7 +22,7 @@ interface Props {
       node: {
         localFile: {
           childImageSharp: {
-            gatsbyImageData:IGatsbyImageData
+            gatsbyImageData: IGatsbyImageData
           }
         };
       };
@@ -40,7 +40,7 @@ const TagCard: React.FC<Props> = ({ post }) => {
   return (
     <Card
       sx={{
-        maxWidth: 345,
+        maxWidth: 500,
         borderRadius: 5,
         padding: 3,
         margin: { xs: "auto", lg: 0 },
@@ -49,12 +49,14 @@ const TagCard: React.FC<Props> = ({ post }) => {
       <Typography
         sx={{
           color: "#5AB1BB",
+          fontSize: 20
         }}
         gutterBottom
         variant="h6"
         component="div"
+        className="Font_Montserrat_Bold"
       >
-        Featured article :
+        Featured article
       </Typography>
       <GatsbyImage
         image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
@@ -62,16 +64,22 @@ const TagCard: React.FC<Props> = ({ post }) => {
       />
       <CardContent sx={{ paddingInline: 0 }}>
         <Typography
-          sx={{ height: 100, color: "#5ab1bb" }}
+          sx={{ color: "#5ab1bb" }}
           gutterBottom
           variant="h6"
           component="div"
+          className="Font_Montserrat_Bold"
         >
           {post.title}
         </Typography>
         <Typography
           variant="body2"
           color="text.secondary"
+          className="Font_Montserrat_600"
+          sx={{
+            color: '#000000CC',
+            fontSize: 14
+          }}
           dangerouslySetInnerHTML={{ __html: excerptWithoutLinks }}
         />
       </CardContent>
@@ -97,7 +105,9 @@ const TagCard: React.FC<Props> = ({ post }) => {
             style={{ textDecoration: "none", color: "white" }}
             to={`/post/${post.slug}`}
           >
-            Continue reading
+            <Typography className="Font_Mulish_Button_M">
+              Continue reading
+            </Typography>
           </Link>
         </Button>{" "}
         <Button
@@ -115,7 +125,9 @@ const TagCard: React.FC<Props> = ({ post }) => {
             style={{ textDecoration: "none", color: "white" }}
             to={`/posts`}
           >
-            See all articles
+            <Typography className="Font_Mulish_Button_M">
+              See all articles
+            </Typography>
           </Link>
         </Button>
       </CardActions>

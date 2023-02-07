@@ -57,16 +57,13 @@ const CommunitySection = () => {
           align={'center'}
           variant="subtitle2"
           gutterBottom
-          className="Font_Lato_Light"
+          className="Font_Lato_Bold"
           sx={{
             fontSize: '20px',
-            fontWeight: 100,
             color: '#1E1E1E',
           }}
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-          rutrum venenatis neque, vitae feugiat risus tempus vel. Aenean neque
-          ligula, feugiat vitae massa sed, placerat pharetra justo.
+          Welcome to the Apache Cassandra community! We're a passionate and dedicated group of users, developers, and enthusiasts who are working together to make Cassandra the best it can be. Whether you're just getting started with Cassandra or you're an experienced user, there's a place for you in our community.
         </Typography>
         <Box
           sx={{

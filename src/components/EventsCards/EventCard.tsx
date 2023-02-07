@@ -28,14 +28,20 @@ const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
       <Box sx={{ padding: 3 }}>
         <CardContent sx={{ padding: 0 }}>
           <Typography
-            sx={{ color: '#5ab1bb' }}
+            sx={{ color: '#5ab1bb', fontSize: 20 }}
             gutterBottom
             variant="h6"
             component="div"
+            className='Font_Montserrat_Bold'
           >
             {eventName}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontSize: 14 }}
+            className = "Font_Montserrat_550"
+          >
             {eventDescription}
           </Typography>
         </CardContent>
@@ -60,7 +66,9 @@ const EventCard = ({ width, eventDescription, eventName, eventImg }: Props) => {
               }}
               variant="contained"
             >
+              <Typography className="Font_Mulish_Button_M">
               Go to Event
+              </Typography>
             </Button>
           </Link>
           <Box

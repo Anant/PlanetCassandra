@@ -89,14 +89,14 @@ const TagSection = () => {
               }}
               variant="contained"
               onClick={() => handleClick(tag)}
-              className={selectedTag === tag.name ? `selected` : ""}
+              className={selectedTag === tag.name ? `selected ` : ""}
             >
               {tag.name}
             </Button>
           </Grid>
         ))}
       </Grid>
-      <Grid>
+      <Grid item>
         {selectedTag ? <TagPosts tag={selectedTag} posts={posts} /> : null}
       </Grid>
     </Container>

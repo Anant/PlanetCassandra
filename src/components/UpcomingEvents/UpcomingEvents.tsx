@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Typography, Button, Container, Box, Card } from "@mui/material";
 import EventCard from "../EventsCards/EventCard";
 import AllEventsCard from "../EventsCards/AllEventsCard";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image"
 import { IGatsbyImageData } from "gatsby-plugin-image";
 interface UseCasesData {
@@ -51,10 +51,10 @@ const UpcomingEvents = () => {
         variant="h4"
         className="Font_Poppins_Regular"
       >
-        Upcoming Events:
+        Upcoming Events
       </Typography>
       <Grid rowSpacing={3} container>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={8} lg={8} xl={8}>
           <EventCard
             eventName={filteredAirtable[0].Title}
             eventDescription={
@@ -62,30 +62,34 @@ const UpcomingEvents = () => {
                 ? filteredAirtable[0].Description.substr(0, 200) + "..."
                 : filteredAirtable[0].Description
             }
-            width="70%"
+            width="85%"
             // @ts-ignore
             eventImg={matchingNode?.childImageSharp.gatsbyImageData || {}}
           />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={4} lg={4}  xl={4}>
           <Card sx={{ maxWidth: 345, borderRadius: 5, padding: 3, margin: { xs: "auto", md: 0 } }}>
-            {filteredAirtable.slice(1).map((event, key) => (
+            {filteredAirtable.slice(2).map((event, key) => (
               <AllEventsCard key={key} title={event.Title} date={event.Date} />
             ))}
             <Grid marginTop={2} container justifyContent="end">
-              <Button
-                sx={{
-                  borderRadius: 50,
-                  backgroundColor: "#F2545B",
-                  fontSize: 10,
-                  "&:hover": {
+              <Link style={{ textDecoration: "none"}} to={`/events`}>
+                <Button
+                  sx={{
+                    borderRadius: 50,
                     backgroundColor: "#F2545B",
-                  },
-                }}
-                variant="contained"
-              >
-                See all events
-              </Button>
+                    fontSize: 10,
+                    "&:hover": {
+                      backgroundColor: "#F2545B",
+                    },
+                  }}
+                  variant="contained"
+                >
+                  <Typography className="Font_Mulish_Button_M">
+                  See all events
+                  </Typography>
+                </Button>
+              </Link>
             </Grid>
           </Card>
         </Grid>

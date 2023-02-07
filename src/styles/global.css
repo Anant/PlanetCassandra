@@ -1,4 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;700&display=swap");
+.Font_Mulish_Button_L {
+  font-family: "Mulish", sans-serif;
+  font-weight: 800;
+}
+.Font_Mulish_Button_M {
+  font-family: "Mulish", sans-serif;
+  font-weight: 600;
+}
 .Font_Lato_Light {
   font-family: "Lato", sans-serif;
   font-weight: 300;
@@ -10,6 +18,10 @@
 .Font_Montserrat_Regular {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
+}
+.Font_Montserrat_550 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 550;
 }
 .Font_Montserrat_Bold {
   font-family: "Montserrat", sans-serif;
