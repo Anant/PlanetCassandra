@@ -79,3 +79,5 @@ package-lock.json
 db/links.json
 db/jobPosts.json
 gatsby-types.d.ts
+
+.env
