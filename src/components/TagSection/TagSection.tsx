@@ -71,7 +71,7 @@ const TagSection = () => {
             padding={0}
             item
             md={2}
-            xs={4}
+            xs={12}
           >
             <Button
               sx={{

@@ -1,3 +1,7 @@
+const queries = require("./src/utils/algolia")
+
+require("dotenv").config()
+
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
@@ -29,6 +33,15 @@ const config: GatsbyConfig = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: '2X56L8156U',
+        apiKey: '78d8e419d6bbaac52f74189ff5239fdb',
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
     },
     {
       resolve: "gatsby-source-filesystem",
