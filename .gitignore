@@ -81,3 +81,5 @@ db/jobPosts.json
 gatsby-types.d.ts
 
 .env
+
+yarn.lock
