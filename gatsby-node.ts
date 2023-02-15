@@ -1,6 +1,7 @@
 import { GatsbyNode } from 'gatsby';
 import { resolve } from 'path';
 let getSlug = require("speakingurl")
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface AllPostsData {
   allWpPost: {
@@ -43,7 +44,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
 }) => {
   const { createPage, createNode, createTypes } = actions;
 
-
+  //Posts from WP page creation
   const allPosts: {
     errors?: any;
     data?: {
@@ -57,6 +58,15 @@ export const createPages: GatsbyNode['createPages'] = async ({
             nodes: {
               name: string;
             }[];
+          };
+          featuredImage: {
+            node: {
+              localFile: {
+                childImageSharp: {
+                  gatsbyImageData: IGatsbyImageData;
+                };
+              };
+            };
           };
         }[];
       };
@@ -72,6 +82,15 @@ export const createPages: GatsbyNode['createPages'] = async ({
           tags {
             nodes {
               name
+            }
+          }
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
             }
           }
         }
@@ -95,64 +114,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
         id: node.id,
         title: node.title,
         tags: node.tags?.nodes.map(tag => tag.name),
-        content: node.content
-      },
-    });
-  });
-
-  const allFeedTtrs: {
-    errors?: any;
-    data?: {
-      allFeedTtrs: {
-        totalCount: number;
-        nodes: {
-          title: string;
-          summary: string;
-          pubDate: string;
-          link: string;
-          id: string;
-          content: string;
-          author: string;
-        }[];
-      };
-    };
-  } = await graphql(`
-    query TTRSS {
-      allFeedTtrs {
-        totalCount
-        nodes {
-          title
-          summary
-          pubDate
-          link
-          id
-          content
-          author
-        }
-      }
-    }
-  `);
-
-  if (allFeedTtrs.errors) {
-    console.log(allFeedTtrs.errors);
-    throw new Error(allFeedTtrs.errors);
-  }
-  if (!allFeedTtrs.data) {
-    console.log("No data found!");
-    return;
-  }
-  allFeedTtrs.data.allFeedTtrs.nodes.forEach(node => {
-    createPage({
-      path: `/news/${getSlug(node.title)}`,
-      component: resolve(`src/components/Templates/NewsSinglePage.tsx`),
-      context: {
-        id: node.id,
-        title: node.title,
-        summary: node.summary,
-        pubDate: node.pubDate,
-        link: node.link,
         content: node.content,
-        author: node.author
+        featuredImage: node.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
       },
     });
   });
