@@ -39,7 +39,7 @@ const Companies: React.FC<CompanyData> = () => {
                 <Grid container spacing={3}>
                     {currentCompanies.map((card, index) => {
                         return (
-                            <Grid item xs={3} key={index}>
+                            <Grid item xs={12} sm={6} md={4} key={index}>
                                 <CompanyCard
                                     name={card.data.Name}
                                     descritpion={card.data.Description}

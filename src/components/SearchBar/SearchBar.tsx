@@ -52,23 +52,23 @@ export default function SearchBar() {
 
 
   return (
-    <Paper
+   <Paper
       component="form"
       sx={{
         p: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: 400,
+        width: { xs: 300, md: 400 },
         height: 30,
         borderRadius: 50,
-        marginLeft: 10,
+        marginLeft: { xs: 0, md: 10 },
       }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Planet Cassandra..."
         inputProps={{ "aria-label": "search google maps" }}
-        onChange={e => setSearchTerm(e.target.value)}
+        onChange={(e) => setSearchTerm(e.target.value)}
         ref={anchorRef}
       />
       <IconButton type="button" sx={{ p: "10px" }} aria-label="search">

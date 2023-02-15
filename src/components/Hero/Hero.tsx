@@ -103,6 +103,7 @@ const HeroSection = () => {
             <Link style={{ textDecoration: "none", color: "white" }} to={`https://www.datastax.com/dev/academy`}>
               <Button
                 sx={{
+                  fontSize: {xs:11, sm: 12, md: 14, lg: 16},
                   borderRadius: 50,
                   backgroundColor: "#5AB1BB",
                 }}
@@ -117,6 +118,7 @@ const HeroSection = () => {
             <Link style={{ textDecoration: "none", color: "white" }} to={`https://www.datastax.com/contact-us`}>
             <Button
               sx={{
+                fontSize: {xs:11, sm: 12, md: 14, lg: 16},
                 borderRadius: 50,
                 marginLeft: 10,
                 backgroundColor: "#344D67",

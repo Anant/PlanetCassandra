@@ -13,7 +13,7 @@ import ToggleButton from '../ToggleButton/ToggleButton';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 const pages = [
-  { name: "What's New", route: "/whats-new" },
+  { name: "What's New", route: "/" },
   { name: "Events", route: "/events" },
   { name: "News", route: "/news" },
   { name: "Use Cases", route: "/usecases" },
@@ -42,15 +42,18 @@ function ResponsiveAppBar() {
       position="static"
     >
       <Toolbar disableGutters>
-        <Link to='/'>
-          <StaticImage
-            src="../../images/LogoWithText.png"
-            alt="Planet Cassandra"
-            placeholder="blurred"
-            height={30}
-            style={{ marginLeft: 110 }}
-          />
-        </Link>
+        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }}>
+          <Link to='/'>
+            <StaticImage
+              src="../../images/LogoWithText.png"
+              alt="Planet Cassandra"
+              placeholder="blurred"
+              height={30}
+              style={{ marginLeft: 110 }}
+            />
+          </Link>
+        </Box>
+
         <Box
           sx={{
             flexGrow: 1,

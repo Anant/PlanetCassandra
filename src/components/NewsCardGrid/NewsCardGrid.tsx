@@ -38,7 +38,7 @@ const NewsCardGrid: React.FC<PostCardGridProps> = (props: PostCardGridProps) => 
         }} >
             <Grid container spacing={3}>
                 {currentPosts.map((card, index) => (
-                    <Grid item xs={3} key={index}>
+                    <Grid item xs={12} sm={6} md={4} key={index}>
                         <NewsCard
                             title={card.title}
                             date={card.pubDate}

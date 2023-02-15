@@ -60,7 +60,7 @@ const Events: React.FC<AllEventsData> = () => {
         {currentPosts.map((card, index) => {
           const image = images.find(img => img.parent.id === card.id);
           return (
-            <Grid item xs={3} key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index}>
               <EventCard
                 title={card.data.Title}
                 date={card.data.Publish_date}

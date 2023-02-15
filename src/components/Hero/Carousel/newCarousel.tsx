@@ -2,15 +2,9 @@ import React, { useState } from "react";
 import {
   Typography,
   Paper,
-  IconButton,
-  Grid,
-  Box,
-  CardMedia,
-  CardContent,
   Skeleton,
   Button,
 } from "@mui/material";
-import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image"
 import { IGatsbyImageData } from 'gatsby-plugin-image';
@@ -53,6 +47,9 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
             textAlign={"center"}
             height="80px"
             variant="h5"
+            sx={{
+              paddingBottom:{xs: 2.5, sm: 1, md: 1, lg: 1},
+            }}
           >
             {item.title}
           </Typography>
