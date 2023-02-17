@@ -95,7 +95,7 @@ const Footer = () => {
             >
               <Search
                 style={{ marginTop: 10 }}
-                placeholder="Email Adress..."
+                placeholder="Email Address..."
                 enterButton={<AiOutlineSend color="#5AB1BB" />}
               />
             </ConfigProvider>
