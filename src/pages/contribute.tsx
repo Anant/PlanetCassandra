@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-} from "@mui/material";
+import { Box, Typography, Button, Grid } from "@mui/material";
 
 import Layout from "../components/Layout/Layout";
 import { Link } from "gatsby";
@@ -48,7 +43,12 @@ const ContributePage: React.FC = () => {
                 color="text.secondary"
                 sx={{ marginTop: 3 }}
               >
-                Reporting bugs and creating issue reports
+                <span style={{ fontWeight: "bold" }}>
+                  Reporting bugs and creating issue reports:
+                </span>{" "}
+                If you encounter a bug or an issue in the project, you can
+                report it to the project's maintainers, providing as much detail
+                as possible to help them reproduce and fix the problem.
               </Typography>
             </li>
             <li>
@@ -57,7 +57,11 @@ const ContributePage: React.FC = () => {
                 className="Font_Montserrat_550"
                 color="text.secondary"
               >
-                Contributing code fixes and improvements
+                <span style={{ fontWeight: "bold" }}>
+                  Contributing code fixes and improvements:{" "}
+                </span>{" "}
+                This involves writing code that fixes issues or adds new
+                features to the project.
               </Typography>
             </li>
             <li>
@@ -66,7 +70,12 @@ const ContributePage: React.FC = () => {
                 className="Font_Montserrat_550"
                 color="text.secondary"
               >
-                Improving the documentation
+                <span style={{ fontWeight: "bold" }}>
+                  Improving the documentation:
+                </span>{" "}
+                You can help improve the project's documentation, by writing or
+                editing content that helps users understand how to use the
+                project or how it works.
               </Typography>
             </li>
             <li>
@@ -75,8 +84,13 @@ const ContributePage: React.FC = () => {
                 className="Font_Montserrat_550"
                 color="text.secondary"
               >
-                Spreading the word about our project and helping us grow the
-                community
+                <span style={{ fontWeight: "bold" }}>
+                  {" "}
+                  Spreading the word about our project:{" "}
+                </span>
+                Sharing the project on social media, participating in relevant
+                online communities, and recommending the project to others who
+                might be interested in contributing.
               </Typography>
             </li>
           </ul>
@@ -109,7 +123,6 @@ const ContributePage: React.FC = () => {
                 "&:hover": {
                   backgroundColor: "#344D67",
                 },
-               
               }}
               variant="contained"
               color="primary"
@@ -124,6 +137,3 @@ const ContributePage: React.FC = () => {
 };
 
 export default ContributePage;
-
-
-
