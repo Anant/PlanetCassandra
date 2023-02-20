@@ -10,7 +10,7 @@ const ContributePage: React.FC = () => {
     <Layout>
       <Grid container spacing={3} sx={{ padding: 10 }}>
         <Grid container spacing={2} alignItems="center">
-          <Grid item xs={2} md={1}>
+          <Grid item md={1} sx={{ display: { xs: "none", md: "block" } }}>
             <img
               src={contributeImg}
               alt="Contribute Image"
