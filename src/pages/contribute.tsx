@@ -3,30 +3,44 @@ import { Box, Typography, Button, Grid } from "@mui/material";
 
 import Layout from "../components/Layout/Layout";
 import { Link } from "gatsby";
+import contributeImg from "../images/contribute.png";
 
 const ContributePage: React.FC = () => {
   return (
     <Layout>
       <Grid container spacing={3} sx={{ padding: 10 }}>
-        <Grid item xs={12}>
-          <Typography
-            variant="h1"
-            className="Font_Montserrat_Bold"
-            sx={{ color: "#5ab1bb", fontSize: 30 }}
-          >
-            Contribute to Our Project
-          </Typography>
-          <Typography
-            variant="body2"
-            className="Font_Montserrat_550"
-            color="text.secondary"
-            sx={{ marginTop: 5 }}
-          >
-            Our project is open-source and always looking for new contributors.
-            If you want to help us build a better product, you're in the right
-            place!
-          </Typography>
+        <Grid container spacing={2} alignItems="center">
+          <Grid item xs={2} md={1}>
+            <img
+              src={contributeImg}
+              alt="Contribute Image"
+              style={{ width: "100%" }}
+            />
+          </Grid>
+          <Grid item xs={10} md={5}>
+            <Typography
+              variant="h1"
+              className="Font_Montserrat_Bold"
+              sx={{ color: "#5ab1bb", fontSize: 30 }}
+            >
+              Contribute to Our Project
+            </Typography>
+            <Typography
+              variant="body2"
+              className="Font_Montserrat_550"
+              color="text.secondary"
+              sx={{ marginTop: 5 }}
+            >
+              Our project is open-source and always looking for new
+              contributors. If you want to help us build a better product,
+              you're in the right place! Please contribute and help us improve
+              our project. We accept contributions in many forms including code,
+              documentation, and bug reports. You can also donate to our project
+              to show your support.
+            </Typography>
+          </Grid>
         </Grid>
+
         <Grid item xs={12} marginTop={3}>
           <Typography
             variant="h2"
