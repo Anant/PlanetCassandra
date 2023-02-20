@@ -129,7 +129,7 @@ const ContributePage: React.FC = () => {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Link style={{ textDecoration: "none" }} to="/contactus">
+          <Link style={{ textDecoration: "none" }} to="/contact">
             <Button
               sx={{
                 borderRadius: 50,
