@@ -10,7 +10,7 @@ const ContributePage: React.FC = () => {
       <Grid container spacing={3} sx={{ padding: 10 }}>
         <Grid item xs={12}>
           <Typography
-            variant="h2"
+            variant="h1"
             className="Font_Montserrat_Bold"
             sx={{ color: "#5ab1bb", fontSize: 30 }}
           >
@@ -27,9 +27,9 @@ const ContributePage: React.FC = () => {
             place!
           </Typography>
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} marginTop={3}>
           <Typography
-            variant="h3"
+            variant="h2"
             className="Font_Montserrat_Bold"
             sx={{ color: "#5ab1bb", fontSize: 20 }}
           >
@@ -95,9 +95,10 @@ const ContributePage: React.FC = () => {
             </li>
           </ul>
         </Grid>
-        <Grid item xs={12}>
+
+        <Grid item xs={12} marginTop={3}>
           <Typography
-            variant="h3"
+            variant="h2"
             className="Font_Montserrat_Bold"
             sx={{ color: "#5ab1bb", fontSize: 20 }}
           >
@@ -126,6 +127,7 @@ const ContributePage: React.FC = () => {
               }}
               variant="contained"
               color="primary"
+              size="large"
             >
               Join Our Community
             </Button>
