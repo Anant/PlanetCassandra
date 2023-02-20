@@ -3,7 +3,7 @@ import { Box, Typography, Button, Grid } from "@mui/material";
 
 import Layout from "../components/Layout/Layout";
 import { Link } from "gatsby";
-import contributeImg from "../images/contribute.png";
+import { StaticImage } from "gatsby-plugin-image";
 
 const ContributePage: React.FC = () => {
   return (
@@ -11,12 +11,14 @@ const ContributePage: React.FC = () => {
       <Grid container spacing={3} sx={{ padding: 10 }}>
         <Grid container spacing={2} alignItems="center">
           <Grid item md={1} sx={{ display: { xs: "none", md: "block" } }}>
-            <img
-              src={contributeImg}
+            <StaticImage
+              src="../images/contribute.png"
               alt="Contribute Image"
-              style={{ width: "100%" }}
+              placeholder="blurred"
+              layout="fullWidth"
             />
           </Grid>
+
           <Grid item xs={10} md={5}>
             <Typography
               variant="h1"

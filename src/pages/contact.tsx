@@ -47,7 +47,7 @@ const ContactUs: React.FC = () => {
     <Layout>
       <Container
         maxWidth="xl"
-        sx={{ padding: 4, "@media (min-width:600px)": { padding: 8 } }}
+        sx={{ padding: 6  }} 
       >
         <Box my={4}>
           <form onSubmit={handleSubmit}>
