@@ -40,9 +40,7 @@ const IndexPage: React.FC<PageProps> = () => {
           <Grid item xs={12}>
             <CommunitySection />
           </Grid>
-          <Grid className="footerBgImage" item xs={12}>
-            <Footer />
-          </Grid>
+          
         </Grid>
 
     </Layout>
