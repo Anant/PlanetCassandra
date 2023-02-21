@@ -9,7 +9,7 @@ import {
   CircularProgress,
 } from "@mui/material";
 import Layout from "../components/Layout/Layout";
-import contactUsImg from "../images/contactUs.jpg";
+import { StaticImage } from "gatsby-plugin-image";
 
 interface ContactFormData {
   first_name: string;
@@ -45,23 +45,19 @@ const ContactUs: React.FC = () => {
 
   return (
     <Layout>
-      <Container
-        maxWidth="xl"
-        sx={{ padding: 6  }} 
-      >
+      <Container maxWidth="xl" sx={{ padding: 6 }}>
         <Box my={4}>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                <Box mt={3}>
-                  <img
-                    src={contactUsImg}
-                    alt="Contact Us Image"
-                    style={{ width: "100%", borderRadius: "50px" }}
-                  />
-                </Box>
+                <StaticImage
+                  src="../images/contactUs.jpg"
+                  alt="Contact Us Image"
+                  placeholder="blurred"
+                  layout="fullWidth"
+                  style={{ borderRadius: "50px" }}
+                />
               </Grid>
-
               <Grid item xs={12} sm={6}>
                 <Typography variant="h3">Contact Us</Typography>
                 <Typography variant="subtitle2" color={"black"}>
