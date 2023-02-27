@@ -33,6 +33,7 @@
     "gatsby-plugin-sharp": "^5.4.0",
     "gatsby-plugin-sitemap": "^6.4.0",
     "gatsby-source-airtable": "^2.3.0",
+    "gatsby-source-apiserver": "^2.1.8",
     "gatsby-source-filesystem": "^5.4.0",
     "gatsby-source-rss-feed": "^1.2.2",
     "gatsby-source-wordpress": "^7.4.0",

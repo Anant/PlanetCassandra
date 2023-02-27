@@ -255,5 +255,51 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
   });
 
+  //Leaves
+
+
 };
 
+const { createRemoteFileNode } = require("gatsby-source-filesystem")
+let nodeCountSucsess = 0
+let nodeCountFail = 0
+//@ts-ignore
+exports.onCreateNode = async ({ node, actions, createNodeId, cache }) => {
+  const { createNode } = actions;
+  
+
+  if (node.internal.type === "api_leaves") {
+    const previewPictures = Array.isArray(node.preview_picture) ? node.preview_picture : [node.preview_picture];
+    //@ts-ignore
+    const fileNodes = await Promise.all(previewPictures.map(async (url) => {
+      try {
+        const fileNode = await Promise.race([
+          createRemoteFileNode({
+            url,
+            parentNodeId: node.id,
+            createNode,
+            createNodeId,
+            cache,
+          }),
+          new Promise((resolve, reject) => {
+            setTimeout(() => resolve(null), 5000) // resolve with default value after 5 seconds
+          })
+        ]);
+        if (fileNode) {
+          nodeCountSucsess++
+        } else {
+          nodeCountFail++
+        }
+        return fileNode;
+      } catch (error) {
+        console.error(`Error downloading image, Skipping`);
+        nodeCountFail++
+        // Replace missing images with a default image
+        return null
+      }
+    }));
+
+    node.preview_picture___NODE = fileNodes.filter((fileNode) => fileNode).map((fileNode) => fileNode.id);
+    console.log(`Node Sucsess ${nodeCountSucsess} Node Fail ${nodeCountFail}`)
+  }
+};
