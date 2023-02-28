@@ -32,6 +32,11 @@ type Airtable implements Node {
   localFile: File @link(by: "id", from: "localFile")
 }
 `
+  const typeDefsleaves = `
+type ApiLeaves implements Node {
+  localFile: File @link(by: "id", from: "localFile")
+}
+`
   createTypes(typeDefs)
 }
 
@@ -256,50 +261,120 @@ export const createPages: GatsbyNode['createPages'] = async ({
   });
 
   //Leaves
+  const allLeavesPictures: {
+    errors?: any;
+    data?: {
+      allApiLeaves: {
+        nodes: {
+          id: string;
+          preview_picture: string | null;
+          url: string;
+        }[];
+      };
+    };
+  } = await graphql(`
+  query LeavesPictures {
+    allApiLeaves(filter: {url: {ne: null}}, limit: 20) {
+      nodes {
+        id
+        preview_picture
+        url
+      }
+    }
+  }
+  `);
+//350 457
+//337 440
+  const failingUrls = [
+    'blogs.vmware.com',
+    'github.com',
+    'blog.softwaremill',
+    'www.ktexperts',
+    'rustyrazorblade.com',
+    '/www.an10.io/',
+    'itnext.io',
+    '/www.an10.io/',
+    'baeldung.com',
+    '/levelup.gitconnected',
+    'cassandra.apache.org/blog',
+    'datanami.com',
+    'https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers',
+    'https://towardsdatascience.com/',
+    'https://medium.com/better-programming/our-favorite-engineering-blogs-3d8365b2d871',
+    'https://datastation.multiprocess',
+    'tobert.github.io',
+    'zeppelin.apache.org',
 
+  ];
+
+  const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(node => {
+    return !failingUrls.some(url => node.url.includes(url));
+  });
+
+  //@ts-ignore
+  filteredNodes.forEach((node, index) => {
+
+    let originalUrl = node.url;
+
+    if (!originalUrl) {
+      console.error(`No original URL found for event: ${node.id}`);
+      return;
+    }
+    if (originalUrl.includes('youtube.com') || originalUrl.includes('youtu.be')) {
+      originalUrl = 'www.youtube.com'
+    }
+    setTimeout(() => {
+      fetch(`https://iframe.ly/api/iframely?url=${originalUrl}&api_key=43dbc2d36e2b9a0b35ad8f&iframe=1&omit_script=1`)
+        .then(response => response.json())
+        .then(data => {
+          //@ts-ignore
+          let imageURL;
+          if (data.links.thumbnail) {
+            imageURL = data.links.thumbnail[0].href;
+          } else if (data.links.icon) {
+            imageURL = data.links.icon[0].href;
+          } else {
+            imageURL = "https://placehold.it/300x200";
+          }
+          try {
+            if (imageURL) {
+              //@ts-ignore
+              createRemoteFileNode({
+                url: imageURL,
+                parentNodeId: node.id,
+                createNode,
+                createNodeId,
+                getCache,
+              })
+
+            } else {
+              console.error(`Failed to create file node for cover image: ${node.url} - image URL not found`);
+              createRemoteFileNode({
+                url: 'https://placehold.it/300x200',
+                parentNodeId: node.id,
+                createNode,
+                createNodeId,
+                getCache,
+              })
+
+            }
+          } catch (error) {
+            console.error(`Failed to create file node for cover image: ${node.url} - ${error}`);
+            createRemoteFileNode({
+              url: 'https://placehold.it/300x200',
+              parentNodeId: node.id,
+              createNode,
+              createNodeId,
+              getCache,
+            })
+
+          }
+        })
+        .catch(error => {
+          console.error(`Error fetching data for event: ${node.url} - ${error}`);
+          return null
+        });
+    }, index * 200);
+  });
 
 };
-
-// const { createRemoteFileNode } = require("gatsby-source-filesystem")
-// let nodeCountSucsess = 0
-// let nodeCountFail = 0
-// //@ts-ignore
-// exports.onCreateNode = async ({ node, actions, createNodeId, cache }) => {
-//   const { createNode } = actions;
-  
-
-//   if (node.internal.type === "api_leaves") {
-//     const previewPictures = Array.isArray(node.preview_picture) ? node.preview_picture : [node.preview_picture];
-//     //@ts-ignore
-//     const fileNodes = await Promise.all(previewPictures.map(async (url) => {
-//       try {
-//         const fileNode = await Promise.race([
-//           createRemoteFileNode({
-//             url,
-//             parentNodeId: node.id,
-//             createNode,
-//             createNodeId,
-//             cache,
-//           }),
-//           new Promise((resolve, reject) => {
-//             setTimeout(() => resolve(null), 5000) // resolve with default value after 5 seconds
-//           })
-//         ]);
-//         if (fileNode) {
-//           nodeCountSucsess++
-//         } else {
-//           nodeCountFail++
-//         }
-//         return fileNode;
-//       } catch (error) {
-//         console.error(`Error downloading image, Skipping`);
-//         nodeCountFail++
-//         // Replace missing images with a default image
-//         return null
-//       }
-//     }));
-
-//     node.preview_picture___NODE = fileNodes.filter((fileNode) => fileNode).map((fileNode) => fileNode.id);
-//     console.log(`Node Sucsess ${nodeCountSucsess} Node Fail ${nodeCountFail}`)
-//   }
-// };
