@@ -2,6 +2,7 @@ import { GatsbyNode } from 'gatsby';
 import { resolve } from 'path';
 let getSlug = require("speakingurl")
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+import fetchThumbnail from './src/utils/fetch-thumbnail';
 
 interface AllPostsData {
   allWpPost: {
@@ -260,7 +261,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
   });
 
-  //Leaves
+  //Leaves Pictures Processing
   const allLeavesPictures: {
     errors?: any;
     data?: {
@@ -283,8 +284,6 @@ export const createPages: GatsbyNode['createPages'] = async ({
     }
   }
   `);
-//350 457
-//337 440
   const failingUrls = [
     'blogs.vmware.com',
     'github.com',
@@ -313,68 +312,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
   //@ts-ignore
   filteredNodes.forEach((node, index) => {
-
-    let originalUrl = node.url;
-
-    if (!originalUrl) {
-      console.error(`No original URL found for event: ${node.id}`);
-      return;
-    }
-    if (originalUrl.includes('youtube.com') || originalUrl.includes('youtu.be')) {
-      originalUrl = 'www.youtube.com'
-    }
     setTimeout(() => {
-      fetch(`https://iframe.ly/api/iframely?url=${originalUrl}&api_key=43dbc2d36e2b9a0b35ad8f&iframe=1&omit_script=1`)
-        .then(response => response.json())
-        .then(data => {
-          //@ts-ignore
-          let imageURL;
-          if (data.links.thumbnail) {
-            imageURL = data.links.thumbnail[0].href;
-          } else if (data.links.icon) {
-            imageURL = data.links.icon[0].href;
-          } else {
-            imageURL = "https://placehold.it/300x200";
-          }
-          try {
-            if (imageURL) {
-              //@ts-ignore
-              createRemoteFileNode({
-                url: imageURL,
-                parentNodeId: node.id,
-                createNode,
-                createNodeId,
-                getCache,
-              })
-
-            } else {
-              console.error(`Failed to create file node for cover image: ${node.url} - image URL not found`);
-              createRemoteFileNode({
-                url: 'https://placehold.it/300x200',
-                parentNodeId: node.id,
-                createNode,
-                createNodeId,
-                getCache,
-              })
-
-            }
-          } catch (error) {
-            console.error(`Failed to create file node for cover image: ${node.url} - ${error}`);
-            createRemoteFileNode({
-              url: 'https://placehold.it/300x200',
-              parentNodeId: node.id,
-              createNode,
-              createNodeId,
-              getCache,
-            })
-
-          }
-        })
-        .catch(error => {
-          console.error(`Error fetching data for event: ${node.url} - ${error}`);
-          return null
-        });
+      fetchThumbnail(node, createNode, createNodeId, getCache);
     }, index * 200);
   });
+
+  //Leaves
 
 };
