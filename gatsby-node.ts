@@ -261,61 +261,118 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
   });
 
-  //Leaves Pictures Processing
-  const allLeavesPictures: {
+  const allFeedTtrs: {
     errors?: any;
     data?: {
-      allApiLeaves: {
+      allFeedTtrs: {
+        totalCount: number;
         nodes: {
+          title: string;
+          summary: string;
+          pubDate: string;
+          link: string;
           id: string;
-          preview_picture: string | null;
-          url: string;
+          content: string;
+          author: string;
         }[];
       };
     };
   } = await graphql(`
-  query LeavesPictures {
-    allApiLeaves(filter: {url: {ne: null}}, limit: 20) {
-      nodes {
-        id
-        preview_picture
-        url
+    query TTRSS {
+      allFeedTtrs {
+        totalCount
+        nodes {
+          title
+          summary
+          pubDate
+          link
+          id
+          content
+          author
+        }
       }
     }
-  }
   `);
-  const failingUrls = [
-    'blogs.vmware.com',
-    'github.com',
-    'blog.softwaremill',
-    'www.ktexperts',
-    'rustyrazorblade.com',
-    '/www.an10.io/',
-    'itnext.io',
-    '/www.an10.io/',
-    'baeldung.com',
-    '/levelup.gitconnected',
-    'cassandra.apache.org/blog',
-    'datanami.com',
-    'https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers',
-    'https://towardsdatascience.com/',
-    'https://medium.com/better-programming/our-favorite-engineering-blogs-3d8365b2d871',
-    'https://datastation.multiprocess',
-    'tobert.github.io',
-    'zeppelin.apache.org',
 
-  ];
-
-  const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(node => {
-    return !failingUrls.some(url => node.url.includes(url));
+  if (allFeedTtrs.errors) {
+    console.log(allFeedTtrs.errors);
+    throw new Error(allFeedTtrs.errors);
+  }
+  if (!allFeedTtrs.data) {
+    console.log("No data found!");
+    return;
+  }
+  allFeedTtrs.data.allFeedTtrs.nodes.forEach(node => {
+    createPage({
+      path: `/news/${getSlug(node.title)}`,
+      component: resolve(`src/components/Templates/NewsSinglePage.tsx`),
+      context: {
+        id: node.id,
+        title: node.title,
+        summary: node.summary,
+        pubDate: node.pubDate,
+        link: node.link,
+        content: node.content,
+        author: node.author
+      },
+    });
   });
 
-  //@ts-ignore
-  filteredNodes.forEach((node, index) => {
-    setTimeout(() => {
-      fetchThumbnail(node, createNode, createNodeId, getCache);
-    }, index * 200);
-  });
+  // //Leaves Pictures Processing
+  // const allLeavesPictures: {
+  //   errors?: any;
+  //   data?: {
+  //     allApiLeaves: {
+  //       nodes: {
+  //         id: string;
+  //         preview_picture: string | null;
+  //         url: string;
+  //       }[];
+  //     };
+  //   };
+  // } = await graphql(`
+  // query LeavesPictures {
+  //   allApiLeaves(filter: {url: {ne: null}}, limit: 20) {
+  //     nodes {
+  //       id
+  //       preview_picture
+  //       url
+  //     }
+  //   }
+  // }
+  // `);
+  // const failingUrls = [
+  //   'blogs.vmware.com',
+  //   'github.com',
+  //   'blog.softwaremill',
+  //   'www.ktexperts',
+  //   'rustyrazorblade.com',
+  //   '/www.an10.io/',
+  //   'itnext.io',
+  //   '/www.an10.io/',
+  //   'baeldung.com',
+  //   '/levelup.gitconnected',
+  //   'cassandra.apache.org/blog',
+  //   'datanami.com',
+  //   'https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers',
+  //   'https://towardsdatascience.com/',
+  //   'https://medium.com/better-programming/our-favorite-engineering-blogs-3d8365b2d871',
+  //   'https://datastation.multiprocess',
+  //   'tobert.github.io',
+  //   'zeppelin.apache.org',
+
+  // ];
+
+  // const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(node => {
+  //   return !failingUrls.some(url => node.url.includes(url));
+  // });
+
+  // //@ts-ignore
+  // filteredNodes.forEach((node, index) => {
+  //   setTimeout(() => {
+  //     fetchThumbnail(node, createNode, createNodeId, getCache);
+  //   }, index * 200);
+  // });
 
   //Leaves
 
