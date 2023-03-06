@@ -399,6 +399,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           content: string;
           wallabag_created_at: string;
           tags: string[];
+          preview_picture: string;
         }[];
       };
     };
@@ -412,6 +413,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           content
           wallabag_created_at
           tags
+          preview_picture
         }
       }
     }
@@ -435,7 +437,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
         description: node.description,
         content: node.content,
         wallabag_created_at: node.wallabag_created_at,
-        tags: node.tags
+        tags: node.tags,
+        preview_picture: node.preview_picture
       },
     });
   });

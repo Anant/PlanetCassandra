@@ -12,11 +12,12 @@ interface LeafSinglePageProps {
     description: string;
     id: string;
     content: string;
+    preview_picture: string;
   };
 }
 
 const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
-  pageContext: { tags, title, wallabag_created_at, description, content },
+  pageContext: { tags, title, wallabag_created_at, description, content, preview_picture },
 }) => {
   return (
     <Layout>
@@ -26,8 +27,15 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
           <meta name={title} content={description} />
         </Helmet>
         <div style={{ marginInline: "30px" }}>
-          <Typography variant="h4">{title}</Typography>
-          <Typography>{description}</Typography>
+          <div style={{ marginInline: "30px" }}>
+                    <Typography variant="h4">{title}</Typography>
+                    <img src={preview_picture} alt={preview_picture} />
+                    <Typography
+                        variant="subtitle2"
+                        gutterBottom
+                        dangerouslySetInnerHTML={{ __html: content }}
+                    />
+                </div>
         </div>
       </Container>
     </Layout>
