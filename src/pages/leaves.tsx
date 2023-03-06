@@ -21,7 +21,7 @@ interface AllLeavesData {
     nodes: {
       tags: string[];
       title: string;
-      last_sourced_from_wallabag: string;
+      wallabag_created_at: string;
       description: string;
       id: string;
     }[];
@@ -59,7 +59,7 @@ const Leaves: React.FC<AllLeavesData> = () => {
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <LeafCard
                   title={card.title}
-                  date={card.last_sourced_from_wallabag}
+                  date={card.wallabag_created_at}
                   description={card.description}
                   tags={card.tags}
                   //@ts-ignore
@@ -104,11 +104,11 @@ query LeavesData {
         }
       }
     }
-    allApiLeaves(limit: 100, sort: {last_sourced_from_wallabag: DESC}) {
+    allApiLeaves(limit: 100, sort: {wallabag_created_at: DESC}) {
       nodes {
         tags
         title
-        last_sourced_from_wallabag
+        wallabag_created_at
         description
         id
       }

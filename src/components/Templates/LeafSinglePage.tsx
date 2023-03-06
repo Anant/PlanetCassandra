@@ -8,7 +8,7 @@ interface LeafSinglePageProps {
   pageContext: {
     tags: string[];
     title: string;
-    last_sourced_from_wallabag: string;
+    wallabag_created_at: string;
     description: string;
     id: string;
     content: string;
@@ -16,7 +16,7 @@ interface LeafSinglePageProps {
 }
 
 const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
-  pageContext: { tags, title, last_sourced_from_wallabag, description, content },
+  pageContext: { tags, title, wallabag_created_at, description, content },
 }) => {
   return (
     <Layout>

@@ -333,6 +333,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           id: string;
           preview_picture: string | null;
           url: string;
+          origin_url: string;
         }[];
       };
     };
@@ -341,13 +342,14 @@ export const createPages: GatsbyNode['createPages'] = async ({
     allApiLeaves(
       filter: {url: {ne: null}}
       limit: 100
-      sort: {last_sourced_from_wallabag: DESC}
+      sort: {wallabag_created_at: DESC}
     ) {
       nodes {
         id
         preview_picture
         url
-        last_sourced_from_wallabag
+        origin_url
+        wallabag_created_at
       }
     }
   }
@@ -395,20 +397,20 @@ export const createPages: GatsbyNode['createPages'] = async ({
           title: string;
           description: string;
           content: string;
-          last_sourced_from_wallabag: string;
+          wallabag_created_at: string;
           tags: string[];
         }[];
       };
     };
   } = await graphql(`
     query Leaves {
-      allApiLeaves(sort: { last_sourced_from_wallabag: DESC },limit: 100) {
+      allApiLeaves(sort: { wallabag_created_at: DESC },limit: 100) {
         nodes {
           id
           title
           description
           content
-          last_sourced_from_wallabag
+          wallabag_created_at
           tags
         }
       }
@@ -432,7 +434,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
         title: node.title,
         description: node.description,
         content: node.content,
-        last_sourced_from_wallabag: node.last_sourced_from_wallabag,
+        wallabag_created_at: node.wallabag_created_at,
         tags: node.tags
       },
     });

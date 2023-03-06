@@ -3,6 +3,7 @@ import { createRemoteFileNode } from "gatsby-source-filesystem";
 interface Node {
   id: string;
   url: string;
+  origin_url: string;
 }
 
 const fetchThumbnail = async (
@@ -11,7 +12,13 @@ const fetchThumbnail = async (
   createNodeId: any,
   getCache: any
 ) => {
-  let originalUrl = node.url;
+  let originalUrl
+  if (node.url.includes("youtube.com")) {
+    originalUrl = node.origin_url;
+  }
+  else {
+    originalUrl = node.url;
+  }
 
   if (!originalUrl) {
     console.error(`No original URL found for event: ${node.id}`);
@@ -19,6 +26,7 @@ const fetchThumbnail = async (
   }
 
   try {
+
     const response = await fetch(
       `https://iframe.ly/api/iframely?url=${originalUrl}&api_key=43dbc2d36e2b9a0b35ad8f&iframe=1&omit_script=1`
     );
@@ -54,7 +62,7 @@ const fetchThumbnail = async (
     }
   } catch (error) {
     //@ts-ignore
-    console.error(`Failed to fetch thumbnail for event: ${node.id} with error: ${error.message}`);
+    console.error(`Failed to fetch thumbnail for event: ${node.url} with error: ${error.message}`);
   }
 };
 
