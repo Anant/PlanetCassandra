@@ -17,7 +17,8 @@ const pages = [
   { name: "Events", route: "/events" },
   { name: "News", route: "/news" },
   { name: "Use Cases", route: "/usecases" },
-  { name: "Posts", route: "/posts" }
+  { name: "Posts", route: "/posts" },
+  { name: "Leaves", route: "/leaves" }
 ];
 
 function ResponsiveAppBar() {

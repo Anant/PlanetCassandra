@@ -51,6 +51,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   const { createPage, createNode, createTypes } = actions;
 
   //Posts from WP page creation
+  //----------------------------------------------------------------------------
   const allPosts: {
     errors?: any;
     data?: {
@@ -127,6 +128,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   });
 
   //Events
+  ////----------------------------------------------------------------------------
   const { createRemoteFileNode } = require("gatsby-source-filesystem")
   const allEvents: {
     errors?: any;
@@ -215,6 +217,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   });
 
   //UseCases
+  ////----------------------------------------------------------------------------
   const allUseCases: {
     errors?: any;
     data?: {
@@ -261,6 +264,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
   });
 
+  //TTRSS
+  ////----------------------------------------------------------------------------
   const allFeedTtrs: {
     errors?: any;
     data?: {
@@ -318,62 +323,120 @@ export const createPages: GatsbyNode['createPages'] = async ({
     });
   });
 
-  // //Leaves Pictures Processing
-  // const allLeavesPictures: {
-  //   errors?: any;
-  //   data?: {
-  //     allApiLeaves: {
-  //       nodes: {
-  //         id: string;
-  //         preview_picture: string | null;
-  //         url: string;
-  //       }[];
-  //     };
-  //   };
-  // } = await graphql(`
-  // query LeavesPictures {
-  //   allApiLeaves(filter: {url: {ne: null}}, limit: 20) {
-  //     nodes {
-  //       id
-  //       preview_picture
-  //       url
-  //     }
-  //   }
-  // }
-  // `);
-  // const failingUrls = [
-  //   'blogs.vmware.com',
-  //   'github.com',
-  //   'blog.softwaremill',
-  //   'www.ktexperts',
-  //   'rustyrazorblade.com',
-  //   '/www.an10.io/',
-  //   'itnext.io',
-  //   '/www.an10.io/',
-  //   'baeldung.com',
-  //   '/levelup.gitconnected',
-  //   'cassandra.apache.org/blog',
-  //   'datanami.com',
-  //   'https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers',
-  //   'https://towardsdatascience.com/',
-  //   'https://medium.com/better-programming/our-favorite-engineering-blogs-3d8365b2d871',
-  //   'https://datastation.multiprocess',
-  //   'tobert.github.io',
-  //   'zeppelin.apache.org',
+  //----------------------------------------------------------------------------
+  //Leaves Pictures Processing
+  const allLeavesPictures: {
+    errors?: any;
+    data?: {
+      allApiLeaves: {
+        nodes: {
+          id: string;
+          preview_picture: string | null;
+          url: string;
+        }[];
+      };
+    };
+  } = await graphql(`
+  query LeavesPictures {
+    allApiLeaves(
+      filter: {url: {ne: null}}
+      limit: 100
+      sort: {last_sourced_from_wallabag: DESC}
+    ) {
+      nodes {
+        id
+        preview_picture
+        url
+        last_sourced_from_wallabag
+      }
+    }
+  }
+  `);
+  const failingUrls = [
+    'blogs.vmware.com',
+    'blog.softwaremill',
+    'www.ktexperts',
+    'rustyrazorblade.com',
+    '/www.an10.io/',
+    'itnext.io',
+    '/www.an10.io/',
+    'baeldung.com',
+    '/levelup.gitconnected',
+    'cassandra.apache.org/blog',
+    'datanami.com',
+    'https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers',
+    'https://towardsdatascience.com/',
+    'https://medium.com/better-programming/our-favorite-engineering-blogs-3d8365b2d871',
+    'https://datastation.multiprocess',
+    'tobert.github.io',
+    'zeppelin.apache.org',
 
-  // ];
+  ];
 
-  // const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(node => {
-  //   return !failingUrls.some(url => node.url.includes(url));
-  // });
+  const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(node => {
+    return !failingUrls.some(url => node.url.includes(url));
+  });
 
-  // //@ts-ignore
-  // filteredNodes.forEach((node, index) => {
-  //   setTimeout(() => {
-  //     fetchThumbnail(node, createNode, createNodeId, getCache);
-  //   }, index * 200);
-  // });
+  //@ts-ignore
+  filteredNodes.forEach((node, index) => {
+    setTimeout(() => {
+      fetchThumbnail(node, createNode, createNodeId, getCache);
+    }, index * 200);
+  });
+  
+  //----------------------------------------------------------------------------
+  //Leaves Single Page 
+  const allLeaves: {
+    errors?: any;
+    data?: {
+      allApiLeaves: {
+        nodes: {
+          id: string;
+          title: string;
+          description: string;
+          content: string;
+          last_sourced_from_wallabag: string;
+          tags: string[];
+        }[];
+      };
+    };
+  } = await graphql(`
+    query Leaves {
+      allApiLeaves(sort: { last_sourced_from_wallabag: DESC },limit: 100) {
+        nodes {
+          id
+          title
+          description
+          content
+          last_sourced_from_wallabag
+          tags
+        }
+      }
+    }
+  `);
 
-  //Leaves
+  if (allLeaves.errors) {
+    console.log(allLeaves.errors);
+    throw new Error(allLeaves.errors);
+  }
+  if (!allLeaves.data) {
+    console.log("No data found!");
+    return;
+  }
+  allLeaves.data.allApiLeaves.nodes.forEach(node => {
+    createPage({
+      path: `/leaf/${getSlug(node.title)}`,
+      component: resolve(`src/components/Templates/LeafSinglePage.tsx`),
+      context: {
+        id: node.id,
+        title: node.title,
+        description: node.description,
+        content: node.content,
+        last_sourced_from_wallabag: node.last_sourced_from_wallabag,
+        tags: node.tags
+      },
+    });
+  });
+
 
 };
