@@ -3,6 +3,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Container, Typography } from "@mui/material";
 import Layout from "../Layout/Layout";
+import './singlePageTemplates.css'
 
 interface UseCasesSinglePageProps {
   pageContext: {
@@ -21,13 +22,18 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = ({
         <Helmet>
           <title>{title}</title>
         </Helmet>
-        <div style={{ margin: "30px" }}>
-          <Typography variant="h4">{title}</Typography>
-          <Typography
-            variant="subtitle2"
-            gutterBottom
-            dangerouslySetInnerHTML={{ __html: Description }}
-          />
+        <div className="articleContainer" style={{ marginInline: "30px" }}>
+          <article>
+            <Typography
+              variant="h4"
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              dangerouslySetInnerHTML={{ __html: Description }}
+            />
+          </article>
         </div>
       </Container>
     </Layout>

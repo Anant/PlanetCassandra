@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
 import { Container, Typography } from "@mui/material";
+import './singlePageTemplates.css'
 
 interface PostSinglePageProps {
     pageContext: {
@@ -24,14 +25,19 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
                     <title>{title}</title>
                     <meta name={title} content={summary} />
                 </Helmet>
-                <div style={{ marginInline: "30px" }}>
-                    <Typography variant="h4">{title}</Typography>
-                    <Typography
-                        variant="subtitle2"
-                        gutterBottom
-                        dangerouslySetInnerHTML={{ __html: content }}
-                    />
-                </div>
+                <div className="articleContainer" style={{ marginInline: "30px" }}>
+          <article>
+            <Typography
+              variant="h4"
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </article>
+        </div>
             </Container>
         </Layout>
     );

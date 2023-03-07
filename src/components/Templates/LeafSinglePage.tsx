@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
 import { Container, Typography } from "@mui/material";
+import './singlePageTemplates.css'
 
 interface LeafSinglePageProps {
   pageContext: {
@@ -26,16 +27,19 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
           <title>{title}</title>
           <meta name={title} content={description} />
         </Helmet>
-        <div style={{ marginInline: "30px" }}>
-          <div style={{ marginInline: "30px" }}>
-                    <Typography variant="h4">{title}</Typography>
-                    <img src={preview_picture} alt={preview_picture} />
-                    <Typography
-                        variant="subtitle2"
-                        gutterBottom
-                        dangerouslySetInnerHTML={{ __html: content }}
-                    />
-                </div>
+        <div className="articleContainer" style={{ marginInline: "30px" }}>
+          <article>
+            <Typography
+              variant="h4"
+              dangerouslySetInnerHTML={{ __html: title }}
+            />
+            <img src={preview_picture} alt={preview_picture} />
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
+          </article>
         </div>
       </Container>
     </Layout>
