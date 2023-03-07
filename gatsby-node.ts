@@ -405,7 +405,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     };
   } = await graphql(`
     query Leaves {
-      allApiLeaves(sort: { wallabag_created_at: DESC },limit: 100) {
+      allApiLeaves(sort: { wallabag_created_at: DESC },limit: 50) {
         nodes {
           id
           title
@@ -439,6 +439,63 @@ export const createPages: GatsbyNode['createPages'] = async ({
         wallabag_created_at: node.wallabag_created_at,
         tags: node.tags,
         preview_picture: node.preview_picture
+      },
+    });
+  });
+
+  //----------------------------------------------------------------------------
+  //Video Single Page
+  const allVideos: {
+    errors?: any;
+    data?: {
+      allYoutubeVideo: {
+        nodes: {
+          videoId: string;
+          title: string;
+          description: string;
+          localThumbnail: any;
+          publishedAt: string;
+        }[];
+      };
+    };
+  } = await graphql(`
+    query Videos {
+      allYoutubeVideo {
+        nodes {
+          videoId
+          title
+          description
+          localThumbnail {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          publishedAt
+        }
+      }
+    }
+  `);
+
+  if (allVideos.errors) {
+    console.log(allVideos.errors);
+    throw new Error(allVideos.errors);
+  }
+
+  if (!allVideos.data) {
+    console.log("No data found!");
+    return;
+  }
+
+  allVideos.data.allYoutubeVideo.nodes.forEach(node => {
+    createPage({
+      path: `/video/${getSlug(node.title)}`,
+      component: resolve(`src/components/Templates/YoutubeSinglePage.tsx`),
+      context: {
+        videoId: node.videoId,
+        title: node.title,
+        description: node.description,
+        thumbnail: node.localThumbnail.childImageSharp.gatsbyImageData,
+        date: node.publishedAt,
       },
     });
   });

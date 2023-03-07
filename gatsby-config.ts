@@ -93,6 +93,14 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-source-youtube-v3`,
+      options: {
+        channelId: ['UCqA6zOSMpQ55vvguq4Y0jAg', 'UCJAA86DS2ViyGbhnVyY_N3g'],
+        apiKey: 'AIzaSyCBqyKftArIjeOh3j5nyiWSohSfMzVV67o', //Add to ENV File
+        maxVideos: 50 // Defaults to 50
+      },
+    },
+    {
       resolve: `gatsby-source-airtable`,
       options: {
         //Add to ENV File
@@ -176,6 +184,7 @@ const config: GatsbyConfig = {
         }),
       },
     },
+    
   ],
 };
 
