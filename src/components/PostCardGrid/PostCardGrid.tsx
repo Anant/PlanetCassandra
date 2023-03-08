@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Grid, Pagination } from '@mui/material';
-import PostCard from '../PostCard/PostCard';
+import PostCard from '../Cards/PostCard';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface PostCardData {

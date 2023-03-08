@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { Container, Grid, Pagination } from "@mui/material";
-import LeafCard from "../components/LeafCard/LeafCard";
+import LeafCard from "../components/Cards/LeafCard";
 
 interface AllLeavesData {
   allFile: {

@@ -372,7 +372,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     'https://datastation.multiprocess',
     'tobert.github.io',
     'zeppelin.apache.org',
-
+    'https://docs.datastax.com/en/articles/cassandra/cassandrathenandnow.html',
   ];
 
   const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(node => {
