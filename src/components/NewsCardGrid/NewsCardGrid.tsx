@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Grid, Pagination } from '@mui/material';
-import NewsCard from '../NewsCard/NewsCard';
+import NewsCard from '../Cards/NewsCard';
 import getSlug from "speakingurl";
 
 

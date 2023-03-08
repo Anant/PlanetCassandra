@@ -5,7 +5,7 @@ import Layout from '../components/Layout/Layout';
 import PostCardGrid from '../components/PostCardGrid/PostCardGrid';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { Container, Grid, Pagination } from '@mui/material';
-import EventCard from '../components/Event Card/EventCard';
+import EventCard from '../components/Cards/EventCard';
 
 interface AllEventsData {
   allFile: {
@@ -15,7 +15,7 @@ interface AllEventsData {
         table: string;
       };
       childImageSharp: {
-        gatsbyImageData: IGatsbyImageData;
+        gatsbyImageData: any;
       };
     }[];
   };

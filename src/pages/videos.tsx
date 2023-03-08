@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from '../components/Layout/Layout';
 import { Container, Grid, Pagination } from '@mui/material';
-import YoutubeCard from '../components/YouTubeCard/YouTubeCard';
+import YoutubeCard from '../components/Cards/YouTubeCard';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface VideoData {
@@ -18,6 +18,7 @@ interface VideoData {
             gatsbyImageData: IGatsbyImageData;
           };
         };
+        publishedAt: string;
       }[];
     };
   }
@@ -53,8 +54,9 @@ interface VideoData {
                     channelTitle={video.channelTitle}
                     title={video.title}
                     videoId={video.videoId}
-                    localThumbnail={video.localThumbnail.childImageSharp.gatsbyImageData}
+                    thumbnail={video.localThumbnail.childImageSharp.gatsbyImageData}
                     description={video.description}
+                    date={video.publishedAt}
                   />
                 </Grid>
               );
@@ -78,22 +80,24 @@ interface VideoData {
   };
   
   const query = graphql`
-    {
-      allYoutubeVideo {
-        nodes {
-          channelTitle
-          title
-          videoId
-          description
-          localThumbnail {
-            id
-            childImageSharp {
-              gatsbyImageData
-            }
+  {
+    allYoutubeVideo {
+      totalCount
+      nodes {
+        channelTitle
+        title
+        videoId
+        description
+        localThumbnail {
+          id
+          childImageSharp {
+            gatsbyImageData
           }
         }
+        publishedAt
       }
     }
+  }
   `;
   
   export default Videos;

@@ -11,36 +11,36 @@ interface CardProps {
 }
 
 class BaseCard<P extends CardProps> extends React.Component<P> {
-  protected renderThumbnail(thumbnail: IGatsbyImageData, alt: string) {
-    if (thumbnail) {
+    protected renderThumbnail(thumbnail: IGatsbyImageData | undefined, alt: string) {
+      if (thumbnail) {
+        return (
+          <GatsbyImage
+            className="w-full h-64 object-cover"
+            image={thumbnail}
+            alt={alt}
+          />
+        );
+      } else {
+        return (
+          <StaticImage
+            src="https://via.placeholder.com/640x360"
+            className="w-full h-64 object-cover"
+            alt="Placeholder"
+          />
+        );
+      }
+    }
+  
+    protected renderContent() {
       return (
-        <GatsbyImage
-          className="w-full h-64 object-cover"
-          image={thumbnail}
-          alt={alt}
-        />
-      );
-    } else {
-      return (
-        <StaticImage
-          src="https://via.placeholder.com/640x360"
-          className="w-full h-64 object-cover"
-          alt="Placeholder"
-        />
+        <CardContent className="px-6 py-4">
+          <Typography className="text-xl font-medium text-gray-900" component="h2">
+            {this.props.title}
+          </Typography>
+          <Typography className="text-gray-600">{this.props.date}</Typography>
+        </CardContent>
       );
     }
   }
-
-  protected renderContent() {
-    return (
-      <CardContent className="px-6 py-4">
-        <Typography className="text-xl font-medium text-gray-900" component="h2">
-          {this.props.title}
-        </Typography>
-        <Typography className="text-gray-600">{this.props.date}</Typography>
-      </CardContent>
-    );
-  }
-}
 
 export { BaseCard, CardProps };

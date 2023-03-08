@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from '../components/Layout/Layout';
 import { Container, Grid, Pagination } from '@mui/material';
-import CompanyCard from '../components/CompanyCard/CompanyCard';
+import CompanyCard from '../components/Cards/CompanyCard';
 
 interface CompanyData {
     allAirtable: {
@@ -42,7 +42,7 @@ const Companies: React.FC<CompanyData> = () => {
                             <Grid item xs={12} sm={6} md={4} key={index}>
                                 <CompanyCard
                                     name={card.data.Name}
-                                    descritpion={card.data.Description}
+                                    description={card.data.Description}
                                 />
                             </Grid>
                         );
