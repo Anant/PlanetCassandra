@@ -11,8 +11,8 @@ interface EventCardProps extends CardProps {}
 const EventCard: React.FC<EventCardProps> = ({ title, date, thumbnail }) => {
     return (
       <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-        <Link to={`/event/${getSlug(title)}`}>
-         <BaseCard title={title} date={date} />
+        <Link style={{ textDecoration: "none", color: "white" }} to={`/event/${getSlug(title)}`}>
+         <BaseCard title={title} date={date} thumbnail={thumbnail} />
         </Link>
       </Card>
     );

@@ -6,7 +6,7 @@ import './cardStyles.css'
 
 interface CardProps {
   title: string;
-  date: string;
+  date?: string;
   thumbnail?: IGatsbyImageData;
 }
 

@@ -7,24 +7,24 @@ import getSlug from "speakingurl";
 import './cardStyles.css'
 
 interface YoutubeCardProps extends CardProps {
-  channelTitle: string
-  videoId: string
-  thumbnail: IGatsbyImageData
-  description: string
+    channelTitle: string
+    videoId: string
+    thumbnail: IGatsbyImageData
+    description: string
 }
 
 const YoutubeCard: React.FC<YoutubeCardProps> = ({ title, channelTitle, videoId, thumbnail, description, date }) => {
 
     return (
-      <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-        <Link style={{ textDecoration: "none", color: "white" }} to={`/video/${getSlug(title)}`}>
-        <BaseCard title={title} date={date} thumbnail={thumbnail} />
-        </Link>
-        <Typography className="text-gray-600">Channel: {channelTitle}</Typography>
-        <Typography className="text-gray-700">{description}</Typography>
-      </Card>
+        <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/video/${getSlug(title)}`}>
+                <BaseCard title={title} date={date} thumbnail={thumbnail} />
+            </Link>
+            <Typography className="text-gray-600">Channel: {channelTitle}</Typography>
+            <Typography className="text-gray-700">{description}</Typography>
+        </Card>
     );
-  
+
 }
 
 export default YoutubeCard;

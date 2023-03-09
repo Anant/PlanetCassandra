@@ -2,7 +2,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout';
-import PostCardGrid from '../components/PostCardGrid/PostCardGrid';
+import PostCardGrid from '../layouts/PostCardGrid'
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface Props {

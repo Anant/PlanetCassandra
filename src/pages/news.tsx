@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout/Layout';
-import NewsCardGrid from '../components/NewsCardGrid/NewsCardGrid';
+import NewsCardGrid from '../layouts/NewsCardGrid'
 
 
 interface Props {
