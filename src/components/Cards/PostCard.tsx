@@ -8,17 +8,14 @@ interface PostCardProps extends CardProps {
   slug: string;
 }
 
-class PostCard extends BaseCard<PostCardProps> {
-  render() {
-    return (
-      <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-        <Link to={`/post/${this.props.slug}`}>
-          {this.renderThumbnail(this.props.thumbnail, this.props.title)}
-        </Link>
-        {this.renderContent()}
-      </Card>
-    );
-  }
+const PostCard: React.FC<PostCardProps> = ({ title, date, thumbnail, slug }) => {
+  return (
+    <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
+      <Link style={{ textDecoration: "none", color: "white" }}  to={`/post/${slug}`}>
+        <BaseCard title={title} date={date} thumbnail={thumbnail} />
+      </Link>
+    </Card>
+  );
 }
 
 export default PostCard;

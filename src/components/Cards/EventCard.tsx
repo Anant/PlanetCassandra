@@ -8,18 +8,14 @@ import './cardStyles.css'
 
 interface EventCardProps extends CardProps {}
 
-class EventCard extends BaseCard<EventCardProps> {
-  render() {
-    const { title, date, thumbnail } = this.props;
+const EventCard: React.FC<EventCardProps> = ({ title, date, thumbnail }) => {
     return (
       <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
         <Link to={`/event/${getSlug(title)}`}>
-          {this.renderThumbnail(thumbnail, title)}
+         <BaseCard title={title} date={date} />
         </Link>
-        {this.renderContent()}
       </Card>
     );
-  }
 }
 
 export default EventCard;

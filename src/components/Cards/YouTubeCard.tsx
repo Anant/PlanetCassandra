@@ -13,21 +13,18 @@ interface YoutubeCardProps extends CardProps {
   description: string
 }
 
-class YoutubeCard extends BaseCard<YoutubeCardProps> {
-  render() {
-    const { channelTitle, videoId, thumbnail, description } = this.props;
+const YoutubeCard: React.FC<YoutubeCardProps> = ({ title, channelTitle, videoId, thumbnail, description, date }) => {
 
     return (
       <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-        <Link to={`/video/${getSlug(this.props.title)}`}>
-          {this.renderThumbnail(thumbnail, this.props.title)}
+        <Link style={{ textDecoration: "none", color: "white" }} to={`/video/${getSlug(title)}`}>
+        <BaseCard title={title} date={date} thumbnail={thumbnail} />
         </Link>
-        {this.renderContent()}
         <Typography className="text-gray-600">Channel: {channelTitle}</Typography>
         <Typography className="text-gray-700">{description}</Typography>
       </Card>
     );
-  }
+  
 }
 
 export default YoutubeCard;

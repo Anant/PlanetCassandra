@@ -9,10 +9,8 @@ interface NewsCardProps extends Omit<CardProps, 'thumbnail'> {
     slug: string;
     author: string;
 }
-//@ts-ignore
-class NewsCard extends BaseCard<NewsCardProps> {
-  render() {
-    const { title, date, slug, author } = this.props;
+
+const NewsCard: React.FC<NewsCardProps> = ({ title, date, slug, author }) => {
     return (
       <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
         <Link to={`/news/${slug}`}>
@@ -31,7 +29,6 @@ class NewsCard extends BaseCard<NewsCardProps> {
         </CardContent>
       </Card>
     );
-  }
 }
 
 export default NewsCard;

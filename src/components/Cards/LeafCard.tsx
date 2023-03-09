@@ -10,18 +10,15 @@ interface LeafCardProps extends CardProps {
   tags: string[];
 }
 
-class LeafCard extends BaseCard<LeafCardProps> {
-  render() {
-    return (
-      <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-        <Link to={`/leaf/${getSlug(this.props.title)}`}>
-          {this.renderThumbnail(this.props.thumbnail, this.props.title)}
-        </Link>
-        {this.renderContent()}
-        <Typography className="text-gray-700">{this.props.description}</Typography>
-      </Card>
-    );
-  }
+const LeafCard: React.FC<LeafCardProps> = ({ title, date, thumbnail, description, tags }) => {
+  return (
+    <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
+      <Link style={{ textDecoration: "none", color: "white" }} to={`/leaf/${getSlug(title)}`}>
+        <BaseCard title={title} date={date} thumbnail={thumbnail} />
+      </Link>
+      <Typography className="text-gray-700">{description}</Typography>
+    </Card>
+  );
 }
 
 export default LeafCard;
