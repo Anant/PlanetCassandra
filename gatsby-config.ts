@@ -55,7 +55,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-wordpress`,
       options: {
         //Create auth and add it to ENV file
-        url: `https://anantstage.wpengine.com/graphql`,
+        url: `https://devcassandra.wpengine.com/graphql`,
         type: {
           Post: process.env.NODE_ENV === "development" ? { limit: 20 } : { limit: 500 },
           Page: {
