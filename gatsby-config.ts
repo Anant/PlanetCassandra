@@ -82,19 +82,19 @@ const config: GatsbyConfig = {
         },
       },
     },
-    {
-      resolve: `gatsby-source-airtable`,
-      options: {
-        //Add to ENV File
-        apiKey: `keyyRNiY9jP5OcGBA`,
-        tables: [
-          {
-            baseId: `app0cewpKFiSqkmVe`,
-            tableName: `Repos`,
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-airtable`,
+    //   options: {
+    //     //Add to ENV File
+    //     apiKey: `keyyRNiY9jP5OcGBA`,
+    //     tables: [
+    //       {
+    //         baseId: `app0cewpKFiSqkmVe`,
+    //         tableName: `Repos`,
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: `gatsby-source-youtube-v3`,
       options: {

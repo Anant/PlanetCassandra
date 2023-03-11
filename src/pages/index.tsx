@@ -28,12 +28,12 @@ const IndexPage: React.FC<PageProps> = () => {
           <Grid className="tagSectionBgImage" item xs={12}>
             <TagSection />
           </Grid>
-          <Grid className="eventsBgImage" item xs={12}>
+          {/* <Grid className="eventsBgImage" item xs={12}>
             <UpcomingEvents />
           </Grid>
           <Grid className="useCasesBgImage" item xs={12}>
             <UseCases />
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <YoutubeSection />
           </Grid>
