@@ -6,7 +6,7 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   flags: {
-    PARALLEL_QUERY_RUNNING: true
+    PARALLEL_QUERY_RUNNING: false
   },
   siteMetadata: {
     title: `planetCassandra`,
