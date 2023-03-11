@@ -10,7 +10,7 @@ const config: GatsbyConfig = {
   },
   siteMetadata: {
     title: `planetCassandra`,
-    siteUrl: `https://planetcassandra.netlify.app/`,
+    siteUrl: `https://planetcassandra.org/`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -58,7 +58,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-wordpress`,
       options: {
         //Create auth and add it to ENV file
-        url: `http://blog.planetcassandra.org/graphql`,
+        url: `https://devcassandra.wpengine.com/graphql`,
         type: {
           Post: process.env.NODE_ENV === "development" ? { limit: 20 } : { limit: 500 },
           Page: {
@@ -103,27 +103,27 @@ const config: GatsbyConfig = {
         maxVideos: 50 // Defaults to 50
       },
     },
-    {
-      resolve: `gatsby-source-airtable`,
-      options: {
-        //Add to ENV File
-        apiKey: `keyKQYgOjqgVIh48D`,
-        tables: [
-          {
-            baseId: "appKPpuxHmcbNwiY5",
-            tableName: `Company`,
-          },
-          {
-            baseId: "appXnvVlKiaI5Qv4A",
-            tableName: `Glossary Main Page`,
-          },
-          {
-            baseId: "apppWYJ52GKjoDHHG",
-            tableName: `Content Production`,
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-airtable`,
+    //   options: {
+    //     //Add to ENV File
+    //     apiKey: `keyKQYgOjqgVIh48D`,
+    //     tables: [
+    //       {
+    //         baseId: "appKPpuxHmcbNwiY5",
+    //         tableName: `Company`,
+    //       },
+    //       {
+    //         baseId: "appXnvVlKiaI5Qv4A",
+    //         tableName: `Glossary Main Page`,
+    //       },
+    //       {
+    //         baseId: "apppWYJ52GKjoDHHG",
+    //         tableName: `Content Production`,
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: "gatsby-source-apiserver",
       options: {
