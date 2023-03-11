@@ -7,7 +7,7 @@ import type { GatsbyConfig } from "gatsby";
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `planetCassandra`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://planetcassandra.org/`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -55,7 +55,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-wordpress`,
       options: {
         //Create auth and add it to ENV file
-        url: `https://anantstage.wpengine.com/graphql`,
+        url: `https://devcassandra.wpengine.com/graphql`,
         type: {
           Post: process.env.NODE_ENV === "development" ? { limit: 20 } : { limit: 500 },
           Page: {
