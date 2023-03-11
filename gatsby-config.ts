@@ -5,9 +5,12 @@ require("dotenv").config()
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
+  flags: {
+    PARALLEL_QUERY_RUNNING: true
+  },
   siteMetadata: {
     title: `planetCassandra`,
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://planetcassandra.netlify.app/`,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin
@@ -55,7 +58,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-wordpress`,
       options: {
         //Create auth and add it to ENV file
-        url: `https://anantstage.wpengine.com/graphql`,
+        url: `https://anantstage.wpengine.com`,
         type: {
           Post: process.env.NODE_ENV === "development" ? { limit: 20 } : { limit: 500 },
           Page: {
