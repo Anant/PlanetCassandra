@@ -7,8 +7,8 @@ import HeroSection from "../components/Hero/Hero";
 import DidYouKnowSection from "../components/DYK Section/DYK";
 import Layout from "../components/Layout/Layout";
 import TagSection from "../components/TagSection/TagSection";
-// import UpcomingEvents from "../components/UpcomingEvents/UpcomingEvents";
-// import UseCases from "../components/UseCases/UseCases";
+import UpcomingEvents from "../components/UpcomingEvents/UpcomingEvents";
+import UseCases from "../components/UseCases/UseCases";
 import YoutubeSection from "../components/YoutubeSection/YoutubeSection";
 import Footer from "../components/Footer/Footer";
 import CommunitySection from "../components/CommunitySection/CommunitySection";
@@ -28,12 +28,12 @@ const IndexPage: React.FC<PageProps> = () => {
           <Grid className="tagSectionBgImage" item xs={12}>
             <TagSection />
           </Grid>
-          {/* <Grid className="eventsBgImage" item xs={12}>
+          <Grid className="eventsBgImage" item xs={12}>
             <UpcomingEvents />
           </Grid>
           <Grid className="useCasesBgImage" item xs={12}>
             <UseCases />
-          </Grid> */}
+          </Grid>
           <Grid item xs={12}>
             <YoutubeSection />
           </Grid>

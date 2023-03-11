@@ -82,19 +82,19 @@ const config: GatsbyConfig = {
         },
       },
     },
-    // {
-    //   resolve: `gatsby-source-airtable`,
-    //   options: {
-    //     //Add to ENV File
-    //     apiKey: `keyyRNiY9jP5OcGBA`,
-    //     tables: [
-    //       {
-    //         baseId: `app0cewpKFiSqkmVe`,
-    //         tableName: `Repos`,
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        //Add to ENV File
+        apiKey: `keyyRNiY9jP5OcGBA`,
+        tables: [
+          {
+            baseId: `app0cewpKFiSqkmVe`,
+            tableName: `Repos`,
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-youtube-v3`,
       options: {
@@ -103,27 +103,27 @@ const config: GatsbyConfig = {
         maxVideos: 50 // Defaults to 50
       },
     },
-    // {
-    //   resolve: `gatsby-source-airtable`,
-    //   options: {
-    //     //Add to ENV File
-    //     apiKey: `keyKQYgOjqgVIh48D`,
-    //     tables: [
-    //       {
-    //         baseId: "appKPpuxHmcbNwiY5",
-    //         tableName: `Company`,
-    //       },
-    //       {
-    //         baseId: "appXnvVlKiaI5Qv4A",
-    //         tableName: `Glossary Main Page`,
-    //       },
-    //       {
-    //         baseId: "apppWYJ52GKjoDHHG",
-    //         tableName: `Content Production`,
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-airtable`,
+      options: {
+        //Add to ENV File
+        apiKey: `keyKQYgOjqgVIh48D`,
+        tables: [
+          {
+            baseId: "appKPpuxHmcbNwiY5",
+            tableName: `Company`,
+          },
+          {
+            baseId: "appXnvVlKiaI5Qv4A",
+            tableName: `Glossary Main Page`,
+          },
+          {
+            baseId: "apppWYJ52GKjoDHHG",
+            tableName: `Content Production`,
+          },
+        ],
+      },
+    },
     {
       resolve: "gatsby-source-apiserver",
       options: {
