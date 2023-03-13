@@ -6,7 +6,7 @@ import './cardStyles.css'
 
 interface CardProps {
   title: string;
-  date?: string;
+  date?: any;
   thumbnail?: IGatsbyImageData;
 }
 
@@ -37,7 +37,7 @@ const BaseCard: React.FC<CardProps> = ({ title, date, thumbnail }) => {
         <Typography className="text-xl font-medium text-gray-900" component="h2">
           {title}
         </Typography>
-        <Typography className="text-gray-600">{date}</Typography>
+        <Typography className="text-gray-600">{new Date(date).toLocaleDateString()}</Typography>
       </CardContent>
     );
   }
