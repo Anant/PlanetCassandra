@@ -91,16 +91,14 @@ const HeroSection = () => {
             variant="subtitle1"
             className="Font_Lato_Bold"
           >
-            The best knowledge base on Apache Cassandra to help platform
-            leaders, architects, engineers, and operators to build scalable
-            platforms
-          </Typography>
+            Where the Apache Cassandra community gets together. 
+            Welcome to the new PlanetCassandra.org </Typography>
           <Box
             sx={{
               marginTop: 5,
             }}
           >
-            <Link style={{ textDecoration: "none", color: "white" }} to={`https://www.datastax.com/dev/academy`}>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/news`}>
               <Button
                 sx={{
                   fontSize: {xs:11, sm: 12, md: 14, lg: 16},
@@ -112,10 +110,10 @@ const HeroSection = () => {
                 className="Font_Mulish_Button_L"
               >
 
-                Get Started
+                News Feed
               </Button>
             </Link>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`https://www.datastax.com/contact-us`}>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/links`}>
             <Button
               sx={{
                 fontSize: {xs:11, sm: 12, md: 14, lg: 16},
@@ -127,7 +125,7 @@ const HeroSection = () => {
               endIcon={<SendIcon />}
               className="Font_Mulish_Button_L"
             >
-              Meet with us
+              Links
             </Button>
             </Link>
           </Box>
