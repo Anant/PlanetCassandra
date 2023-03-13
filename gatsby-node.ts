@@ -388,32 +388,41 @@ export const createPages: GatsbyNode['createPages'] = async ({
 
    //----------------------------------------------------------------------------
   //TTRS Pictures Processing
-  // const AllNews: {
-  //   errors?: any;
-  //   data?: {
-  //     allFeedTtrs: {
-  //       nodes: {
-  //         id: string;
-  //         link: string;
-  //       }[];
-  //     };
-  //   };
-  // } = await graphql(`
-  // query NewsPictures {
-  //   allFeedTtrs {
-  //     nodes {
-  //       link
-  //       id
-  //     }
-  //   }
-  // }
-  // `);
-  // //@ts-ignore
-  // AllNews.forEach((node, index) => {
-  //   setTimeout(() => {
-  //     fetchThumbnail(node, createNode, createNodeId, getCache);
-  //   }, index * 200);
-  // });
+  const AllNews: {
+    errors?: any;
+    data?: {
+      allFeedTtrs: {
+        nodes: {
+          id: string;
+          link: string;
+        }[];
+      };
+    };
+  } = await graphql(`
+  query NewsPictures {
+    allFeedTtrs {
+      nodes {
+        link
+        id
+      }
+    }
+  }
+  `);
+  const filterednewsNodes = AllNews?.data?.allFeedTtrs?.nodes.filter(node => {
+    return !failingUrls.some(url => node.link.includes(url));
+  });
+
+  //@ts-ignore
+  filterednewsNodes.forEach((node, index) => {
+    setTimeout(() => {
+      const newNode = {
+        id: node.id,
+        url: node.link,
+        origin_url: node.link
+      };
+      fetchThumbnail(newNode, createNode, createNodeId, getCache);
+    }, index * 200);
+  });
   
   //----------------------------------------------------------------------------
   //Leaves Single Page 
