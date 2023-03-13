@@ -1,7 +1,7 @@
 import React from "react";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { Grid, Typography, Button, Container, Box } from "@mui/material";
-import UseCaseCard from "./UseCaseCard";
+import UseCaseCard from "../Cards/UseCaseCard";
 
 interface allAirtableData {
   allAirtable: {
@@ -43,7 +43,6 @@ const UseCases = () => {
             <UseCaseCard
               name={useCase.Name}
               description={useCase.Description}
-              width={"100%"}
             />
           </Grid>
         ))}
