@@ -77,28 +77,27 @@ const Footer = () => {
             }}
           >
             <Typography marginBottom={2} variant="h4" color={"white"}>
-              Stay Tuned!
+              Get Involved!
             </Typography>
             <Typography variant="subtitle2" color={"black"}>
-              Sign up to our newsletter and never miss out on anything related
-              to Cassandra.
+             Get involved with the Apache Cassandra community. You can get on Discord or Slack to chat 
+              with the community in realtime or stay up to date on the User / Dev mailing lists.
             </Typography>
-            <Typography variant="subtitle2" color={"black"}>
-              Our newsletter is sent once a week, every Thursday
-            </Typography>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#344D67",
-                },
+            <Link style={{ textDecoration: "none", color: "white" }} to={`https://cassandra.apache.org/_/community.html`}>
+            <Button
+              sx={{
+                fontSize: {xs:11, sm: 12, md: 14, lg: 16},
+                borderRadius: 50,
+                marginLeft: 10,
+                backgroundColor: "#344D67",
               }}
+              variant="contained"
+              endIcon={<SendIcon />}
+              className="Font_Mulish_Button_L"
             >
-              <Search
-                style={{ marginTop: 10 }}
-                placeholder="Email Address..."
-                enterButton={<AiOutlineSend color="#5AB1BB" />}
-              />
-            </ConfigProvider>
+              Links
+            </Button>
+            </Link>
           </Box>
         </Grid>
       </Grid>
