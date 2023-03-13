@@ -2,8 +2,6 @@
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from '../components/Layout/Layout';
-import PostCardGrid from '../components/PostCardGrid/PostCardGrid';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
 import { Container, Grid, Pagination } from '@mui/material';
 import EventCard from '../components/Cards/EventCard';
 

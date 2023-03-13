@@ -12,7 +12,7 @@ const fetchThumbnail = async (
   createNodeId: any,
   getCache: any
 ) => {
-  let originalUrl
+  let originalUrl = node.url
   if (node.url.includes("youtube.com")) {
     originalUrl = node.origin_url;
   }

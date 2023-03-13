@@ -13,6 +13,17 @@ import { GrFacebook } from 'react-icons/gr';
 import { FaDiscord } from 'react-icons/fa';
 
 const CommunitySection = () => {
+  const socialIcons = [
+    // { name: "Slack", url: "Hide", icon: <BsSlack style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    { name: "Discord", url: "https://discord.com/invite/pPjPcZN", icon: <FaDiscord style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    { name: "Youtube", url: "https://www.youtube.com/@PlanetCassandra", icon: <BsYoutube style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    { name: "Github", url: "https://github.com/PlanetCassandra", icon: <BsGithub style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    { name: "Twitch", url: "Hide", icon: <BsTwitch style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    { name: "Stackoverflow", url: "https://stackoverflow.com/questions/tagged/cassandra", icon: <BsStackOverflow style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    { name: "Twitter", url: "https://twitter.com/CStar_News", icon: <BsTwitter style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    { name: "Linkedin", url: "https://www.linkedin.com/company/apache-cassandra/", icon: <BsLinkedin style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    // { name: "Facebook", url: "Hide", icon: <GrFacebook style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> }
+  ];
   return (
     <Grid
       sx={{
@@ -65,6 +76,7 @@ const CommunitySection = () => {
         >
           Welcome to the Apache Cassandra community! We're a passionate and dedicated group of users, developers, and enthusiasts who are working together to make Cassandra the best it can be. Whether you're just getting started with Cassandra or you're an experienced user, there's a place for you in our community.
         </Typography>
+
         <Box
           sx={{
             display: 'flex',
@@ -74,41 +86,13 @@ const CommunitySection = () => {
             margin: '20px auto',
           }}
         >
-          <BsSlack style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
-          <BsYoutube
-            style={{
-              cursor: 'pointer',
-            }}
-            color="#FFFFFF"
-            size="32px"
-          />
-          <FaDiscord
-            style={{ cursor: 'pointer' }}
-            color="#FFFFFF"
-            size="32px"
-          />
-          <BsTwitch style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
-          <BsStackOverflow
-            style={{ cursor: 'pointer' }}
-            color="#FFFFFF"
-            size="32px"
-          />
-          <BsGithub style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
-          <BsTwitter
-            style={{ cursor: 'pointer' }}
-            color="#FFFFFF"
-            size="32px"
-          />
-          <BsLinkedin
-            style={{ cursor: 'pointer' }}
-            color="#FFFFFF"
-            size="32px"
-          />
-          <GrFacebook
-            style={{ cursor: 'pointer' }}
-            color="#FFFFFF"
-            size="32px"
-          />
+          {socialIcons.map((icon, index) => (
+            icon.url !== "Hide" && (
+              <a href={icon.url} key={index}>
+                {icon.icon}
+              </a>
+            )
+          ))}
         </Box>
       </Container>
     </Grid>
