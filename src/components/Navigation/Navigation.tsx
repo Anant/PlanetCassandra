@@ -13,9 +13,9 @@ import ToggleButton from '../ToggleButton/ToggleButton';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 const pages = [
-  { name: "What's New", route: "/" },
-  { name: "Events", route: "/events" },
-  { name: "News", route: "https://blog.planetcassandra.org/events" },
+  { name: "Home", route: "/" },
+  { name: "Events", route: "https://blog.planetcassandra.org/events" },
+  { name: "News", route: "/News" },
   { name: "Use Cases", route: "/usecases" },
   { name: "Posts", route: "/posts" },
   { name: "Leaves", route: "/leaves" },
