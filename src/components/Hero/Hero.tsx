@@ -113,7 +113,7 @@ const HeroSection = () => {
                 News Feed
               </Button>
             </Link>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`/links`}>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`/leaves`}>
             <Button
               sx={{
                 fontSize: {xs:11, sm: 12, md: 14, lg: 16},
