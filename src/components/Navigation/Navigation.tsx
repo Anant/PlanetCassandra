@@ -14,7 +14,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 const pages = [
   { name: "What's New", route: "/" },
-  { name: "Events", route: "/events" },
+  { name: "Events", route: "https://devcassandra.wpengine.com/events" },
   { name: "News", route: "/news" },
   { name: "Use Cases", route: "/usecases" },
   { name: "Posts", route: "/posts" },
