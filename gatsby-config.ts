@@ -87,14 +87,12 @@ const config: GatsbyConfig = {
         tables: [
           {
             baseId: `appkXvRXvfrCvUx1Y`,
-            tableName: `Case.Archive`,
+            tableName: `Cases`,
+            tableView: `Cases_Published`,
           },
           {
             baseId: `appkXvRXvfrCvUx1Y`,
             tableName: `Company`,
-            tableLinks: [`Case.Archive`],
-            //Need to figure out why this is returning null and not mapping
-            mappings: { "Case.Name": `caseName` },
           },
         ],
       },

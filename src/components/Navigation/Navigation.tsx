@@ -15,7 +15,7 @@ import { Link } from 'gatsby';
 const pages = [
   { name: "Home", route: "/" },
   { name: "Events", route: "https://blog.planetcassandra.org/events" },
-  { name: "News", route: "/News" },
+  { name: "News", route: "/news" },
   { name: "Use Cases", route: "/usecases" },
   { name: "Posts", route: "/posts" },
   { name: "Leaves", route: "/leaves" },

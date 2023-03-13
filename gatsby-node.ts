@@ -385,6 +385,35 @@ export const createPages: GatsbyNode['createPages'] = async ({
       fetchThumbnail(node, createNode, createNodeId, getCache);
     }, index * 200);
   });
+
+   //----------------------------------------------------------------------------
+  //TTRS Pictures Processing
+  // const AllNews: {
+  //   errors?: any;
+  //   data?: {
+  //     allFeedTtrs: {
+  //       nodes: {
+  //         id: string;
+  //         link: string;
+  //       }[];
+  //     };
+  //   };
+  // } = await graphql(`
+  // query NewsPictures {
+  //   allFeedTtrs {
+  //     nodes {
+  //       link
+  //       id
+  //     }
+  //   }
+  // }
+  // `);
+  // //@ts-ignore
+  // AllNews.forEach((node, index) => {
+  //   setTimeout(() => {
+  //     fetchThumbnail(node, createNode, createNodeId, getCache);
+  //   }, index * 200);
+  // });
   
   //----------------------------------------------------------------------------
   //Leaves Single Page 

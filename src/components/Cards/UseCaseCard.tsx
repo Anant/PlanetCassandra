@@ -37,8 +37,8 @@ const UseCaseCard = ({ name, description }: Props) => {
             className="Font_Montserrat_550"
             color="text.secondary"
           >
-            {description && description.length > 200
-              ? description.slice(0, 200) + '...'
+            {description && description.length > 150
+              ? description.slice(0, 150) + '...'
               : description}
           </Typography>
         </CardContent>

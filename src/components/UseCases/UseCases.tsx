@@ -8,9 +8,8 @@ interface allAirtableData {
     nodes: {
       table: string;
       data: {
-        Company_Logo_Filename: string;
-        Description: string;
-        Name: string;
+        Case_Name: string;
+        Case_Description: string;
       };
     }[];
   };
@@ -19,8 +18,8 @@ interface allAirtableData {
 const UseCases = () => {
   const { allAirtable }: allAirtableData = useStaticQuery(query);
   const filteredAirtable = allAirtable.nodes.slice(0, 6).map((node) => ({
-    Name: node.data.Name,
-    Description: node.data.Description,
+    Name: node.data.Case_Name,
+    Description: node.data.Case_Description,
   }));
 
   return (
@@ -71,13 +70,13 @@ const UseCases = () => {
 };
 
 const query = graphql`
-  query UseCasesData {
-    allAirtable(filter: { table: { eq: "Company" } }) {
+  query UseCasesDataHomepage {
+    allAirtable(filter: { table: { eq: "Cases" } }) {
       nodes {
         table
         data {
-          Description
-          Name
+          Case_Name
+          Case_Description
         }
       }
     }
