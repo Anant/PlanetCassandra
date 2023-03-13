@@ -95,7 +95,7 @@ const Footer = () => {
               variant="contained"
               className="Font_Mulish_Button_L"
             >
-              Links
+              Cassandra Community
             </Button>
             </Link>
           </Box>
