@@ -227,6 +227,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           data: {
             Case_Description: string;
             Case_Name: string;
+            Case_Article_Content: string;
           }
         }[];
       };
@@ -239,6 +240,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
           data {
             Case_Name
             Case_Description
+            Case_Article_Content
           }
         }
       }
@@ -259,7 +261,8 @@ export const createPages: GatsbyNode['createPages'] = async ({
       component: resolve(`src/components/Templates/UseCaseSinglePage.tsx`),
       context: {
         Description: node.data.Case_Description,
-        Name: node.data.Case_Name
+        Name: node.data.Case_Name,
+        Case_Article_Content: node.data.Case_Article_Content
       },
     });
   });

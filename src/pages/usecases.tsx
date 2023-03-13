@@ -12,6 +12,7 @@ interface CompanyData {
             data: {
                 Case_Name: string;
                 Case_Description: string;
+                Case_URL: string;
             };
         }[];
     };
@@ -36,6 +37,7 @@ const query = graphql`
         data {
           Case_Description
           Case_Name
+          Case_URL
         }
       }
     }

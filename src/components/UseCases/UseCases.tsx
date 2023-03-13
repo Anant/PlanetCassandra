@@ -10,6 +10,7 @@ interface allAirtableData {
       data: {
         Case_Name: string;
         Case_Description: string;
+        Case_URL: string;
       };
     }[];
   };
@@ -20,6 +21,7 @@ const UseCases = () => {
   const filteredAirtable = allAirtable.nodes.slice(0, 6).map((node) => ({
     Name: node.data.Case_Name,
     Description: node.data.Case_Description,
+    Case_URL: node.data.Case_URL,
   }));
 
   return (
@@ -42,6 +44,7 @@ const UseCases = () => {
             <UseCaseCard
               name={useCase.Name}
               description={useCase.Description}
+              url={useCase.Case_URL}
             />
           </Grid>
         ))}
@@ -75,6 +78,7 @@ const query = graphql`
       nodes {
         table
         data {
+          Case_URL
           Case_Name
           Case_Description
         }

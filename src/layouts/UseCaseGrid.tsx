@@ -8,6 +8,7 @@ interface CompanyDataProps {
     cardData: {
         Case_Name: string;
         Case_Description: string;
+        Case_URL: string;
     }[];
 }
 
@@ -24,6 +25,8 @@ const UseCaseGrid: React.FC<CompanyDataProps> = ({ cardData }) => {
                     name={card.Case_Name}
                     //@ts-ignore
                     description={card.Case_Description}
+                    //@ts-ignore
+                    url={card.Case_URL}
                 />
             )}
         />

@@ -11,9 +11,10 @@ import getSlug from "speakingurl";
 interface Props {
   name: string;
   description: string;
+  url: string;
 }
 
-const UseCaseCard = ({ name, description }: Props) => {
+const UseCaseCard = ({ name, description, url }: Props) => {
   return (
     <Card
       sx={{
@@ -50,7 +51,7 @@ const UseCaseCard = ({ name, description }: Props) => {
             alignItems: 'center',
           }}
         >
-          <Link style={{ textDecoration: "none" }} to={`/use-cases/${getSlug(name)}`}>
+          <Link style={{ textDecoration: "none" }} to={`${url}`}>
             <Button
               sx={{
                 borderRadius: 50,
