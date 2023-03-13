@@ -225,20 +225,20 @@ export const createPages: GatsbyNode['createPages'] = async ({
         nodes: {
           table: string;
           data: {
-            Description: string;
-            Name: string;
+            Case_Description: string;
+            Case_Name: string;
           }
         }[];
       };
     };
   } = await graphql(`
     query UseCasesData {
-      allAirtable(filter: { table: { eq: "Company" } }) {
+      allAirtable(filter: { table: { eq: "Cases" } }) {
         nodes {
           table
           data {
-            Description
-            Name
+            Case_Name
+            Case_Description
           }
         }
       }
@@ -255,11 +255,11 @@ export const createPages: GatsbyNode['createPages'] = async ({
   }
   allUseCases.data.allAirtable.nodes.forEach(node => {
     createPage({
-      path: `/use-cases/${getSlug(node.data.Name)}`,
+      path: `/use-cases/${getSlug(node.data.Case_Name)}`,
       component: resolve(`src/components/Templates/UseCaseSinglePage.tsx`),
       context: {
-        Description: node.data.Description,
-        Name: node.data.Name
+        Description: node.data.Case_Description,
+        Name: node.data.Case_Name
       },
     });
   });
@@ -341,7 +341,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   query LeavesPictures {
     allApiLeaves(
       filter: {url: {ne: null}}
-      limit: 20
+      limit: 50
       sort: {wallabag_created_at: DESC}
     ) {
       nodes {

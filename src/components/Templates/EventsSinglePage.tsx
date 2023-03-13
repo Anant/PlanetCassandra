@@ -19,7 +19,6 @@ interface EventsSinglePageProps {
 const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
     pageContext: {  Title, Publish_date, Eventbrite_Description, Cover_Image },
 }) => {
-    console.log(Cover_Image)
     return (
         <Layout>
             <Container>

@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid, Typography, Container, Box } from "@mui/material";
+import { Grid, Typography, Container, Box, Button } from "@mui/material";
 import { StaticImage } from "gatsby-plugin-image";
 import { Input, ConfigProvider } from "antd";
 import { AiOutlineSend } from "react-icons/ai";
+import { Link } from "gatsby";
 
 const Footer = () => {
   const { Search } = Input;
@@ -30,7 +31,7 @@ const Footer = () => {
             placeholder="blurred"
             height={60}
           />
-          <!-- <Box
+          {/* <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -42,7 +43,7 @@ const Footer = () => {
             <Typography color={"white"}>What's New?</Typography>
             <Typography color={"white"}>Events</Typography>
             <Typography color={"white"}>Use Cases</Typography>
-          </Box> -->
+          </Box> */}
           <Typography
             sx={{
               marginTop: 5,
@@ -83,7 +84,7 @@ const Footer = () => {
              Get involved with the Apache Cassandra community. You can get on Discord or Slack to chat 
               with the community in realtime or stay up to date on the User / Dev mailing lists.
             </Typography>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`https://cassandra.apache.org/_/community.html`}>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`https://cassandra.apache.org/_/community.html`} >
             <Button
               sx={{
                 fontSize: {xs:11, sm: 12, md: 14, lg: 16},
@@ -92,7 +93,6 @@ const Footer = () => {
                 backgroundColor: "#344D67",
               }}
               variant="contained"
-              endIcon={<SendIcon />}
               className="Font_Mulish_Button_L"
             >
               Links

@@ -13,7 +13,6 @@ interface CompanyDataProps {
 
 const UseCaseGrid: React.FC<CompanyDataProps> = ({ cardData }) => {
 
-    console.log(cardData)
     return (
         <BaseGrid
             //@ts-ignore

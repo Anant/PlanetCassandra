@@ -12,7 +12,6 @@ const client = algoliasearch("2X56L8156U", "c324c341a46ef9ff06ccd6a8e220d48f");
 const index = client.initIndex("PlanetCassandra");
 //@ts-ignore
 const SearchResults = ({ results, open, setOpen, anchor }) => {
-  console.log(results)
   return (
     <Popper open={open} anchorEl={anchor} style={{ zIndex: 100000 }}>
       <Paper>
