@@ -30,7 +30,7 @@ const Footer = () => {
             placeholder="blurred"
             height={60}
           />
-          <Box
+          <!-- <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -42,7 +42,7 @@ const Footer = () => {
             <Typography color={"white"}>What's New?</Typography>
             <Typography color={"white"}>Events</Typography>
             <Typography color={"white"}>Use Cases</Typography>
-          </Box>
+          </Box> -->
           <Typography
             sx={{
               marginTop: 5,
