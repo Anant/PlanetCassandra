@@ -86,8 +86,8 @@ const config: GatsbyConfig = {
         apiKey: `keyyRNiY9jP5OcGBA`,
         tables: [
           {
-            baseId: `app0cewpKFiSqkmVe`,
-            tableName: `Repos`,
+            baseId: `appkXvRXvfrCvUx1Y`,
+            tableName: `Company`,
           },
         ],
       },

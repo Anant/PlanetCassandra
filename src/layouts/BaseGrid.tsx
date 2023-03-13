@@ -26,6 +26,8 @@ interface CardData {
       };
     }; // Optional property for PostCardGrid
     excerpt?: string; // Optional property for PostCardGrid
+    Name: string; // Optional property for Use CaseCardGrid
+    Description: string; // Optional property for Use CaseCardGrid
   }
   
 

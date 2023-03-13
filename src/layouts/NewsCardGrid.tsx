@@ -18,6 +18,7 @@ interface NewsCardGridProps {
 const NewsCardGrid: React.FC<NewsCardGridProps> = ({ cardData }) => {
   return (
     <BaseGrid
+      //@ts-ignore
       cardData={cardData}
       itemsPerPage={12}
       renderItem={(card) => (

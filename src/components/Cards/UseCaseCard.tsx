@@ -9,12 +9,11 @@ import { Link } from "gatsby";
 import getSlug from "speakingurl";
 
 interface Props {
-  width: string;
   name: string;
   description: string;
 }
 
-const UseCaseCard = ({ name, description, width }: Props) => {
+const UseCaseCard = ({ name, description }: Props) => {
   return (
     <Card
       sx={{
@@ -26,7 +25,7 @@ const UseCaseCard = ({ name, description, width }: Props) => {
       <Box sx={{ padding: 3 }}>
         <CardContent sx={{ padding: 0 }}>
           <Typography
-            sx={{ color: '#5ab1bb', fontSize:20 }}
+            sx={{ color: '#5ab1bb', fontSize: 20 }}
             gutterBottom
             variant="h6"
             className='Font_Montserrat_Bold'
@@ -38,7 +37,9 @@ const UseCaseCard = ({ name, description, width }: Props) => {
             className="Font_Montserrat_550"
             color="text.secondary"
           >
-            {description}
+            {description && description.length > 200
+              ? description.slice(0, 200) + '...'
+              : description}
           </Typography>
         </CardContent>
         <CardActions
@@ -62,7 +63,7 @@ const UseCaseCard = ({ name, description, width }: Props) => {
               variant="contained"
             >
               <Typography className="Font_Mulish_Button_M">
-              Continue Reading
+                Continue Reading
               </Typography>
             </Button>
           </Link>
