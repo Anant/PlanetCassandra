@@ -87,7 +87,14 @@ const config: GatsbyConfig = {
         tables: [
           {
             baseId: `appkXvRXvfrCvUx1Y`,
+            tableName: `Case.Archive`,
+          },
+          {
+            baseId: `appkXvRXvfrCvUx1Y`,
             tableName: `Company`,
+            tableLinks: [`Case.Archive`],
+            //Need to figure out why this is returning null and not mapping
+            mappings: { "Case.Name": `caseName` },
           },
         ],
       },
@@ -106,14 +113,14 @@ const config: GatsbyConfig = {
         //Add to ENV File
         apiKey: `keyKQYgOjqgVIh48D`,
         tables: [
-          {
-            baseId: "appKPpuxHmcbNwiY5",
-            tableName: `Company`,
-          },
-          {
-            baseId: "appXnvVlKiaI5Qv4A",
-            tableName: `Glossary Main Page`,
-          },
+          // {
+          //   baseId: "appKPpuxHmcbNwiY5",
+          //   tableName: `Company`,
+          // },
+          // {
+          //   baseId: "appXnvVlKiaI5Qv4A",
+          //   tableName: `Glossary Main Page`,
+          // },
           {
             baseId: "apppWYJ52GKjoDHHG",
             tableName: `Content Production`,
