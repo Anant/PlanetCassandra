@@ -18,8 +18,20 @@ interface QueryResult {
     }
 }
 
+interface NewsAlgoliaData {
+  allFeedTtrs: {
+    totalCount: number;
+    nodes: {
+      title: string;
+      id: string;
+      author: string;
+    }[];
+  };
+}
+
+
 const PostQuery = `
-query Posts {
+query PostsAlgolia {
     allWpPost(sort: {date: DESC}) {
       totalCount
       nodes {
@@ -37,6 +49,19 @@ query Posts {
   }
 `;
 
+const NewsQuery =`
+query NewsAlgolia {
+  allFeedTtrs {
+    totalCount
+    nodes {
+      title
+      id
+      author
+    }
+  }
+}
+`
+
 const queries = [
     {
         query: PostQuery,
@@ -46,6 +71,14 @@ const queries = [
         settings: {},
         mergeSettings: false,
     },
+  //   {
+  //     query: NewsQuery,
+  //     queryVariables: {},
+  //     transformer: ({ data }: { data: NewsAlgoliaData }) => data.allFeedTtrs.nodes,
+  //     indexName: 'PlanetCassandra',
+  //     settings: {},
+  //     mergeSettings: false,
+  // },
 ];
 
 module.exports = queries

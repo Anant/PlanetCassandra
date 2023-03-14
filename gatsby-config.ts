@@ -41,6 +41,7 @@ const config: GatsbyConfig = {
         apiKey: '78d8e419d6bbaac52f74189ff5239fdb',
         queries,
         chunkSize: 10000, // default: 1000
+        resetOnBuild: true
       },
     },
     {
