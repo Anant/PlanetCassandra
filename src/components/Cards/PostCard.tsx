@@ -1,21 +1,25 @@
 import React from 'react';
-import { Card } from '@mui/material'
+import { Card, CardContent, Typography } from '@mui/material'
 import { Link } from "gatsby";
 import { BaseCard, CardProps } from './BaseCard'
 import './cardStyles.css'
 
 interface PostCardProps extends CardProps {
-  slug: string | undefined;
+    slug: string | undefined;
+    author: string;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ title, date, thumbnail, slug }) => {
-  return (
-    <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-      <Link style={{ textDecoration: "none", color: "white" }}  to={`/post/${slug}`}>
-        <BaseCard title={title} date={date} thumbnail={thumbnail} />
-      </Link>
-    </Card>
-  );
+const PostCard: React.FC<PostCardProps> = ({ title, date, thumbnail, slug, author }) => {
+    return (
+        <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
+            <CardContent className="px-6 py-4">
+                <Link style={{ textDecoration: "none", color: "white" }} to={`/post/${slug}`}>
+                    <BaseCard title={title} date={date} thumbnail={thumbnail} />
+                </Link>
+                <Typography>{author}</Typography>
+            </CardContent>
+        </Card>
+    );
 }
 
 export default PostCard;

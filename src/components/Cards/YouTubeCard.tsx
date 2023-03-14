@@ -21,7 +21,6 @@ const YoutubeCard: React.FC<YoutubeCardProps> = ({ title, channelTitle, videoId,
                 <BaseCard title={title} date={date} thumbnail={thumbnail} />
             </Link>
             <Typography className="text-gray-600">Channel: {channelTitle}</Typography>
-            <Typography className="text-gray-700">{description}</Typography>
         </Card>
     );
 

@@ -13,11 +13,13 @@ interface NewsCardProps extends CardProps {
 const NewsCard: React.FC<NewsCardProps> = ({ title, date, slug, author, thumbnail }) => {
     return (
         <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-        <Link style={{ textDecoration: "none", color: "white" }} to={`/news/${getSlug(title)}`}>
-          <BaseCard title={title} date={date} thumbnail={thumbnail} />
-        </Link>
-        <Typography className="text-gray-700">{author}</Typography>
-      </Card>
+            <CardContent className="px-6 py-4">
+                <Link style={{ textDecoration: "none", color: "white" }} to={`/news/${getSlug(title)}`}>
+                    <BaseCard title={title} date={date} thumbnail={thumbnail} />
+                </Link>
+                <Typography>{author}</Typography>
+            </CardContent>
+        </Card>
     );
 }
 

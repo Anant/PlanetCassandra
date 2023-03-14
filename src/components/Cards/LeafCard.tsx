@@ -16,7 +16,7 @@ const LeafCard: React.FC<LeafCardProps> = ({ title, date, thumbnail, description
       <Link style={{ textDecoration: "none", color: "white" }} to={`/leaf/${getSlug(title)}`}>
         <BaseCard title={title} date={date} thumbnail={thumbnail} />
       </Link>
-      <Typography className="text-gray-700">{description}</Typography>
+      {/* <Typography className="text-gray-700">{description}</Typography> */}
     </Card>
   );
 }
