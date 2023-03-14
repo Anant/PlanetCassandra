@@ -32,7 +32,14 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
   return (
     <Carousel onChange={(e) => handleNext(e)}>
       {items.map((item, i) => (
-        <Paper key={i}>
+        <Paper key={i} sx={{
+          height: {
+            xs: "400px",
+            sm: "550px",
+            md: "550px",
+            lg: "550px"
+          }
+        }}>
           {item.image && isImageLoaded ? (
             <GatsbyImage
               image={items[currentIndex].image}
@@ -48,7 +55,7 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
             height="80px"
             variant="h5"
             sx={{
-              paddingBottom:{xs: 2.5, sm: 1, md: 1, lg: 1},
+              paddingBottom: { xs: 2.5, sm: 1, md: 1, lg: 1 },
             }}
           >
             {item.title}

@@ -359,6 +359,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   `);
   const failingUrls = [
     'blogs.vmware.com',
+    'https://www.how2shout.com/linux/2-ways-to-install-cassandra-on-ubuntu-22-04-lts-jammy/',
     'blog.softwaremill',
     'www.ktexperts',
     'rustyrazorblade.com',

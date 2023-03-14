@@ -42,7 +42,7 @@ const PostCardGrid: React.FC<PostCardGridProps> = ({ cardData }) => {
       cardData={cardData}
       itemsPerPage={12}
       renderItem={(card) => (
-        <PostCard title={card.title} date={card.date} slug={getSlug(card.title)} thumbnail={card.featuredImage?.node.localFile.childImageSharp.gatsbyImageData}/>
+        <PostCard title={card.title} date={card.date} slug={card.slug} thumbnail={card.featuredImage?.node.localFile.childImageSharp.gatsbyImageData}/>
         )}
     />
     );

@@ -5,30 +5,22 @@ import { BaseCard, CardProps } from './BaseCard'
 import getSlug from "speakingurl";
 import './cardStyles.css'
 
-interface NewsCardProps extends Omit<CardProps, 'thumbnail'> {
+interface NewsCardProps extends CardProps {
     slug: string;
     author: string;
 }
 
-const NewsCard: React.FC<NewsCardProps> = ({ title, date, slug, author }) => {
+const NewsCard: React.FC<NewsCardProps> = ({ title, date, slug, author, thumbnail }) => {
     return (
-      <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-        <Link to={`/news/${slug}`}>
-          <img
-            src="https://via.placeholder.com/640x360"
-            className="w-full h-64 object-cover"
-            alt="Placeholder"
-          />
+        <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
+        <Link style={{ textDecoration: "none", color: "white" }} to={`/news/${getSlug(title)}`}>
+          <BaseCard title={title} date={date} thumbnail={thumbnail} />
         </Link>
-        <CardContent className="px-6 py-4">
-          <Typography className="text-xl font-medium text-gray-900" component="h2">
-            {title}
-          </Typography>
-          <Typography className="text-gray-600">{author}</Typography>
-          <Typography className="text-gray-600">{date}</Typography>
-        </CardContent>
+        <Typography className="text-gray-700">{author}</Typography>
       </Card>
     );
 }
 
 export default NewsCard;
+
+

@@ -5,7 +5,7 @@ import { BaseCard, CardProps } from './BaseCard'
 import './cardStyles.css'
 
 interface PostCardProps extends CardProps {
-  slug: string;
+  slug: string | undefined;
 }
 
 const PostCard: React.FC<PostCardProps> = ({ title, date, thumbnail, slug }) => {

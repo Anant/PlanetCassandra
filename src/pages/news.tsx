@@ -1,29 +1,53 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/Layout/Layout';
 import NewsCardGrid from '../layouts/NewsCardGrid'
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 
-interface Props {
-    data: {
-        allFeedTtrs: {
-            totalCount: number;
-            nodes: {
-                title: string;
-                summary: string;
-                pubDate: string;
-                link: string;
-                id: string;
-                content: string;
-                author: string;
-            }[];
+interface TtrsData {
+    allFile: {
+      nodes: {
+        parent: {
+          id: string;
+          table: string;
         };
+        childImageSharp: {
+          gatsbyImageData: IGatsbyImageData;
+        };
+      }[];
     };
-}
+    allFeedTtrs: {
+      totalCount: number;
+      nodes: {
+        title: string;
+        summary: string;
+        pubDate: string;
+        link: string;
+        id: string;
+        content: string;
+        author: string;
+      }[];
+    };
+  }
 
-const News: React.FC<Props> = (props: Props) => {
-    const { data } = props;
-    const posts = data.allFeedTtrs.nodes;
+const News: React.FC<TtrsData> = () => {
+    const { allFile, allFeedTtrs }: TtrsData = useStaticQuery(query);
+    console.log(allFeedTtrs);
+    console.log(allFile);
+    const posts = allFeedTtrs.nodes.map((post) => {
+        const image = allFile.nodes.find((img) => img.parent.id === post.id);
+        return {
+          title: post.title,
+          pubDate: post.pubDate,
+          link: post.link,
+          id: post.id,
+          content: post.content,
+          author: post.author,
+          summary: post.summary,
+          thumbnail: image?.childImageSharp?.gatsbyImageData,
+        };
+      });
 
     return (
         <Layout>
@@ -32,20 +56,32 @@ const News: React.FC<Props> = (props: Props) => {
     );
 };
 
-export const query = graphql`
-query TTRSS {
-    allFeedTtrs {
-      totalCount
+const query = graphql`
+query TTRSData {
+    allFile(filter: {parent: {id: {ne: null}}}) {
       nodes {
-        title
-        summary
-        pubDate
-        link
-        id
-        content
-        author
+        parent {
+          ... on FeedTTRS {
+            id
+          }
+        }
+        childImageSharp {
+          gatsbyImageData
+        }
       }
     }
+    allFeedTtrs{
+        totalCount
+        nodes {
+          title
+          summary
+          pubDate
+          link
+          id
+          content
+          author
+        }
+      }
   }
 `;
 
