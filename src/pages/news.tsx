@@ -33,8 +33,6 @@ interface TtrsData {
 
 const News: React.FC<TtrsData> = () => {
     const { allFile, allFeedTtrs }: TtrsData = useStaticQuery(query);
-    console.log(allFeedTtrs);
-    console.log(allFile);
     const posts = allFeedTtrs.nodes.map((post) => {
         const image = allFile.nodes.find((img) => img.parent.id === post.id);
         return {
