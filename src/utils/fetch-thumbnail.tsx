@@ -38,7 +38,7 @@ const fetchThumbnail = async (
     } else if (data.links.icon) {
       imageURL = data.links.icon[0].href;
     } else {
-      imageURL = "https://placehold.it/300x200";
+      imageURL = "https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png";
     }
 
     if (imageURL) {

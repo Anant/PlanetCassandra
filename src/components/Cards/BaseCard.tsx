@@ -15,7 +15,7 @@ const BaseCard: React.FC<CardProps> = ({ title, date, thumbnail }) => {
         if (thumbnail) {
             return (
                 <GatsbyImage
-                    className="w-full h-64 object-cover"
+                    className="w-full h-64 object-cover thumbnail"
                     image={thumbnail}
                     alt={alt}
                 />
@@ -23,8 +23,8 @@ const BaseCard: React.FC<CardProps> = ({ title, date, thumbnail }) => {
         } else {
             return (
                 <StaticImage
-                    src="https://via.placeholder.com/640x360"
-                    className="w-full h-64 object-cover"
+                    src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
+                    className="w-full h-64 object-cover thumbnail"
                     alt="Placeholder"
                 />
             );
