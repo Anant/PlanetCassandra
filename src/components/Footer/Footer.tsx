@@ -73,7 +73,6 @@ const Footer = () => {
               backgroundColor: "#5AB1BB",
               padding: 3,
               borderRadius: 5,
-              width: "50%",
               margin: "auto",
             }}
           >
@@ -87,9 +86,9 @@ const Footer = () => {
             <Link style={{ textDecoration: "none", color: "white" }} to={`https://cassandra.apache.org/_/community.html`} >
             <Button
               sx={{
-                fontSize: {xs:11, sm: 12, md: 14, lg: 16},
+                fontSize: {xs:11, sm: 15, md: 12, lg: 14},
                 borderRadius: 50,
-                marginLeft: 10,
+                margin: 2,
                 backgroundColor: "#344D67",
               }}
               variant="contained"
