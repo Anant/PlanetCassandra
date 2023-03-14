@@ -69,6 +69,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "G-KKEYHTTMZQ",
+        head: true,
       },
     },
     {
