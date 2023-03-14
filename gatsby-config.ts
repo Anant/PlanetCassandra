@@ -66,6 +66,12 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-KKEYHTTMZQ",
+      },
+    },
+    {
       resolve: `gatsby-source-rss-feed`,
       options: {
         //Add to ENV File
