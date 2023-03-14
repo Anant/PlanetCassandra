@@ -28,10 +28,6 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
                 <div className="articleContainer" style={{ marginInline: "30px" }}>
           <article>
             <Typography
-              variant="h4"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-            <Typography
               variant="subtitle2"
               gutterBottom
               dangerouslySetInnerHTML={{ __html: content }}
