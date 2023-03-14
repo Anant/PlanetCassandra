@@ -447,7 +447,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     };
   } = await graphql(`
     query Leaves {
-      allApiLeaves(sort: { wallabag_created_at: DESC },limit: 50) {
+      allApiLeaves(sort: { wallabag_created_at: DESC },limit: 200) {
         nodes {
           id
           title
