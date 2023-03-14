@@ -68,18 +68,18 @@ query TTRSData {
         }
       }
     }
-    allFeedTtrs{
-        totalCount
-        nodes {
-          title
-          summary
-          pubDate
-          link
-          id
-          content
-          author
-        }
+    allFeedTtrs(sort: {pubDate: DESC}) {
+      totalCount
+      nodes {
+        title
+        summary
+        pubDate
+        link
+        id
+        content
+        author
       }
+    }
   }
 `;
 
