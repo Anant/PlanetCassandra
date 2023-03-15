@@ -55,7 +55,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   //----------------------------------------------------------------------------
   //Redirects
   createRedirect({
-    fromPath: "/apache-cassandra-use-cases",
+    fromPath: "/apache-cassandra-use-cases/",
     toPath: "/usecases/",
     isPermanent: true,
     redirectInBrowser: true,
