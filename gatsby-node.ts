@@ -44,11 +44,22 @@ type ApiLeaves implements Node {
 
 export const createPages: GatsbyNode['createPages'] = async ({
   actions,
+  page,
   graphql,
   createNodeId,
   getCache,
 }) => {
-  const { createPage, createNode, createTypes } = actions;
+  const { createPage, createNode, deletePage, createRedirect } = actions;
+  
+
+  //----------------------------------------------------------------------------
+  //Redirects
+  createRedirect({
+    fromPath: "/apache-cassandra-use-cases",
+    toPath: "/usecases/",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
 
   //Posts from WP page creation
   //----------------------------------------------------------------------------
