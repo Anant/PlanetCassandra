@@ -1,8 +1,9 @@
 import React from "react";
-import { Grid, Typography, Container, Box } from "@mui/material";
+import { Grid, Typography, Container, Box, Button } from "@mui/material";
 import { StaticImage } from "gatsby-plugin-image";
 import { Input, ConfigProvider } from "antd";
 import { AiOutlineSend } from "react-icons/ai";
+import { Link } from "gatsby";
 
 const Footer = () => {
   const { Search } = Input;
@@ -30,7 +31,7 @@ const Footer = () => {
             placeholder="blurred"
             height={60}
           />
-          <Box
+          {/* <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -42,7 +43,7 @@ const Footer = () => {
             <Typography color={"white"}>What's New?</Typography>
             <Typography color={"white"}>Events</Typography>
             <Typography color={"white"}>Use Cases</Typography>
-          </Box>
+          </Box> */}
           <Typography
             sx={{
               marginTop: 5,
@@ -72,33 +73,30 @@ const Footer = () => {
               backgroundColor: "#5AB1BB",
               padding: 3,
               borderRadius: 5,
-              width: "50%",
               margin: "auto",
             }}
           >
             <Typography marginBottom={2} variant="h4" color={"white"}>
-              Stay Tuned!
+              Get Involved!
             </Typography>
             <Typography variant="subtitle2" color={"black"}>
-              Sign up to our newsletter and never miss out on anything related
-              to Cassandra.
+             Get involved with the Apache Cassandra community. You can get on Discord or Slack to chat 
+              with the community in realtime or stay up to date on the User / Dev mailing lists.
             </Typography>
-            <Typography variant="subtitle2" color={"black"}>
-              Our newsletter is sent once a week, every Thursday
-            </Typography>
-            <ConfigProvider
-              theme={{
-                token: {
-                  colorPrimary: "#344D67",
-                },
+            <Link style={{ textDecoration: "none", color: "white" }} to={`https://cassandra.apache.org/_/community.html`} >
+            <Button
+              sx={{
+                fontSize: {xs:11, sm: 15, md: 12, lg: 14},
+                borderRadius: 50,
+                margin: 2,
+                backgroundColor: "#344D67",
               }}
+              variant="contained"
+              className="Font_Mulish_Button_L"
             >
-              <Search
-                style={{ marginTop: 10 }}
-                placeholder="Email Address..."
-                enterButton={<AiOutlineSend color="#5AB1BB" />}
-              />
-            </ConfigProvider>
+              Cassandra Community
+            </Button>
+            </Link>
           </Box>
         </Grid>
       </Grid>

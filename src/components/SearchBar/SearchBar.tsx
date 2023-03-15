@@ -4,22 +4,22 @@ import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import algoliasearch from "algoliasearch/lite";
+import getSlug from "speakingurl";
 import { Box, Fade, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
 import Popper from '@mui/material/Popper';
 import { Link } from "gatsby";
 
 const client = algoliasearch("2X56L8156U", "c324c341a46ef9ff06ccd6a8e220d48f");
-const index = client.initIndex("PlanetCassandra");
+const index = client.initIndex("PlanetCassandraNews");
 //@ts-ignore
 const SearchResults = ({ results, open, setOpen, anchor }) => {
-  console.log(results)
   return (
     <Popper open={open} anchorEl={anchor} style={{ zIndex: 100000 }}>
       <Paper>
         <List>
           {/* @ts-ignore */}
           {results.map((result) => (
-            <Link to={`/post/${result.slug}`} style={{ textDecoration: "none", color: "black" }}>
+            <Link to={`/news/${getSlug(result.title)}`} style={{ textDecoration: "none", color: "black" }}>
               <ListItem button key={result.objectID}>
                 <ListItemText primary={result.title} />
               </ListItem>
@@ -58,7 +58,7 @@ export default function SearchBar() {
         p: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: { xs: 300, md: 400 },
+        width: { xs: 100, md: 100, lg: 300 },
         height: 30,
         borderRadius: 50,
         marginLeft: { xs: 0, md: 10 },

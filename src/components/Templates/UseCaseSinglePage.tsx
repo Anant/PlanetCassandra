@@ -10,11 +10,12 @@ interface UseCasesSinglePageProps {
     id: string;
     title: string;
     Description: string;
+    Case_Article_Content: string;
   };
 }
 
 const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = ({
-  pageContext: { id, title, Description },
+  pageContext: { id, title, Description, Case_Article_Content },
 }) => {
   return (
     <Layout>
@@ -32,6 +33,11 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = ({
               variant="subtitle2"
               gutterBottom
               dangerouslySetInnerHTML={{ __html: Description }}
+            />
+            <Typography
+              variant="subtitle2"
+              gutterBottom
+              dangerouslySetInnerHTML={{ __html: Case_Article_Content }}
             />
           </article>
         </div>

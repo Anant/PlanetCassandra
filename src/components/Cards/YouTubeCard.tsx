@@ -17,11 +17,10 @@ const YoutubeCard: React.FC<YoutubeCardProps> = ({ title, channelTitle, videoId,
 
     return (
         <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
-            <Link style={{ textDecoration: "none", color: "white" }} to={`/video/${getSlug(title)}`}>
+            <Link style={{ textDecoration: "none", color: "white" }} to={`https://www.youtube.com/watch?v=${videoId}`}>
                 <BaseCard title={title} date={date} thumbnail={thumbnail} />
             </Link>
             <Typography className="text-gray-600">Channel: {channelTitle}</Typography>
-            <Typography className="text-gray-700">{description}</Typography>
         </Card>
     );
 

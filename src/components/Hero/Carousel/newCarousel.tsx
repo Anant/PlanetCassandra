@@ -4,6 +4,8 @@ import {
   Paper,
   Skeleton,
   Button,
+  Card,
+  CardContent,
 } from "@mui/material";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -32,7 +34,17 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
   return (
     <Carousel onChange={(e) => handleNext(e)}>
       {items.map((item, i) => (
-        <Paper key={i}>
+        <Card key={i} sx={{
+          borderRadius: '16px',
+          boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)',
+          border: '3px solid #F2F2F2',
+        }}>
+          <CardContent sx={{ height: {
+            xs: "300px",
+            sm: "450px",
+            md: "400px",
+            lg: "400px"
+          } }}>
           {item.image && isImageLoaded ? (
             <GatsbyImage
               image={items[currentIndex].image}
@@ -48,11 +60,12 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
             height="80px"
             variant="h5"
             sx={{
-              paddingBottom:{xs: 2.5, sm: 1, md: 1, lg: 1},
+              paddingBottom: { xs: 2.5, sm: 1, md: 1, lg: 1 },
             }}
           >
             {item.title}
           </Typography>
+          </CardContent>
 
           <Link
             style={{
@@ -77,7 +90,7 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
               Continue reading{" "}
             </Button>
           </Link>
-        </Paper>
+        </Card>
       ))}
     </Carousel>
   );

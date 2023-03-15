@@ -225,20 +225,22 @@ export const createPages: GatsbyNode['createPages'] = async ({
         nodes: {
           table: string;
           data: {
-            Description: string;
-            Name: string;
+            Case_Description: string;
+            Case_Name: string;
+            Case_Article_Content: string;
           }
         }[];
       };
     };
   } = await graphql(`
     query UseCasesData {
-      allAirtable(filter: { table: { eq: "Company" } }) {
+      allAirtable(filter: { table: { eq: "Cases" } }) {
         nodes {
           table
           data {
-            Description
-            Name
+            Case_Name
+            Case_Description
+            Case_Article_Content
           }
         }
       }
@@ -255,11 +257,12 @@ export const createPages: GatsbyNode['createPages'] = async ({
   }
   allUseCases.data.allAirtable.nodes.forEach(node => {
     createPage({
-      path: `/use-cases/${getSlug(node.data.Name)}`,
+      path: `/use-cases/${getSlug(node.data.Case_Name)}`,
       component: resolve(`src/components/Templates/UseCaseSinglePage.tsx`),
       context: {
-        Description: node.data.Description,
-        Name: node.data.Name
+        Description: node.data.Case_Description,
+        Name: node.data.Case_Name,
+        Case_Article_Content: node.data.Case_Article_Content
       },
     });
   });
@@ -341,7 +344,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   query LeavesPictures {
     allApiLeaves(
       filter: {url: {ne: null}}
-      limit: 20
+      limit: 50
       sort: {wallabag_created_at: DESC}
     ) {
       nodes {
@@ -356,6 +359,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   `);
   const failingUrls = [
     'blogs.vmware.com',
+    'https://www.how2shout.com/linux/2-ways-to-install-cassandra-on-ubuntu-22-04-lts-jammy/',
     'blog.softwaremill',
     'www.ktexperts',
     'rustyrazorblade.com',
@@ -385,6 +389,44 @@ export const createPages: GatsbyNode['createPages'] = async ({
       fetchThumbnail(node, createNode, createNodeId, getCache);
     }, index * 200);
   });
+
+   //----------------------------------------------------------------------------
+  //TTRS Pictures Processing
+  const AllNews: {
+    errors?: any;
+    data?: {
+      allFeedTtrs: {
+        nodes: {
+          id: string;
+          link: string;
+        }[];
+      };
+    };
+  } = await graphql(`
+  query NewsPictures {
+    allFeedTtrs {
+      nodes {
+        link
+        id
+      }
+    }
+  }
+  `);
+  const filterednewsNodes = AllNews?.data?.allFeedTtrs?.nodes.filter(node => {
+    return !failingUrls.some(url => node.link.includes(url));
+  });
+
+  //@ts-ignore
+  filterednewsNodes.forEach((node, index) => {
+    setTimeout(() => {
+      const newNode = {
+        id: node.id,
+        url: node.link,
+        origin_url: node.link
+      };
+      fetchThumbnail(newNode, createNode, createNodeId, getCache);
+    }, index * 200);
+  });
   
   //----------------------------------------------------------------------------
   //Leaves Single Page 
@@ -405,7 +447,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     };
   } = await graphql(`
     query Leaves {
-      allApiLeaves(sort: { wallabag_created_at: DESC },limit: 50) {
+      allApiLeaves(sort: { wallabag_created_at: DESC },limit: 200) {
         nodes {
           id
           title

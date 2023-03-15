@@ -13,8 +13,8 @@ import ToggleButton from '../ToggleButton/ToggleButton';
 import { StaticImage } from 'gatsby-plugin-image';
 import { Link } from 'gatsby';
 const pages = [
-  { name: "What's New", route: "/" },
-  { name: "Events", route: "https://devcassandra.wpengine.com/events" },
+  { name: "Home", route: "/" },
+  { name: "Events", route: "https://blog.planetcassandra.org/events" },
   { name: "News", route: "/news" },
   { name: "Use Cases", route: "/usecases" },
   { name: "Posts", route: "/posts" },
@@ -51,7 +51,7 @@ function ResponsiveAppBar() {
               alt="Planet Cassandra"
               placeholder="blurred"
               height={30}
-              style={{ marginLeft: 110 }}
+              style={{ marginLeft: 10 }}
             />
           </Link>
         </Box>
@@ -129,7 +129,7 @@ function ResponsiveAppBar() {
         >
           <Link style={{ textDecoration: "none" }} to={`/contribute`}>
             <Button
-              sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
+              sx={{ display:{md:"none", lg:'block'} , my: 2, color: 'black', fontSize: 12}}
               className="Font_Poppins_Regular"
             >
               Contribute
@@ -144,7 +144,6 @@ function ResponsiveAppBar() {
             </Button>
           </Link>
         </Box>
-        <ToggleButton />
       </Toolbar>
     </AppBar>
   );

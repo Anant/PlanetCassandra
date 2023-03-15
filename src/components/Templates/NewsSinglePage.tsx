@@ -2,8 +2,9 @@
 import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
-import { Container, Typography } from "@mui/material";
+import { Button, Container,  Grid,  Typography } from "@mui/material";
 import './singlePageTemplates.css'
+import { Link } from "gatsby";
 
 interface PostSinglePageProps {
     pageContext: {
@@ -12,11 +13,12 @@ interface PostSinglePageProps {
         content: string;
         author: string;
         summary: string;
+        link: string;
     };
 }
 
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
-    pageContext: { id, title, author, content, summary },
+    pageContext: { id, title, author, content, summary, link },
 }) => {
     return (
         <Layout>
@@ -25,19 +27,21 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
                     <title>{title}</title>
                     <meta name={title} content={summary} />
                 </Helmet>
-                <div className="articleContainer" style={{ marginInline: "30px" }}>
-          <article>
-            <Typography
-              variant="h4"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-            <Typography
-              variant="subtitle2"
-              gutterBottom
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-          </article>
-        </div>
+                <Grid container spacing={2}> 
+                <Grid item className="articleContainer" style={{ marginInline: "30px" }}>
+                    <article>
+                        <Typography
+                            variant="subtitle2"
+                            gutterBottom
+                            dangerouslySetInnerHTML={{ __html: content }}
+                        />
+                    </article>
+                    <Link style={{ textDecoration: "none", marginLeft:3}} to={link} >
+                        <Button variant="contained" color="primary" >Continue Reading</Button>
+                    </Link>
+                </Grid>
+                </Grid>
+
             </Container>
         </Layout>
     );

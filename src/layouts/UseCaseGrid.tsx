@@ -6,13 +6,13 @@ import UseCaseCard from '../components/Cards/UseCaseCard';
 
 interface CompanyDataProps {
     cardData: {
-        Name: string;
-        Description: string;
+        Case_Name: string;
+        Case_Description: string;
+        Case_URL: string;
     }[];
 }
 
 const UseCaseGrid: React.FC<CompanyDataProps> = ({ cardData }) => {
-
 
     return (
         <BaseGrid
@@ -21,8 +21,12 @@ const UseCaseGrid: React.FC<CompanyDataProps> = ({ cardData }) => {
             itemsPerPage={12}
             renderItem={(card) => (
                 <UseCaseCard
-                    name={card.Name}
-                    description={card.Description}
+                    //@ts-ignore
+                    name={card.Case_Name}
+                    //@ts-ignore
+                    description={card.Case_Description}
+                    //@ts-ignore
+                    url={card.Case_URL}
                 />
             )}
         />

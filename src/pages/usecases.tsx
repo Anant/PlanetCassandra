@@ -10,8 +10,9 @@ interface CompanyData {
         nodes: {
             table: string;
             data: {
-                Name: string;
-                Description: string;
+                Case_Name: string;
+                Case_Description: string;
+                Case_URL: string;
             };
         }[];
     };
@@ -30,12 +31,13 @@ const Companies: React.FC<CompanyData> = () => {
 
 const query = graphql`
 {
-    allAirtable(filter: { table: { eq: "Company" } }) {
+    allAirtable(filter: { table: { eq: "Cases" } }) {
       nodes {
         table
         data {
-          Description
-          Name
+          Case_Description
+          Case_Name
+          Case_URL
         }
       }
     }

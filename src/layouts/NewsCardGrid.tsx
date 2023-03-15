@@ -12,6 +12,7 @@ interface NewsCardGridProps {
     content: string;
     author: string;
     summary: string;
+    thumbnail: any;
   }[];
 }
 
@@ -22,7 +23,8 @@ const NewsCardGrid: React.FC<NewsCardGridProps> = ({ cardData }) => {
       cardData={cardData}
       itemsPerPage={12}
       renderItem={(card) => (
-        <NewsCard title={card.title} date={card.pubDate} author={card.author} slug={getSlug(card.title)} />
+        //@ts-ignore
+        <NewsCard title={card.title} date={card.pubDate} author={card.author} slug={getSlug(card.title)} thumbnail={card.thumbnail} />
       )}
     />
   );

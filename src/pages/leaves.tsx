@@ -32,7 +32,7 @@ const Leaves: React.FC<AllLeavesData> = () => {
   const { allApiLeaves, allFile }: AllLeavesData = useStaticQuery(query);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
-  const cardData = allApiLeaves.nodes;
+  const cardData = allApiLeaves.nodes.slice(1);
   const images = allFile.nodes;
   const totalPages = Math.ceil(cardData.length / itemsPerPage);
 

@@ -59,7 +59,7 @@ const YoutubeSection = () => {
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
-            <YouTube videoId="yQCDZDUzRJM" opts={opts} />
+            <YouTube videoId="CKdT6f6wQyo" opts={opts} />
           </Grid>
         </Grid>
       </Container>

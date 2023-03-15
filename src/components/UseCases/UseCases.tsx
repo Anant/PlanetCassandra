@@ -8,9 +8,9 @@ interface allAirtableData {
     nodes: {
       table: string;
       data: {
-        Company_Logo_Filename: string;
-        Description: string;
-        Name: string;
+        Case_Name: string;
+        Case_Description: string;
+        Case_URL: string;
       };
     }[];
   };
@@ -19,8 +19,9 @@ interface allAirtableData {
 const UseCases = () => {
   const { allAirtable }: allAirtableData = useStaticQuery(query);
   const filteredAirtable = allAirtable.nodes.slice(0, 6).map((node) => ({
-    Name: node.data.Name,
-    Description: node.data.Description,
+    Name: node.data.Case_Name,
+    Description: node.data.Case_Description,
+    Case_URL: node.data.Case_URL,
   }));
 
   return (
@@ -43,6 +44,7 @@ const UseCases = () => {
             <UseCaseCard
               name={useCase.Name}
               description={useCase.Description}
+              url={useCase.Case_URL}
             />
           </Grid>
         ))}
@@ -71,13 +73,14 @@ const UseCases = () => {
 };
 
 const query = graphql`
-  query UseCasesData {
-    allAirtable(filter: { table: { eq: "Company" } }) {
+  query UseCasesDataHomepage {
+    allAirtable(filter: { table: { eq: "Cases" } }) {
       nodes {
         table
         data {
-          Description
-          Name
+          Case_URL
+          Case_Name
+          Case_Description
         }
       }
     }
