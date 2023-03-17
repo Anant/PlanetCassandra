@@ -45,6 +45,7 @@ const UseCases = () => {
               name={useCase.Name}
               description={useCase.Description}
               url={useCase.Case_URL}
+              gatsbyImageData={null}
             />
           </Grid>
         ))}

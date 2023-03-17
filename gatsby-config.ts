@@ -97,10 +97,12 @@ const config: GatsbyConfig = {
             baseId: `appkXvRXvfrCvUx1Y`,
             tableName: `Cases`,
             tableView: `Cases_Published`,
+            tableLinks: ['Case_Company'],
           },
           {
             baseId: `appkXvRXvfrCvUx1Y`,
             tableName: `Company`,
+            tableLinks: ['Cases'],
           },
         ],
       },

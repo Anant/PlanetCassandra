@@ -3,18 +3,20 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { Box, Typography, Button } from '@mui/material';
-import { StaticImage } from 'gatsby-plugin-image';
+import { IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { CiFacebook, CiLinkedin, CiTwitter } from 'react-icons/ci';
 import { Link } from "gatsby";
-import getSlug from "speakingurl";
+import { GatsbyImage } from "gatsby-plugin-image"
 
 interface Props {
   name: string;
   description: string;
   url: string;
+  gatsbyImageData: IGatsbyImageData | null;
 }
 
-const UseCaseCard = ({ name, description, url }: Props) => {
+const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
+
   return (
     <Card
       sx={{
@@ -25,6 +27,15 @@ const UseCaseCard = ({ name, description, url }: Props) => {
     >
       <Box sx={{ padding: 3 }}>
         <CardContent sx={{ padding: 0 }}>
+          {gatsbyImageData && (
+            <Box sx={{ width: '100%', height: '100px', overflow: 'hidden' }}>
+              <GatsbyImage
+                className="w-full h-100 object-cover thumbnail"
+                image={gatsbyImageData}
+                alt={name}
+              />
+            </Box>
+          )}
           <Typography
             sx={{ color: '#5ab1bb', fontSize: 20 }}
             gutterBottom

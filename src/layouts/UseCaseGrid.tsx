@@ -3,14 +3,16 @@ import { useStaticQuery, graphql } from "gatsby";
 import Layout from '../components/Layout/Layout';
 import BaseGrid from './BaseGrid';
 import UseCaseCard from '../components/Cards/UseCaseCard';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface CompanyDataProps {
     cardData: {
-        Case_Name: string;
-        Case_Description: string;
-        Case_URL: string;
+      Case_Name: string;
+      Case_Description: string;
+      Case_URL: string;
+      gatsbyImageData: IGatsbyImageData | null;
     }[];
-}
+  }
 
 const UseCaseGrid: React.FC<CompanyDataProps> = ({ cardData }) => {
 
@@ -27,6 +29,7 @@ const UseCaseGrid: React.FC<CompanyDataProps> = ({ cardData }) => {
                     description={card.Case_Description}
                     //@ts-ignore
                     url={card.Case_URL}
+                    gatsbyImageData={card.gatsbyImageData}
                 />
             )}
         />

@@ -83,3 +83,4 @@ gatsby-types.d.ts
 .env
 
 yarn.lock
+.gitpod.yml
