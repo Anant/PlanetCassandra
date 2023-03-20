@@ -14,6 +14,7 @@ const Footer = () => {
         sx={{
           height: 700,
         }}
+        spacing={5}
         justifyContent="center"
         alignItems="center"
         container
@@ -51,9 +52,10 @@ const Footer = () => {
             color="#5AB1BB"
             variant="subtitle1"
           >
-            Planet Cassandra is a hub for all things Apache Cassandra.
-            From tutorials and guides, to discussions and updates, we're here to help you get the most out of Cassandra. 
-            Connect with us and become part of our growing community today
+            Planet Cassandra is a hub for all things Apache Cassandra. From
+            tutorials and guides, to discussions and updates, we're here to help
+            you get the most out of Cassandra. Connect with us and become part
+            of our growing community today
           </Typography>
           <Typography
             sx={{
@@ -80,22 +82,26 @@ const Footer = () => {
               Get Involved!
             </Typography>
             <Typography variant="subtitle2" color={"black"}>
-             Get involved with the Apache Cassandra community. You can get on Discord or Slack to chat 
-              with the community in realtime or stay up to date on the User / Dev mailing lists.
+              Get involved with the Apache Cassandra community. You can get on
+              Discord or Slack to chat with the community in realtime or stay up
+              to date on the User / Dev mailing lists.
             </Typography>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`https://cassandra.apache.org/_/community.html`} >
-            <Button
-              sx={{
-                fontSize: {xs:11, sm: 15, md: 12, lg: 14},
-                borderRadius: 50,
-                margin: 2,
-                backgroundColor: "#344D67",
-              }}
-              variant="contained"
-              className="Font_Mulish_Button_L"
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`https://cassandra.apache.org/_/community.html`}
             >
-              Cassandra Community
-            </Button>
+              <Button
+                sx={{
+                  fontSize: { xs: 11, sm: 15, md: 12, lg: 14 },
+                  borderRadius: 50,
+                  margin: 2,
+                  backgroundColor: "#344D67",
+                }}
+                variant="contained"
+                className="Font_Mulish_Button_L"
+              >
+                Cassandra Community
+              </Button>
             </Link>
           </Box>
         </Grid>
