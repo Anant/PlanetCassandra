@@ -77,7 +77,7 @@ export default function SearchBar() {
         width: { xs: 100, md: 100, lg: 300 },
         height: 30,
         borderRadius: 50,
-        marginLeft: { xs: 0, md: 10 },
+        marginLeft: { xs: 0 },
       }}
     >
       <InputBase
