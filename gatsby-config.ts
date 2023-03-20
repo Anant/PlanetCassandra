@@ -18,6 +18,22 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sitemap",
     `gatsby-plugin-typescript`,
     {
+      resolve: "gatsby-plugin-env-variables",
+      options: {
+        allowList: [
+        "ALGOLIA_APP_ID",
+        "ALGOLIA_API_KEY", 
+        "WP_GRAPHQL", 
+        "GA_TRACKING_ID",
+        "AIRTABLE_KEY_1",
+        "AIRTABLE_KEY_2",
+        "YOUTUBE_API_KEY",
+        "LEAVES_URL",
+        "ALGOLIA_ADMIN_KEY"
+      ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
@@ -38,8 +54,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-algolia`,
       options: {
-        appId: '2X56L8156U',
-        apiKey: '78d8e419d6bbaac52f74189ff5239fdb',
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
         queries,
         chunkSize: 10000, // default: 1000
         resetOnBuild: true
@@ -57,7 +73,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-wordpress`,
       options: {
         //Create auth and add it to ENV file
-        url: `https://prodcassandra.wpengine.com/graphql`,
+        url: process.env.WP_GRAPHQL,
         type: {
           Post: process.env.NODE_ENV === "development" ? { limit: 20 } : { limit: 500 },
           Page: {
@@ -69,7 +85,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "G-KKEYHTTMZQ",
+        trackingId: process.env.GA_TRACKING_ID,
         head: true,
       },
     },
@@ -92,7 +108,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-airtable`,
       options: {
         //Add to ENV File
-        apiKey: `keyyRNiY9jP5OcGBA`,
+        apiKey: process.env.AIRTABLE_KEY_1,
         tables: [
           {
             baseId: `appkXvRXvfrCvUx1Y`,
@@ -112,7 +128,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-youtube-v3`,
       options: {
         channelId: ['UCvP-AXuCr-naAeEccCfKwUA'],
-        apiKey: 'AIzaSyCBqyKftArIjeOh3j5nyiWSohSfMzVV67o', //Add to ENV File
+        apiKey: process.env.YOUTUBE_API_KEY, //Add to ENV File
         maxVideos: 50 // Defaults to 50
       },
     },
@@ -120,7 +136,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-airtable`,
       options: {
         //Add to ENV File
-        apiKey: `keyKQYgOjqgVIh48D`,
+        apiKey:  process.env.AIRTABLE_KEY_2,
         tables: [
           // {
           //   baseId: "appKPpuxHmcbNwiY5",
@@ -141,7 +157,7 @@ const config: GatsbyConfig = {
       resolve: "gatsby-source-apiserver",
       options: {
         typePrefix: "api_",
-        url: "http://167.172.142.105:5000/cassandra-leaves",
+        url: process.env.LEAVES_URL,
         method: "get",
         headers: {
           "Content-Type": "application/json"

@@ -11,7 +11,10 @@ import { Link } from "gatsby";
 import { navigate } from "gatsby";
 import { useSearchValueContext } from '../../context/SearchContext';
 
-const client = algoliasearch("2X56L8156U", "c324c341a46ef9ff06ccd6a8e220d48f");
+const client = algoliasearch(
+  process.env.ALGOLIA_APP_ID,
+  process.env.ALGOLIA_API_KEY
+);
 const index = client.initIndex("PlanetCassandraNews");
 //@ts-ignore
 const SearchResults = ({ results, open, setOpen, anchor }) => {
