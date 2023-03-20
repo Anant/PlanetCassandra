@@ -26,7 +26,6 @@ interface AllWpPostData {
   };
 }
 
-
 const HeroSection = () => {
   const { allWpPost } = useStaticQuery(query);
 
@@ -54,6 +53,7 @@ const HeroSection = () => {
       >
         <Grid item xs={12} md={6}>
           <Typography
+            fontSize={60}
             variant="h3"
             component="h1"
             className="Font_Poppins_Regular"
@@ -63,6 +63,7 @@ const HeroSection = () => {
           <Grid container>
             <Typography
               fontWeight={"bold"}
+              fontSize={60}
               color="#344D67"
               component="h1"
               variant="h3"
@@ -73,6 +74,7 @@ const HeroSection = () => {
             </Typography>
             <Typography
               fontWeight={"bold"}
+              fontSize={60}
               component="h1"
               variant="h3"
               color="#5AB1BB"
@@ -86,22 +88,26 @@ const HeroSection = () => {
           <Typography
             sx={{
               marginTop: 5,
-              fontSize: 20
+              fontSize: 20,
             }}
             variant="subtitle1"
             className="Font_Lato_Bold"
           >
-            Where the Apache Cassandra community gets together. 
-            Welcome to the new PlanetCassandra.org </Typography>
+            Where the Apache Cassandra community gets together. Welcome to the
+            new PlanetCassandra.org{" "}
+          </Typography>
           <Box
             sx={{
               marginTop: 5,
             }}
           >
-            <Link style={{ textDecoration: "none", color: "white" }} to={`/news`}>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/news`}
+            >
               <Button
                 sx={{
-                  fontSize: {xs:11, sm: 12, md: 14, lg: 16},
+                  fontSize: { xs: 11, sm: 12, md: 14, lg: 16 },
                   borderRadius: 50,
                   backgroundColor: "#5AB1BB",
                 }}
@@ -109,24 +115,26 @@ const HeroSection = () => {
                 endIcon={<SendIcon />}
                 className="Font_Mulish_Button_L"
               >
-
                 News Feed
               </Button>
             </Link>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`/leaves`}>
-            <Button
-              sx={{
-                fontSize: {xs:11, sm: 12, md: 14, lg: 16},
-                borderRadius: 50,
-                marginLeft: 10,
-                backgroundColor: "#344D67",
-              }}
-              variant="contained"
-              endIcon={<SendIcon />}
-              className="Font_Mulish_Button_L"
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/leaves`}
             >
-              Links
-            </Button>
+              <Button
+                sx={{
+                  fontSize: { xs: 11, sm: 12, md: 14, lg: 16 },
+                  borderRadius: 50,
+                  marginLeft: 3,
+                  backgroundColor: "#344D67",
+                }}
+                variant="contained"
+                endIcon={<SendIcon />}
+                className="Font_Mulish_Button_L"
+              >
+                Links
+              </Button>
             </Link>
           </Box>
         </Grid>

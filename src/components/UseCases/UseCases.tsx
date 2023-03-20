@@ -31,7 +31,11 @@ const UseCases = () => {
       }}
     >
       <Typography
-        sx={{ fontSize:39 , marginBottom: 3, textAlign: { xs: "center", md: "start" } }}
+        sx={{
+          fontSize: 39,
+          marginBottom: 3,
+          textAlign: { xs: "center", md: "start" },
+        }}
         color="#344D67"
         variant="h4"
         className="Font_Poppins_Bold"
@@ -55,16 +59,16 @@ const UseCases = () => {
           <Button
             sx={{
               borderRadius: 50,
-              backgroundColor: "#F2545B",
+              backgroundColor: "#163BBF",
               fontSize: 10,
               "&:hover": {
-                backgroundColor: "#F2545B",
+                backgroundColor: "#163BBF",
               },
             }}
             variant="contained"
           >
             <Typography className="Font_Mulish_Button_M">
-            See all use cases
+              See all use cases
             </Typography>
           </Button>
         </Link>

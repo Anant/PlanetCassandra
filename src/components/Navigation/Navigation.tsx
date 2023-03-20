@@ -1,17 +1,17 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import SearchBar from '../SearchBar/SearchBar';
-import ToggleButton from '../ToggleButton/ToggleButton';
-import { StaticImage } from 'gatsby-plugin-image';
-import { Link } from 'gatsby';
+import * as React from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
+import SearchBar from "../SearchBar/SearchBar";
+import ToggleButton from "../ToggleButton/ToggleButton";
+import { StaticImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
 const pages = [
   { name: "Home", route: "/" },
   { name: "Events", route: "https://blog.planetcassandra.org/events" },
@@ -19,7 +19,7 @@ const pages = [
   { name: "Use Cases", route: "/usecases" },
   { name: "Posts", route: "/posts" },
   { name: "Leaves", route: "/leaves" },
-  { name: "Videos", route: "/videos" }
+  { name: "Videos", route: "/videos" },
 ];
 
 function ResponsiveAppBar() {
@@ -38,14 +38,22 @@ function ResponsiveAppBar() {
   return (
     <AppBar
       sx={{
-        bgcolor: '#F9F8F8',
-        boxShadow: 'none',
+        bgcolor: "#F9F8F8",
+        boxShadow: "none",
       }}
       position="static"
     >
-      <Toolbar disableGutters>
-        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'block' } }}>
-          <Link to='/'>
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          flexGrow: 1,
+          marginX: 5,
+        }}
+        disableGutters
+      >
+        <Box sx={{ display: { xs: "none", md: "block" } }}>
+          <Link to="/">
             <StaticImage
               src="../../images/LogoWithText.png"
               alt="Planet Cassandra"
@@ -59,7 +67,7 @@ function ResponsiveAppBar() {
         <Box
           sx={{
             flexGrow: 1,
-            display: { xs: 'flex', md: 'none' },
+            display: { xs: "flex", md: "none" },
           }}
         >
           <IconButton
@@ -75,18 +83,18 @@ function ResponsiveAppBar() {
             id="menu-appbar"
             anchorEl={anchorElNav}
             anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
+              vertical: "bottom",
+              horizontal: "left",
             }}
             keepMounted
             transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
+              vertical: "top",
+              horizontal: "left",
             }}
             open={Boolean(anchorElNav)}
             onClose={handleCloseNavMenu}
             sx={{
-              display: { xs: 'block', md: 'none' },
+              display: { xs: "block", md: "none" },
             }}
           >
             {pages.map(({ name, route }) => (
@@ -101,17 +109,19 @@ function ResponsiveAppBar() {
 
         <Box
           sx={{
-            flexGrow: 1,
-            justifyContent: 'end',
-            display: { xs: 'none', md: 'flex' },
+            display: { xs: "none", md: "flex" },
           }}
         >
           {pages.map((page) => (
-            <Link key={page.name} to={page.route} style={{ textDecoration: "none" }}>
+            <Link
+              key={page.name}
+              to={page.route}
+              style={{ textDecoration: "none" }}
+            >
               <Button
                 onClick={handleCloseNavMenu}
                 className="Font_Poppins_Regular"
-                sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
+                sx={{ my: 2, color: "black", fontSize: 12, display: "block" }}
               >
                 {page.name}
               </Button>
@@ -121,15 +131,12 @@ function ResponsiveAppBar() {
         <SearchBar />
         <Box
           sx={{
-            flexGrow: 1,
-            justifyContent: 'end',
-            width: 10,
-            display: { xs: 'none', md: 'flex' },
+            display: { xs: "none", md: "flex" },
           }}
         >
           <Link style={{ textDecoration: "none" }} to={`/contribute`}>
             <Button
-              sx={{ display:{md:"none", lg:'block'} , my: 2, color: 'black', fontSize: 12}}
+              sx={{ my: 2, color: "black", fontSize: 12 }}
               className="Font_Poppins_Regular"
             >
               Contribute
@@ -138,7 +145,7 @@ function ResponsiveAppBar() {
           <Link style={{ textDecoration: "none" }} to={`/contact`}>
             <Button
               className="Font_Poppins_Regular"
-              sx={{ my: 2, color: 'black', fontSize: 12, display: 'block' }}
+              sx={{ my: 2, color: "black", fontSize: 12 }}
             >
               Contact
             </Button>

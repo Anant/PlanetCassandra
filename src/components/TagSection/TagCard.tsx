@@ -6,8 +6,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
-import { IGatsbyImageData } from 'gatsby-plugin-image';
-import { GatsbyImage } from "gatsby-plugin-image"
+import { IGatsbyImageData } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 interface Props {
   post: {
@@ -22,8 +22,8 @@ interface Props {
       node: {
         localFile: {
           childImageSharp: {
-            gatsbyImageData: IGatsbyImageData
-          }
+            gatsbyImageData: IGatsbyImageData;
+          };
         };
       };
     };
@@ -49,7 +49,7 @@ const TagCard: React.FC<Props> = ({ post }) => {
       <Typography
         sx={{
           color: "#5AB1BB",
-          fontSize: 20
+          fontSize: 20,
         }}
         gutterBottom
         variant="h6"
@@ -59,7 +59,9 @@ const TagCard: React.FC<Props> = ({ post }) => {
         Featured article
       </Typography>
       <GatsbyImage
-        image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData}
+        image={
+          post.featuredImage.node.localFile.childImageSharp.gatsbyImageData
+        }
         alt={post.title}
       />
       <CardContent sx={{ paddingInline: 0 }}>
@@ -77,8 +79,8 @@ const TagCard: React.FC<Props> = ({ post }) => {
           color="text.secondary"
           className="Font_Montserrat_600"
           sx={{
-            color: '#000000CC',
-            fontSize: 14
+            color: "#000000CC",
+            fontSize: 14,
           }}
           dangerouslySetInnerHTML={{ __html: excerptWithoutLinks }}
         />
@@ -113,10 +115,10 @@ const TagCard: React.FC<Props> = ({ post }) => {
         <Button
           sx={{
             borderRadius: 50,
-            backgroundColor: "#F2545B",
+            backgroundColor: "#163BBF",
             fontSize: 10,
             "&:hover": {
-              backgroundColor: "#F2545B",
+              backgroundColor: "#163BBF",
             },
           }}
           variant="contained"
