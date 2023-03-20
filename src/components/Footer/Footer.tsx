@@ -11,14 +11,11 @@ const Footer = () => {
   return (
     <Container>
       <Grid
-        sx={{
-          height: 700,
-        }}
         spacing={5}
         justifyContent="center"
         alignItems="center"
         container
-        maxWidth="lg"
+        padding={{ xs: 2, sm: 5, md: 10 }}
       >
         <Grid
           sx={{ textAlign: { xs: "center", md: "start" } }}
