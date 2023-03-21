@@ -67,13 +67,16 @@ const SearchPage: React.FC = () => {
   const { searchValue } = useSearchValueContext();
 
   const [query, setQuery] = useState(searchValue);
-  const [category, setCategory] = useState(() => {
-    // Get the stored category from localStorage
+  const [category, setCategory] = useState(CATEGORY_POSTS); // Set default category here
+
+  // Load the selected category from localStorage when the component is mounted
+  useEffect(() => {
     const storedCategory = localStorage.getItem("selectedCategory");
 
-    // If there is a stored category, use it; otherwise, default to CATEGORY_POSTS
-    return storedCategory ? JSON.parse(storedCategory) : CATEGORY_POSTS;
-  });
+    if (storedCategory) {
+      setCategory(JSON.parse(storedCategory));
+    }
+  }, []);
 
   // Store the selected category in localStorage when the category changes
   useEffect(() => {

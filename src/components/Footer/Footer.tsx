@@ -4,12 +4,18 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Input, ConfigProvider } from "antd";
 import { AiOutlineSend } from "react-icons/ai";
 import { Link } from "gatsby";
+import CommunitySection from "../CommunitySection/CommunitySection";
 
 const Footer = () => {
   const { Search } = Input;
 
   return (
+    <>
+    <Grid item xs={12}>
+        <CommunitySection />
+      </Grid>
     <Container>
+      
       <Grid
         justifyContent="center"
         alignItems="center"
@@ -41,19 +47,19 @@ const Footer = () => {
               style={{ textDecoration: "none", color: "white" }}
               to={`/`}
             >
-            <Typography color={"white"}>What's New?</Typography>
+              <Typography color={"white"}>What's New?</Typography>
             </Link>
             <Link
               style={{ textDecoration: "none", color: "white" }}
               to={`https://blog.planetcassandra.org/events/`}
             >
-            <Typography color={"white"}>Events</Typography>
+              <Typography color={"white"}>Events</Typography>
             </Link>
             <Link
               style={{ textDecoration: "none", color: "white" }}
               to={`/usecases`}
             >
-            <Typography color={"white"}>Use Cases</Typography>
+              <Typography color={"white"}>Use Cases</Typography>
             </Link>
           </Box>
           <Typography
@@ -118,6 +124,7 @@ const Footer = () => {
         </Grid>
       </Grid>
     </Container>
+    </>
   );
 };
 

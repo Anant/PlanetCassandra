@@ -33,11 +33,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </Grid>
           <Grid item xs={12}>
             <YoutubeSection />
-          </Grid>
-          <Grid item xs={12}>
-            <CommunitySection />
-          </Grid>
-          
+          </Grid>      
         </Grid>
 
     </Layout>
