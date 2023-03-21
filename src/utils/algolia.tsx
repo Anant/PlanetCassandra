@@ -29,17 +29,6 @@ interface NewsAlgoliaData {
   };
 }
 
-interface LeavesAlgoliaData {
-  allApiLeaves: {
-    totalCount: number;
-    nodes: {
-      id: string;
-      title: string;
-      description: string;
-      tags: string[];
-    }[];
-  };
-}
 
 
 
@@ -47,39 +36,23 @@ interface LeavesAlgoliaData {
 
 const PostQuery = `
 query PostsAlgolia {
-    allWpPost(sort: {date: DESC}) {
-      totalCount
-      nodes {
-        id
-        author {
-          node {
-            name
-          }
-        }
-        date
-        slug
-        title
-      }
-    }
-  }
-`;
-
-const LeavesAlgoliaQuery = `
-query LeavesAlgolia {
-  allApiLeaves(
-    sort: {wallabag_created_at: DESC}
-    limit: 250
-    filter: {title: {ne: null}}
-  ) {
+  allWpPost(sort: {date: DESC}) {
+    totalCount
     nodes {
       id
+      author {
+        node {
+          name
+        }
+      }
+      date
+      slug
       title
-      description
-      tags
     }
   }
 }
 `;
+
 
 
 const NewsQuery =`
@@ -89,6 +62,8 @@ query NewsAlgolia {
     nodes {
       title
       id
+      link
+      pubDate
     }
   }
 }
@@ -108,14 +83,6 @@ const queries = [
       queryVariables: {},
       transformer: ({ data }: { data: NewsAlgoliaData }) => data.allFeedTtrs.nodes,
       indexName: 'PlanetCassandraNews',
-      settings: {},
-      mergeSettings: false,
-    },
-    {
-      query: LeavesAlgoliaQuery,
-      queryVariables: {},
-      transformer: ({ data }: { data: LeavesAlgoliaData }) => data.allApiLeaves.nodes,
-      indexName: 'PlanetCassandraLeaves',
       settings: {},
       mergeSettings: false,
     },

@@ -11,7 +11,6 @@ const Footer = () => {
   return (
     <Container>
       <Grid
-        spacing={5}
         justifyContent="center"
         alignItems="center"
         container
@@ -29,7 +28,7 @@ const Footer = () => {
             placeholder="blurred"
             height={60}
           />
-          {/* <Box
+          <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -38,10 +37,25 @@ const Footer = () => {
               marginInline: { xs: "auto", md: 0 },
             }}
           >
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/`}
+            >
             <Typography color={"white"}>What's New?</Typography>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`https://blog.planetcassandra.org/events/`}
+            >
             <Typography color={"white"}>Events</Typography>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/usecases`}
+            >
             <Typography color={"white"}>Use Cases</Typography>
-          </Box> */}
+            </Link>
+          </Box>
           <Typography
             sx={{
               marginTop: 5,

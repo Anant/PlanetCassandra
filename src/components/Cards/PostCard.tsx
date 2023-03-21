@@ -3,10 +3,12 @@ import { Card, CardContent, Typography } from '@mui/material'
 import { Link } from "gatsby";
 import { BaseCard, CardProps } from './BaseCard'
 import './cardStyles.css'
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface PostCardProps extends CardProps {
     slug: string | undefined;
     author: string;
+    thumbnail?: IGatsbyImageData;
 }
 
 const PostCard: React.FC<PostCardProps> = ({ title, date, thumbnail, slug, author }) => {

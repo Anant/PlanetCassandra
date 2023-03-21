@@ -1,16 +1,173 @@
 // searchPage.tsx
-import React from "react";
-import { Container, Grid } from "@mui/material";
+import React, { useState, useCallback, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
-import { useSearchValueContext } from '../context/SearchContext'
+import { useSearchValueContext } from '../context/SearchContext';
+import algoliasearch from "algoliasearch";
+import SearchResultGrid from "../layouts/SearchLayout/SearchResultGrid";
+import {
+  InstantSearch,
+  Index,
+  SearchBox,
+} from "react-instantsearch-dom";
+import {
+  Chip,
+  Container,
+  Grid,
+  IconButton,
+  InputBase,
+  Paper,
+} from "@mui/material";
+import { connectHits } from 'react-instantsearch-core';
+import { connectSearchBox } from 'react-instantsearch-core';
+import SearchIcon from '@mui/icons-material/Search';
+
+
+
+const CATEGORY_ALL = "all";
+const CATEGORY_POSTS = "posts";
+const CATEGORY_NEWS = "news";
+const CATEGORY_LINKS = "links";
+
+
+//@ts-ignore
+const CategoryLink = ({ category, currentCategory, onClick, children }) => (
+  <Chip
+    label={children}
+    clickable
+    color={category === currentCategory ? "primary" : "default"}
+    onClick={() => onClick(category)}
+    style={{ marginRight: "0.5rem" }}
+  />
+);
+
+//@ts-ignore
+const CustomSearchInput = ({ currentRefinement, refine }) => {
+  const handleChange = (event: { target: { value: any; }; }) => {
+    refine(event.target.value);
+  };
+
+  return (
+    <InputBase
+      sx={{
+        marginLeft: 1,
+        flex: 1,
+      }}
+      placeholder="Search Planet Cassandra"
+      inputProps={{ "aria-label": "Search Planet Cassandra" }}
+      value={currentRefinement}
+      onChange={handleChange}
+    />
+  );
+};
+
+const ConnectedCustomSearchInput = connectSearchBox(CustomSearchInput);
+
 
 const SearchPage: React.FC = () => {
   const { searchValue } = useSearchValueContext();
 
-    return (
-        <h1>{searchValue}</h1>
-    );
- 
+  const [query, setQuery] = useState(searchValue);
+  const [category, setCategory] = useState(() => {
+    // Get the stored category from localStorage
+    const storedCategory = localStorage.getItem("selectedCategory");
+
+    // If there is a stored category, use it; otherwise, default to CATEGORY_POSTS
+    return storedCategory ? JSON.parse(storedCategory) : CATEGORY_POSTS;
+  });
+
+  // Store the selected category in localStorage when the category changes
+  useEffect(() => {
+    localStorage.setItem("selectedCategory", JSON.stringify(category));
+  }, [category]);
+
+  const searchClient = algoliasearch(
+    process.env.ALGOLIA_APP_ID,
+    process.env.ALGOLIA_API_KEY
+  );
+
+  const handleCategoryChange = useCallback((category: React.SetStateAction<string>) => {
+    setCategory(category);
+  }, []);
+
+  const ConnectedSearchResultGrid = connectHits(SearchResultGrid);
+
+
+  return (
+    <Layout>
+      <Grid container>
+        <InstantSearch
+          indexName="PlanetCassandraPosts"
+          searchClient={searchClient}
+          searchState={{ query }}
+          onSearchStateChange={({ query }) => setQuery(query)}
+        >
+          <Container>
+            <Grid container spacing={2} paddingTop='20px' >
+              <Grid item xs={4}>
+                <CategoryLink
+                  category={CATEGORY_POSTS}
+                  currentCategory={category}
+                  onClick={handleCategoryChange}
+                >
+                  Posts
+                </CategoryLink>
+                <CategoryLink
+                  category={CATEGORY_NEWS}
+                  currentCategory={category}
+                  onClick={handleCategoryChange}
+                >
+                  News
+                </CategoryLink>
+                <CategoryLink
+                  category={CATEGORY_LINKS}
+                  currentCategory={category}
+                  onClick={handleCategoryChange}
+                >
+                  Links
+                </CategoryLink>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper
+                  component="form"
+                  sx={{
+                    padding: "2px 4px",
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                  }}
+                >
+                  <ConnectedCustomSearchInput />
+                  <IconButton type="submit" sx={{ padding: 1 }} aria-label="search">
+                    <SearchIcon />
+                  </IconButton>
+                </Paper>
+              </Grid>
+
+            </Grid>
+          </Container>
+
+          {category == CATEGORY_POSTS && (
+            <Index indexName="PlanetCassandraPosts">
+              <ConnectedSearchResultGrid cardType="post" />
+            </Index>
+          )}
+
+          {category == CATEGORY_NEWS && (
+            <Index indexName="PlanetCassandraNews">
+              <ConnectedSearchResultGrid cardType="news" />
+            </Index>
+          )}
+
+          {category == CATEGORY_LINKS && (
+            <Index indexName="CassandraResources">
+              <ConnectedSearchResultGrid cardType="leaves" />
+            </Index>
+          )}
+        </InstantSearch>
+      </Grid>
+    </Layout>
+  );
 };
+
 
 export default SearchPage;
