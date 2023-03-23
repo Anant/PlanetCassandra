@@ -6,16 +6,18 @@ import getSlug from "speakingurl";
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import './cardStyles.css'
 
-interface EventCardProps extends CardProps {}
+interface EventCardProps extends CardProps { }
 
 const EventCard: React.FC<EventCardProps> = ({ title, date, thumbnail }) => {
-    return (
-      <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
+  return (
+    <Card className="max-w-sm h-128 rounded-lg overflow-hidden shadow-lg">
+      <CardContent className="px-6 py-4">
         <Link style={{ textDecoration: "none", color: "white" }} to={`/event/${getSlug(title)}`}>
-         <BaseCard title={title} date={date} thumbnail={thumbnail} />
+          <BaseCard title={title} date={date} thumbnail={thumbnail} />
         </Link>
-      </Card>
-    );
+      </CardContent>
+    </Card>
+  );
 }
 
 export default EventCard;

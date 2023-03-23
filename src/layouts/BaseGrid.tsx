@@ -3,6 +3,8 @@ import { Container, Grid, Pagination } from '@mui/material';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface CardData {
+    tags: string[];
+    thumbnail: IGatsbyImageData | undefined;
     gatsbyImageData: IGatsbyImageData | null;
     title: string;
     pubDate?: string; // Optional property for NewsCardGrid
