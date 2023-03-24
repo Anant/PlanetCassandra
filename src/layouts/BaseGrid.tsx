@@ -3,6 +3,8 @@ import { Container, Grid, Pagination } from '@mui/material';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 
 interface CardData {
+    videoId: string;
+    channelTitle: string;
     tags: string[];
     thumbnail: IGatsbyImageData | undefined;
     gatsbyImageData: IGatsbyImageData | null;

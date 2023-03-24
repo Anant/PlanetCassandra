@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import { IGatsbyImageData } from "gatsby-plugin-image";
@@ -34,16 +34,18 @@ const Leaves: React.FC<AllLeavesData> = () => {
 
 
 
-  const leaves = cardData.map((card) => {
-    const image = images.find((img) => img.parent.id === card.id);
-    return {
-      title: card.title,
-      date: card.wallabag_created_at,
-      description: card.description,
-      tags: card.tags,
-      thumbnail: image?.childImageSharp?.gatsbyImageData,
-    };
-  });
+  const leaves = useMemo(() => {
+    return cardData.map((card) => {
+      const image = images.find((img) => img.parent.id === card.id);
+      return {
+        title: card.title,
+        date: card.wallabag_created_at,
+        description: card.description,
+        tags: card.tags,
+        thumbnail: image?.childImageSharp?.gatsbyImageData,
+      };
+    });
+  }, [cardData, images]);
 
 
   return (

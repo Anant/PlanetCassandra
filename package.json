@@ -29,7 +29,7 @@
     "gatsby-plugin-algolia": "^1.0.3",
     "gatsby-plugin-env-variables": "^2.3.0",
     "gatsby-plugin-google-analytics": "^5.7.0",
-    "gatsby-plugin-google-gtag": "^5.4.0",
+    "gatsby-plugin-google-gtag": "^5.8.0",
     "gatsby-plugin-image": "^3.4.0",
     "gatsby-plugin-manifest": "^5.4.0",
     "gatsby-plugin-mdx": "^5.4.0",
