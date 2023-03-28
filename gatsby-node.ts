@@ -355,7 +355,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   query LeavesPictures {
     allApiLeaves(
       filter: {url: {ne: null}}
-      limit: 50
+      limit: 200
       sort: {wallabag_created_at: DESC}
     ) {
       nodes {

@@ -57,7 +57,10 @@ const Companies: React.FC<CompanyData> = () => {
 
 const query = graphql`
 query UseCasesDataListing {
-  allAirtable(filter: { table: { eq: "Cases" } }) {
+  allAirtable(
+    filter: {table: {eq: "Cases"}}
+    sort: {data: {Case_Published: DESC}}
+  ) {
     nodes {
       table
       data {
@@ -73,14 +76,14 @@ query UseCasesDataListing {
     }
   }
   allFile(filter: {id: {ne: null}}) {
-  nodes {
-   name
-     childrenImageSharp {
-      gatsbyImageData
+    nodes {
+      name
+      childrenImageSharp {
+        gatsbyImageData
+      }
     }
+    totalCount
   }
-  totalCount
-}
 }
 `;
 export default Companies;
