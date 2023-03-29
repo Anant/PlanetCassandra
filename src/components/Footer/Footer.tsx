@@ -82,8 +82,7 @@ const Footer = () => {
             color={"white"}
             variant="subtitle1"
           >
-            All logos, trademarks and registered trademarks are the property of
-            their respective owners.
+            © 2009-2023 The Apache Software Foundation under the terms of the Apache License 2.0. Apache, the Apache feather logo, Apache Cassandra, Cassandra, and the Cassandra logo, are either registered trademarks or trademarks of The Apache Software Foundation.
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
