@@ -33,11 +33,7 @@ const IndexPage: React.FC<PageProps> = () => {
           </Grid>
           <Grid item xs={12}>
             <YoutubeSection />
-          </Grid>
-          <Grid item xs={12}>
-            <CommunitySection />
-          </Grid>
-          
+          </Grid>      
         </Grid>
 
     </Layout>
@@ -47,4 +43,4 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>Planet Cassandra</title>;

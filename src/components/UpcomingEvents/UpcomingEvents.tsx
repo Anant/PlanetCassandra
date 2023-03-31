@@ -3,7 +3,7 @@ import { Grid, Typography, Button, Container, Box, Card } from "@mui/material";
 import EventCard from "../EventsCards/EventCard";
 import AllEventsCard from "../EventsCards/AllEventsCard";
 import { useStaticQuery, graphql, Link } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 interface UseCasesData {
   allFile: {
@@ -35,14 +35,16 @@ interface UseCasesData {
 
 const UpcomingEvents = () => {
   const { allAirtable, allFile }: UseCasesData = useStaticQuery(query);
-  const filteredAirtable = allAirtable.nodes.slice(0, 6).map(node => ({
+  const filteredAirtable = allAirtable.nodes.slice(0, 6).map((node) => ({
     Title: node.data.Title,
     Date: node.data.Publish_date,
     Description: node.data.Eventbrite_Description,
     ImageUrl: node.data.Cover_Image[0].url,
-    id: node.id
+    id: node.id,
   }));
-  const matchingNode = allFile.nodes.find(node => node.parent.id === filteredAirtable[0].id);
+  const matchingNode = allFile.nodes.find(
+    (node) => node.parent.id === filteredAirtable[0].id
+  );
   return (
     <Container sx={{ paddingY: 10 }}>
       <Typography
@@ -67,26 +69,33 @@ const UpcomingEvents = () => {
             eventImg={matchingNode?.childImageSharp.gatsbyImageData || {}}
           />
         </Grid>
-        <Grid item xs={12} md={4} lg={4}  xl={4}>
-          <Card sx={{ maxWidth: 345, borderRadius: 5, padding: 3, margin: { xs: "auto", md: 0 } }}>
+        <Grid item xs={12} md={4} lg={4} xl={4}>
+          <Card
+            sx={{
+              maxWidth: 345,
+              borderRadius: 5,
+              padding: 3,
+              margin: { xs: "auto", md: 0 },
+            }}
+          >
             {filteredAirtable.slice(2).map((event, key) => (
               <AllEventsCard key={key} title={event.Title} date={event.Date} />
             ))}
             <Grid marginTop={2} container justifyContent="end">
-              <Link style={{ textDecoration: "none"}} to={`/events`}>
+              <Link style={{ textDecoration: "none" }} to={`/events`}>
                 <Button
                   sx={{
                     borderRadius: 50,
-                    backgroundColor: "#F2545B",
+                    backgroundColor: "#163BBF",
                     fontSize: 10,
                     "&:hover": {
-                      backgroundColor: "#F2545B",
+                      backgroundColor: "#163BBF",
                     },
                   }}
                   variant="contained"
                 >
                   <Typography className="Font_Mulish_Button_M">
-                  See all events
+                    See all events
                   </Typography>
                 </Button>
               </Link>
@@ -99,38 +108,45 @@ const UpcomingEvents = () => {
 };
 
 const query = graphql`
-query EventsData {
-  allFile(filter: {parent: {id: {ne: null}}}) {
-    nodes {
-      parent {
-        ... on Airtable {
-          id
-          table
+  query EventsData {
+    allFile(filter: { parent: { id: { ne: null } } }) {
+      nodes {
+        parent {
+          ... on Airtable {
+            id
+            table
+          }
         }
-      }
-      childImageSharp {
-        gatsbyImageData
-      }
-    }
-  }
-  allAirtable(
-    filter: {table: {eq: "Content Production"}, data: {Title: {ne: null}, Publish_date: {ne: null}, Cover_Image: {elemMatch: {url: {ne: null}}}}}
-    sort: {data: {Publish_date: DESC}}
-  ) {
-    nodes {
-      table
-      id
-      data {
-        Title
-        Publish_date
-        Eventbrite_Description
-        Cover_Image {
-          url
+        childImageSharp {
+          gatsbyImageData
         }
       }
     }
+    allAirtable(
+      filter: {
+        table: { eq: "Content Production" }
+        data: {
+          Title: { ne: null }
+          Publish_date: { ne: null }
+          Cover_Image: { elemMatch: { url: { ne: null } } }
+        }
+      }
+      sort: { data: { Publish_date: DESC } }
+    ) {
+      nodes {
+        table
+        id
+        data {
+          Title
+          Publish_date
+          Eventbrite_Description
+          Cover_Image {
+            url
+          }
+        }
+      }
+    }
   }
-}
 `;
 
 export default UpcomingEvents;

@@ -30,24 +30,30 @@ interface NewsAlgoliaData {
 }
 
 
-// const PostQuery = `
-// query PostsAlgolia {
-//     allWpPost(sort: {date: DESC}) {
-//       totalCount
-//       nodes {
-//         id
-//         author {
-//           node {
-//             name
-//           }
-//         }
-//         date
-//         slug
-//         title
-//       }
-//     }
-//   }
-// `;
+
+
+
+
+const PostQuery = `
+query PostsAlgolia {
+  allWpPost(sort: {date: DESC}) {
+    totalCount
+    nodes {
+      id
+      author {
+        node {
+          name
+        }
+      }
+      date
+      slug
+      title
+    }
+  }
+}
+`;
+
+
 
 const NewsQuery =`
 query NewsAlgolia {
@@ -56,20 +62,22 @@ query NewsAlgolia {
     nodes {
       title
       id
+      link
+      pubDate
     }
   }
 }
 `
 
 const queries = [
-    // {
-    //     query: PostQuery,
-    //     queryVariables: {},
-    //     transformer: ({ data }: { data: QueryResult }) => data.allWpPost.nodes,
-    //     indexName: 'PlanetCassandra',
-    //     settings: {},
-    //     mergeSettings: false,
-    // },
+    {
+        query: PostQuery,
+        queryVariables: {},
+        transformer: ({ data }: { data: QueryResult }) => data.allWpPost.nodes,
+        indexName: 'PlanetCassandraPosts',
+        settings: {},
+        mergeSettings: false,
+    },
     {
       query: NewsQuery,
       queryVariables: {},
@@ -77,7 +85,7 @@ const queries = [
       indexName: 'PlanetCassandraNews',
       settings: {},
       mergeSettings: false,
-  },
+    },
 ];
 
 module.exports = queries

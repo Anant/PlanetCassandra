@@ -4,6 +4,16 @@ let getSlug = require("speakingurl")
 import { IGatsbyImageData } from 'gatsby-plugin-image';
 import fetchThumbnail from './src/utils/fetch-thumbnail';
 
+import { createRedirects } from "./gatsby/createRedirects";
+import { createPosts } from "./gatsby/createPosts";
+import { createEvents } from "./gatsby/createEvents";
+// import { createUseCases } from "./gatsby/createUseCases";
+// import { createTtrss } from "./gatsby/createTtrss";
+// import { createLeaves } from "./gatsby/createLeaves";
+// import { createVideos } from "./gatsby/createVideos";
+// import { getSlug } from "./gatsby/getSlug";
+
+
 interface AllPostsData {
   allWpPost: {
     nodes: {
@@ -44,177 +54,24 @@ type ApiLeaves implements Node {
 
 export const createPages: GatsbyNode['createPages'] = async ({
   actions,
+  page,
   graphql,
   createNodeId,
   getCache,
 }) => {
-  const { createPage, createNode, createTypes } = actions;
+  const { createPage, createNode, deletePage, createRedirect } = actions;
+  
+  createRedirects(createRedirect);
+  //@ts-ignore
+  createPosts({ createPage, graphql });
+  //@ts-ignore
+  createEvents({ actions, graphql, createNodeId, getCache });
 
-  //Posts from WP page creation
-  //----------------------------------------------------------------------------
-  const allPosts: {
-    errors?: any;
-    data?: {
-      allWpPost: {
-        nodes: {
-          slug: string;
-          title: string;
-          id: string;
-          content: string;
-          tags: {
-            nodes: {
-              name: string;
-            }[];
-          };
-          featuredImage: {
-            node: {
-              localFile: {
-                childImageSharp: {
-                  gatsbyImageData: IGatsbyImageData;
-                };
-              };
-            };
-          };
-        }[];
-      };
-    };
-  } = await graphql(`
-    query allPostsQuery {
-      allWpPost {
-        nodes {
-          slug
-          title
-          id
-          content
-          tags {
-            nodes {
-              name
-            }
-          }
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  // await createUseCases({ createPage, graphql, resolve });
+  // await createTtrss({ createPage, graphql, resolve });
+  // await createLeaves({ createPage, graphql, fetchThumbnail, createNode, createNodeId, getCache, resolve });
+  // await createVideos({ createPage, graphql, resolve });
 
-  if (allPosts.errors) {
-    console.log(allPosts.errors);
-    throw new Error(allPosts.errors);
-  }
-  if (!allPosts.data) {
-    console.log("No data found!");
-    return;
-  }
-  allPosts.data.allWpPost.nodes.forEach(node => {
-    createPage({
-      path: `/post/${node.slug}`,
-      component: resolve(`src/components/Templates/PostSinglePage.tsx`),
-      context: {
-        id: node.id,
-        title: node.title,
-        tags: node.tags?.nodes.map(tag => tag.name),
-        content: node.content,
-        featuredImage: node.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
-      },
-    });
-  });
-
-  //Events
-  ////----------------------------------------------------------------------------
-  const { createRemoteFileNode } = require("gatsby-source-filesystem")
-  const allEvents: {
-    errors?: any;
-    data?: {
-      allAirtable: {
-        nodes: {
-          id: string;
-          table: string;
-          data: {
-            id: string;
-            Title: string;
-            Publish_date: string;
-            Eventbrite_Description: string;
-            Cover_Image: {
-              url: string;
-              filename: string;
-            }[];
-          };
-        }[];
-      };
-    };
-  } = await graphql(`
-    query EventsPageData {
-      allAirtable(
-        filter: {table: {eq: "Content Production"}, data: {Title: {ne: null}, Publish_date: {ne: null}, Cover_Image: {elemMatch: {url: {ne: null}}}}}
-        sort: {data: {Publish_date: DESC}}
-      ) {
-        nodes {
-          table
-          id
-          data {
-            Title
-            Publish_date
-            Eventbrite_Description
-            Cover_Image {
-              url
-              filename
-            }
-          }
-        }
-      }
-    }
-  `);
-
-  if (allEvents.errors) {
-    console.log(allEvents.errors);
-    throw new Error(allEvents.errors);
-  }
-  if (!allEvents.data) {
-    console.log("No data found!");
-    return;
-  }
-
-  allEvents.data.allAirtable.nodes.forEach(node => {
-    createPage({
-      path: `/event/${getSlug(node.data.Title)}`,
-      component: resolve(`src/components/Templates/EventsSinglePage.tsx`),
-      context: {
-        Title: node.data.Title,
-        Publish_date: node.data.Publish_date,
-        Eventbrite_Description: node.data.Eventbrite_Description,
-        CoverImage: node.data.Cover_Image
-      },
-    });
-  });
-
-
-  allEvents.data.allAirtable.nodes.forEach(async node => {
-    const coverImage = node.data.Cover_Image[0];
-    if (!coverImage) {
-      console.error(`No cover image found for event: ${node.data.Title}`);
-      return;
-    }
-
-    const fileNode = await createRemoteFileNode({
-      url: coverImage.url,
-      parentNodeId: node.id,
-      createNode,
-      createNodeId,
-      getCache
-    });
-    if (!fileNode) {
-      console.error(`Failed to create file node for cover image: ${coverImage.filename}`);
-      return;
-    }
-  });
 
   //UseCases
   ////----------------------------------------------------------------------------
@@ -344,7 +201,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
   query LeavesPictures {
     allApiLeaves(
       filter: {url: {ne: null}}
-      limit: 50
+      limit: 200
       sort: {wallabag_created_at: DESC}
     ) {
       nodes {

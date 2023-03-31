@@ -15,17 +15,27 @@ const BaseCard: React.FC<CardProps> = ({ title, date, thumbnail }) => {
         if (thumbnail) {
             return (
                 <GatsbyImage
-                    className="w-full h-64 object-cover thumbnail"
+                    className="thumbnail"
                     image={thumbnail}
                     alt={alt}
+                    style={{
+                        width: '100%',
+                        height: 200,
+                        objectFit: 'cover',
+                    }}
                 />
             );
         } else {
             return (
                 <StaticImage
                     src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
-                    className="w-full h-64 object-cover thumbnail"
+                    className="thumbnail"
                     alt="Placeholder"
+                    style={{
+                        width: '100%',
+                        height: 200,
+                        objectFit: 'cover',
+                    }}
                 />
             );
         }
@@ -34,10 +44,27 @@ const BaseCard: React.FC<CardProps> = ({ title, date, thumbnail }) => {
     const renderContent = () => {
         return (
             <>
-                <Typography className="text-xl font-medium text-gray-900" component="h2">
+                <Typography
+                    className="truncate"
+                    fontFamily="Roboto Condensed, sans-serif"
+                    fontWeight={400}
+                    sx={{
+                        color: "#383D3B",
+                        fontSize: { xs: 18, sm: 18, md: 20, lg: 20, xl: 22 },
+                    }}
+                    component="h2">
                     {title}
                 </Typography>
-                <Typography className="text-gray-600">{new Date(date).toLocaleDateString()}</Typography>
+                <Typography
+                    fontFamily="Roboto Condensed, sans-serif"
+                    fontWeight={300}
+                    sx={{
+                        color: "#383D3B",
+                        fontSize: { xs:15, sm: 15, md: 17, lg: 17, xl: 19 },
+                    }}
+                >
+                    {new Date(date).toLocaleDateString()}
+                </Typography>
             </>
         );
     }

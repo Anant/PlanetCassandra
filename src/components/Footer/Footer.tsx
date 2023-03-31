@@ -4,20 +4,23 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Input, ConfigProvider } from "antd";
 import { AiOutlineSend } from "react-icons/ai";
 import { Link } from "gatsby";
+import CommunitySection from "../CommunitySection/CommunitySection";
 
 const Footer = () => {
   const { Search } = Input;
 
   return (
+    <>
+    <Grid item xs={12}>
+        <CommunitySection />
+      </Grid>
     <Container>
+      
       <Grid
-        sx={{
-          height: 700,
-        }}
         justifyContent="center"
         alignItems="center"
         container
-        maxWidth="lg"
+        padding={{ xs: 2, sm: 5, md: 10 }}
       >
         <Grid
           sx={{ textAlign: { xs: "center", md: "start" } }}
@@ -31,7 +34,7 @@ const Footer = () => {
             placeholder="blurred"
             height={60}
           />
-          {/* <Box
+          <Box
             sx={{
               display: "flex",
               justifyContent: "space-between",
@@ -40,10 +43,25 @@ const Footer = () => {
               marginInline: { xs: "auto", md: 0 },
             }}
           >
-            <Typography color={"white"}>What's New?</Typography>
-            <Typography color={"white"}>Events</Typography>
-            <Typography color={"white"}>Use Cases</Typography>
-          </Box> */}
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/`}
+            >
+              <Typography color={"white"}>What's New?</Typography>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`https://blog.planetcassandra.org/events/`}
+            >
+              <Typography color={"white"}>Events</Typography>
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`/usecases`}
+            >
+              <Typography color={"white"}>Use Cases</Typography>
+            </Link>
+          </Box>
           <Typography
             sx={{
               marginTop: 5,
@@ -51,9 +69,10 @@ const Footer = () => {
             color="#5AB1BB"
             variant="subtitle1"
           >
-            Planet Cassandra is a hub for all things Apache Cassandra.
-            From tutorials and guides, to discussions and updates, we're here to help you get the most out of Cassandra. 
-            Connect with us and become part of our growing community today
+            Planet Cassandra is a hub for all things Apache Cassandra. From
+            tutorials and guides, to discussions and updates, we're here to help
+            you get the most out of Cassandra. Connect with us and become part
+            of our growing community today
           </Typography>
           <Typography
             sx={{
@@ -63,8 +82,7 @@ const Footer = () => {
             color={"white"}
             variant="subtitle1"
           >
-            All logos, trademarks and registered trademarks are the property of
-            their respective owners.
+            © 2009-2023 The Apache Software Foundation under the terms of the Apache License 2.0. Apache, the Apache feather logo, Apache Cassandra, Cassandra, and the Cassandra logo, are either registered trademarks or trademarks of The Apache Software Foundation.
           </Typography>
         </Grid>
         <Grid item xs={12} md={6}>
@@ -80,27 +98,32 @@ const Footer = () => {
               Get Involved!
             </Typography>
             <Typography variant="subtitle2" color={"black"}>
-             Get involved with the Apache Cassandra community. You can get on Discord or Slack to chat 
-              with the community in realtime or stay up to date on the User / Dev mailing lists.
+              Get involved with the Apache Cassandra community. You can get on
+              Discord or Slack to chat with the community in realtime or stay up
+              to date on the User / Dev mailing lists.
             </Typography>
-            <Link style={{ textDecoration: "none", color: "white" }} to={`https://cassandra.apache.org/_/community.html`} >
-            <Button
-              sx={{
-                fontSize: {xs:11, sm: 15, md: 12, lg: 14},
-                borderRadius: 50,
-                margin: 2,
-                backgroundColor: "#344D67",
-              }}
-              variant="contained"
-              className="Font_Mulish_Button_L"
+            <Link
+              style={{ textDecoration: "none", color: "white" }}
+              to={`https://cassandra.apache.org/_/community.html`}
             >
-              Cassandra Community
-            </Button>
+              <Button
+                sx={{
+                  fontSize: { xs: 11, sm: 15, md: 12, lg: 14 },
+                  borderRadius: 50,
+                  margin: 2,
+                  backgroundColor: "#344D67",
+                }}
+                variant="contained"
+                className="Font_Mulish_Button_L"
+              >
+                Cassandra Community
+              </Button>
             </Link>
           </Box>
         </Grid>
       </Grid>
     </Container>
+    </>
   );
 };
 

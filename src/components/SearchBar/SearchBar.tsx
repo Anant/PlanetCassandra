@@ -1,15 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent, KeyboardEvent } from "react";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import algoliasearch from "algoliasearch/lite";
 import getSlug from "speakingurl";
-import { Box, Fade, Grid, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { List, ListItem, ListItemText } from "@mui/material";
 import Popper from '@mui/material/Popper';
 import { Link } from "gatsby";
+import { navigate } from "gatsby";
+import { useSearchValueContext } from '../../context/SearchContext';
 
-const client = algoliasearch("2X56L8156U", "c324c341a46ef9ff06ccd6a8e220d48f");
+const client = algoliasearch(
+  process.env.ALGOLIA_APP_ID,
+  process.env.ALGOLIA_API_KEY
+);
 const index = client.initIndex("PlanetCassandraNews");
 //@ts-ignore
 const SearchResults = ({ results, open, setOpen, anchor }) => {
@@ -38,6 +43,7 @@ export default function SearchBar() {
   const [open, setOpen] = useState(false);
   const anchorRef = React.useRef<HTMLInputElement>(null);
 
+  const { addSearchValue } = useSearchValueContext();
 
   useEffect(() => {
     if (searchTerm.length >= 3) {
@@ -50,9 +56,22 @@ export default function SearchBar() {
     }
   }, [searchTerm]);
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addSearchValue(searchTerm);
+      navigate("/search");
+    }
+  };
+
+
 
   return (
-   <Paper
+    <Paper
       component="form"
       sx={{
         p: "2px 4px",
@@ -61,14 +80,15 @@ export default function SearchBar() {
         width: { xs: 100, md: 100, lg: 300 },
         height: 30,
         borderRadius: 50,
-        marginLeft: { xs: 0, md: 10 },
+        marginLeft: { xs: 0 },
       }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Planet Cassandra..."
         inputProps={{ "aria-label": "search google maps" }}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         ref={anchorRef}
       />
       <IconButton type="button" sx={{ p: "10px" }} aria-label="search">

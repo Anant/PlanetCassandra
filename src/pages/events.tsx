@@ -1,9 +1,8 @@
-// src/pages/posts.tsx
 import React, { useState } from 'react'
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from '../components/Layout/Layout';
 import { Container, Grid, Pagination } from '@mui/material';
-import EventCard from '../components/Cards/EventCard';
+import EventCardGrid from '../layouts/EventCardGrid';
 
 interface AllEventsData {
   allFile: {
@@ -35,49 +34,22 @@ interface AllEventsData {
 
 const Events: React.FC<AllEventsData> = () => {
   const { allAirtable, allFile }: AllEventsData = useStaticQuery(query);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
   const cardData = allAirtable.nodes;
   const images = allFile.nodes;
-  const totalPages = Math.ceil(cardData.length / itemsPerPage);
-  
-  const handlePageChange = (event: any, value: number) => {
-    setCurrentPage(value);
-  };
-  
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPosts = cardData.slice(indexOfFirstItem, indexOfLastItem);
+
+
+  const events = cardData.map((card) => {
+    const image = images.find((img) => img.parent.id === card.id);
+    return {
+      title: card.data.Title,
+      date: card.data.Publish_date,
+      thumbnail: image?.childImageSharp?.gatsbyImageData,
+    };
+  });
 
   return (
     <Layout>
-      <Container maxWidth="xl" style={{
-      padding: '25px'
-    }} >
-      <Grid container spacing={3}>
-        {currentPosts.map((card, index) => {
-          const image = images.find(img => img.parent.id === card.id);
-          return (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <EventCard
-                title={card.data.Title}
-                date={card.data.Publish_date}
-                thumbnail={image?.childImageSharp?.gatsbyImageData}
-              />
-            </Grid>
-          );
-        })}
-      </Grid>
-      <Grid item style={{ display: 'flex', justifyContent: 'center', padding: '30px' }}>
-        <Pagination
-          count={totalPages}
-          page={currentPage}
-          onChange={handlePageChange}
-          variant="outlined"
-          color="primary"
-        />
-      </Grid>
-    </Container>
+      <EventCardGrid cardData={events} />
     </Layout>
   );
 };

@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React, { useMemo } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/Layout/Layout";
 import { IGatsbyImageData } from "gatsby-plugin-image";
-import { Container, Grid, Pagination } from "@mui/material";
-import LeafCard from "../components/Cards/LeafCard";
+import LeafCardGrid from "../layouts/LeafCardGrid";
 
 interface AllLeavesData {
   allFile: {
@@ -30,62 +29,28 @@ interface AllLeavesData {
 
 const Leaves: React.FC<AllLeavesData> = () => {
   const { allApiLeaves, allFile }: AllLeavesData = useStaticQuery(query);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
   const cardData = allApiLeaves.nodes.slice(1);
   const images = allFile.nodes;
-  const totalPages = Math.ceil(cardData.length / itemsPerPage);
 
-  const handlePageChange = (event: any, value: number) => {
-    setCurrentPage(value);
-  };
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPosts = cardData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const leaves = useMemo(() => {
+    return cardData.map((card) => {
+      const image = images.find((img) => img.parent.id === card.id);
+      return {
+        title: card.title,
+        date: card.wallabag_created_at,
+        description: card.description,
+        tags: card.tags,
+        thumbnail: image?.childImageSharp?.gatsbyImageData,
+      };
+    });
+  }, [cardData, images]);
+
 
   return (
     <Layout>
-      <Container
-        maxWidth="xl"
-        style={{
-          padding: "25px",
-        }}
-      >
-        <Grid container spacing={3}>
-          {currentPosts.map((card, index) => {
-            const image = images.find((img) => img.parent.id === card.id);
-            return (
-              <Grid item xs={12} sm={6} md={4} key={index}>
-                <LeafCard
-                  title={card.title}
-                  date={card.wallabag_created_at}
-                  description={card.description}
-                  tags={card.tags}
-                  //@ts-ignore
-                  thumbnail={image?.childImageSharp?.gatsbyImageData}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
-        <Grid
-          item
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "30px",
-          }}
-        >
-          <Pagination
-            count={totalPages}
-            page={currentPage}
-            onChange={handlePageChange}
-            variant="outlined"
-            color="primary"
-          />
-        </Grid>
-      </Container>
+      <LeafCardGrid cardData={leaves} />
     </Layout>
   );
 };
