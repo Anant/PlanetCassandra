@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Grid, Box } from '@mui/material';
+// src/images/ContributeBG.png
 import Layout from '../components/Layout/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
 import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
@@ -27,7 +28,7 @@ const ContributePage = () => {
   return (
     <Layout>
       <Grid container>
-        <Grid item xs={12}>
+        <Grid item xs={12} className="contributeBGImage">
           <Grid
             container
             maxWidth="xl"
@@ -130,7 +131,7 @@ const ContributePage = () => {
               </span>
             </Typography>
           </Box>
-          <Grid container spacing={3} sx={{ width: '70%', mx: 'auto' }}>
+          <Grid container spacing={4} sx={{ width: '70%', mx: 'auto' }}>
             {contributingListData.map((item) => {
               return (
                 <Grid item xs={12} md={6}>
