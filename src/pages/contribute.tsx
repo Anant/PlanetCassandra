@@ -50,7 +50,7 @@ const ContributePage = () => {
                 fontFamily="Poppins, sans-serif"
                 sx={{
                   color: '#1E1E1E',
-                  fontSize: { xs: 30, sm: 45, lg: 60 },
+                  fontSize: { xs: 30, sm: 45, xl: 60 },
                   fontWeight: 400,
                 }}
               >
