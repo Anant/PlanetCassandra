@@ -8,8 +8,6 @@ interface ThumbnailInterface {
 const ThumbnailImage: React.FC<ThumbnailInterface> = ({
   thumbnail,
 }: ThumbnailInterface) => {
-  console.log(thumbnail);
-
   return (
     <Box
       sx={{
