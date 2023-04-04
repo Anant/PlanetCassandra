@@ -1,66 +1,71 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@400;700&display=swap');
 .Font_Mulish_Button_L {
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-weight: 800;
 }
 .Font_Mulish_Button_M {
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-weight: 600;
 }
 .Font_Lato_Light {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 300;
 }
 .Font_Lato_Bold {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 700;
 }
 .Font_Montserrat_Regular {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
 }
 .Font_Montserrat_550 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 550;
 }
 .Font_Montserrat_Bold {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
 }
 .Font_Poppins_Regular {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 400;
 }
 .Font_Poppins_SemiBold {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 600;
 }
 .Font_Poppins_Bold {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 700;
 }
 .heroBgImage {
-  background-image: url("../images/HeroBG.png");
+  background-image: url('../images/HeroBG.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 .tagSectionBgImage {
-  background-image: url("../images/TagSectionBG.png");
+  background-image: url('../images/TagSectionBG.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 .eventsBgImage {
-  background-image: url("../images/EventsBg.png");
+  background-image: url('../images/EventsBg.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 .useCasesBgImage {
-  background-image: url("../images/UseCasesBG.png");
+  background-image: url('../images/UseCasesBG.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
 .footerBgImage {
-  background-image: url("../images/FooterBG.png");
+  background-image: url('../images/FooterBG.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.contributeBGImage {
+  background-image: url('../images/ContributeBG.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
