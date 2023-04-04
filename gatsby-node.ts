@@ -306,13 +306,18 @@ export const createPages: GatsbyNode['createPages'] = async ({
     query Leaves {
       allApiLeaves(sort: { wallabag_created_at: DESC },limit: 200) {
         nodes {
+          content
           id
           title
-          description
-          content
+          origin_url
+          url
           wallabag_created_at
-          tags
+          published_by
+          reading_time
+          domain_name
           preview_picture
+          tags
+          description
         }
       }
     }
@@ -326,18 +331,134 @@ export const createPages: GatsbyNode['createPages'] = async ({
     console.log("No data found!");
     return;
   }
+   // this function finds 3 sets of related articles
+   interface Article {
+    id: string;
+    tags: string[];
+  }
+  
+  interface TagSet {
+    tag: string;
+    articles: Article[];
+  }
+  
+  function findThreeTagSets(
+    articles: Article[],
+    currentArticle: Article,
+    maxArticlesPerSet: number = 4
+  ): TagSet[] {
+    const tagSets: TagSet[] = [];
+  
+    const availableTags = currentArticle.tags.slice(0, 3);
+    if (availableTags.length < 3) {
+      if (!availableTags.includes("spark")) {
+        availableTags.push("spark");
+      }
+      if (!availableTags.includes("kafka") && availableTags.length < 3) {
+        availableTags.push("kafka");
+      }
+    }
+  
+    availableTags.forEach((tag) => {
+      let articlesWithTag: Article[] = articles
+        .filter((article) => {
+          return article.id !== currentArticle.id && article.tags.includes(tag);
+        })
+        .slice(0, maxArticlesPerSet);
+  
+      // If there are not enough articles for the current tag, fill with articles tagged with "spark" and "kafka"
+      if (articlesWithTag.length < maxArticlesPerSet) {
+        const fillTags = ["spark", "kafka"];
+        fillTags.forEach((fillTag) => {
+          if (articlesWithTag.length < maxArticlesPerSet) {
+            const fillArticles = articles
+              .filter((article) => {
+                return (
+                  article.id !== currentArticle.id &&
+                  article.tags.includes(fillTag) &&
+                  !articlesWithTag.includes(article)
+                );
+              })
+              .slice(0, maxArticlesPerSet - articlesWithTag.length);
+            articlesWithTag = articlesWithTag.concat(fillArticles);
+          }
+        });
+      }
+  
+      // Create an object with the tag name and related articles array
+      const tagSet: TagSet = {
+        tag: tag,
+        articles: articlesWithTag,
+      };
+      tagSets.push(tagSet);
+    });
+  
+    return tagSets;
+  }
+  // This function finds related articles based on tags, it sorts them from most shared tags.
+ 
+  interface Article {
+    id: string;
+    tags: string[];
+  }
+  
+  function findRelatedArticles(
+    articles: Article[],
+    currentArticle: Article,
+    maxRelated: number = 10
+  ): Article[] {
+    const currentTags = currentArticle.tags.filter((tag) => tag !== "cassandra");
+  
+    const articlesWithCurrentTags = articles.filter((article) => {
+      if (article.id === currentArticle.id) return false;
+  
+      const articleTags = article.tags.filter((tag) => tag !== "cassandra");
+      return currentTags.some((tag) => articleTags.includes(tag));
+    });
+  
+    const cassandraArticles = articles.filter((article) => {
+      if (article.id === currentArticle.id) return false;
+      return article.tags.includes("cassandra");
+    });
+  
+    const relatedArticles = [
+      ...new Set([...articlesWithCurrentTags, ...cassandraArticles].map((article) => article.id)),
+    ]
+      .map((id) => {
+        return articles.find((article) => article.id === id)!;
+      })
+      .slice(0, maxRelated);
+  
+    const remaining = maxRelated - relatedArticles.length;
+    if (remaining > 0) {
+      const additionalArticles = articlesWithCurrentTags
+        .filter((article) => {
+          return !relatedArticles.includes(article);
+        })
+        .slice(0, remaining);
+      relatedArticles.push(...additionalArticles);
+    }
+  
+    return relatedArticles;
+  }
+  
   allLeaves.data.allApiLeaves.nodes.forEach(node => {
+    
+    const relatedArticles = findRelatedArticles(
+       // @ts-ignore
+      allLeaves.data.allApiLeaves.nodes,
+      node
+    )
+    const tagSets = findThreeTagSets( 
+       // @ts-ignore
+       allLeaves.data.allApiLeaves.nodes,node)
     createPage({
       path: `/leaf/${getSlug(node.title)}`,
       component: resolve(`src/components/Templates/LeafSinglePage.tsx`),
       context: {
-        id: node.id,
-        title: node.title,
-        description: node.description,
-        content: node.content,
-        wallabag_created_at: node.wallabag_created_at,
-        tags: node.tags,
-        preview_picture: node.preview_picture
+       node,
+        relatedArticles,
+        tagSets
       },
     });
   });
