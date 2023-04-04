@@ -42,6 +42,7 @@ function ExploreRelatedTopics(): JSX.Element {
           fileItems.length > 0 &&
           fileItems.map((fileItem, key) => (
             <Typography
+              key={key}
               sx={{
                 cursor: "pointer",
                 marginRight: 3,
