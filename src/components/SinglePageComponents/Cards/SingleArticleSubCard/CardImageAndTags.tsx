@@ -52,6 +52,7 @@ const CardImageAndTagsComponent: React.FC<CardImageAndTagsProps> = ({
             >
               <Chip
                 label={tag}
+                className="tuka"
                 sx={{
                   fontFamily: "Roboto Condensed, sans-serif",
                   fontWeight: 700,

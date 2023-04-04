@@ -10,7 +10,7 @@ const CardTitle: React.FC<CardTitleProps> = ({ titleFontSize, title }) => {
   return (
     <Box>
       <Typography
-        className="textTruncate"
+        className="textTruncate-2"
         fontFamily="Roboto Condensed, sans-serif"
         fontWeight={600}
         sx={{
