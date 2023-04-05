@@ -105,7 +105,7 @@ const TagCard: React.FC<Props> = ({ post }) => {
         >
           <Link
             style={{ textDecoration: "none", color: "white" }}
-            to={`/post/${post.slug}`}
+            to={`/leaf/${post.slug}`}
           >
             <Typography className="Font_Mulish_Button_M">
               Continue reading

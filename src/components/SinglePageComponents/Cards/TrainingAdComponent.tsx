@@ -32,8 +32,7 @@ const TrainingAdComponent: React.FC = () => {
               fontFamily="Roboto Condensed, sans-serif"
               fontWeight={700}
             >
-              <span style={{ color: "#FFF" }}>Need</span>
-              Cassandra Training?
+              <span style={{ color: "#FFF" }}>Need </span> Cassandra Training?
             </Typography>
           </Box>
           <Box

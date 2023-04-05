@@ -10,9 +10,15 @@ interface Props {
   title: string;
   description?: string;
   link: string;
+  hasVideoLink: boolean;
 }
 
-const RelatedArticleCard: React.FC<Props> = ({ title, description, link }) => {
+const RelatedArticleCard: React.FC<Props> = ({
+  title,
+  description,
+  link,
+  hasVideoLink,
+}) => {
   return (
     <Card sx={{ boxShadow: "none", marginBottom: 2 }}>
       <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -43,23 +49,43 @@ const RelatedArticleCard: React.FC<Props> = ({ title, description, link }) => {
         </Typography>
       </Box>
       <Box>
-        <Link to={`/post/${getSlug(title)}`}>
-          <Typography
-            sx={{
-              color: "#163BBF",
-              fontSize: { sm: "10px", md: "16px" },
-              fontWeight: 600,
-              fontFamily: "Roboto Condensed, sans-serif",
-              textTransform: "uppercase",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "flex-end",
-            }}
-          >
-            read more
-            <AiOutlineArrowRight style={{ marginLeft: 1.5 }} />
-          </Typography>
-        </Link>
+        {hasVideoLink ? (
+          <a target="_blank" href={link}>
+            <Typography
+              sx={{
+                color: "#163BBF",
+                fontSize: { sm: "10px", md: "16px" },
+                fontWeight: 600,
+                fontFamily: "Roboto Condensed, sans-serif",
+                textTransform: "uppercase",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+              }}
+            >
+              {"watch now"}
+              <AiOutlineArrowRight style={{ marginLeft: 1.5 }} />
+            </Typography>
+          </a>
+        ) : (
+          <Link to={`/leaf/${getSlug(title)}`}>
+            <Typography
+              sx={{
+                color: "#163BBF",
+                fontSize: { sm: "10px", md: "16px" },
+                fontWeight: 600,
+                fontFamily: "Roboto Condensed, sans-serif",
+                textTransform: "uppercase",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "flex-end",
+              }}
+            >
+              {"read more"}
+              <AiOutlineArrowRight style={{ marginLeft: 1.5 }} />
+            </Typography>
+          </Link>
+        )}
       </Box>
     </Card>
   );
