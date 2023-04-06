@@ -27,7 +27,7 @@ interface SinglePageProps {
       reading_time: number;
       domain_name: string;
     };
-    thumbnail: IGatsbyImageData;
+    thumbnail: IGatsbyImageData | null;
     relatedArticles: [];
     tagSets: [];
   };

@@ -2,8 +2,9 @@ import { Box } from "@mui/material";
 import React from "react";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 interface ThumbnailInterface {
-  thumbnail: IGatsbyImageData;
+  thumbnail: IGatsbyImageData | null;
 }
 const ThumbnailImage: React.FC<ThumbnailInterface> = ({
   thumbnail,
@@ -13,11 +14,32 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
       sx={{
         marginTop: 1,
         width: "100%",
-        // height: imageHeight ? imageHeight : { sm: "250px", md: "600px" },
+        height: { sm: "250px", md: "600px" },
       }}
     >
-      <GatsbyImage alt="test" image={thumbnail} />
-      {/* Static image is not working so we must use img tag */}
+      {thumbnail ? (
+        <GatsbyImage
+          className="thumbnail"
+          image={thumbnail}
+          alt="logo"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      ) : (
+        <StaticImage
+          src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
+          className="thumbnail"
+          alt="Placeholder"
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+      )}
     </Box>
   );
 };
