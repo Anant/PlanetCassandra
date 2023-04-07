@@ -38,12 +38,55 @@ interface LeafSinglePageProps {
 const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
   pageContext: { node, relatedArticles, tagSets, images },
 }) => {
-  let filteredImages = images.filter((e) => e.childImageSharp !== null);
+  // function findThumbnail(
+  //   images: ImageData[],
+  //   node: any
+  // ): IGatsbyImageData | null {
+  //   const filteredImages = images.filter((e) => e.childImageSharp !== null);
 
-  const thumbnail =
-    filteredImages.find((image) => image.parent.id === node.id)?.childImageSharp
-      .gatsbyImageData || null;
+  //   const thumbnail =
+  //     filteredImages.find((image) => image.parent.id === node.id)
+  //       ?.childImageSharp?.gatsbyImageData || null;
 
+  //   return thumbnail;
+  // }
+  function findThumbnails(nodes: any[], images: ImageData[]): any[] {
+    return nodes.map((node) => {
+      const filteredImages = images.filter((e) => e.childImageSharp !== null);
+      const thumbnail =
+        filteredImages.find((image) => image.parent.id === node.id)
+          ?.childImageSharp?.gatsbyImageData || null;
+      return {
+        ...node,
+        thumbnail,
+      };
+    });
+  }
+  function findThumbnailsForTagSets(
+    tagSets: any[],
+    images: ImageData[]
+  ): any[] {
+    return tagSets.map((tagSet) => {
+      const articles = tagSet.articles.map((article: any) => {
+        const filteredImages = images.filter((e) => e.childImageSharp !== null);
+        const thumbnail =
+          filteredImages.find((image) => image.parent.id === article.id)
+            ?.childImageSharp?.gatsbyImageData || null;
+        return {
+          ...article,
+          thumbnail,
+        };
+      });
+      return {
+        ...tagSet,
+        articles,
+      };
+    });
+  }
+
+  const allRelatedArticles = findThumbnails(relatedArticles, images);
+  const singlePageNode = findThumbnails([node], images);
+  const allTagSets = findThumbnailsForTagSets(tagSets, images);
   return (
     <Layout>
       <Helmet>
@@ -52,10 +95,9 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
       </Helmet>
       <SinglePageBaseGrid
         args={{
-          singlePage: node,
-          relatedArticles,
-          thumbnail,
-          tagSets,
+          singlePage: singlePageNode[0],
+          relatedArticles: allRelatedArticles,
+          tagSets: allTagSets,
         }}
       />
     </Layout>

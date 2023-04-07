@@ -26,15 +26,15 @@ interface SinglePageProps {
       origin_url: string;
       reading_time: number;
       domain_name: string;
+      thumbnail: IGatsbyImageData | null;
     };
-    thumbnail: IGatsbyImageData | null;
-    relatedArticles: [];
-    tagSets: [];
+    relatedArticles: any[];
+    tagSets: any[];
   };
 }
 
 const SinglePageBaseGrid: React.FC<SinglePageProps> = ({
-  args: { singlePage, thumbnail, relatedArticles, tagSets },
+  args: { singlePage, relatedArticles, tagSets },
 }) => {
   return (
     <Container maxWidth="xl">
@@ -57,7 +57,7 @@ const SinglePageBaseGrid: React.FC<SinglePageProps> = ({
             xs={12}
             sm={6}
           >
-            <ThumbnailImage thumbnail={thumbnail} />
+            <ThumbnailImage thumbnail={singlePage.thumbnail} />
             <NotificationComponent
               args={{
                 notificationTitle: singlePage.title,

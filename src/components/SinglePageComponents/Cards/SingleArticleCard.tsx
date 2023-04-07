@@ -57,7 +57,7 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
         cardTagsItems={cardTagsItems}
         imageWidth={imageWidth}
         articleUrl={articleUrl}
-        cardImg={item.preview_picture}
+        cardImg={item.thumbnail}
         addDefaultSrc={addDefaultSrc}
       />
       <Box
