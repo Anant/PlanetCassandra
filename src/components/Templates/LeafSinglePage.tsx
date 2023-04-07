@@ -38,18 +38,6 @@ interface LeafSinglePageProps {
 const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
   pageContext: { node, relatedArticles, tagSets, images },
 }) => {
-  // function findThumbnail(
-  //   images: ImageData[],
-  //   node: any
-  // ): IGatsbyImageData | null {
-  //   const filteredImages = images.filter((e) => e.childImageSharp !== null);
-
-  //   const thumbnail =
-  //     filteredImages.find((image) => image.parent.id === node.id)
-  //       ?.childImageSharp?.gatsbyImageData || null;
-
-  //   return thumbnail;
-  // }
   function findThumbnails(nodes: any[], images: ImageData[]): any[] {
     return nodes.map((node) => {
       const filteredImages = images.filter((e) => e.childImageSharp !== null);
