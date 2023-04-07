@@ -1,12 +1,14 @@
 import { Link } from "gatsby";
 import React from "react";
 import { CardMedia, Chip, Box } from "@mui/material";
-import NoImg from "../../../../images/NoPreviewImage.png";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 interface CardImageAndTagsProps {
   cardTagsItems: string[];
   imageWidth?: string;
   articleUrl: string;
-  cardImg?: string;
+  cardImg?: IGatsbyImageData | null;
   addDefaultSrc: (ev: any) => void;
 }
 
@@ -20,17 +22,36 @@ const CardImageAndTagsComponent: React.FC<CardImageAndTagsProps> = ({
   return (
     <Box sx={{ position: "relative" }}>
       <Link to={articleUrl}>
-        <CardMedia
+        <Box
           sx={{
-            height: "100%",
             width: imageWidth ? imageWidth : "199px",
-            objectFit: "cover",
-            borderRadius: "4px",
+            height: "100%",
           }}
-          component="img"
-          image={cardImg ? cardImg : NoImg}
-          onError={(ev) => addDefaultSrc(ev)}
-        />
+        >
+          {cardImg ? (
+            <GatsbyImage
+              className="thumbnail"
+              image={cardImg}
+              alt="logo"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
+          ) : (
+            <StaticImage
+              src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
+              className="thumbnail"
+              alt="Placeholder"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "contain",
+              }}
+            />
+          )}
+        </Box>
       </Link>
       <Box
         sx={{
