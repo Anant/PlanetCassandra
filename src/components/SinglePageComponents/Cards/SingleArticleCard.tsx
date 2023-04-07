@@ -32,7 +32,7 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
   isShared,
   hasDescription,
 }): ReactElement => {
-  const articleUrl = `/post/${getSlug(data ? data.hit.title : item.title)}`;
+  const articleUrl = `/leaf/${getSlug(data ? data.hit.title : item.title)}`;
 
   const addDefaultSrc = (ev: any) => {
     ev.target.src = NoImg;
