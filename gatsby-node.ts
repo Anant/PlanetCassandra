@@ -226,6 +226,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     'baeldung.com',
     '/levelup.gitconnected',
     'cassandra.apache.org/blog',
+    'Failed to fetch thumbnail for event: https://docs.d2iq.com/mesosphere/dcos/services/cassandra/2.9.0-3.11.6/security/',
     'datanami.com',
     'https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers',
     'https://towardsdatascience.com/',
