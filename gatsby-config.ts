@@ -52,6 +52,13 @@ const config: GatsbyConfig = {
       __key: "images",
     },
     {
+      resolve: "gatsby-plugin-mailchimp",
+      options: {
+        endpoint:
+          "https://anant.us1.list-manage.com/subscribe/post?u=d92549071121954997db2d1e1&amp;id=d05aef7418", // add your MC list endpoint here; see instructions below
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.ALGOLIA_APP_ID,
@@ -220,7 +227,6 @@ const config: GatsbyConfig = {
         }),
       },
     },
-    
   ],
 };
 
