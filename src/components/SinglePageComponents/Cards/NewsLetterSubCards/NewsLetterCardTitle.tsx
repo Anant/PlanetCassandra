@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
-import React from "react";
+import { Typography, useTheme } from '@mui/material';
+import React from 'react';
 
 interface NewsLetterCardTitleProps {
   cardTitle: string;
@@ -8,12 +8,13 @@ interface NewsLetterCardTitleProps {
 const NewsLetterCardTitle: React.FC<NewsLetterCardTitleProps> = ({
   cardTitle,
 }) => {
+  const theme = useTheme();
   return (
     <Typography
       sx={{
-        color: "#FFA62B",
+        color: theme.palette.primary.turqoise,
         fontSize: { xs: 24, sm: 25, md: 30, lg: 40 },
-        fontFamily: "Roboto Condensed, sans-serif",
+        fontFamily: 'Roboto Condensed, sans-serif',
         fontWeight: 700,
       }}
     >

@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
-import React from "react";
+import { Typography, useTheme } from '@mui/material';
+import React from 'react';
 
 interface NewsLetterSubTitleProps {
   subTitle: string;
@@ -8,12 +8,14 @@ interface NewsLetterSubTitleProps {
 const NewsLetterSubTitle: React.FC<NewsLetterSubTitleProps> = ({
   subTitle,
 }) => {
+  const theme = useTheme();
   return (
     <Typography
       sx={{
         marginTop: 1,
+        color: theme.palette.primary.main,
         fontSize: { xs: 13, md: 20 },
-        fontFamily: "Roboto Condensed, sans-serif",
+        fontFamily: 'Roboto Condensed, sans-serif',
         fontWeight: 400,
       }}
     >

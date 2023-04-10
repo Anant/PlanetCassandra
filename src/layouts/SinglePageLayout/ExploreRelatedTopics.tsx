@@ -1,6 +1,6 @@
-import { Grid, Typography, Button, Box } from "@mui/material";
-import React from "react";
-import { Link } from "gatsby";
+import { Grid, Typography, Button, Box, useTheme } from '@mui/material';
+import React from 'react';
+import { Link } from 'gatsby';
 
 interface Tag {
   name: string;
@@ -8,18 +8,19 @@ interface Tag {
 }
 
 const fileItems: Tag[] = [
-  { name: "All", path: "/tags/cassandra/1" },
-  { name: "Kafka", path: "/tags/kafka/1" },
-  { name: "Spark", path: "/tags/spark/1" },
-  { name: "Scylla", path: "/tags/scylla/1" },
-  { name: "SStable", path: "/tags/sstable/1" },
-  { name: "Kubernetes", path: "/tags/kubernetes/1" },
-  { name: "Api", path: "/tags/api/1" },
-  { name: "Github", path: "/tags/github/1" },
-  { name: "GraphQl", path: "/tags/graphql/1" },
+  { name: 'All', path: '/tags/cassandra/1' },
+  { name: 'Kafka', path: '/tags/kafka/1' },
+  { name: 'Spark', path: '/tags/spark/1' },
+  { name: 'Scylla', path: '/tags/scylla/1' },
+  { name: 'SStable', path: '/tags/sstable/1' },
+  { name: 'Kubernetes', path: '/tags/kubernetes/1' },
+  { name: 'Api', path: '/tags/api/1' },
+  { name: 'Github', path: '/tags/github/1' },
+  { name: 'GraphQl', path: '/tags/graphql/1' },
 ];
 
 function ExploreRelatedTopics(): JSX.Element {
+  const theme = useTheme();
   return (
     <Box sx={{ marginY: 5 }}>
       <Typography
@@ -27,15 +28,15 @@ function ExploreRelatedTopics(): JSX.Element {
         fontWeight={700}
         marginBottom={3}
         fontFamily="Roboto Condensed, sans-serif"
-        color={"#1D201F"}
+        color={theme.palette.primary.darkblue}
       >
         Explore Related Topics
       </Typography>
       <Box
         sx={{
-          overflow: "auto",
-          display: "flex",
-          justifyContent: "space-between",
+          overflow: 'auto',
+          display: 'flex',
+          justifyContent: 'space-between',
         }}
       >
         {fileItems &&
@@ -44,24 +45,24 @@ function ExploreRelatedTopics(): JSX.Element {
             <Typography
               key={key}
               sx={{
-                cursor: "pointer",
+                cursor: 'pointer',
                 marginRight: 3,
-                fontFamily: "Roboto Condensed, sans-serif",
+                fontFamily: 'Roboto Condensed, sans-serif',
                 fontWeight: 400,
                 fontSize: { xs: 10, sm: 8, md: 16 },
-                textTransform: "capitalize",
-                border: "1px solid",
-                borderColor: "#FFA62B",
-                borderRadius: "20px",
+                textTransform: 'capitalize',
+                border: '1px solid',
+                borderColor: theme.palette.primary.turqoise,
+                borderRadius: '20px',
                 padding: 1,
-                width: "100px",
-                textAlign: "center",
+                width: '100px',
+                textAlign: 'center',
               }}
             >
               <Link
                 key={key}
                 to={fileItem.path}
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: 'none', color: 'black' }}
               >
                 {fileItem.name}
               </Link>
