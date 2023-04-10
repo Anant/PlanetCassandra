@@ -9,6 +9,8 @@ import ArticlesFilters from "../../components/ListingPageComponents/ArticlesFilt
 import ListArticlesLayout from "./ListArticlesLayout";
 import ListingRelatedArticlesLayout from "./ListingRelatedArticlesLayout";
 import MoreListingCardsLayout from "./MoreListingCardsLayout";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+
 interface ListingPageGridLayoutProps {
   args: {
     articles: {
@@ -24,6 +26,7 @@ interface ListingPageGridLayoutProps {
       origin_url: string | null;
       wallabag_created_at: string;
       tags: string[];
+      thumbnail: IGatsbyImageData | null | undefined;
     }[];
     listingItems: Array<{
       id: string;
@@ -38,6 +41,7 @@ interface ListingPageGridLayoutProps {
       origin_url: string | null;
       wallabag_created_at: string;
       tags: string[];
+      thumbnail: IGatsbyImageData | null | undefined;
     }>;
     selectedTag: string;
     setSelectedTag: React.Dispatch<React.SetStateAction<string>>;

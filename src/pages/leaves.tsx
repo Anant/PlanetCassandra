@@ -46,27 +46,21 @@ const Leaves: React.FC<AllLeavesData> = () => {
 
   const [selectedTag, setSelectedTag] = useState("cassandra");
 
-  const listingItems = cardData.filter((item) =>
-    item.tags.includes(selectedTag)
-  );
   const leaves = useMemo(() => {
     return cardData.map((card) => {
       const image = images.find((img) => img.parent.id === card.id);
       return {
-        title: card.title,
-        date: card.wallabag_created_at,
-        description: card.description,
-        tags: card.tags,
+        ...card,
         thumbnail: image?.childImageSharp?.gatsbyImageData,
       };
     });
   }, [cardData, images]);
-
+  const listingItems = leaves.filter((item) => item.tags.includes(selectedTag));
   return (
     <Layout>
       <ListingPageGridLayout
         args={{
-          articles: cardData,
+          articles: leaves,
           listingItems,
           sortedTags,
           selectedTag,
