@@ -220,6 +220,7 @@ export const createPages: GatsbyNode['createPages'] = async ({
     'blog.softwaremill',
     'www.ktexperts',
     'rustyrazorblade.com',
+    'https://docs.d2iq.com/mesosphere/dcos/services/cassandra/2.9.0-3.11.6/security/',
     '/www.an10.io/',
     'itnext.io',
     '/www.an10.io/',

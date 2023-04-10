@@ -14,6 +14,7 @@ interface CompanyData {
         Case_Name: string;
         Case_Description: string;
         Case_URL: string;
+        Case_Article_Content: string;
         Case_Company: {
           data: {
             Name: string;
@@ -66,6 +67,7 @@ query UseCasesDataListing {
       data {
         Case_URL
         Case_Name
+        Case_Article_Content
         Case_Description
         Case_Company {
           data {
