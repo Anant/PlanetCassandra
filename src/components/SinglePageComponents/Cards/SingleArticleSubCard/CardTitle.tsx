@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material";
-import React from "react";
+import { Box, Typography, useTheme } from '@mui/material';
+import React from 'react';
 
 interface CardTitleProps {
   titleFontSize?: string;
@@ -7,6 +7,7 @@ interface CardTitleProps {
 }
 
 const CardTitle: React.FC<CardTitleProps> = ({ titleFontSize, title }) => {
+  const theme = useTheme();
   return (
     <Box>
       <Typography
@@ -14,8 +15,8 @@ const CardTitle: React.FC<CardTitleProps> = ({ titleFontSize, title }) => {
         fontFamily="Roboto Condensed, sans-serif"
         fontWeight={600}
         sx={{
-          color: "#383D3B",
-          fontSize: titleFontSize ? titleFontSize : "18px",
+          color: theme.palette.primary.darkblue,
+          fontSize: titleFontSize ? titleFontSize : '18px',
         }}
       >
         {title}
