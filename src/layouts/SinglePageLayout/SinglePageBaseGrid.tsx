@@ -75,17 +75,8 @@ const SinglePageBaseGrid: React.FC<SinglePageProps> = ({
               <Grid item xs={12}>
                 <RelatedArticlesLayout data={relatedArticles} />
               </Grid>
-              <Grid item xs={12}>
-                <TrainingAdComponent />
-              </Grid>
-              <Grid item xs={12}>
-                <NewsLetterCard />
-              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <ExploreRelatedTopics />
         </Grid>
         <Grid sx={{ marginBottom: 4 }} item xs={12}>
           <ExploreFurtherLayout
