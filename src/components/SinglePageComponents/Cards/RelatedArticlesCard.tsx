@@ -43,7 +43,7 @@ const RelatedArticleCard: React.FC<Props> = ({ title, description, link }) => {
         </Typography>
       </Box>
       <Box>
-        <Link to={`/post/${getSlug(title)}`}>
+        <Link to={`/leaf/${getSlug(title)}`}>
           <Typography
             sx={{
               color: "#163BBF",

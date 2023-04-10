@@ -68,7 +68,7 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
         }}
       >
         <Link
-          to={`/post/${getSlug(item.title)}`}
+          to={`/leaf/${getSlug(item.title)}`}
           style={{
             display: "flex",
             flexDirection: "column",
