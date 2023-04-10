@@ -45,6 +45,7 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
     'tobert.github.io',
     'zeppelin.apache.org',
     'https://docs.datastax.com/en/articles/cassandra/cassandrathenandnow.html',
+    'https://www.datastax.com/why-so-many-ai-initiatives-fail',
   ];
 
   const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(
