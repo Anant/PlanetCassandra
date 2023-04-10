@@ -48,7 +48,7 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
   ];
 
   const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(
-    (node) => {
+    (node: { url: string | string[]; }) => {
       return !failingUrls.some((url) => node.url.includes(url));
     }
   );
@@ -65,11 +65,44 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
   });
 
   await Promise.all(thumbnailPromises);
-}
 
+  const AllNews = await getAllNewsPictures(graphql);
+
+  if (AllNews.errors) {
+    console.log(AllNews.errors);
+    throw new Error(AllNews.errors);
+  }
+
+  if (!AllNews.data) {
+    console.log("No data found!");
+    return;
+  }
+  const filterednewsNodes = AllNews?.data?.allFeedTtrs?.nodes.filter((node: { link: string | string[]; }) => {
+    return !failingUrls.some((url) => node.link.includes(url));
+  });
+
+  //@ts-ignore
+  const newsThumbnailPromises = filterednewsNodes.map((node, index) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const newNode = {
+          id: node.id,
+          url: node.link,
+          origin_url: node.link,
+        };
+        fetchThumbnail(newNode, createNode, createNodeId, getCache).then(() => {
+          resolve(true);
+        });
+      }, index * 200);
+    });
+  });
+  
+  await Promise.all(newsThumbnailPromises);
+}
+//@ts-ignore
 async function getAllLeavesPictures(graphql) {
-  return await graphql(`
-    query LeavesPictures {
+    return await graphql(`
+      query LeavesPictures {
         allApiLeaves(
           filter: { url: { ne: null } }
           limit: 200
@@ -82,6 +115,21 @@ async function getAllLeavesPictures(graphql) {
             origin_url
             wallabag_created_at
           }
-        
-  `);
-}
+        }
+      }
+    `);
+  }
+  
+//@ts-ignore
+async function getAllNewsPictures(graphql) {
+    return await graphql(`
+      query NewsPictures {
+        allFeedTtrs {
+          nodes {
+            link
+            id
+          }
+        }
+      }
+    `);
+  }

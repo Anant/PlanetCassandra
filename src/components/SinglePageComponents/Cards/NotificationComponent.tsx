@@ -48,8 +48,8 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
                 fontSize: { xs: '13px', sm: '11px', md: '20px' },
               }}
             >
-              Read this article if you want to know more about{' '}
-              {notificationTitle}
+              This content has been originally sourced from{' '}
+              {articleUrl}
             </Typography>
           </Link>
         </Box>
