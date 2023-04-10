@@ -70,13 +70,10 @@ export const createPages: GatsbyNode["createPages"] = async ({
   //@ts-ignore
   createEvents({ actions, graphql, createNodeId, getCache });
 
-
-
   // await createUseCases({ createPage, graphql, resolve });
   // await createTtrss({ createPage, graphql, resolve });
   // await createLeaves({ createPage, graphql, fetchThumbnail, createNode, createNodeId, getCache, resolve });
   // await createVideos({ createPage, graphql, resolve });
-
 
   //----------------------------------------------------------------------------
   //Leaves Pictures Processing
@@ -110,28 +107,28 @@ export const createPages: GatsbyNode["createPages"] = async ({
     }
   `);
   const failingUrls = [
-    'blogs.vmware.com',
-    'https://www.how2shout.com/linux/2-ways-to-install-cassandra-on-ubuntu-22-04-lts-jammy/',
-    'blog.softwaremill',
-    'www.ktexperts',
-    'rustyrazorblade.com',
-    'https://docs.d2iq.com/mesosphere/dcos/services/cassandra/2.9.0-3.11.6/security/',
-    '/www.an10.io/',
-    'itnext.io',
-    '/www.an10.io/',
-    'baeldung.com',
-    '/levelup.gitconnected',
-    'cassandra.apache.org/blog',
-    'Failed to fetch thumbnail for event: https://docs.d2iq.com/mesosphere/dcos/services/cassandra/2.9.0-3.11.6/security/',
-    'datanami.com',
-    'https://dataedo.com/',
-    'https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers',
-    'https://towardsdatascience.com/',
-    'https://medium.com/better-programming/our-favorite-engineering-blogs-3d8365b2d871',
-    'https://datastation.multiprocess',
-    'tobert.github.io',
-    'zeppelin.apache.org',
-    'https://docs.datastax.com/en/articles/cassandra/cassandrathenandnow.html',
+    "blogs.vmware.com",
+    "https://www.how2shout.com/linux/2-ways-to-install-cassandra-on-ubuntu-22-04-lts-jammy/",
+    "blog.softwaremill",
+    "www.ktexperts",
+    "rustyrazorblade.com",
+    "https://docs.d2iq.com/mesosphere/dcos/services/cassandra/2.9.0-3.11.6/security/",
+    "/www.an10.io/",
+    "itnext.io",
+    "/www.an10.io/",
+    "baeldung.com",
+    "/levelup.gitconnected",
+    "cassandra.apache.org/blog",
+    "Failed to fetch thumbnail for event: https://docs.d2iq.com/mesosphere/dcos/services/cassandra/2.9.0-3.11.6/security/",
+    "datanami.com",
+    "https://dataedo.com/",
+    "https://www.datastax.com/resources/webinar/serverless-functions-datastax-drivers",
+    "https://towardsdatascience.com/",
+    "https://medium.com/better-programming/our-favorite-engineering-blogs-3d8365b2d871",
+    "https://datastation.multiprocess",
+    "tobert.github.io",
+    "zeppelin.apache.org",
+    "https://docs.datastax.com/en/articles/cassandra/cassandrathenandnow.html",
   ];
 
   const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(
@@ -204,24 +201,76 @@ export const createPages: GatsbyNode["createPages"] = async ({
     data?: {
       allAirtable: {
         nodes: {
-          table: string;
           data: {
-            Case_Description: string;
             Case_Name: string;
+            Case_Description: string;
+            Case_URL: string;
             Case_Article_Content: string;
+            Case_Published: string;
+            Case_Company: {
+              data: {
+                Name: string;
+              };
+              id: number;
+            };
+          };
+        }[];
+      };
+      allFile: {
+        nodes: {
+          childImageSharp: {
+            gatsbyImageData: {
+              layout: string;
+              backgroundColor: string;
+              images: {
+                fallback: {
+                  src: string;
+                  srcSet: string;
+                  sizes: string;
+                };
+                sources: {
+                  srcSet: string;
+                  type: string;
+                  sizes: string;
+                }[];
+              };
+              width: number;
+              height: number;
+            };
+          };
+          parent: {
+            id: string;
           };
         }[];
       };
     };
   } = await graphql(`
     query UseCasesData {
-      allAirtable(filter: { table: { eq: "Cases" } }) {
+      allAirtable(
+        filter: { table: { eq: "Cases" } }
+        sort: { data: { Case_Published: DESC } }
+      ) {
         nodes {
-          table
           data {
+            Case_URL
             Case_Name
             Case_Description
+            Case_Company {
+              data {
+                Name
+              }
+              id
+            }
+            Case_Published
             Case_Article_Content
+          }
+        }
+      }
+      allFile(filter: { id: { ne: null } }) {
+        nodes {
+          name
+          childrenImageSharp {
+            gatsbyImageData
           }
         }
       }
@@ -236,14 +285,29 @@ export const createPages: GatsbyNode["createPages"] = async ({
     console.log("No data found!");
     return;
   }
+  function selectRandomItems(items: any[], numItems: number) {
+    const shuffled = items.slice().sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, numItems);
+  }
   allUseCases.data.allAirtable.nodes.forEach((node) => {
+    // @ts-ignore
+    const exploreFurther = selectRandomItems(
+      // @ts-ignore
+      allUseCases.data.allAirtable.nodes,
+      12
+    );
+
+    // @ts-ignore
+    const newestCases = allUseCases.data.allAirtable.nodes.slice(0, 10);
+    const images = allUseCases.data?.allFile.nodes;
     createPage({
       path: `/use-cases/${getSlug(node.data.Case_Name)}`,
       component: resolve(`src/components/Templates/UseCaseSinglePage.tsx`),
       context: {
-        Description: node.data.Case_Description,
-        Name: node.data.Case_Name,
-        Case_Article_Content: node.data.Case_Article_Content,
+        node,
+        newestCases,
+        exploreFurther,
+        images,
       },
     });
   });

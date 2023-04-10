@@ -73,7 +73,7 @@ const SinglePageBaseGrid: React.FC<SinglePageProps> = ({
           <Grid item xs={12} sm={4}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <RelatedArticlesLayout data={relatedArticles} />
+                {/* <RelatedArticlesLayout data={relatedArticles} /> */}
               </Grid>
               <Grid item xs={12}>
                 <TrainingAdComponent />
@@ -88,12 +88,12 @@ const SinglePageBaseGrid: React.FC<SinglePageProps> = ({
           <ExploreRelatedTopics />
         </Grid>
         <Grid sx={{ marginBottom: 4 }} item xs={12}>
-          <ExploreFurtherLayout
+          {/* <ExploreFurtherLayout
             args={{
               data: tagSets,
               isListingPage: false,
             }}
-          />
+          /> */}
         </Grid>
         <Grid item xs={12}>
           {/* comments section */}
