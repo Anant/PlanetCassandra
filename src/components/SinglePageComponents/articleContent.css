@@ -1,5 +1,17 @@
+.articleContainer {
+  margin: 50px 0;
+}
 .articleContainer img {
   height: auto !important;
+}
+.articleContainer .author-component {
+  margin-bottom: 0;
+  margin-left: 10px;
+  color: #62707c;
+}
+.articleContainer .title-component {
+  font-size: 42px;
+  font-weight: 600;
 }
 .articleContainer p,
 .articleContainer span {
@@ -7,7 +19,9 @@
   margin-bottom: 26px;
   font-family: 'Roboto Condensed', sans-serif;
 }
-
+.articleContainer .is-layout-flow {
+  margin: 50px 0;
+}
 .articleContainer h1,
 .articleContainer h2,
 .articleContainer h3,
@@ -29,4 +43,17 @@
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 22px;
   color: #5ab1bb !important;
+}
+
+.is-layout-flex {
+  display: flex;
+  align-items: center;
+}
+.is-layout-flex .wp-block-column {
+  flex: 0 0 50%;
+}
+.has-white-color > p {
+  color: #fff;
+  font-weight: bold;
+  padding-left: 20px;
 }

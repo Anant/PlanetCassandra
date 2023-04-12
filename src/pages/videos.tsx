@@ -43,6 +43,21 @@ const Videos: React.FC<VideoData> = () => {
       <Helmet>
         <title>Video Library - Planet Cassandra</title>
         <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={'Videos - Planet Cassandra'} />
+        <meta name="author" content={'Planet Cassandra'} />
+        <meta
+          name="keywords"
+          content="Cassandra videos, database tutorials, video demonstrations, case studies, best practices, NoSQL database"
+        />
+        <meta
+          name="description"
+          content="Explore a collection of informative and educational videos on Cassandra database on Planet Cassandra. Watch videos on various topics related to Cassandra, including tutorials, demonstrations, case studies, and best practices, to learn more about this popular NoSQL database."
+        />
+        <meta
+          property="og:description"
+          content="Explore a collection of informative and educational videos on Cassandra database on Planet Cassandra. Watch videos on various topics related to Cassandra, including tutorials, demonstrations, case studies, and best practices, to learn more about this popular NoSQL database."
+        />
       </Helmet>
       <VideoCardGrid cardData={videos} />
     </Layout>
