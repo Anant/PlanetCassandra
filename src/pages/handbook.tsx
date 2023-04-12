@@ -94,10 +94,6 @@ const HandbookPage = () => {
       }
     }
   `);
-  console.log(
-    "🚀 ~ file: handbook.tsx:83 ~ HandbookPage ~ data:",
-    data.allFile.nodes
-  );
   const images = data.allFile.nodes;
   return (
     <Layout>
