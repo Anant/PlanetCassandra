@@ -48,6 +48,7 @@
 .is-layout-flex {
   display: flex;
   align-items: center;
+  gap: 60px;
 }
 .is-layout-flex .wp-block-column {
   flex: 0 0 50%;
@@ -56,4 +57,9 @@
   color: #fff;
   font-weight: bold;
   padding-left: 20px;
+}
+@media screen and (max-width: 426px) {
+  .is-layout-flex {
+    display: block;
+  }
 }
