@@ -37,18 +37,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
   } = props;
 
   const mapUseCasesToProps = (useCasesProps: UseCasesSinglePageProps): BaseGridProps => {
-    const {
-      title,
-      Description,
-      Case_Article_Content,
-      RelatedArticles,
-      Case_URL,
-      Case_Published,
-      gatsbyImageData,
-      id,
-      Company,
-    } = useCasesProps.pageContext;
-  
+   
     return {
       singlePage: {
         title,
@@ -65,6 +54,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
       relatedArticles: RelatedArticles.map((relatedArticle) => ({
         ...relatedArticle,
         title: relatedArticle.Case_Name, // Add the missing title property for UseCases
+        thumbnail: relatedArticle.gatsbyImageData,
       })),
     };
   };
