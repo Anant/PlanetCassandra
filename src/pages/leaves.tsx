@@ -1,9 +1,10 @@
-import React, { useMemo } from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import Layout from "../components/Layout/Layout";
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import LeafCardGrid from "../layouts/LeafCardGrid";
-
+import React, { useMemo } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Layout from '../components/Layout/Layout';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import LeafCardGrid from '../layouts/LeafCardGrid';
+//@ts-ignore
+import { Helmet } from 'react-helmet';
 interface AllLeavesData {
   allFile: {
     nodes: {
@@ -32,8 +33,6 @@ const Leaves: React.FC<AllLeavesData> = () => {
   const cardData = allApiLeaves.nodes.slice(1);
   const images = allFile.nodes;
 
-
-
   const leaves = useMemo(() => {
     return cardData.map((card) => {
       const image = images.find((img) => img.parent.id === card.id);
@@ -47,17 +46,35 @@ const Leaves: React.FC<AllLeavesData> = () => {
     });
   }, [cardData, images]);
 
-
   return (
     <Layout>
+      <Helmet>
+        <title>Leaves - Planet Cassandra</title>
+        <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={'Leaves - Planet Cassandra'} />
+        <meta name="author" content={'Planet Cassandra'} />
+        <meta
+          name="keywords"
+          content="Cassandra leaves, secondary indexes, query performance, data retrieval, benefits, features"
+        />
+        <meta
+          name="description"
+          content="Explore the benefits and features of Cassandra leaves on Planet Cassandra. Learn how Cassandra leaves, also known as secondary indexes, can improve query performance and enable more flexible data retrieval in your Cassandra database applications."
+        />
+        <meta
+          property="og:description"
+          content="Explore the benefits and features of Cassandra leaves on Planet Cassandra. Learn how Cassandra leaves, also known as secondary indexes, can improve query performance and enable more flexible data retrieval in your Cassandra database applications."
+        />
+      </Helmet>
       <LeafCardGrid cardData={leaves} />
     </Layout>
   );
 };
 
 const query = graphql`
-query LeavesData {
-    allFile(filter: {parent: {id: {ne: null}}}) {
+  query LeavesData {
+    allFile(filter: { parent: { id: { ne: null } } }) {
       nodes {
         parent {
           ... on api_leaves {
@@ -69,7 +86,7 @@ query LeavesData {
         }
       }
     }
-    allApiLeaves(limit: 100, sort: {wallabag_created_at: DESC}) {
+    allApiLeaves(limit: 100, sort: { wallabag_created_at: DESC }) {
       nodes {
         tags
         title

@@ -1,9 +1,11 @@
 // src/pages/posts.tsx
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from 'react';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
-import PostCardGrid from '../layouts/PostCardGrid'
+import PostCardGrid from '../layouts/PostCardGrid';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+//@ts-ignore
+import { Helmet } from 'react-helmet';
 
 interface Props {
   data: {
@@ -45,19 +47,43 @@ interface Props {
 
 const Posts: React.FC<Props> = (props: Props) => {
   const { data } = props;
-  const posts = data.allWpPost.nodes as any
-
+  const posts = data.allWpPost.nodes as any;
   return (
     <Layout>
+      <Helmet>
+        <title>Latest Posts - Planet Cassandra</title>
+        <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={'Latest Posts - Planet Cassandra'} />
+        <meta name="author" content={'Planet Cassandra'} />
+        <meta
+          name="keywords"
+          content="Planet Cassandra, Cassandra database, Cassandra news, Cassandra tutorials, Cassandra insights"
+        />
+        <meta
+          name="description"
+          content="Explore the latest posts on Planet Cassandra, a hub for Cassandra database news, tutorials, and insights. Get expert tips and tricks for using Cassandra in your applications."
+        />
+        <meta
+          property="og:description"
+          content="Explore the latest posts on Planet Cassandra, a hub for Cassandra database news, tutorials, and insights. Get expert tips and tricks for using Cassandra in your applications."
+        />
+      </Helmet>
       <PostCardGrid cardData={posts} />
     </Layout>
   );
 };
-
-
+{
+  /* <Helmet>
+        <title>{node.title}</title>
+        <meta name="description" content={node.description} /> -- chatgpt 
+          <meta name="keywords" content={node.tags[0]} /> -- chatgpt
+          <meta property="og:description" content={node.description} />
+      </Helmet> */
+}
 export const query = graphql`
   query Posts {
-    allWpPost(sort: {date: DESC}) {
+    allWpPost(sort: { date: DESC }) {
       totalCount
       nodes {
         categories {
