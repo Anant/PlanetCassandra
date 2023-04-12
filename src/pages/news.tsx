@@ -52,6 +52,21 @@ const News: React.FC<TtrsData> = () => {
       <Helmet>
         <title>News - Planet Cassandra</title>
         <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={'News - Planet Cassandra'} />
+        <meta name="author" content={'Planet Cassandra'} />
+        <meta
+          name="keywords"
+          content="Cassandra news, database updates, NoSQL database community, new features, events, announcements"
+        />
+        <meta
+          name="description"
+          content="Stay updated with the latest news and updates on Cassandra database on Planet Cassandra. Get insights on new features, updates, events, and announcements related to Cassandra and the NoSQL database community."
+        />
+        <meta
+          property="og:description"
+          content="Stay updated with the latest news and updates on Cassandra database on Planet Cassandra. Get insights on new features, updates, events, and announcements related to Cassandra and the NoSQL database community."
+        />
       </Helmet>
       <NewsCardGrid cardData={posts} />
     </Layout>

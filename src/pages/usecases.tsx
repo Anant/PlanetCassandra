@@ -57,6 +57,21 @@ const Companies: React.FC<CompanyData> = () => {
       <Helmet>
         <title>Use Cases - Planet Cassandra</title>
         <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={'Use Cases - Planet Cassandra'} />
+        <meta name="author" content={'Planet Cassandra'} />
+        <meta
+          name="keywords"
+          content="Cassandra use cases, data-driven solutions, IoT, e-commerce, analytics"
+        />
+        <meta
+          name="description"
+          content="Discover various use cases for Cassandra database on Planet Cassandra. Learn how Cassandra is being used in real-world applications for data-driven solutions, including IoT, e-commerce, analytics, and more."
+        />
+        <meta
+          property="og:description"
+          content="Explore various use cases for Cassandra database on Planet Cassandra. Learn how Cassandra is being used in real-world applications for data-driven solutions, including IoT, e-commerce, analytics, and more."
+        />
       </Helmet>
       <UseCaseGrid cardData={currentCompanies} />
     </Layout>
