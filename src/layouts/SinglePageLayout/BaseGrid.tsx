@@ -39,7 +39,7 @@ export interface BaseGridProps {
 
 
 const BaseGrid: React.FC<BaseGridProps> = ({ routePrefix, singlePage, relatedArticles, renderExploreFurther }) => {
-  console.log(singlePage)
+  //console.log(singlePage)
   return (
     <Container maxWidth="xl">
       <Grid container>
