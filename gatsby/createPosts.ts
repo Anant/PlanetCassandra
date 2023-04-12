@@ -1,7 +1,7 @@
-import { resolve } from "path";
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import { Actions, CreatePagesArgs, GatsbyNode } from "gatsby";
-import { findThreeTagSets } from "../src/utils/findThreeTagSets";
+import { resolve } from 'path';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { Actions, CreatePagesArgs, GatsbyNode } from 'gatsby';
+import { findThreeTagSets } from '../src/utils/findThreeTagSets';
 
 interface PostNode {
   slug: string;
@@ -22,11 +22,20 @@ interface PostNode {
       };
     };
   };
+  date: Date;
+  author: {
+    node: {
+      name: string;
+      avatar: {
+        url: string;
+      };
+    };
+  };
 }
 
 interface CreatePostsArgs {
-  createPage: Actions["createPage"];
-  graphql: CreatePagesArgs["graphql"];
+  createPage: Actions['createPage'];
+  graphql: CreatePagesArgs['graphql'];
 }
 
 export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
@@ -59,6 +68,15 @@ export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
               }
             }
           }
+          date
+          author {
+            node {
+              name
+              avatar {
+                url
+              }
+            }
+          }
         }
       }
     }
@@ -69,12 +87,12 @@ export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
     throw new Error(allPostsResult.errors);
   }
   if (!allPostsResult.data) {
-    console.log("No data found!");
+    console.log('No data found!');
     return;
   }
 
   const allPostNodes = allPostsResult.data.allWpPost.nodes;
-  
+
   allPostNodes.forEach((node) => {
     const currentPost: any = {
       id: node.id,
@@ -93,10 +111,14 @@ export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
       component: resolve(`src/components/Templates/PostSinglePage.tsx`),
       context: {
         id: node.id,
+        name: node.author.node.name,
+        date: node.date,
+        avatar: node.author.node.avatar.url,
         title: node.title,
         tags: node.tags?.nodes.map((tag) => tag.name),
         content: node.content,
-        featuredImage: node.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
+        featuredImage:
+          node.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
         tagSets: tagSets,
       },
     });
