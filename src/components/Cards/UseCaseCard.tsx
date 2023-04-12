@@ -7,6 +7,7 @@ import { IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
 import { CiFacebook, CiLinkedin, CiTwitter } from 'react-icons/ci';
 import { Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import getSlug from 'speakingurl';
 
 interface Props {
   name: string;
@@ -72,7 +73,7 @@ const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
             alignItems: 'center',
           }}
         >
-          <Link style={{ textDecoration: 'none' }} to={`${url}`}>
+          <Link style={{ textDecoration: 'none' }} to={url}>
             <Button
               sx={{
                 borderRadius: 50,

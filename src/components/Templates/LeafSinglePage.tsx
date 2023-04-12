@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
 import "./singlePageTemplates.css";
-import SinglePageBaseGrid from "../../layouts/SinglePageLayout/SinglePageBaseGrid";
+import BaseGrid, {BaseGridProps} from "../../layouts/SinglePageLayout/BaseGrid";
+import LeaftGrid from "../../layouts/SinglePageLayout/LeafGrid";
 import "../../components/Layout/Layout.css";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 interface ImageData {
@@ -35,58 +36,66 @@ interface LeafSinglePageProps {
   };
 }
 
-const LeafSinglePage: React.FC<LeafSinglePageProps> = ({
-  pageContext: { node, relatedArticles, tagSets, images },
-}) => {
-  function findThumbnails(nodes: any[], images: ImageData[]): any[] {
-    return nodes.map((node) => {
+function findThumbnails(nodes: any[], images: ImageData[]): any[] {
+  return nodes.map((node) => {
+    const filteredImages = images.filter((e) => e.childImageSharp !== null);
+    const thumbnail =
+      filteredImages.find((image) => image.parent.id === node.id)
+        ?.childImageSharp?.gatsbyImageData || null;
+    return {
+      ...node,
+      thumbnail,
+    };
+  });
+}
+
+function findThumbnailsForTagSets(
+  tagSets: any[],
+  images: ImageData[]
+): any[] {
+  return tagSets.map((tagSet) => {
+    const articles = tagSet.articles.map((article: any) => {
       const filteredImages = images.filter((e) => e.childImageSharp !== null);
       const thumbnail =
-        filteredImages.find((image) => image.parent.id === node.id)
+        filteredImages.find((image) => image.parent.id === article.id)
           ?.childImageSharp?.gatsbyImageData || null;
       return {
-        ...node,
+        ...article,
         thumbnail,
       };
     });
-  }
-  function findThumbnailsForTagSets(
-    tagSets: any[],
-    images: ImageData[]
-  ): any[] {
-    return tagSets.map((tagSet) => {
-      const articles = tagSet.articles.map((article: any) => {
-        const filteredImages = images.filter((e) => e.childImageSharp !== null);
-        const thumbnail =
-          filteredImages.find((image) => image.parent.id === article.id)
-            ?.childImageSharp?.gatsbyImageData || null;
-        return {
-          ...article,
-          thumbnail,
-        };
-      });
-      return {
-        ...tagSet,
-        articles,
-      };
-    });
-  }
+    return {
+      ...tagSet,
+      articles,
+    };
+  });
+}
+
+const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
+  const {
+    pageContext: { node, relatedArticles, tagSets, images },
+  } = props;
 
   const allRelatedArticles = findThumbnails(relatedArticles, images);
   const singlePageNode = findThumbnails([node], images);
   const allTagSets = findThumbnailsForTagSets(tagSets, images);
+
+
   return (
     <Layout>
       <Helmet>
         <title>{node.title}</title>
-        <meta name={node.title} content={node.description} />
+        <meta name="description" content={node.description} />
+          <meta name="keywords" content={node.tags[0]} />
+          <meta name="author" content={node.origin_url} />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta property="og:title" content={node.title} />
+          <meta property="og:description" content={node.description} />
       </Helmet>
-      <SinglePageBaseGrid
-        args={{
-          singlePage: singlePageNode[0],
-          relatedArticles: allRelatedArticles,
-          tagSets: allTagSets,
-        }}
+      <LeaftGrid
+        singlePage={singlePageNode[0]}
+        relatedArticles={allRelatedArticles}
+        tagSets={allTagSets}
       />
     </Layout>
   );

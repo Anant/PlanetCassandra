@@ -81,8 +81,8 @@ const Companies: React.FC<CompanyData> = () => {
 const query = graphql`
   query UseCasesDataListing {
     allAirtable(
-      filter: { table: { eq: "Cases" } }
-      sort: { data: { Case_Published: DESC } }
+      filter: {table: {eq: "Cases"}, data: {Case_URL: {ne: null}}}
+      sort: {data: {Case_Published: DESC}}
     ) {
       nodes {
         table

@@ -5,6 +5,10 @@ import { Container, Typography } from "@mui/material";
 import Layout from "../Layout/Layout";
 import './singlePageTemplates.css'
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { BaseGridProps } from "../../layouts/SinglePageLayout/BaseGrid";
+import UseCaseGrid from "../../layouts/SinglePageLayout/UseCaseGrid";
+import "../../components/Layout/Layout.css";
+import "./singlePageTemplates.css";
 
 interface UseCasesSinglePageProps {
   pageContext: {
@@ -12,52 +16,67 @@ interface UseCasesSinglePageProps {
     title: string;
     Description: string;
     Case_Article_Content: string;
+    Case_Published: string;
+    Case_URL: string;
     RelatedArticles: Array<{
       Case_Name: string;
       gatsbyImageData: IGatsbyImageData | null;
     }>;
     gatsbyImageData: IGatsbyImageData | null;
+    Company: string;
   };
 }
 
 
 
 
-const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = ({
-  pageContext: { id, title, Description, Case_Article_Content, RelatedArticles },
-}) => {
+
+const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
+  const {
+    pageContext: { id, title, Description, Case_Article_Content, RelatedArticles, Company, gatsbyImageData, Case_Published, Case_URL },
+  } = props;
+
+  const mapUseCasesToProps = (useCasesProps: UseCasesSinglePageProps): BaseGridProps => {
+   
+    return {
+      singlePage: {
+        title,
+        description: Description,
+        content: Case_Article_Content,
+        thumbnail: gatsbyImageData,
+        //@ts-ignore
+        routePrefix : props.routePrefix,
+        id, // Add the missing id property
+        url: Case_URL, // Add the missing url property for UseCases
+        domain_name: Case_URL, // Add the missing domain_name property
+        wallabag_created_at: Case_Published, // Add the date
+      },
+      relatedArticles: RelatedArticles.map((relatedArticle) => ({
+        ...relatedArticle,
+        title: relatedArticle.Case_Name, // Add the missing title property for UseCases
+        thumbnail: relatedArticle.gatsbyImageData,
+      })),
+    };
+  };
+  const baseGridProps = mapUseCasesToProps(props);
+
   return (
     <Layout>
-      <Container>
+      <Container maxWidth="xl">
         <Helmet>
           <title>{title}</title>
+          <meta name="description" content={Description} />
+          <meta name="keywords" content={title} />
+          <meta name="author" content={Company} />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={Description} />
+          {/* <meta property="og:image" content={gatsbyImageData} /> */}
         </Helmet>
-        <div className="articleContainer" style={{ marginInline: "30px" }}>
-          <article>
-            <Typography
-              variant="h4"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-            <Typography
-              variant="subtitle2"
-              gutterBottom
-              dangerouslySetInnerHTML={{ __html: Description }}
-            />
-            <Typography
-              variant="subtitle2"
-              gutterBottom
-              dangerouslySetInnerHTML={{ __html: Case_Article_Content }}
-            />
-          </article>
-        </div>
-        <div className="relatedArticles">
-            <Typography variant="h6">More Articles:</Typography>
-            {RelatedArticles.map(article => (
-              <div key={article.Case_Name}>
-                <Typography variant="h6">{article.Case_Name}</Typography>
-              </div>
-            ))}
-          </div>
+        <UseCaseGrid
+          singlePage={baseGridProps.singlePage}
+          relatedArticles={baseGridProps.relatedArticles}
+        />
       </Container>
     </Layout>
   );

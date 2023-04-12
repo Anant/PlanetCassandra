@@ -140,7 +140,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             fontFamily: 'Roboto Condensed, sans-serif',
           }}
         >
-          by {author ? author : 'John Doe'}
+          by {author ? author : 'Uknown'}
         </Typography>
       </Box>
       <Box>
