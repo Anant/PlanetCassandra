@@ -13,7 +13,7 @@ const SelectingSpeakers: React.FC<any> = () => {
         }}
       >
         <StaticImage
-          src="../../images/handbook/HandbookLogo4.png"
+          src="../../images/handbook/HandbookLogo5.png"
           alt="HandbookLogo"
           style={{
             height: "100%",

@@ -13,7 +13,7 @@ const FindingSponsors: React.FC<any> = () => {
         }}
       >
         <StaticImage
-          src="../../images/handbook/HandbookLogo4.png"
+          src="../../images/handbook/HandbookLogo6.png"
           alt="HandbookLogo"
           style={{
             height: "100%",

@@ -50,7 +50,7 @@ const PrimeDirective: React.FC<any> = () => {
       <Typography
         sx={{
           fontFamily: "Roboto Condensed, sans-serif",
-          fontWeight: 400,
+          fontWeight: 700,
           fontSize: { xs: "12px", sm: "13px", md: "22px" },
           marginTop: 3,
         }}
