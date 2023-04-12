@@ -165,7 +165,7 @@ const HandbookPage = () => {
                       sx={{
                         fontFamily: "Roboto Condensed, sans-serif",
                         fontWeight: 400,
-                        fontSize: "22px",
+                        fontSize: { xs: "12px", sm: "13px", md: "22px" },
                       }}
                     >
                       {section.content}
