@@ -12,30 +12,34 @@ import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnai
 import DescriptionCard from "../../components/SinglePageComponents/Cards/DescriptionCard";
 import NewsLetterCard from "../../components/SinglePageComponents/Cards/NewsLetterCard";
 
-interface SinglePageProps {
-  args: {
-    singlePage: {
-      tags: string[];
-      title: string;
-      wallabag_created_at: string;
-      description: string;
-      id: string;
-      content: string;
-      preview_picture: string;
-      url: string;
-      origin_url: string;
-      reading_time: number;
-      domain_name: string;
-      thumbnail: IGatsbyImageData | null;
-    };
-    relatedArticles: any[];
-    tagSets: any[];
+export interface BaseGridProps {
+  singlePage: {
+    tags?: string[]; // Optional property
+    title: string;
+    wallabag_created_at?: string; // Optional property
+    description: string;
+    id?: string; // Optional property
+    content: string;
+    preview_picture?: string; // Optional property
+    url?: string; // Optional property for Leaves
+    origin_url?: string; // Optional property
+    reading_time?: number; // Optional property
+    domain_name?: string; // Optional property
+    thumbnail: IGatsbyImageData | null;
   };
+  relatedArticles: Array<{
+    Case_Name?: string; // Optional property for UseCases
+    title?: string; // Optional property for Leaves
+    gatsbyImageData: IGatsbyImageData | null;
+  }>;
+  tagSets?: any[]; // Optional property
+  renderExploreFurther?: () => React.ReactNode;
+  routePrefix : string;
 }
 
-const SinglePageBaseGrid: React.FC<SinglePageProps> = ({
-  args: { singlePage, relatedArticles, tagSets },
-}) => {
+
+const BaseGrid: React.FC<BaseGridProps> = ({ routePrefix, singlePage, relatedArticles, renderExploreFurther }) => {
+  //console.log(singlePage)
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -73,25 +77,23 @@ const SinglePageBaseGrid: React.FC<SinglePageProps> = ({
           <Grid item xs={12} sm={4}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <RelatedArticlesLayout data={relatedArticles} />
+                <RelatedArticlesLayout data={relatedArticles} routePrefix={routePrefix} />
               </Grid>
             </Grid>
           </Grid>
         </Grid>
         <Grid sx={{ marginBottom: 4 }} item xs={12}>
-          <ExploreFurtherLayout
-            args={{
-              data: tagSets,
-              isListingPage: false,
-            }}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          {/* comments section */}
+          {renderExploreFurther && (
+            <Grid sx={{ marginBottom: 4 }} item xs={12}>
+              {renderExploreFurther()}
+            </Grid>
+          )}
         </Grid>
       </Grid>
     </Container>
   );
 };
 
-export default SinglePageBaseGrid;
+export default BaseGrid;
+
+

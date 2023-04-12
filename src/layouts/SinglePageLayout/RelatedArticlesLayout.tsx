@@ -16,9 +16,10 @@ interface ArticleData {
 }
 interface RelatedArticlesLayoutProps {
   data: ArticleData[];
+  routePrefix : string;
 }
 
-function RelatedArticlesLayout({ data }: RelatedArticlesLayoutProps) {
+function RelatedArticlesLayout({ data,routePrefix  }: RelatedArticlesLayoutProps) {
   const theme = useTheme();
   return (
     <Grid
@@ -46,6 +47,7 @@ function RelatedArticlesLayout({ data }: RelatedArticlesLayoutProps) {
               titleFontSize={{ xs: '13px', sm: '8px', md: '18px' }}
               dataFontSize={{ xs: '9px', sm: '6px', md: '15px' }}
               item={item}
+              routePrefix={routePrefix}
             />
           </Grid>
         ))}
