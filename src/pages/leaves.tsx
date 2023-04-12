@@ -1,9 +1,10 @@
-import React, { useMemo } from "react";
-import { useStaticQuery, graphql } from "gatsby";
-import Layout from "../components/Layout/Layout";
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import LeafCardGrid from "../layouts/LeafCardGrid";
-
+import React, { useMemo } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import Layout from '../components/Layout/Layout';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import LeafCardGrid from '../layouts/LeafCardGrid';
+//@ts-ignore
+import { Helmet } from 'react-helmet';
 interface AllLeavesData {
   allFile: {
     nodes: {
@@ -32,8 +33,6 @@ const Leaves: React.FC<AllLeavesData> = () => {
   const cardData = allApiLeaves.nodes.slice(1);
   const images = allFile.nodes;
 
-
-
   const leaves = useMemo(() => {
     return cardData.map((card) => {
       const image = images.find((img) => img.parent.id === card.id);
@@ -47,17 +46,20 @@ const Leaves: React.FC<AllLeavesData> = () => {
     });
   }, [cardData, images]);
 
-
   return (
     <Layout>
+      <Helmet>
+        <title>Leaves - Planet Cassandra</title>
+        <meta property="og:image" content="../images/icon.png" />
+      </Helmet>
       <LeafCardGrid cardData={leaves} />
     </Layout>
   );
 };
 
 const query = graphql`
-query LeavesData {
-    allFile(filter: {parent: {id: {ne: null}}}) {
+  query LeavesData {
+    allFile(filter: { parent: { id: { ne: null } } }) {
       nodes {
         parent {
           ... on api_leaves {
@@ -69,7 +71,7 @@ query LeavesData {
         }
       }
     }
-    allApiLeaves(limit: 100, sort: {wallabag_created_at: DESC}) {
+    allApiLeaves(limit: 100, sort: { wallabag_created_at: DESC }) {
       nodes {
         tags
         title
