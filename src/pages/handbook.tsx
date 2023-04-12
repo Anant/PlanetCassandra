@@ -15,6 +15,7 @@ import OnlineEvents from "../components/Handbook/OnlineEvent";
 import ProducingSwag from "../components/Handbook/ProducingSwag";
 import CodeOfConduct from "../components/Handbook/CodeOfConduct";
 import RecordingContent from "../components/Handbook/RecordingContent";
+import OrganisingEvents from "../components/Handbook/OrganisingEvents";
 const HandbookPage = () => {
   return (
     <Layout>
@@ -26,6 +27,7 @@ const HandbookPage = () => {
           <Container maxWidth="xl">
             <PrimeDirective />
             <BecomeAnOrganizer />
+            <OrganisingEvents />
             <BuildingTeam />
             <PromotingEvents />
             <SelectingSpeakers />

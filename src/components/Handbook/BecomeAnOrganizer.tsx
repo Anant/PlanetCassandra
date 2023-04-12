@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Link } from "@mui/material";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 const BecomeAnOrganizer: React.FC<any> = () => {
@@ -44,7 +44,7 @@ const BecomeAnOrganizer: React.FC<any> = () => {
         meetup. Organisers need to have some familiarity with data on
         Kubernetes, and they need to agree to the guidelines and expectations
         outlined below. Anyone interested in starting a new local Cassandra
-        meetup group must fill in the application form. If you are already a
+        meetup group must fill in <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFN7n6RI6Oy4CzLD7MpoHatjzeZX-8tEVVeI3ilLyNAHOp3A/viewform" target="_blank" rel="noopener noreferrer">the application form.</a> If you are already a
         member of a local Cassandra meetup group and would like to get involved
         as an organiser, talk to the current organisers, and they will gladly
         accept your assistance. Organising team members cannot all be from the

@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Link } from "@mui/material";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 const PromotingEvents: React.FC<any> = () => {
@@ -69,10 +69,11 @@ const PromotingEvents: React.FC<any> = () => {
         }}
       >
         Once your event is published on your platform of choice, submit the
-        details via this form to be added to the central Cassandra calendar. If
+        details via <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKY6FG27OlcF2jsUxs0-JyxtWWpYOTZnq7-78ZCTzgw-sVgg/viewform" target="_blank" rel="noopener noreferrer">this form</a> to be added to the central Cassandra calendar. If
         the platform allows for automated posting, then we will look into
         enabling that so you don’t need to submit each event individually.
       </Typography>
+
     </>
   );
 };
