@@ -1,9 +1,11 @@
 // src/pages/posts.tsx
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from 'react';
+import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
-import PostCardGrid from '../layouts/PostCardGrid'
+import PostCardGrid from '../layouts/PostCardGrid';
 import { IGatsbyImageData } from 'gatsby-plugin-image';
+//@ts-ignore
+import { Helmet } from 'react-helmet';
 
 interface Props {
   data: {
@@ -45,19 +47,22 @@ interface Props {
 
 const Posts: React.FC<Props> = (props: Props) => {
   const { data } = props;
-  const posts = data.allWpPost.nodes as any
+  const posts = data.allWpPost.nodes as any;
 
   return (
     <Layout>
+      <Helmet>
+        <title>Latest Posts - Planet Cassandra</title>
+        <meta property="og:image" content="../images/icon.png" />
+      </Helmet>
       <PostCardGrid cardData={posts} />
     </Layout>
   );
 };
 
-
 export const query = graphql`
   query Posts {
-    allWpPost(sort: {date: DESC}) {
+    allWpPost(sort: { date: DESC }) {
       totalCount
       nodes {
         categories {
