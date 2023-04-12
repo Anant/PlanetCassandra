@@ -14,7 +14,6 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
       sx={{
         marginTop: 1,
         width: "100%",
-        height: { sm: "250px", md: "600px" },
       }}
     >
       {thumbnail ? (
@@ -22,22 +21,12 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
           className="thumbnail"
           image={thumbnail}
           alt="logo"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
         />
       ) : (
         <StaticImage
           src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
           className="thumbnail"
           alt="Placeholder"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-          }}
         />
       )}
     </Box>

@@ -20,6 +20,8 @@ type SingleArticleCardProps = {
   dataFontSize?: any;
   isShared?: boolean;
   hasDescription?: boolean;
+  baseUrl?: string;
+  routePrefix : string;
 };
 
 const SingleArticleCard: FC<SingleArticleCardProps> = ({
@@ -31,15 +33,18 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
   dataFontSize,
   isShared,
   hasDescription,
+  baseUrl,
+  routePrefix,
 }): ReactElement => {
-  const articleUrl = `/leaf/${getSlug(data ? data.hit.title : item.title)}`;
+
+  const articleUrl = `${routePrefix}/${getSlug(item.title)}`;
 
   const addDefaultSrc = (ev: any) => {
     ev.target.src = NoImg;
   };
 
   const author = item.published_by && item.published_by.slice(2, -2);
-  const cardTagsItems = item.tags.slice(0, 3);
+  const cardTagsItems = item.tags ? item.tags.slice(0, 3) : [];
 
   return (
     <Card
@@ -68,7 +73,7 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
         }}
       >
         <Link
-          to={`/leaf/${getSlug(item.title)}`}
+          to={articleUrl}
           style={{
             display: "flex",
             flexDirection: "column",

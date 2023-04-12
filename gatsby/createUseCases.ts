@@ -18,6 +18,7 @@ interface CompanyData {
                 Case_Description: string;
                 Case_URL: string;
                 Case_Article_Content: string;
+                Case_Published: string;
                 Case_Company: {
                     data: {
                         Name: string;
@@ -87,10 +88,13 @@ export const createUseCases = async ({ createPage, graphql }: CreateUseCasesArgs
           component: resolve(`src/components/Templates/UseCaseSinglePage.tsx`),
           context: {
             Description: node.Case_Description,
-            Name: node.Case_Name,
+            title: node.Case_Name,
             Case_Article_Content: node.Case_Article_Content,
             RelatedArticles: relatedArticles,
             gatsbyImageData: node.gatsbyImageData,
+            Company: node.Case_Company[0]?.data.Name,
+            Case_Published: node.Case_Published,
+            Case_URL: node.Case_URL,
           },
         });
       });
