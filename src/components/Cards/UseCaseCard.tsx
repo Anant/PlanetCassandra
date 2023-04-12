@@ -73,7 +73,7 @@ const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
             alignItems: 'center',
           }}
         >
-          <Link style={{ textDecoration: 'none' }} to={`/use-cases/${getSlug(name)}`}>
+          <Link style={{ textDecoration: 'none' }} to={url}>
             <Button
               sx={{
                 borderRadius: 50,
