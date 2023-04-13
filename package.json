@@ -55,6 +55,7 @@
     "react-material-ui-carousel": "^3.4.2",
     "react-share": "^4.4.1",
     "react-youtube": "^10.1.0",
+    "showdown": "^2.1.0",
     "speakingurl": "^14.0.1"
   },
   "devDependencies": {
