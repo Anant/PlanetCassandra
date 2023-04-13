@@ -2,15 +2,11 @@ import React from "react";
 import { Container, Grid } from "@mui/material";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
-import ExploreFurtherLayout from "./ExploreFurtherLayout";
-import ExploreRelatedTopics from "./ExploreRelatedTopics";
 import RelatedArticlesLayout from "./RelatedArticlesLayout";
 import ArticleContent from "../../components/SinglePageComponents/ArticleContent";
-import TrainingAdComponent from "../../components/SinglePageComponents/Cards/TrainingAdComponent";
 import NotificationComponent from "../../components/SinglePageComponents/Cards/NotificationComponent";
 import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail";
 import DescriptionCard from "../../components/SinglePageComponents/Cards/DescriptionCard";
-import NewsLetterCard from "../../components/SinglePageComponents/Cards/NewsLetterCard";
 
 export interface BaseGridProps {
   singlePage: {
@@ -34,11 +30,15 @@ export interface BaseGridProps {
   }>;
   tagSets?: any[]; // Optional property
   renderExploreFurther?: () => React.ReactNode;
-  routePrefix : string;
+  routePrefix: string;
 }
 
-
-const BaseGrid: React.FC<BaseGridProps> = ({ routePrefix, singlePage, relatedArticles, renderExploreFurther }) => {
+const BaseGrid: React.FC<BaseGridProps> = ({
+  routePrefix,
+  singlePage,
+  relatedArticles,
+  renderExploreFurther,
+}) => {
   //console.log(singlePage)
   return (
     <Container maxWidth="xl">
@@ -55,7 +55,6 @@ const BaseGrid: React.FC<BaseGridProps> = ({ routePrefix, singlePage, relatedArt
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "space-between",
             }}
             item
             xs={12}
@@ -77,7 +76,10 @@ const BaseGrid: React.FC<BaseGridProps> = ({ routePrefix, singlePage, relatedArt
           <Grid item xs={12} sm={4}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <RelatedArticlesLayout data={relatedArticles} routePrefix={routePrefix} />
+                <RelatedArticlesLayout
+                  data={relatedArticles}
+                  routePrefix={routePrefix}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -95,5 +97,3 @@ const BaseGrid: React.FC<BaseGridProps> = ({ routePrefix, singlePage, relatedArt
 };
 
 export default BaseGrid;
-
-

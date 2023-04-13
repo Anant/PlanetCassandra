@@ -12,21 +12,24 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
   return (
     <Box
       sx={{
+        display: "flex",
+        flexGrow: 1,
+        alignItems: "center",
+        justifyContent: "center",
         marginTop: 1,
         width: "100%",
       }}
     >
       {thumbnail ? (
-        <GatsbyImage
-          className="thumbnail"
-          image={thumbnail}
-          alt="logo"
-        />
+        <GatsbyImage className="thumbnail" image={thumbnail} alt="logo" />
       ) : (
         <StaticImage
           src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
           className="thumbnail"
           alt="Placeholder"
+          style={{
+            width: "100%",
+          }}
         />
       )}
     </Box>

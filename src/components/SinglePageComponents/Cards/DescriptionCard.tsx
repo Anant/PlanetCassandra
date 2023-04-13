@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
-import { Box, Typography, useTheme } from '@mui/material';
-import { BsBookmark, BsShare, BsThreeDots } from 'react-icons/bs';
+import React, { FC } from "react";
+import { Box, Typography, useTheme } from "@mui/material";
+import { BsBookmark, BsShare, BsThreeDots } from "react-icons/bs";
 
 interface ArticleProps {
   title: string;
@@ -15,11 +15,11 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
 }) => {
   const theme = useTheme();
 
-  const author = published_by && published_by.slice(2, -2);
+  const author = published_by;
 
-  const formattedContent = content?.replace(/<[^>]+>/g, '');
+  const formattedContent = content?.replace(/<[^>]+>/g, "");
   const dateCreated = new Date(wallabag_created_at).toLocaleDateString();
-  const lines = formattedContent?.split('\n') ?? [];
+  const lines = formattedContent?.split("\n") ?? [];
 
   const handleBookmarkClick = () => {
     // Add bookmark logic here
@@ -36,57 +36,57 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
     <Box sx={{ marginY: 3 }}>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: "flex" }}>
           <Typography
             sx={{
               marginRight: 5,
-              fontFamily: 'Roboto Condensed, sans-serif',
-              color: '#7C7C7C',
-              fontSize: { xs: '14px', sm: '10px', md: '22px' },
+              fontFamily: "Roboto Condensed, sans-serif",
+              color: "#7C7C7C",
+              fontSize: { xs: "14px", sm: "10px", md: "22px" },
             }}
           >
             {dateCreated}
           </Typography>
-          <Typography sx={{ fontSize: { xs: '14px', sm: '10px', md: '22px' } }}>
+          <Typography sx={{ fontSize: { xs: "14px", sm: "10px", md: "22px" } }}>
             <span
               style={{
-                color: '#7C7C7C',
-                marginRight: '5px',
-                fontFamily: 'Roboto Condensed, sans-serif',
+                color: "#7C7C7C",
+                marginRight: "5px",
+                fontFamily: "Roboto Condensed, sans-serif",
               }}
             >
-              {' '}
+              {" "}
               Reading time:
             </span>
             <span
               style={{
                 color: theme.palette.primary.main,
                 fontWeight: 600,
-                fontFamily: 'Roboto Condensed, sans-serif',
+                fontFamily: "Roboto Condensed, sans-serif",
               }}
             >
-              {reading_time ? reading_time : 'N/A'}{' '}
+              {reading_time ? reading_time : "N/A"}{" "}
             </span>
           </Typography>
         </Box>
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
           }}
         >
           <Typography
             sx={{
-              cursor: 'pointer',
-              fontFamily: 'Roboto Condensed, sans-serif',
-              color: '#000000',
+              cursor: "pointer",
+              fontFamily: "Roboto Condensed, sans-serif",
+              color: "#000000",
               marginRight: 1.25,
-              fontSize: { xs: '14px', sm: '10px', md: '22px' },
+              fontSize: { xs: "14px", sm: "10px", md: "22px" },
             }}
             onClick={handleBookmarkClick}
           >
@@ -94,11 +94,11 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
           </Typography>
           <Typography
             sx={{
-              cursor: 'pointer',
-              fontFamily: 'Roboto Condensed, sans-serif',
-              color: '#000000',
+              cursor: "pointer",
+              fontFamily: "Roboto Condensed, sans-serif",
+              color: "#000000",
               marginRight: 1.25,
-              fontSize: { xs: '14px', sm: '10px', md: '22px' },
+              fontSize: { xs: "14px", sm: "10px", md: "22px" },
             }}
             onClick={handleShareClick}
           >
@@ -106,10 +106,10 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
           </Typography>
           <Typography
             sx={{
-              cursor: 'pointer',
-              fontFamily: 'Roboto Condensed, sans-serif',
-              color: '#000000',
-              fontSize: { xs: '14px', sm: '10px', md: '22px' },
+              cursor: "pointer",
+              fontFamily: "Roboto Condensed, sans-serif",
+              color: "#000000",
+              fontSize: { xs: "14px", sm: "10px", md: "22px" },
             }}
             onClick={handleSeeMoreClick}
           >
@@ -122,9 +122,9 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
           sx={{
             fontWeight: 700,
             color: theme.palette.primary.darkblue,
-            fontSize: { sm: '24px', md: '60px' },
-            fontFamily: 'Roboto Condensed, sans-serif',
-            lineHeight: { sm: '30px', md: '73.5px' },
+            fontSize: { sm: "24px", md: "60px" },
+            fontFamily: "Roboto Condensed, sans-serif",
+            lineHeight: { sm: "30px", md: "73.5px" },
           }}
         >
           {title}
@@ -133,29 +133,29 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
       <Box sx={{ marginY: { sm: 1, md: 0 } }}>
         <Typography
           sx={{
-            fontSize: { sm: '11px', md: '25px' },
+            fontSize: { sm: "11px", md: "25px" },
             color: theme.palette.primary.turqoise,
             fontWeight: 700,
-            lineHeight: { sm: '17px', md: 4.25 },
-            fontFamily: 'Roboto Condensed, sans-serif',
+            lineHeight: { sm: "17px", md: 4.25 },
+            fontFamily: "Roboto Condensed, sans-serif",
           }}
         >
-          by {author ? author : 'Uknown'}
+          by {author ? author : "Uknown"}
         </Typography>
       </Box>
       <Box>
         <Typography
           className="textTruncate-8"
           sx={{
-            fontSize: { sm: '14px', md: '22px' },
+            fontSize: { sm: "14px", md: "22px" },
             color: theme.palette.primary.main,
             fontWeight: 400,
-            lineHeight: { sm: '17px', md: '26px' },
-            fontFamily: 'Roboto Condensed, sans-serif',
-            textAlign: 'justify',
+            lineHeight: { sm: "17px", md: "26px" },
+            fontFamily: "Roboto Condensed, sans-serif",
+            textAlign: "justify",
           }}
         >
-          {content ? lines : 'Description not available at the moment'}
+          {content ? lines : "Description not available at the moment"}
         </Typography>
       </Box>
     </Box>

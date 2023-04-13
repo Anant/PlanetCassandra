@@ -3,7 +3,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Container, Typography } from "@mui/material";
 import Layout from "../Layout/Layout";
-import './singlePageTemplates.css'
+import "./singlePageTemplates.css";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 import { BaseGridProps } from "../../layouts/SinglePageLayout/BaseGrid";
 import UseCaseGrid from "../../layouts/SinglePageLayout/UseCaseGrid";
@@ -27,17 +27,24 @@ interface UseCasesSinglePageProps {
   };
 }
 
-
-
-
-
 const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
   const {
-    pageContext: { id, title, Description, Case_Article_Content, RelatedArticles, Company, gatsbyImageData, Case_Published, Case_URL },
+    pageContext: {
+      id,
+      title,
+      Description,
+      Case_Article_Content,
+      RelatedArticles,
+      Company,
+      gatsbyImageData,
+      Case_Published,
+      Case_URL,
+    },
   } = props;
 
-  const mapUseCasesToProps = (useCasesProps: UseCasesSinglePageProps): BaseGridProps => {
-   
+  const mapUseCasesToProps = (
+    useCasesProps: UseCasesSinglePageProps
+  ): BaseGridProps => {
     return {
       singlePage: {
         title,
@@ -45,11 +52,12 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         content: Case_Article_Content,
         thumbnail: gatsbyImageData,
         //@ts-ignore
-        routePrefix : props.routePrefix,
+        routePrefix: props.routePrefix,
         id, // Add the missing id property
         url: Case_URL, // Add the missing url property for UseCases
         domain_name: Case_URL, // Add the missing domain_name property
         wallabag_created_at: Case_Published, // Add the date
+        published_by: Company,
       },
       relatedArticles: RelatedArticles.map((relatedArticle) => ({
         ...relatedArticle,
