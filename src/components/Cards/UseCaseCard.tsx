@@ -17,7 +17,13 @@ interface Props {
 }
 
 const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
-  const caseUrl = `/usecases/${getSlug(name)}`;
+  let caseUrl;
+  if (url && url.includes("https://planetcassandra.org")) {
+    let newUrl = url.replace("https://planetcassandra.org/post/", "");
+    caseUrl = `/post/${newUrl}`;
+  } else {
+    caseUrl = `/usecases/${getSlug(name)}`;
+  }
 
   return (
     <Card
@@ -33,7 +39,7 @@ const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
             height: "100%",
           }}
         >
-          {gatsbyImageData && (
+          {gatsbyImageData ? (
             <Box
               sx={{
                 height: "200px",
@@ -48,6 +54,23 @@ const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
                 className="w-full h-100 object-cover thumbnail"
                 image={gatsbyImageData}
                 alt={name}
+              />
+            </Box>
+          ) : (
+            <Box
+              sx={{
+                height: "200px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                overflow: "hidden",
+                borderRadius: 2,
+              }}
+            >
+              <StaticImage
+                src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
+                className="thumbnail"
+                alt="Placeholder"
               />
             </Box>
           )}
