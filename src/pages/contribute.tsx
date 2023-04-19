@@ -1,8 +1,9 @@
 import React from 'react';
-import { Typography, Grid, Box } from '@mui/material';
+import { Typography, Grid, Box, Button } from '@mui/material';
 // src/images/ContributeBG.png
 import Layout from '../components/Layout/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from "gatsby";
 import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
 interface ContributingListDataInterface {
   text: string;
@@ -156,8 +157,25 @@ const ContributePage = () => {
                     fontSize={20}
                     sx={{ marginTop: 3 }}
                   >
-                    {item.text} <a href={item.link} target="_blank">{item.cta}</a>
+                    {item.text}                     
                   </Typography>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={item.link}
+                  >
+                    <Button
+                      sx={{
+                        fontSize: { xs: 11, sm: 15, md: 12, lg: 14 },
+                        borderRadius: 50,
+                        margin: 2,
+                        backgroundColor: "#344D67",
+                      }}
+                      variant="contained"
+                      className="Font_Mulish_Button_L"
+                    >
+                      {item.cta}
+                    </Button>
+                  </Link>
                 </Grid>
               );
             })}
