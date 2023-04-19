@@ -10,18 +10,19 @@ interface ContributingListDataInterface {
 const ContributePage = () => {
   const contributingListData: ContributingListDataInterface[] = [
     {
-      text: `Reporting bugs and creating issue reports: If you encounter a bug or an issue in the project, you can report it to the project's maintainers, providing as much detail as possible to help them reproduce and fix the problem.`,
-    },
-    {
-      text: `Improving the documentation: You can help improve the project's documentation, by writing or editing content that helps users understand how to use the project or how it works.
+      text: `Use Cases: If you've built an application or solution using Cassandra, we would love to hear about it! Sharing your use case can help inspire others and showcase the versatility and power of the technology. <a href="https://airtable.com/shrYlu3mjtCiBTlOG" target="_blank">Add Use Case</a>
       `,
     },
     {
-      text: `Contributing code fixes and improvements: This involves writing code that fixes issues or adds new features to the project.
+      text: `Resources: Have you written an article, created a video, or developed other educational materials related to Cassandra? We welcome contributions of resources that can help others learn more about this powerful database technology. <a href="https://airtable.com/shr3vL0c2LrB4cwZ6" target="_blank">Add an Article or Video</a>
       `,
     },
     {
-      text: `Spreading the word about our project: Sharing the project on social media, participating in relevant online communities, and recommending the project to others who might be interested in contributing.
+      text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the Cassandra community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you! <a href="https://airtable.com/shrEifAn99ub2Ny6g" target="_blank">Submit a Blog Post</a>
+      `,
+    },
+    {
+      text: `Join PlanetCassandra Team: Of course, one of the most valuable contributions you can make is to the PlanetCassandra team itself. We'd love to get your help to manage the content editing, publishing process. If interested, join the <a href="https://discord.gg/skV5Cenw" target="_blank"> Discord Channel</a>
       `,
     },
   ];
