@@ -51,7 +51,8 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             }}
           >
             {dateCreated}
-          </Typography>
+          </Typography>          
+          {reading_time && (
           <Typography sx={{ fontSize: { xs: "14px", sm: "10px", md: "22px" } }}>
             <span
               style={{
@@ -73,6 +74,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
               {reading_time ? reading_time : "N/A"}{" "}
             </span>
           </Typography>
+        )}
         </Box>
         <Box
           sx={{

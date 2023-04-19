@@ -20,7 +20,7 @@ const ContributePage = () => {
     {
       text: `Resources: Have you written an article, created a video, or developed other educational materials related to Cassandra? We welcome contributions of resources that can help others learn more about this powerful database technology.`,
       cta: `Add an Article or Video`,
-      link: `https://airtable.com/shr3vL0c2LrB4cwZ6"`,
+      link: `https://airtable.com/shr3vL0c2LrB4cwZ6`,
     },
     {
       text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the Cassandra community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you!`,
