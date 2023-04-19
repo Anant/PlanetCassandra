@@ -21,7 +21,7 @@ type SingleArticleCardProps = {
   isShared?: boolean;
   hasDescription?: boolean;
   baseUrl?: string;
-  routePrefix : string;
+  routePrefix: string;
 };
 
 const SingleArticleCard: FC<SingleArticleCardProps> = ({
@@ -36,7 +36,6 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
   baseUrl,
   routePrefix,
 }): ReactElement => {
-
   const articleUrl = `${routePrefix}/${getSlug(item.title)}`;
 
   const addDefaultSrc = (ev: any) => {

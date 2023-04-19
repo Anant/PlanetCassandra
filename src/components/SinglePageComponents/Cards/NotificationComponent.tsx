@@ -1,7 +1,6 @@
-import { Grid, Box, Typography, useTheme } from '@mui/material';
-import React from 'react';
-import { GiLightBulb } from 'react-icons/gi';
-import { Link } from 'gatsby';
+import { Grid, Box, Typography, useTheme } from "@mui/material";
+import React from "react";
+import { GiLightBulb } from "react-icons/gi";
 
 interface NotificationProps {
   notificationTitle: string;
@@ -17,41 +16,40 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
       <Grid item>
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            background: '#F3F3F3',
+            display: "flex",
+            alignItems: "center",
+            background: "#F3F3F3",
             paddingX: 2,
             paddingY: 1.5,
-            borderRadius: '5px',
+            borderRadius: "5px",
           }}
         >
           <Box
             sx={{
-              fontSize: { sm: '18px', md: '28px' },
+              fontSize: { sm: "18px", md: "28px" },
               marginRight: 1.5,
             }}
           >
             <GiLightBulb
               style={{
                 color: theme.palette.primary.turqoise,
-                display: 'block',
+                display: "block",
               }}
             />
           </Box>
-          <Link to={articleUrl} style={{ textDecoration: 'none' }}>
+          <a href={articleUrl} style={{ textDecoration: "none" }}>
             <Typography
               fontFamily="Roboto condensed, sans-serif"
               className="textTruncate-2"
               sx={{
                 color: theme.palette.primary.turqoise,
-                lineHeight: { xs: '15px', md: '24px' },
-                fontSize: { xs: '13px', sm: '11px', md: '20px' },
+                lineHeight: { xs: "15px", md: "24px" },
+                fontSize: { xs: "13px", sm: "11px", md: "20px" },
               }}
             >
-              This content has been originally sourced from{' '}
-              {articleUrl}
+              This content has been originally sourced from {articleUrl}
             </Typography>
-          </Link>
+          </a>
         </Box>
       </Grid>
     </Grid>

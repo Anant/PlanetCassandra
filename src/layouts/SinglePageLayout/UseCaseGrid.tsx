@@ -1,5 +1,5 @@
-import React from 'react';
-import BaseGrid from './BaseGrid';
+import React from "react";
+import BaseGrid from "./BaseGrid";
 
 //@ts-ignore
 const UseCaseGrid = ({ singlePage, relatedArticles }) => {
@@ -8,7 +8,7 @@ const UseCaseGrid = ({ singlePage, relatedArticles }) => {
       singlePage={singlePage}
       relatedArticles={relatedArticles}
       renderExploreFurther={undefined}
-      routePrefix="/use-cases"
+      routePrefix="/usecases"
     />
   );
 };
