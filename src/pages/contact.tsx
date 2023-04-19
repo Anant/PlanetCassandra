@@ -27,7 +27,7 @@ const ContactUs: React.FC = () => {
                   justifyContent: "center",
                   alignItems: "center",
                   "& iframe": {
-                    height: "470px !important",
+                    height: "471px !important",
                     margin: "0px !important",
                   },
                 }}
