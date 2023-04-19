@@ -6,24 +6,30 @@ import { StaticImage } from 'gatsby-plugin-image';
 import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
 interface ContributingListDataInterface {
   text: string;
+  cta: string;
+  link: string;
 }
 const ContributePage = () => {
   const contributingListData: ContributingListDataInterface[] = [
     {
-      text: `Use Cases: If you've built an application or solution using Cassandra, we would love to hear about it! Sharing your use case can help inspire others and showcase the versatility and power of the technology. <a href="https://airtable.com/shrYlu3mjtCiBTlOG" target="_blank">Add Use Case</a>
-      `,
+      text: `Use Cases: If you've built an application or solution using Cassandra, we would love to hear about it! Sharing your use case can help inspire others and showcase the versatility and power of the technology.`, 
+      cta: `Add Use Case`,
+      link: `https://airtable.com/shrYlu3mjtCiBTlOG`,
     },
     {
-      text: `Resources: Have you written an article, created a video, or developed other educational materials related to Cassandra? We welcome contributions of resources that can help others learn more about this powerful database technology. <a href="https://airtable.com/shr3vL0c2LrB4cwZ6" target="_blank">Add an Article or Video</a>
-      `,
+      text: `Resources: Have you written an article, created a video, or developed other educational materials related to Cassandra? We welcome contributions of resources that can help others learn more about this powerful database technology.`,
+      cta: `Add an Article or Video`,
+      link: `https://airtable.com/shr3vL0c2LrB4cwZ6"`,
     },
     {
-      text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the Cassandra community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you! <a href="https://airtable.com/shrEifAn99ub2Ny6g" target="_blank">Submit a Blog Post</a>
-      `,
+      text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the Cassandra community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you!`,
+      cta: `Submit a Blog Post`,
+      link: `https://airtable.com/shrEifAn99ub2Ny6g`,
     },
     {
-      text: `Join PlanetCassandra Team: Of course, one of the most valuable contributions you can make is to the PlanetCassandra team itself. We'd love to get your help to manage the content editing, publishing process. If interested, join the <a href="https://discord.gg/skV5Cenw" target="_blank"> Discord Channel</a>
-      `,
+      text: `Join PlanetCassandra Team: Of course, one of the most valuable contributions you can make is to the PlanetCassandra team itself. We'd love to get your help to manage the content editing, publishing process.`,
+      cta: `Join our Discord Channel`,
+      link: `https://discord.gg/skV5Cenw`,
     },
   ];
   return (
@@ -84,12 +90,10 @@ const ContributePage = () => {
                   color="#1E1E1E"
                   sx={{ marginTop: 4, fontSize: { sm: '22px', lg: '20px' } }}
                 >
-                  Our project is open-source and always looking for new
-                  contributors. If you want to help us build a better product,
-                  you're in the right place! Please contribute and help us
-                  improve our project. We accept contributions in many forms
-                  including code, documentation, and bug reports. You can also
-                  donate to our project to show your support.
+                  We believe that the power of the Planet Cassandra community 
+                  lies in the contributions of its members. That's why we're 
+                  always looking for new ways to engage with our community and
+                  provide opportunities for people to get involved.
                 </Typography>
               </Box>
             </Grid>
@@ -136,6 +140,14 @@ const ContributePage = () => {
             {contributingListData.map((item) => {
               return (
                 <Grid item xs={12} md={6}>
+                   <Typography
+                    variant="h3"
+                    fontFamily="Poppins, sans-serif"
+                    fontSize={30}
+                    fontWeight={400}
+                    >
+                    {item.cta}
+                  </Typography>  
                   <Typography
                     variant="body2"
                     fontFamily="Lato, sans-serif"
@@ -144,7 +156,7 @@ const ContributePage = () => {
                     fontSize={20}
                     sx={{ marginTop: 3 }}
                   >
-                    {item.text}
+                    {item.text} <a href="{item.link}">{item.cta}</a>
                   </Typography>
                 </Grid>
               );

@@ -12,15 +12,14 @@ const ContactUs: React.FC = () => {
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <Typography
+                variant="h1"
+                fontFamily="Poppins, sans-serif"
                 sx={{
-                  marginTop: { xs: 5, sm: 2, lg: 5 },
-                  color: "#383D3B",
-                  fontSize: { xs: 32, sm: 20, md: 48 },
-                }}
-                fontFamily="Roboto Condensed, sans-serif"
-                fontWeight={400}
-              >
-                Get in Touch with the Planet Cassandra Team
+                  color: '#1E1E1E',
+                  fontSize: { xs: 30, sm: 45, xl: 60 },
+                  fontWeight: 400,
+                }}>
+                Get in Touch
               </Typography>  
               <Typography
                 sx={{
@@ -41,7 +40,7 @@ const ContactUs: React.FC = () => {
                 and we look forward to connecting with you!
 
                 <StaticImage
-                src="../images/contactUs.jpg"
+                src="../images/contactUs_half.jpg"
                 alt="Contact Us Image"
                 placeholder="blurred"
                 layout="fullWidth"
