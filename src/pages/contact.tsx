@@ -33,6 +33,10 @@ const ContactUs: React.FC = () => {
                 }}
               >
                 {/* <JotformEmbed src="https://form.jotform.com/231082464101342" /> */}
+                <iframe
+                  title="Contact us"
+                  src={"https://form.jotform.com/231082464101342"}
+                ></iframe>
               </Box>
             </Grid>
           </Grid>
