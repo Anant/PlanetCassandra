@@ -156,7 +156,7 @@ const ContributePage = () => {
                     fontSize={20}
                     sx={{ marginTop: 3 }}
                   >
-                    {item.text} <a href="{item.link}">{item.cta}</a>
+                    {item.text} <a href={item.link} target="_blank">{item.cta}</a>
                   </Typography>
                 </Grid>
               );
