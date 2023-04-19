@@ -1,6 +1,7 @@
 declare module "gatsby-plugin-mailchimp";
 declare module "*.png";
 declare module "showdown";
+declare module "react-jotform-embed";
 declare namespace NodeJS {
   export interface ProcessEnv {
     ALGOLIA_APP_ID: string;
