@@ -75,7 +75,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             </span>
           </Typography>
         )}
-        </Box>
+        </Box>{/*}
         <Box
           sx={{
             display: "flex",
@@ -117,7 +117,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
           >
             <BsThreeDots />
           </Typography>
-        </Box>
+          </Box>*/}
       </Box>
       <Box>
         <Typography
