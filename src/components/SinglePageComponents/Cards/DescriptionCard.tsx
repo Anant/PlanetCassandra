@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import ReactMarkdown from "react-markdown";
+import ReactDOMServer from 'react-dom/server';
 import { Box, Typography, useTheme } from "@mui/material";
 import { BsBookmark, BsShare, BsThreeDots } from "react-icons/bs";
 
@@ -10,16 +12,31 @@ interface ArticleProps {
   content?: string;
 }
 
+const getContents = (content: string) => {
+  if (content) {
+    // Check if the content is in Markdown format
+    if (content.startsWith('#') || content.startsWith('*') || content.startsWith('_')) {
+      // If yes, render the Markdown content as HTML
+      return ReactDOMServer.renderToString(<ReactMarkdown>{content}</ReactMarkdown>);
+    } else {
+      // If not, return the original content
+      return content;
+    }
+  }
+  return null;
+};
+
 const DescriptionCard: FC<{ article: ArticleProps }> = ({
   article: { title, reading_time, wallabag_created_at, published_by, content },
 }) => {
   const theme = useTheme();
 
   const author = published_by;
-
-  const formattedContent = content?.replace(/<[^>]+>/g, "");
+ 
   const dateCreated = new Date(wallabag_created_at).toLocaleDateString();
-  const lines = formattedContent?.split("\n") ?? [];
+
+  const formattedContent = content?.replace(/<[^>]+>/g, "") ?? ""; // Add the nullish coalescing operator here  
+  const lines = getContents(formattedContent)?.split("\n") ?? [];
 
   const handleBookmarkClick = () => {
     // Add bookmark logic here
@@ -142,7 +159,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             fontFamily: "Roboto Condensed, sans-serif",
           }}
         >
-          by {author ? author : "Uknown"}
+          by {author ? author : "Unknown"}
         </Typography>
       </Box>
       <Box>
