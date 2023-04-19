@@ -15,6 +15,17 @@ const ContactUs: React.FC = () => {
                 sx={{
                   marginTop: { xs: 5, sm: 2, lg: 5 },
                   color: "#383D3B",
+                  fontSize: { xs: 32, sm: 20, md: 48 },
+                }}
+                fontFamily="Roboto Condensed, sans-serif"
+                fontWeight={400}
+              >
+                Get in Touch with the Planet Cassandra Team
+              </Typography>  
+              <Typography
+                sx={{
+                  marginTop: { xs: 5, sm: 2, lg: 5 },
+                  color: "#383D3B",
                   fontSize: { xs: 16, sm: 10, md: 22 },
                 }}
                 fontFamily="Roboto Condensed, sans-serif"
@@ -28,13 +39,14 @@ const ContactUs: React.FC = () => {
                 from members of our community. Thank you for your 
                 interest in Planet Cassandra, 
                 and we look forward to connecting with you!
-                {/* <StaticImage
+
+                <StaticImage
                 src="../images/contactUs.jpg"
                 alt="Contact Us Image"
                 placeholder="blurred"
                 layout="fullWidth"
                 style={{ borderRadius: "50px" }}
-                /> */}
+                />
               </Typography>              
             </Grid>
             <Grid item xs={12} sm={6}>
