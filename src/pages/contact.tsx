@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Grid, Container, Box } from "@mui/material";
 import Layout from "../components/Layout/Layout";
 import { StaticImage } from "gatsby-plugin-image";
-import JotformEmbed from "react-jotform-embed";
+// import JotformEmbed from "react-jotform-embed";
 
 const ContactUs: React.FC = () => {
   return (
@@ -32,7 +32,7 @@ const ContactUs: React.FC = () => {
                   },
                 }}
               >
-                <JotformEmbed src="https://form.jotform.com/231082464101342" />
+                {/* <JotformEmbed src="https://form.jotform.com/231082464101342" /> */}
               </Box>
             </Grid>
           </Grid>
