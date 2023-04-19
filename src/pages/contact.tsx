@@ -36,6 +36,9 @@ const ContactUs: React.FC = () => {
                 <iframe
                   title="Contact us"
                   src={"https://form.jotform.com/231082464101342"}
+                  width="100%" 
+                  frameBorder="0" 
+                  scrolling="no"
                 ></iframe>
               </Box>
             </Grid>
