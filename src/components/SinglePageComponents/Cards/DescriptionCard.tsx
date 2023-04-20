@@ -17,7 +17,7 @@ const getContents = (content: string) => {
     // Check if the content is in Markdown format
     if (content.startsWith('#') || content.startsWith('*') || content.startsWith('_')) {
       // If yes, render the Markdown content as HTML
-      return ReactDOMServer.renderToString(<ReactMarkdown>{content}</ReactMarkdown>);
+      return <ReactMarkdown>{content}</ReactMarkdown>;
     } else {
       // If not, return the original content
       return content;
@@ -36,7 +36,16 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
   const dateCreated = new Date(wallabag_created_at).toLocaleDateString();
 
   const formattedContent = content?.replace(/<[^>]+>/g, "") ?? ""; // Add the nullish coalescing operator here  
-  const lines = getContents(formattedContent)?.split("\n") ?? [];
+  const lines_intermerdiary = getContents(formattedContent);
+
+  let lines_intermediary_second = [];
+  if (typeof lines_intermerdiary === 'string') {
+    lines_intermediary_second = lines_intermerdiary.split("\n");
+  } else if (React.isValidElement(lines_intermerdiary)) {
+    lines_intermediary_second = ReactDOMServer.renderToString(lines_intermerdiary).split("\n");
+  }
+  const lines = lines_intermediary_second;
+  
 
   const handleBookmarkClick = () => {
     // Add bookmark logic here
