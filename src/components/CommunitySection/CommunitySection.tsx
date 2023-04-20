@@ -74,7 +74,7 @@ const CommunitySection = () => {
             color: '#1E1E1E',
           }}
         >
-          Welcome to the Planet Cassandra, a community for Apache Cassandra &reg;! We're a passionate and dedicated group of users, developers, and enthusiasts who are working together to make Cassandra the best it can be. Whether you're just getting started with Cassandra or you're an experienced user, there's a place for you in our community.
+          Welcome to the Planet Cassandra, a community for Apache Cassandra®! We're a passionate and dedicated group of users, developers, and enthusiasts who are working together to make Cassandra the best it can be. Whether you're just getting started with Cassandra or you're an experienced user, there's a place for you in our community.
         </Typography>
 
         <Box

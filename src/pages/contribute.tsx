@@ -133,7 +133,7 @@ const ContributePage = () => {
               Ways to{' '}
               <span style={{ marginLeft: '10px', color: '#344D67' }}>
                 {' '}
-                contribute to PlanetCassandra, an Apache Cassandra &reg; Community!
+                contribute to PlanetCassandra, an Apache Cassandra® Community!
               </span>
             </Typography>
           </Box>
