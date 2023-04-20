@@ -36,13 +36,26 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
   baseUrl,
   routePrefix,
 }): ReactElement => {
-  const articleUrl = `${routePrefix}/${getSlug(item.title)}`;
-
+  let articleUrl = `${routePrefix}/${getSlug(item.title)}`;
+  if (item.url && item.url.includes("https://planetcassandra.org")) {
+    let newUrl = item.url.replace("https://planetcassandra.org/post/", "");
+    articleUrl = `/post/${newUrl}`;
+  } else {
+    articleUrl = `${routePrefix}/${getSlug(item.title)}`;
+  }
   const addDefaultSrc = (ev: any) => {
     ev.target.src = NoImg;
   };
 
-  const author = item.published_by && item.published_by.slice(2, -2);
+  let author = item.published_by;
+  if (
+    item.published_by &&
+    item.published_by.startsWith("[") &&
+    item.published_by.endsWith("]")
+  ) {
+    // If the string contains brackets, remove them
+    author = item.published_by.slice(2, -2);
+  }
   const cardTagsItems = item.tags ? item.tags.slice(0, 3) : [];
 
   return (

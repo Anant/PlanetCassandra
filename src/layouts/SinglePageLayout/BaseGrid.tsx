@@ -39,7 +39,8 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   relatedArticles,
   renderExploreFurther,
 }) => {
-  //console.log(singlePage)
+  const urlRegex = /^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/;
+  const validUrl = urlRegex.test(singlePage.url);
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -61,12 +62,14 @@ const BaseGrid: React.FC<BaseGridProps> = ({
             sm={6}
           >
             <ThumbnailImage thumbnail={singlePage.thumbnail} />
-            <NotificationComponent
-              args={{
-                notificationTitle: singlePage.title,
-                articleUrl: singlePage.url,
-              }}
-            />
+            {validUrl && (
+              <NotificationComponent
+                args={{
+                  notificationTitle: singlePage.title,
+                  articleUrl: singlePage.url,
+                }}
+              />
+            )}
           </Grid>
         </Grid>
         <Grid container spacing={2}>

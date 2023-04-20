@@ -92,6 +92,10 @@ export const createUseCases = async ({
     ); // 8 is the number of related articles to show
     const relatedArticles = relatedArticleIndices.map((idx) => ({
       Case_Name: useCasesWithLogos[idx].Case_Name,
+      Company: useCasesWithLogos[idx].Case_Company[0]?.data.Name,
+      Case_Published: useCasesWithLogos[idx].Case_Published,
+      Case_URL: useCasesWithLogos[idx].Case_URL,
+
       gatsbyImageData: useCasesWithLogos[idx].gatsbyImageData,
     })); // get the data and images for the related articles
 
