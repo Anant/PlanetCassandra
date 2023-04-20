@@ -150,7 +150,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
           {title}
         </Typography>
       </Box>
-      <Box sx={{ marginY: { sm: 1, md: 0 } }}>
+      {/*<Box sx={{ marginY: { sm: 1, md: 0 } }}>
         <Typography
           sx={{
             fontSize: { sm: "11px", md: "25px" },
@@ -162,8 +162,8 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
         >
           by {author ? author : "Unknown"}
         </Typography>
-      </Box>
-      <Box>
+        </Box>*/}
+      {/*<Box>
         <Typography
           className="textTruncate-8"
           sx={{
@@ -177,7 +177,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
         >
           {content ? <div dangerouslySetInnerHTML={{ __html: lines }} /> : "Description not available at the moment"}
         </Typography>
-      </Box>
+        </Box>*/}
     </Box>
   );
 };
