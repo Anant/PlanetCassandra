@@ -118,7 +118,7 @@ const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
               </Typography>
             </Button>
           </Link>
-          <Box
+          {/*<Box
             sx={{
               display: "flex",
               alignItems: "center",
@@ -139,7 +139,7 @@ const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
               color="#32A5EE"
               size="24px"
             />
-          </Box>
+          </Box>*/}
         </CardActions>
       </Box>
     </Card>

@@ -95,16 +95,16 @@ const Footer = () => {
             }}
           >
             <Typography marginBottom={2} variant="h4" color={"white"}>
-              Get Involved!
+              Get Involved with PlanetCassandra!
             </Typography>
             <Typography variant="subtitle2" color={"black"}>
-              Get involved with the Apache Cassandra community. You can get on
-              Discord or Slack to chat with the community in realtime or stay up
-              to date on the User / Dev mailing lists.
+              We believe that the power of the Planet Cassandra community 
+              lies in the contributions of its members. Do you have content,
+              articles, videos, or use cases you want to share with the world?
             </Typography>
             <Link
               style={{ textDecoration: "none", color: "white" }}
-              to={`https://cassandra.apache.org/_/community.html`}
+              to={`https://planetcassandra.org/contribute/`}
             >
               <Button
                 sx={{
@@ -116,7 +116,7 @@ const Footer = () => {
                 variant="contained"
                 className="Font_Mulish_Button_L"
               >
-                Cassandra Community
+                Get Started
               </Button>
             </Link>
           </Box>

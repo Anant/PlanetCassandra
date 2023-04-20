@@ -1,4 +1,6 @@
 import React, { FC } from "react";
+import ReactMarkdown from "react-markdown";
+import ReactDOMServer from 'react-dom/server';
 import { Box, Typography, useTheme } from "@mui/material";
 import { BsBookmark, BsShare, BsThreeDots } from "react-icons/bs";
 
@@ -10,16 +12,32 @@ interface ArticleProps {
   content?: string;
 }
 
+const getContents = (content: string) => {
+  if (content) {
+    // Check if the content is in Markdown format
+    if (content.startsWith('#') || content.startsWith('*') || content.startsWith('_')) {
+      // If yes, render the Markdown content as HTML
+      return ReactDOMServer.renderToString(<ReactMarkdown>{content}</ReactMarkdown>);
+    } else {
+      // If not, return the original content
+      return content;
+    }
+  }
+  return null;
+};
+
 const DescriptionCard: FC<{ article: ArticleProps }> = ({
   article: { title, reading_time, wallabag_created_at, published_by, content },
 }) => {
   const theme = useTheme();
 
   const author = published_by;
-
-  const formattedContent = content?.replace(/<[^>]+>/g, "");
+ 
   const dateCreated = new Date(wallabag_created_at).toLocaleDateString();
-  const lines = formattedContent?.split("\n") ?? [];
+
+  const formattedContent = content?.replace(/<[^>]+>/g, "") ?? ""; // Add the nullish coalescing operator here
+  
+  const lines = getContents(formattedContent)?.split("\n") ?? [];
 
   const handleBookmarkClick = () => {
     // Add bookmark logic here
@@ -51,7 +69,8 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             }}
           >
             {dateCreated}
-          </Typography>
+          </Typography>          
+          {reading_time && (
           <Typography sx={{ fontSize: { xs: "14px", sm: "10px", md: "22px" } }}>
             <span
               style={{
@@ -73,7 +92,8 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
               {reading_time ? reading_time : "N/A"}{" "}
             </span>
           </Typography>
-        </Box>
+        )}
+        </Box>{/*}
         <Box
           sx={{
             display: "flex",
@@ -115,7 +135,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
           >
             <BsThreeDots />
           </Typography>
-        </Box>
+          </Box>*/}
       </Box>
       <Box>
         <Typography
@@ -130,7 +150,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
           {title}
         </Typography>
       </Box>
-      <Box sx={{ marginY: { sm: 1, md: 0 } }}>
+      {/*<Box sx={{ marginY: { sm: 1, md: 0 } }}>
         <Typography
           sx={{
             fontSize: { sm: "11px", md: "25px" },
@@ -140,10 +160,10 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             fontFamily: "Roboto Condensed, sans-serif",
           }}
         >
-          by {author ? author : "Uknown"}
+          by {author ? author : "Unknown"}
         </Typography>
-      </Box>
-      <Box>
+        </Box>*/}
+      {/*<Box>
         <Typography
           className="textTruncate-8"
           sx={{
@@ -155,9 +175,9 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             textAlign: "justify",
           }}
         >
-          {content ? lines : "Description not available at the moment"}
+          {content ? <div dangerouslySetInnerHTML={{ __html: lines }} /> : "Description not available at the moment"}
         </Typography>
-      </Box>
+        </Box>*/}
     </Box>
   );
 };

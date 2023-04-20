@@ -1,28 +1,36 @@
 import React from 'react';
-import { Typography, Grid, Box } from '@mui/material';
+import { Typography, Grid, Box, Button } from '@mui/material';
 // src/images/ContributeBG.png
 import Layout from '../components/Layout/Layout';
 import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from "gatsby";
 import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
 interface ContributingListDataInterface {
   text: string;
+  cta: string;
+  link: string;
 }
 const ContributePage = () => {
   const contributingListData: ContributingListDataInterface[] = [
     {
-      text: `Reporting bugs and creating issue reports: If you encounter a bug or an issue in the project, you can report it to the project's maintainers, providing as much detail as possible to help them reproduce and fix the problem.`,
+      text: `Use Cases: If you've built an application or solution using Cassandra, we would love to hear about it! Sharing your use case can help inspire others and showcase the versatility and power of the technology.`, 
+      cta: `Add Use Case`,
+      link: `https://airtable.com/shrYlu3mjtCiBTlOG`,
     },
     {
-      text: `Improving the documentation: You can help improve the project's documentation, by writing or editing content that helps users understand how to use the project or how it works.
-      `,
+      text: `Resources: Have you written an article, created a video, or developed other educational materials related to Cassandra? We welcome contributions of resources that can help others learn more about this powerful database technology.`,
+      cta: `Add an Article or Video`,
+      link: `https://airtable.com/shr3vL0c2LrB4cwZ6`,
     },
     {
-      text: `Contributing code fixes and improvements: This involves writing code that fixes issues or adds new features to the project.
-      `,
+      text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the Cassandra community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you!`,
+      cta: `Submit a Blog Post`,
+      link: `https://airtable.com/shrEifAn99ub2Ny6g`,
     },
     {
-      text: `Spreading the word about our project: Sharing the project on social media, participating in relevant online communities, and recommending the project to others who might be interested in contributing.
-      `,
+      text: `Join PlanetCassandra Team: Of course, one of the most valuable contributions you can make is to the PlanetCassandra team itself. We'd love to get your help to manage the content editing, publishing process.`,
+      cta: `Join our Discord Channel`,
+      link: `https://discord.gg/skV5Cenw`,
     },
   ];
   return (
@@ -83,12 +91,10 @@ const ContributePage = () => {
                   color="#1E1E1E"
                   sx={{ marginTop: 4, fontSize: { sm: '22px', lg: '20px' } }}
                 >
-                  Our project is open-source and always looking for new
-                  contributors. If you want to help us build a better product,
-                  you're in the right place! Please contribute and help us
-                  improve our project. We accept contributions in many forms
-                  including code, documentation, and bug reports. You can also
-                  donate to our project to show your support.
+                  We believe that the power of the Planet Cassandra community 
+                  lies in the contributions of its members. That's why we're 
+                  always looking for new ways to engage with our community and
+                  provide opportunities for people to get involved.
                 </Typography>
               </Box>
             </Grid>
@@ -135,6 +141,14 @@ const ContributePage = () => {
             {contributingListData.map((item) => {
               return (
                 <Grid item xs={12} md={6}>
+                   <Typography
+                    variant="h3"
+                    fontFamily="Poppins, sans-serif"
+                    fontSize={30}
+                    fontWeight={400}
+                    >
+                    {item.cta}
+                  </Typography>  
                   <Typography
                     variant="body2"
                     fontFamily="Lato, sans-serif"
@@ -143,8 +157,25 @@ const ContributePage = () => {
                     fontSize={20}
                     sx={{ marginTop: 3 }}
                   >
-                    {item.text}
+                    {item.text}                     
                   </Typography>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={item.link}
+                  >
+                    <Button
+                      sx={{
+                        fontSize: { xs: 11, sm: 15, md: 12, lg: 14 },
+                        borderRadius: 50,
+                        margin: 2,
+                        backgroundColor: "#344D67",
+                      }}
+                      variant="contained"
+                      className="Font_Mulish_Button_L"
+                    >
+                      {item.cta}
+                    </Button>
+                  </Link>
                 </Grid>
               );
             })}

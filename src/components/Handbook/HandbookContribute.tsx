@@ -57,12 +57,11 @@ const HandbookContribute: React.FC = () => {
               fontFamily="Roboto Condensed, sans-serif"
               fontWeight={400}
             >
-              Our project is open-source and always looking for new
-              contributors. If you want to help us build a better product,
-              you're in the right place! Please contribute and help us improve
-              our project. We accept contributions in many forms including code,
-              documentation, and bug reports. You can also donate to our project
-              to show your support.
+              We believe that the power of the Planet Cassandra 
+              community lies in the contributions of its members. 
+              That's why we're always looking for new ways to engage 
+              with our community and provide opportunities for 
+              people to get involved.
             </Typography>
           </Grid>
           <Grid
