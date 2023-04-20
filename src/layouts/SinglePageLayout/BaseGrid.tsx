@@ -30,6 +30,8 @@ export interface BaseGridProps {
   }>;
   tagSets?: any[]; // Optional property
   renderExploreFurther?: () => React.ReactNode;
+  renderRelatedArticles?: () => React.ReactNode;
+
   routePrefix: string;
 }
 
@@ -38,9 +40,10 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   singlePage,
   relatedArticles,
   renderExploreFurther,
+  renderRelatedArticles,
 }) => {
   const urlRegex = /^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/;
-  const validUrl = urlRegex.test(singlePage.url);
+  const validUrl = urlRegex.test(singlePage.url ? singlePage.url : "");
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -73,19 +76,18 @@ const BaseGrid: React.FC<BaseGridProps> = ({
           </Grid>
         </Grid>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={routePrefix === "/usecases" ? 12 : 8}>
             <ArticleContent content={singlePage.content} />
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <RelatedArticlesLayout
-                  data={relatedArticles}
-                  routePrefix={routePrefix}
-                />
+          {renderRelatedArticles && (
+            <Grid item xs={12} sm={4}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  {renderRelatedArticles()}
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
+          )}
         </Grid>
         <Grid sx={{ marginBottom: 4 }} item xs={12}>
           {renderExploreFurther && (

@@ -17,13 +17,13 @@ interface Props {
 }
 
 const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
-  let caseUrl;
-  if (url && url.includes("https://planetcassandra.org")) {
-    let newUrl = url.replace("https://planetcassandra.org/post/", "");
-    caseUrl = `/post/${newUrl}`;
-  } else {
-    caseUrl = `/usecases/${getSlug(name)}`;
-  }
+  let caseUrl = `/usecases/${getSlug(name)}`;
+  // if (url && url.includes("https://planetcassandra.org")) {
+  //   let newUrl = url.replace("https://planetcassandra.org/post/", "");
+  //   caseUrl = `/post/${newUrl}`;
+  // } else {
+  //   caseUrl = `/usecases/${getSlug(name)}`;
+  // }
 
   return (
     <Card
