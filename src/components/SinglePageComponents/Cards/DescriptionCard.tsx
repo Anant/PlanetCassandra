@@ -183,7 +183,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             textAlign: "justify",
           }}
         >
-          {content ? lines : "Description not available at the moment"}
+          {content ? <div dangerouslySetInnerHTML={{ __html: lines }} /> : "Description not available at the moment"}
         </Typography>
       </Box>
     </Box>
