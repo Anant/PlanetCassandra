@@ -23,10 +23,10 @@ export const createPages: GatsbyNode["createPages"] = async ({
 
   await processPictures({ createNode, createNodeId, getCache, graphql });
 
-  // await createLeaves({ createPage, graphql });
-  // await createPosts({ createPage, graphql });
+  await createLeaves({ createPage, graphql });
+  await createPosts({ createPage, graphql });
   await createUseCases({ createPage, graphql });
-  // await createTTRSS({ createPage, graphql });
-  // await createVideos({ createPage, graphql });
+  await createTTRSS({ createPage, graphql });
+  await createVideos({ createPage, graphql });
   // await createEvents({ graphql, createNodeId, getCache });
 };
