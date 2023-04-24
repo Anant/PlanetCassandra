@@ -47,39 +47,40 @@ export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
       };
     };
   } = await graphql(`
-    query allPostsQuery {
-      allWpPost {
-        nodes {
-          slug
-          title
-          id
-          content
-          tags {
-            nodes {
-              name
-            }
+  query allPostsQuery {
+    allWpPost(filter: {authorId: {ne: "dXNlcjoy"}}) {
+      nodes {
+        slug
+        title
+        id
+        authorId
+        content
+        tags {
+          nodes {
+            name
           }
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
+        }
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
               }
             }
           }
-          date
-          author {
-            node {
-              name
-              avatar {
-                url
-              }
+        }
+        date
+        author {
+          node {
+            name
+            avatar {
+              url
             }
           }
         }
       }
     }
+  }
   `);
 
   if (allPostsResult.errors) {

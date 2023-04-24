@@ -105,7 +105,11 @@ const TagSection = () => {
 
 export const query = graphql`
   query GET_TAGS {
-    allWpTag(sort: { count: DESC }, filter: { count: { ne: null } }, limit: 5) {
+    allWpTag(
+      sort: {count: DESC}
+      filter: {count: {ne: null}, posts: {nodes: {elemMatch: {authorId: {ne: "dXNlcjoy"}}}}}
+      limit: 5
+    ) {
       nodes {
         name
         id

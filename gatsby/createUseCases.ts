@@ -87,7 +87,7 @@ export const createUseCases = async ({
     const wpPost = allWpCategory[0].posts.nodes.find(
       (post: { title: any; }) => post.title === node.data.Case_Name
     );
-  
+    
     return {
       ...node,
       data: {
@@ -173,6 +173,7 @@ function getAllUseCases(graphql) {
           nodes {
             id
             title
+            authorId
             content
             excerpt
           }
