@@ -82,7 +82,7 @@ const config: GatsbyConfig = {
         //Create auth and add it to ENV file
         url:process.env.NODE_ENV === "development" ?process.env.WP_GRAPHQL_DEV : process.env.WP_GRAPHQL,
         type: {
-          Post: process.env.NODE_ENV === "development" ? { limit: 20 } : { limit: 500 },
+          Post: process.env.NODE_ENV === "development" ? { limit: 50 } : { limit: 500 },
           Page: {
             limit: 0
           }
