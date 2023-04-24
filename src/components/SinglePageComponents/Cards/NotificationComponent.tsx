@@ -47,7 +47,16 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
                 fontSize: { xs: "13px", sm: "11px", md: "20px" },
               }}
             >
-              This content has been originally sourced from {articleUrl}
+              This use cases is based on an article published{" "}
+              <a
+                href={articleUrl}
+                style={{
+                  color: theme.palette.primary.turqoise,
+                  textDecoration: "underline",
+                }}
+              >
+                here
+              </a>
             </Typography>
           </a>
         </Box>

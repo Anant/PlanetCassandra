@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Typography, useTheme } from "@mui/material";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
 import RelatedArticlesLayout from "./RelatedArticlesLayout";
@@ -7,6 +7,7 @@ import ArticleContent from "../../components/SinglePageComponents/ArticleContent
 import NotificationComponent from "../../components/SinglePageComponents/Cards/NotificationComponent";
 import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail";
 import DescriptionCard from "../../components/SinglePageComponents/Cards/DescriptionCard";
+import ShareUseCases from "../../components/SinglePageComponents/Cards/ShareUseCaseCard";
 
 export interface BaseGridProps {
   singlePage: {
@@ -31,6 +32,7 @@ export interface BaseGridProps {
   tagSets?: any[]; // Optional property
   renderExploreFurther?: () => React.ReactNode;
   renderRelatedArticles?: () => React.ReactNode;
+  renderShareUseCard?: () => React.ReactNode;
 
   routePrefix: string;
 }
@@ -41,9 +43,12 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   relatedArticles,
   renderExploreFurther,
   renderRelatedArticles,
+  renderShareUseCard,
 }) => {
   const urlRegex = /^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/;
   const validUrl = urlRegex.test(singlePage.url ? singlePage.url : "");
+  const theme = useTheme();
+
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -53,7 +58,7 @@ const BaseGrid: React.FC<BaseGridProps> = ({
           spacing={2}
         >
           <Grid item xs={12} sm={6}>
-            <DescriptionCard article={singlePage} />
+            <ThumbnailImage thumbnail={singlePage.thumbnail} />
           </Grid>
           <Grid
             sx={{
@@ -62,9 +67,27 @@ const BaseGrid: React.FC<BaseGridProps> = ({
             }}
             item
             xs={12}
-            sm={6}
           >
-            <ThumbnailImage thumbnail={singlePage.thumbnail} />
+            <Typography
+              fontFamily="Roboto Condensed, sans-serif"
+              fontWeight={600}
+              sx={{
+                marginY: 2,
+                color: theme.palette.primary.darkblue,
+                fontSize: {
+                  xs: "18px",
+                  sm: "24px",
+                  md: "20px",
+                  lg: "36px",
+                },
+              }}
+            >
+              {singlePage.title}
+            </Typography>
+          </Grid>
+        </Grid>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={8}>
             {validUrl && (
               <NotificationComponent
                 args={{
@@ -76,7 +99,7 @@ const BaseGrid: React.FC<BaseGridProps> = ({
           </Grid>
         </Grid>
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={routePrefix === "/usecases" ? 12 : 8}>
+          <Grid item xs={12} sm={8}>
             <ArticleContent content={singlePage.content} />
           </Grid>
           {renderRelatedArticles && (
@@ -84,6 +107,15 @@ const BaseGrid: React.FC<BaseGridProps> = ({
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   {renderRelatedArticles()}
+                </Grid>
+              </Grid>
+            </Grid>
+          )}
+          {renderShareUseCard && (
+            <Grid item xs={12} sm={4}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  {renderShareUseCard()}
                 </Grid>
               </Grid>
             </Grid>
