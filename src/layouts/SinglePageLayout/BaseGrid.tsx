@@ -2,12 +2,10 @@ import React from "react";
 import { Container, Grid, Typography, useTheme } from "@mui/material";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
-import RelatedArticlesLayout from "./RelatedArticlesLayout";
 import ArticleContent from "../../components/SinglePageComponents/ArticleContent";
 import NotificationComponent from "../../components/SinglePageComponents/Cards/NotificationComponent";
 import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail";
-import DescriptionCard from "../../components/SinglePageComponents/Cards/DescriptionCard";
-import ShareUseCases from "../../components/SinglePageComponents/Cards/ShareUseCaseCard";
+
 
 export interface BaseGridProps {
   singlePage: {

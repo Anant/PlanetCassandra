@@ -1,6 +1,7 @@
 import { Grid, Box, Typography, useTheme } from "@mui/material";
 import React from "react";
 import { GiLightBulb } from "react-icons/gi";
+import { Link } from "gatsby";
 
 interface NotificationProps {
   notificationTitle: string;
@@ -11,8 +12,15 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
   args: { notificationTitle, articleUrl },
 }) => {
   const theme = useTheme();
+
+  // Check if the articleUrl starts with "https://planetcassandra"
+  if (articleUrl.startsWith("https://planetcassandra.org")) {
+    return null; // Hide the whole component
+  }
+
+  console.log(articleUrl);
   return (
-    <Grid container sx={{ marginY: 2 }}>
+    <Grid container sx={{ marginBottom: "40px" }}>
       <Grid item>
         <Box
           sx={{
@@ -37,29 +45,28 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
               }}
             />
           </Box>
-          <a href={articleUrl} style={{ textDecoration: "none" }}>
-            <Typography
-              fontFamily="Roboto condensed, sans-serif"
-              className="textTruncate-2"
-              sx={{
+          <Typography
+            fontFamily="Roboto condensed, sans-serif"
+            className="textTruncate-2"
+            sx={{
+              flexGrow: 1,
+              color: theme.palette.primary.turqoise,
+              lineHeight: { xs: "15px", md: "24px" },
+              fontSize: { xs: "13px", sm: "11px", md: "20px" },
+            }}
+          >
+            This use case is based on an article published{" "}
+            <Link
+              to={articleUrl}
+              style={{
                 color: theme.palette.primary.turqoise,
-                lineHeight: { xs: "15px", md: "24px" },
-                fontSize: { xs: "13px", sm: "11px", md: "20px" },
+                textDecoration: "underline",
               }}
             >
-              This use cases is based on an article published{" "}
-              <a
-                href={articleUrl}
-                style={{
-                  color: theme.palette.primary.turqoise,
-                  textDecoration: "underline",
-                }}
-              >
-                here
-              </a>
-              .
-            </Typography>
-          </a>
+              here
+            </Link>
+            .
+          </Typography>
         </Box>
       </Grid>
     </Grid>
