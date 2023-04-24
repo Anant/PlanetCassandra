@@ -17,108 +17,113 @@ interface Props {
 }
 
 const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
-  let caseUrl;
-  if (url && url.includes("https://planetcassandra.org")) {
-    let newUrl = url.replace("https://planetcassandra.org/post/", "");
-    caseUrl = `/post/${newUrl}`;
-  } else {
-    caseUrl = `/usecases/${getSlug(name)}`;
-  }
+  let caseUrl = `/usecases/${getSlug(name)}`;
+  // if (url && url.includes("https://planetcassandra.org")) {
+  //   let newUrl = url.replace("https://planetcassandra.org/post/", "");
+  //   caseUrl = `/post/${newUrl}`;
+  // } else {
+  //   caseUrl = `/usecases/${getSlug(name)}`;
+  // }
 
   return (
     <Card
-      sx={{ height: "480px", borderRadius: 5, margin: { xs: "auto", md: 0 } }}
+      sx={{
+        padding: 2,
+        height: "450px",
+        borderRadius: 5,
+        margin: { xs: "auto", md: 0 },
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+      className="tuka"
     >
-      <Box sx={{ padding: 3 }}>
-        <CardContent
-          sx={{
-            padding: 0,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            height: "100%",
-          }}
-        >
-          {gatsbyImageData ? (
-            <Box
-              sx={{
-                height: "200px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-                borderRadius: 2,
-              }}
-            >
-              <GatsbyImage
-                className="w-full h-100 object-cover thumbnail"
-                image={gatsbyImageData}
-                alt={name}
-              />
-            </Box>
-          ) : (
-            <Box
-              sx={{
-                height: "200px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                overflow: "hidden",
-                borderRadius: 2,
-              }}
-            >
-              <StaticImage
-                src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
-                className="thumbnail"
-                alt="Placeholder"
-              />
-            </Box>
-          )}
+      <CardContent
+        sx={{
+          padding: 0,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {gatsbyImageData ? (
+          <Box
+            sx={{
+              height: "200px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              borderRadius: 2,
+            }}
+          >
+            <GatsbyImage
+              className="w-full h-100 object-cover thumbnail"
+              image={gatsbyImageData}
+              alt={name}
+            />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              height: "200px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              borderRadius: 2,
+            }}
+          >
+            <StaticImage
+              src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
+              className="thumbnail"
+              alt="Placeholder"
+            />
+          </Box>
+        )}
 
-          <Typography
-            sx={{ color: "#5ab1bb", fontSize: 20, mt: 2 }}
-            gutterBottom
-            variant="h6"
-            className="Font_Montserrat_Bold truncate"
-          >
-            {name}
-          </Typography>
-          <Typography
-            variant="body2"
-            className="Font_Montserrat_550 truncateDescription"
-            color="text.secondary"
-            sx={{ flexGrow: 1 }}
-          >
-            {description}
-          </Typography>
-        </CardContent>
-        <CardActions
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            paddingInline: 0,
-            alignItems: "center",
-          }}
+        <Typography
+          sx={{ color: "#5ab1bb", fontSize: 20, mt: 2 }}
+          gutterBottom
+          variant="h6"
+          className="Font_Montserrat_Bold truncate"
         >
-          <Link style={{ textDecoration: "none" }} to={caseUrl}>
-            <Button
-              sx={{
-                borderRadius: 50,
-                backgroundColor: "#5AB1BB",
-                fontSize: 10,
-                "&:hover": {
-                  backgroundColor: "#344D67",
-                },
-                textTransform: "none",
-              }}
-              variant="contained"
-            >
-              <Typography className="Font_Mulish_Button_M">
-                Continue Reading
-              </Typography>
-            </Button>
-          </Link>
-          {/*<Box
+          {name}
+        </Typography>
+        <Typography
+          variant="body2"
+          className="Font_Montserrat_550 truncateDescription"
+          color="text.secondary"
+        >
+          {description}
+        </Typography>
+      </CardContent>
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "end",
+          paddingInline: 0,
+          alignItems: "center",
+        }}
+      >
+        <Link style={{ textDecoration: "none" }} to={caseUrl}>
+          <Button
+            sx={{
+              borderRadius: 50,
+              backgroundColor: "#5AB1BB",
+              fontSize: 10,
+              "&:hover": {
+                backgroundColor: "#344D67",
+              },
+              textTransform: "none",
+            }}
+            variant="contained"
+          >
+            <Typography className="Font_Mulish_Button_M">
+              Continue Reading
+            </Typography>
+          </Button>
+        </Link>
+        {/*<Box
             sx={{
               display: "flex",
               alignItems: "center",
@@ -140,8 +145,7 @@ const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
               size="24px"
             />
           </Box>*/}
-        </CardActions>
-      </Box>
+      </CardActions>
     </Card>
   );
 };

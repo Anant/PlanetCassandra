@@ -82,41 +82,41 @@ const Posts: React.FC<Props> = (props: Props) => {
       </Helmet> */
 }
 export const query = graphql`
-  query Posts {
-    allWpPost(sort: { date: DESC }) {
-      totalCount
-      nodes {
-        categories {
-          nodes {
-            name
-            slug
-            count
-          }
+query Posts {
+  allWpPost(sort: {date: DESC}, filter: {authorId: {ne: "dXNlcjoy"}}) {
+    totalCount
+    nodes {
+      categories {
+        nodes {
+          name
+          slug
+          count
         }
-        author {
-          node {
-            avatar {
-              url
-            }
-            name
-          }
-        }
-        date
-        slug
-        title
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
-        }
-        excerpt
       }
+      author {
+        node {
+          avatar {
+            url
+          }
+          name
+        }
+      }
+      date
+      slug
+      title
+      featuredImage {
+        node {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
+      excerpt
     }
   }
+}
 `;
 
 export default Posts;

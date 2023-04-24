@@ -63,8 +63,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
               /> */}
 
               <Typography className="author-component">
-                {name} on {month}
-                {day},{year}
+                {name} on {month} {day}, {year}
               </Typography>
             </Box>
             <GatsbyImage image={featuredImage} alt={title} />

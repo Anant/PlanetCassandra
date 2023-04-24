@@ -19,6 +19,9 @@ interface UseCasesSinglePageProps {
     Case_Published: string;
     Case_URL: string;
     RelatedArticles: Array<{
+      Company: any;
+      Case_Published: string;
+      Case_URL: string;
       Case_Name: string;
       gatsbyImageData: IGatsbyImageData | null;
     }>;
@@ -41,7 +44,6 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
       Case_URL,
     },
   } = props;
-
   const mapUseCasesToProps = (
     useCasesProps: UseCasesSinglePageProps
   ): BaseGridProps => {
@@ -63,6 +65,9 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         ...relatedArticle,
         title: relatedArticle.Case_Name, // Add the missing title property for UseCases
         thumbnail: relatedArticle.gatsbyImageData,
+        published_by: relatedArticle.Company,
+        wallabag_created_at: relatedArticle.Case_Published, // Add the date
+        url: relatedArticle.Case_URL,
       })),
     };
   };

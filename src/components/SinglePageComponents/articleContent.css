@@ -1,5 +1,5 @@
 .articleContainer {
-  margin: 50px 0;
+  margin: 0 0 50px 0;
 }
 .articleContainer img {
   height: auto !important;
@@ -17,7 +17,7 @@
 .articleContainer span {
   font-size: 22px;
   margin-bottom: 26px;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 .articleContainer .is-layout-flow {
   margin: 50px 0;
@@ -28,7 +28,7 @@
 .articleContainer h4,
 .articleContainer h5,
 .articleContainer h6 {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-weight: 700;
   margin-bottom: 26px;
   font-size: 40px;
@@ -36,11 +36,11 @@
 
 .articleContainer li,
 .articleContainer article {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 22px;
 }
 .articleContainer a {
-  font-family: 'Roboto Condensed', sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   font-size: 22px;
   color: #5ab1bb !important;
 }
@@ -48,7 +48,7 @@
 .is-layout-flex {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 5px;
 }
 .is-layout-flex .wp-block-column {
   flex: 0 0 50%;

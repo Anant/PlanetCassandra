@@ -81,8 +81,25 @@ export const createUseCases = async ({
 
   const useCasesData = allUseCases.data.allAirtable.nodes;
   const allFile = allUseCases.data.allFile.nodes;
+  const allWpCategory = allUseCases.data.allWpCategory.nodes;
 
-  const useCasesWithLogos = mapCompanyLogosToUseCases(useCasesData, allFile);
+  const useCasesDataWithContent = useCasesData.map((node: { data: { Case_Name: any; Case_Article_Content: any; }; }) => {
+    const wpPost = allWpCategory[0].posts.nodes.find(
+      (post: { title: any; }) => post.title === node.data.Case_Name
+    );
+    
+    return {
+      ...node,
+      data: {
+        ...node.data,
+        Case_Article_Content: wpPost ? wpPost.content : node.data.Case_Article_Content,
+      },
+    };
+  });
+
+
+
+  const useCasesWithLogos = mapCompanyLogosToUseCases(useCasesDataWithContent, allFile);
 
   useCasesWithLogos.forEach((node, index) => {
     // Generate random related articles
@@ -92,6 +109,10 @@ export const createUseCases = async ({
     ); // 8 is the number of related articles to show
     const relatedArticles = relatedArticleIndices.map((idx) => ({
       Case_Name: useCasesWithLogos[idx].Case_Name,
+      Company: useCasesWithLogos[idx].Case_Company[0]?.data.Name,
+      Case_Published: useCasesWithLogos[idx].Case_Published,
+      Case_URL: useCasesWithLogos[idx].Case_URL,
+
       gatsbyImageData: useCasesWithLogos[idx].gatsbyImageData,
     })); // get the data and images for the related articles
 
@@ -113,37 +134,52 @@ export const createUseCases = async ({
 };
 
 //@ts-ignore
-async function getAllUseCases(graphql) {
-  return await graphql(`
-    query UseCasesData {
-      allAirtable(
-        filter: { table: { eq: "Cases" } }
-        sort: { data: { Case_Published: DESC } }
-      ) {
-        nodes {
-          data {
-            Case_URL
-            Case_Name
-            Case_Description
-            Case_Company {
-              data {
-                Name
-              }
-              id
+function getAllUseCases(graphql) {
+  return  graphql(`
+  query UseCasesData {
+    allAirtable(
+      filter: { table: { eq: "Cases" } }
+      sort: { data: { Case_Published: DESC } }
+    ) {
+      nodes {
+        data {
+          Case_URL
+          Case_Name
+          Case_Description
+          Case_Company {
+            data {
+              Name
             }
-            Case_Published
-            Case_Article_Content
+            id
           }
+          Case_Published
+          Case_Article_Content
         }
       }
-      allFile(filter: { id: { ne: null } }) {
-        nodes {
-          name
-          childrenImageSharp {
-            gatsbyImageData
+    }
+    allFile(filter: { id: { ne: null } }) {
+      nodes {
+        name
+        childrenImageSharp {
+          gatsbyImageData
+        }
+      }
+    }
+    allWpCategory(filter: {name: {eq: "Use Cases"}}) {
+      nodes {
+        id
+        name
+        posts {
+          nodes {
+            id
+            title
+            authorId
+            content
+            excerpt
           }
         }
       }
     }
+  }
   `);
 }

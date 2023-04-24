@@ -149,24 +149,24 @@ const HeroSection = () => {
 
 export const query = graphql`
   query GET_POSTS {
-    allWpPost {
-      nodes {
-        title
-        slug
-        featuredImage {
-          node {
-            publicUrl
-            localFile {
-              relativePath
-              childImageSharp {
-                gatsbyImageData
-              }
+  allWpPost(filter: {authorId: {ne: "dXNlcjoy"}}) {
+    nodes {
+      title
+      slug
+      featuredImage {
+        node {
+          publicUrl
+          localFile {
+            relativePath
+            childImageSharp {
+              gatsbyImageData
             }
           }
         }
       }
     }
   }
+}
 `;
 
 export default HeroSection;
