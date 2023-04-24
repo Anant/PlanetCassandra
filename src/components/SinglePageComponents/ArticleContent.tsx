@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import "../../components/Templates/singlePageTemplates.css";
+import "./articleContent.css";
 interface ArticleContentProps {
   content: string;
 }
