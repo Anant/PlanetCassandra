@@ -23,12 +23,12 @@ const ContributePage = () => {
       link: `https://airtable.com/shr3vL0c2LrB4cwZ6`,
     },
     {
-      text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the Apache Cassandra® community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you!`,
+      text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the broader Apache Cassandra® community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you!`,
       cta: `Submit a Blog Post`,
       link: `https://airtable.com/shrEifAn99ub2Ny6g`,
     },
     {
-      text: `Join PlanetCassandra Team: Of course, one of the most valuable contributions you can make is to the PlanetCassandra team itself. We'd love to get your help to manage the content editing, publishing process.`,
+      text: `Join Planet Cassandra Team: Of course, one of the most valuable contributions you can make is to the Planet Cassandra team itself. We'd love to get your help to manage the content editing, publishing process.`,
       cta: `Join our Discord Channel`,
       link: `https://discord.gg/skV5Cenw`,
     },
@@ -71,10 +71,10 @@ const ContributePage = () => {
                     fontWeight: 700,
                   }}
                 >
-                  Our
+                  Planet
                 </span>
                 <span style={{ color: '#5AB1BB', fontWeight: 700 }}>
-                  Project!
+                  Cassandra!
                 </span>
               </Typography>
               <Box
@@ -91,7 +91,7 @@ const ContributePage = () => {
                   color="#1E1E1E"
                   sx={{ marginTop: 4, fontSize: { sm: '22px', lg: '20px' } }}
                 >
-                  We believe that the power of the Planet Cassandra community 
+                  We are proud to be a community of Apache Cassandra&reg; users who recognize the value of open-source technology. We believe that the power of the Planet Cassandra community 
                   lies in the contributions of its members. That's why we're 
                   always looking for new ways to engage with our community and
                   provide opportunities for people to get involved.
@@ -133,7 +133,7 @@ const ContributePage = () => {
               Ways to{' '}
               <span style={{ marginLeft: '10px', color: '#344D67' }}>
                 {' '}
-                contribute!
+                contribute to PlanetCassandra, an Apache Cassandra® Community!
               </span>
             </Typography>
           </Box>
