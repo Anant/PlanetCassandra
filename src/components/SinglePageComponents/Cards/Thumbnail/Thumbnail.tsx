@@ -15,7 +15,7 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
         display: "flex",
         flexGrow: 1,
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "start",
         marginTop: 1,
         width: "100%",
       }}
