@@ -98,7 +98,7 @@ const BaseGrid: React.FC<BaseGridProps> = ({
             )}
           </Grid>
         </Grid>
-        <Grid container spacing={2}>
+        <Grid container spacing={{ sm: 4, lg: 7 }}>
           <Grid item xs={12} sm={8}>
             <ArticleContent content={singlePage.content} />
           </Grid>

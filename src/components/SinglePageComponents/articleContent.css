@@ -48,6 +48,7 @@
 .is-layout-flex {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 .is-layout-flex .wp-block-column {
   flex: 0 0 50%;

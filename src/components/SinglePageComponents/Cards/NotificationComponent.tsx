@@ -57,6 +57,7 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
               >
                 here
               </a>
+              .
             </Typography>
           </a>
         </Box>

@@ -21,14 +21,21 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
       }}
     >
       {thumbnail ? (
-        <GatsbyImage className="thumbnail" image={thumbnail} alt="logo" />
+        <GatsbyImage
+          className="thumbnail"
+          image={thumbnail}
+          alt="logo"
+          style={{
+            width: "70%",
+          }}
+        />
       ) : (
         <StaticImage
           src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
           className="thumbnail"
           alt="Placeholder"
           style={{
-            width: "100%",
+            width: "70%",
           }}
         />
       )}
