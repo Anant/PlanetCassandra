@@ -6,6 +6,8 @@ import ArticleContent from "../../components/SinglePageComponents/ArticleContent
 import NotificationComponent from "../../components/SinglePageComponents/Cards/NotificationComponent";
 import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail";
 
+import UseCaseTitleSection from "../../components/SinglePageComponents/UseCaseTitle/UseCaseTitleSection";
+import LeavesTitleSection from "../../components/SinglePageComponents/Cards/LeafTitle/LeavesTitleSection";
 
 export interface BaseGridProps {
   singlePage: {
@@ -31,13 +33,14 @@ export interface BaseGridProps {
   renderExploreFurther?: () => React.ReactNode;
   renderRelatedArticles?: () => React.ReactNode;
   renderShareUseCard?: () => React.ReactNode;
-
+  titleSectionType: "usecase" | "leaves";
   routePrefix: string;
 }
 
 const BaseGrid: React.FC<BaseGridProps> = ({
   routePrefix,
   singlePage,
+  titleSectionType,
   relatedArticles,
   renderExploreFurther,
   renderRelatedArticles,
@@ -50,46 +53,24 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid
-          sx={{ borderBottom: "1px solid black", marginBottom: 5 }}
-          container
-          spacing={2}
-        >
-          <Grid item xs={12} sm={6}>
-            <ThumbnailImage thumbnail={singlePage.thumbnail} />
-          </Grid>
-          <Grid
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-            item
-            xs={12}
-          >
-            <Typography
-              fontFamily="Roboto Condensed, sans-serif"
-              fontWeight={600}
-              sx={{
-                marginY: 2,
-                color: theme.palette.primary.darkblue,
-                fontSize: {
-                  xs: "18px",
-                  sm: "24px",
-                  md: "20px",
-                  lg: "36px",
-                },
-              }}
-            >
-              {singlePage.title}
-            </Typography>
-          </Grid>
-        </Grid>
+      {titleSectionType === "usecase" ? (
+          <UseCaseTitleSection
+            title={singlePage.title}
+            thumbnail={singlePage.thumbnail}
+          />
+        ) : (
+          <LeavesTitleSection
+            title={singlePage.title}
+            thumbnail={singlePage.thumbnail}
+          />
+        )}
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
             {validUrl && (
               <NotificationComponent
                 args={{
                   notificationTitle: singlePage.title,
+                  //@ts-ignore
                   articleUrl: singlePage.url,
                 }}
               />

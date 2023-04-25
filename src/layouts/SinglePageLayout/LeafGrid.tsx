@@ -18,10 +18,8 @@ const LeaftGrid = ({ singlePage, relatedArticles, tagSets }) => {
           args={{
             data: tagSets,
             isListingPage: false,
-          }}
-        />
-      )}
-    />
+          }} />
+      )} titleSectionType={"leaves"}    />
   );
 };
 
