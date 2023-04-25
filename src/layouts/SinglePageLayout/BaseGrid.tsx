@@ -37,6 +37,7 @@ export interface BaseGridProps {
     origin_url?: string; // Optional property
     reading_time?: number; // Optional property
     domain_name?: string; // Optional property
+    published_by?: string; // This is the Company Name
     thumbnail: IGatsbyImageData | null;
   };
   relatedArticles: Array<{
@@ -72,9 +73,9 @@ const BaseGrid: React.FC<BaseGridProps> = ({
           <UseCaseTitleSection
             title={singlePage.title}
             thumbnail={singlePage.thumbnail}
-            Case_Stack={singlePage.Case_Stack}
             Case_Function={singlePage.Case_Function}
             Case_Industry={singlePage.Case_Industry}
+            Company_Name={singlePage.published_by}
           />
         ) : (
           <LeavesTitleSection
