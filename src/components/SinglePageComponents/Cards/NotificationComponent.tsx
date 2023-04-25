@@ -18,7 +18,6 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
     return null; // Hide the whole component
   }
 
-  console.log(articleUrl);
   return (
     <Grid container sx={{ marginBottom: "40px" }}>
       <Grid item>

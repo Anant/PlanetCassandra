@@ -19,6 +19,21 @@ interface CompanyData {
         Case_URL: string;
         Case_Article_Content: string;
         Case_Published: string;
+        Case_Stack: {
+          data: {
+            Name: string;
+          }[];
+        };
+        Case_Function: {
+          data: {
+            Function_Name: string;
+          }[];
+        };
+        Case_Industry: {
+          data: {
+            Industry_Name: string;
+          }[];
+        };
         Case_Company: {
           data: {
             Name: string;
@@ -29,6 +44,7 @@ interface CompanyData {
     }[];
   };
 }
+
 
 interface LogoFile {
   name: string;
@@ -128,8 +144,12 @@ export const createUseCases = async ({
         Company: node.Case_Company[0]?.data.Name,
         Case_Published: node.Case_Published,
         Case_URL: node.Case_URL,
+        Case_Stack: node.Case_Stack,
+        Case_Function: node.Case_Function,
+        Case_Industry: node.Case_Industry,
       },
     });
+    
   });
 };
 
@@ -138,14 +158,28 @@ function getAllUseCases(graphql) {
   return  graphql(`
   query UseCasesData {
     allAirtable(
-      filter: { table: { eq: "Cases" } }
-      sort: { data: { Case_Published: DESC } }
+      filter: {table: {eq: "Cases"}}
+      sort: {data: {Case_Published: DESC}}
     ) {
       nodes {
         data {
           Case_URL
           Case_Name
-          Case_Description
+          Case_Stack{
+            data{
+              Name
+            }
+          }
+          Case_Function{
+            data{
+              Function_Name
+            }
+          }
+          Case_Industry{
+            data{
+              Industry_Name
+            }
+          }
           Case_Company {
             data {
               Name
@@ -153,9 +187,9 @@ function getAllUseCases(graphql) {
             id
           }
           Case_Published
-          Case_Article_Content
         }
       }
+      
     }
     allFile(filter: { id: { ne: null } }) {
       nodes {

@@ -11,6 +11,21 @@ import LeavesTitleSection from "../../components/SinglePageComponents/Cards/Leaf
 
 export interface BaseGridProps {
   singlePage: {
+    Case_Stack?: {
+      data: {
+        Name: string;
+      }[];
+    };
+    Case_Function?: {
+      data: {
+        Function_Name: string;
+      }[];
+    };
+    Case_Industry?: {
+      data: {
+        Industry_Name: string;
+      }[];
+    };
     tags?: string[]; // Optional property
     title: string;
     wallabag_created_at?: string; // Optional property
@@ -53,10 +68,13 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   return (
     <Container maxWidth="xl">
       <Grid container>
-      {titleSectionType === "usecase" ? (
+        {titleSectionType === "usecase" ? (
           <UseCaseTitleSection
             title={singlePage.title}
             thumbnail={singlePage.thumbnail}
+            Case_Stack={singlePage.Case_Stack}
+            Case_Function={singlePage.Case_Function}
+            Case_Industry={singlePage.Case_Industry}
           />
         ) : (
           <LeavesTitleSection
