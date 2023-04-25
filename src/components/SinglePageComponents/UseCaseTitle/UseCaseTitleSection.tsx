@@ -68,7 +68,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: "25px",
+                                    fontSize: "23px",
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
@@ -81,7 +81,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: "25px",
+                                    fontSize: "23px",
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
@@ -103,7 +103,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: "25px",
+                                    fontSize: "23px",
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
@@ -116,7 +116,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: "25px",
+                                    fontSize: "23px",
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
@@ -130,7 +130,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                     <Grid item xs={12}>
                         <Box
                             sx={{
-                                padding: 1,
+                                padding: 2,
                                 borderRadius: 3,
                                 background: "linear-gradient(0deg, #EEEEEE, #EEEEEE), linear-gradient(0deg, #F3F3F3, #F3F3F3)",
                                 border: "1px solid #EEEEEE",
@@ -139,12 +139,12 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: '25px',
+                                    fontSize: '23px',
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
                                     fontWeight: "bold",
-                                    padding: 1.5,
+                                    
                                 }}
                             >
                                 Functional Use Case:
@@ -152,7 +152,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: '25px',
+                                    fontSize: '23px',
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
