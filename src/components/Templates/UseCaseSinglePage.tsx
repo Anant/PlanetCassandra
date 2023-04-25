@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 // @ts-ignore
-import { Helmet } from "react-helmet";
-import { Container, Typography } from "@mui/material";
-import Layout from "../Layout/Layout";
-import "./singlePageTemplates.css";
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import { BaseGridProps } from "../../layouts/SinglePageLayout/BaseGrid";
-import UseCaseGrid from "../../layouts/SinglePageLayout/UseCaseGrid";
-import "../../components/Layout/Layout.css";
-import "./singlePageTemplates.css";
+import { Helmet } from 'react-helmet';
+import { Container, Typography } from '@mui/material';
+import Layout from '../Layout/Layout';
+import './singlePageTemplates.css';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { BaseGridProps } from '../../layouts/SinglePageLayout/BaseGrid';
+import UseCaseGrid from '../../layouts/SinglePageLayout/UseCaseGrid';
+import '../../components/Layout/Layout.css';
+import './singlePageTemplates.css';
 
 interface UseCasesSinglePageProps {
   pageContext: {
@@ -18,6 +18,21 @@ interface UseCasesSinglePageProps {
     Case_Article_Content: string;
     Case_Published: string;
     Case_URL: string;
+    Case_Stack: {
+      data: {
+        Name: string;
+      }[];
+    };
+    Case_Function: {
+      data: {
+        Function_Name: string;
+      }[];
+    };
+    Case_Industry: {
+      data: {
+        Industry_Name: string;
+      }[];
+    };
     RelatedArticles: Array<{
       Company: any;
       Case_Published: string;
@@ -42,6 +57,9 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
       gatsbyImageData,
       Case_Published,
       Case_URL,
+      Case_Stack,
+      Case_Function,
+      Case_Industry,
     },
   } = props;
   const mapUseCasesToProps = (
@@ -60,6 +78,9 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         domain_name: Case_URL, // Add the missing domain_name property
         wallabag_created_at: Case_Published, // Add the date
         published_by: Company,
+        Case_Stack, // Pass the Case_Stack
+        Case_Function, // Pass the Case_Function
+        Case_Industry,
       },
       relatedArticles: RelatedArticles.map((relatedArticle) => ({
         ...relatedArticle,
@@ -72,6 +93,8 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
     };
   };
   const baseGridProps = mapUseCasesToProps(props);
+
+
 
   return (
     <Layout>

@@ -6,9 +6,26 @@ import ArticleContent from "../../components/SinglePageComponents/ArticleContent
 import NotificationComponent from "../../components/SinglePageComponents/Cards/NotificationComponent";
 import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail";
 
+import UseCaseTitleSection from "../../components/SinglePageComponents/UseCaseTitle/UseCaseTitleSection";
+import LeavesTitleSection from "../../components/SinglePageComponents/Cards/LeafTitle/LeavesTitleSection";
 
 export interface BaseGridProps {
   singlePage: {
+    Case_Stack?: {
+      data: {
+        Name: string;
+      }[];
+    };
+    Case_Function?: {
+      data: {
+        Function_Name: string;
+      }[];
+    };
+    Case_Industry?: {
+      data: {
+        Industry_Name: string;
+      }[];
+    };
     tags?: string[]; // Optional property
     title: string;
     wallabag_created_at?: string; // Optional property
@@ -20,6 +37,7 @@ export interface BaseGridProps {
     origin_url?: string; // Optional property
     reading_time?: number; // Optional property
     domain_name?: string; // Optional property
+    published_by?: string; // This is the Company Name
     thumbnail: IGatsbyImageData | null;
   };
   relatedArticles: Array<{
@@ -31,13 +49,14 @@ export interface BaseGridProps {
   renderExploreFurther?: () => React.ReactNode;
   renderRelatedArticles?: () => React.ReactNode;
   renderShareUseCard?: () => React.ReactNode;
-
+  titleSectionType: "usecase" | "leaves";
   routePrefix: string;
 }
 
 const BaseGrid: React.FC<BaseGridProps> = ({
   routePrefix,
   singlePage,
+  titleSectionType,
   relatedArticles,
   renderExploreFurther,
   renderRelatedArticles,
@@ -47,49 +66,33 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   const validUrl = urlRegex.test(singlePage.url ? singlePage.url : "");
   const theme = useTheme();
 
+  //@ts-ignore
+  const caseStackNames = singlePage.Case_Stack?.map((item) => item.data.Name) || [];
+
   return (
     <Container maxWidth="xl">
       <Grid container>
-        <Grid
-          sx={{ borderBottom: "1px solid black", marginBottom: 5 }}
-          container
-          spacing={2}
-        >
-          <Grid item xs={12} sm={6}>
-            <ThumbnailImage thumbnail={singlePage.thumbnail} />
-          </Grid>
-          <Grid
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-            item
-            xs={12}
-          >
-            <Typography
-              fontFamily="Roboto Condensed, sans-serif"
-              fontWeight={600}
-              sx={{
-                marginY: 2,
-                color: theme.palette.primary.darkblue,
-                fontSize: {
-                  xs: "18px",
-                  sm: "24px",
-                  md: "20px",
-                  lg: "36px",
-                },
-              }}
-            >
-              {singlePage.title}
-            </Typography>
-          </Grid>
-        </Grid>
+        {titleSectionType === "usecase" ? (
+          <UseCaseTitleSection
+            title={singlePage.title}
+            thumbnail={singlePage.thumbnail}
+            Case_Function={singlePage.Case_Function}
+            Case_Industry={singlePage.Case_Industry}
+            Company_Name={singlePage.published_by}
+          />
+        ) : (
+          <LeavesTitleSection
+            title={singlePage.title}
+            thumbnail={singlePage.thumbnail}
+          />
+        )}
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
             {validUrl && (
               <NotificationComponent
                 args={{
                   notificationTitle: singlePage.title,
+                  //@ts-ignore
                   articleUrl: singlePage.url,
                 }}
               />
@@ -99,6 +102,21 @@ const BaseGrid: React.FC<BaseGridProps> = ({
         <Grid container spacing={{ sm: 4, lg: 7 }}>
           <Grid item xs={12} sm={8}>
             <ArticleContent content={singlePage.content} />
+            {caseStackNames && (
+              <Typography
+                component="span"
+                sx={{
+                  fontSize: "25px",
+                  lineHeight: "31px",
+                  letterSpacing: "2%",
+                  color: "#383D3B",
+                }}
+              >
+                {"Stack Includes:"}
+                {" "}
+                {caseStackNames.join(", ")}
+              </Typography>
+            )}
           </Grid>
           {renderRelatedArticles && (
             <Grid item xs={12} sm={4}>
