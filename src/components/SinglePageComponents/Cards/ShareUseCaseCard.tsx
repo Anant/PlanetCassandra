@@ -1,29 +1,31 @@
-import { Typography, Box, Button, useTheme } from "@mui/material";
-import React from "react";
+import { Typography, Box, Button, useTheme } from '@mui/material';
+import { RiArrowRightCircleLine } from '@react-icons/all-files/ri/RiArrowRightCircleLine';
+import React from 'react';
 
 const ShareUseCases: React.FC = () => {
   const theme = useTheme();
   return (
     <Box
       sx={{
-        border: "3px solid",
-        borderColor: theme.palette.primary.turqoise,
-        borderRadius: "20px",
-        padding: { xs: 2, sm: 3, lg: 5 },
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        background:
+          'linear-gradient(67.68deg, #5AB1BB -23.68%, #344D67 92.21%)',
+        borderRadius: '8px',
+        padding: { xs: 2, sm: 3, lg: 4 },
+        paddingY: { lg: 10 },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
     >
       <Typography
         sx={{
           marginTop: 1,
-          color: theme.palette.primary.main,
-          fontSize: { xs: 13, md: 20 },
-          fontFamily: "Roboto Condensed, sans-serif",
+          color: theme.palette.primary.white,
+          fontSize: { xs: 13, md: 20, lg: 30 },
+          fontFamily: 'Roboto Condensed, sans-serif',
           fontWeight: 700,
-          textAlign: "center",
+          textAlign: 'center',
         }}
       >
         Do you have an Apache® Cassandra Use Case ?
@@ -31,10 +33,11 @@ const ShareUseCases: React.FC = () => {
       <Button
         sx={{
           marginTop: 2,
-          padding: 2,
-          borderRadius: "10px",
+          paddingX: 1.75,
+          paddingY: 1,
+          borderRadius: '10px',
           backgroundColor: theme.palette.primary.turqoise,
-          "&:hover": {
+          '&:hover': {
             backgroundColor: theme.palette.primary.turqoise,
           },
         }}
@@ -42,17 +45,23 @@ const ShareUseCases: React.FC = () => {
       >
         <Typography
           sx={{
-            color: "white",
-            fontSize: { xs: 13, md: 18 },
-            fontFamily: "Roboto Condensed, sans-serif",
+            color: 'white',
+            fontSize: { xs: 13, sm: 10, md: 18 },
+            fontFamily: 'Roboto Condensed, sans-serif',
             fontWeight: 400,
           }}
         >
           <a
             href="https://airtable.com/shrYlu3mjtCiBTlOG"
-            style={{ textDecoration: "none", color: "white" }}
+            style={{
+              textDecoration: 'none',
+              color: 'white',
+              display: 'flex',
+              alignItems: 'center',
+            }}
           >
-            Share a Use Case
+            Share Use Case{' '}
+            <RiArrowRightCircleLine style={{ marginLeft: '8px' }} size={20} />
           </a>
         </Typography>
       </Button>
