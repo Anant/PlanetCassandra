@@ -66,6 +66,9 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   const validUrl = urlRegex.test(singlePage.url ? singlePage.url : "");
   const theme = useTheme();
 
+  //@ts-ignore
+  const caseStackNames = singlePage.Case_Stack?.map((item) => item.data.Name) || [];
+
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -99,6 +102,21 @@ const BaseGrid: React.FC<BaseGridProps> = ({
         <Grid container spacing={{ sm: 4, lg: 7 }}>
           <Grid item xs={12} sm={8}>
             <ArticleContent content={singlePage.content} />
+            {caseStackNames && (
+              <Typography
+                component="span"
+                sx={{
+                  fontSize: "25px",
+                  lineHeight: "31px",
+                  letterSpacing: "2%",
+                  color: "#383D3B",
+                }}
+              >
+                {"Stack Includes:"}
+                {" "}
+                {caseStackNames.join(", ")}
+              </Typography>
+            )}
           </Grid>
           {renderRelatedArticles && (
             <Grid item xs={12} sm={4}>
