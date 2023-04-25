@@ -54,7 +54,7 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
               fontSize: { xs: "13px", sm: "11px", md: "20px" },
             }}
           >
-            This use case is based on an article published{" "}
+            This use case is based on an article originally published{" "}
             <Link
               to={articleUrl}
               style={{

@@ -34,10 +34,6 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
     //@ts-ignore
     const caseIndustryNames = Case_Industry?.map((item: { data: { Industry_Name: string; }; }) => item.data.Industry_Name) || [];
 
-    const functionTextLength = caseFunctionNames.join(', ').length;
-    const functionFontSize = functionTextLength > 40 ? '17px' : '25px';
-
-    console.log(caseFunctionNames)
 
     return (
         <Grid
@@ -143,7 +139,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: functionFontSize,
+                                    fontSize: '25px',
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
@@ -156,7 +152,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
                             <Typography
                                 component="span"
                                 sx={{
-                                    fontSize: functionFontSize,
+                                    fontSize: '25px',
                                     lineHeight: "31px",
                                     letterSpacing: "2%",
                                     color: "#383D3B",
