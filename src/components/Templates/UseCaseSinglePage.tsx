@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 // @ts-ignore
-import { Helmet } from "react-helmet";
-import { Container, Typography } from "@mui/material";
-import Layout from "../Layout/Layout";
-import "./singlePageTemplates.css";
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import { BaseGridProps } from "../../layouts/SinglePageLayout/BaseGrid";
-import UseCaseGrid from "../../layouts/SinglePageLayout/UseCaseGrid";
-import "../../components/Layout/Layout.css";
-import "./singlePageTemplates.css";
+import { Helmet } from 'react-helmet';
+import { Container, Typography } from '@mui/material';
+import Layout from '../Layout/Layout';
+import './singlePageTemplates.css';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { BaseGridProps } from '../../layouts/SinglePageLayout/BaseGrid';
+import UseCaseGrid from '../../layouts/SinglePageLayout/UseCaseGrid';
+import '../../components/Layout/Layout.css';
+import './singlePageTemplates.css';
 
 interface UseCasesSinglePageProps {
   pageContext: {
