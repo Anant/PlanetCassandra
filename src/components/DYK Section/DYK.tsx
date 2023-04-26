@@ -40,7 +40,7 @@ const DidYouKnowSection = () => {
 
         <Typography
           fontFamily={'Lato, sans-serif'}
-          fontWeight={300}
+          fontWeight={550}
           align={'center'}
           variant="subtitle2"
           gutterBottom
