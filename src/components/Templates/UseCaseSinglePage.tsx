@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 // @ts-ignore
-import { Helmet } from 'react-helmet';
-import { Container, Typography } from '@mui/material';
-import Layout from '../Layout/Layout';
-import './singlePageTemplates.css';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
-import { BaseGridProps } from '../../layouts/SinglePageLayout/BaseGrid';
-import UseCaseGrid from '../../layouts/SinglePageLayout/UseCaseGrid';
-import '../../components/Layout/Layout.css';
-import './singlePageTemplates.css';
+import { Helmet } from "react-helmet";
+import { Container, Typography } from "@mui/material";
+import Layout from "../Layout/Layout";
+import "./singlePageTemplates.css";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+import { BaseGridProps } from "../../layouts/SinglePageLayout/BaseGrid";
+import UseCaseGrid from "../../layouts/SinglePageLayout/UseCaseGrid";
+import "../../components/Layout/Layout.css";
+import "./singlePageTemplates.css";
 
 interface UseCasesSinglePageProps {
   pageContext: {
@@ -94,26 +94,22 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
   };
   const baseGridProps = mapUseCasesToProps(props);
 
-
-
   return (
     <Layout>
-      <Container maxWidth="xl">
-        <Helmet>
-          <title>{title}</title>
-          <meta name="description" content={Description} />
-          <meta name="keywords" content={title} />
-          <meta name="author" content={Company} />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta property="og:title" content={title} />
-          <meta property="og:description" content={Description} />
-          {/* <meta property="og:image" content={gatsbyImageData} /> */}
-        </Helmet>
-        <UseCaseGrid
-          singlePage={baseGridProps.singlePage}
-          relatedArticles={baseGridProps.relatedArticles}
-        />
-      </Container>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={Description} />
+        <meta name="keywords" content={title} />
+        <meta name="author" content={Company} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={Description} />
+        {/* <meta property="og:image" content={gatsbyImageData} /> */}
+      </Helmet>
+      <UseCaseGrid
+        singlePage={baseGridProps.singlePage}
+        relatedArticles={baseGridProps.relatedArticles}
+      />
     </Layout>
   );
 };

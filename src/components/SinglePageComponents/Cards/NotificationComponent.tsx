@@ -19,7 +19,7 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
   }
 
   return (
-    <Grid container sx={{ marginBottom: "40px" }}>
+    <Grid container sx={{ marginBottom: "40px", marginTop: "10px" }}>
       <Grid item>
         <Box
           sx={{
@@ -54,7 +54,7 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
               fontSize: { xs: "13px", sm: "11px", md: "20px" },
             }}
           >
-            This use case is based on an article originally published{" "}
+            This {notificationTitle} is based on an article originally published{" "}
             <Link
               to={articleUrl}
               style={{

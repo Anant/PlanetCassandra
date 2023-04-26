@@ -103,7 +103,7 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
               width: isShared ? { sm: "70%", md: "60%" } : "100%",
             }}
           >
-            <AuthorComponent dataFontSize={dataFontSize} author={author} />
+            {/* <AuthorComponent dataFontSize={dataFontSize} author={author} /> */}
 
             <CardDateComponent
               dataFontSize={dataFontSize}

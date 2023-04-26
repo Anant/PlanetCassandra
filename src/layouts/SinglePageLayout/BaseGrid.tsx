@@ -67,9 +67,9 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   const theme = useTheme();
 
   //@ts-ignore
-  // prettier-ignore
-  const caseStackNames = singlePage.Case_Stack?.map((item) => item.data.Name) || [];
-
+  const caseStackNames =
+    //@ts-ignore
+    singlePage.Case_Stack?.map((item) => item.data.Name) || [];
   return (
     <Container maxWidth="xl">
       <Grid container>
@@ -83,16 +83,17 @@ const BaseGrid: React.FC<BaseGridProps> = ({
           />
         ) : (
           <LeavesTitleSection
+            singlePage={singlePage}
             title={singlePage.title}
             thumbnail={singlePage.thumbnail}
           />
         )}
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
-            {validUrl && (
+            {validUrl && titleSectionType === "usecase" && (
               <NotificationComponent
                 args={{
-                  notificationTitle: singlePage.title,
+                  notificationTitle: "use case",
                   //@ts-ignore
                   articleUrl: singlePage.url,
                 }}
@@ -103,23 +104,22 @@ const BaseGrid: React.FC<BaseGridProps> = ({
         <Grid container spacing={{ sm: 4, lg: 7 }}>
           <Grid item xs={12} sm={8}>
             <ArticleContent content={singlePage.content} />
-            {caseStackNames && (
-              <Typography
-                component="span"
-                sx={{
-                  fontSize: '25px',
-                  lineHeight: '31px',
-                  letterSpacing: '2%',
-                  color: '#383D3B',
-                  fontWeight: 600,
-                }}
-              >
-                {'Stack Includes:'}{' '}
-                <span style={{ fontWeight: 400 }}>
-                  {caseStackNames.join(', ')}
-                </span>
-              </Typography>
-            )}
+
+            {caseStackNames &&
+              caseStackNames.length > 0 &&
+              titleSectionType === "usecase" && (
+                <Typography
+                  component="span"
+                  sx={{
+                    fontSize: "25px",
+                    lineHeight: "31px",
+                    letterSpacing: "2%",
+                    color: "#383D3B",
+                  }}
+                >
+                  {"Stack Includes:"} {caseStackNames.join(", ")}
+                </Typography>
+              )}
           </Grid>
           {renderRelatedArticles && (
             <Grid item xs={12} sm={4}>
