@@ -1,13 +1,13 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import { StaticImage } from "gatsby-plugin-image";
-import { Link } from "gatsby";
-import { IGatsbyImageData } from "gatsby-plugin-image";
-import { GatsbyImage } from "gatsby-plugin-image";
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { StaticImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 interface Props {
   post: {
@@ -32,7 +32,7 @@ interface Props {
 }
 
 const removeLinks = (html: string) => {
-  return html.replace(/<a\b[^>]*>(.*?)<\/a>/i, "");
+  return html.replace(/<a\b[^>]*>(.*?)<\/a>/i, '');
 };
 
 const TagCard: React.FC<Props> = ({ post }) => {
@@ -40,15 +40,14 @@ const TagCard: React.FC<Props> = ({ post }) => {
   return (
     <Card
       sx={{
-        maxWidth: 500,
         borderRadius: 5,
         padding: 3,
-        margin: { xs: "auto", lg: 0 },
+        margin: { xs: 'auto', lg: 0 },
       }}
     >
       <Typography
         sx={{
-          color: "#5AB1BB",
+          color: '#5AB1BB',
           fontSize: 20,
         }}
         gutterBottom
@@ -66,7 +65,7 @@ const TagCard: React.FC<Props> = ({ post }) => {
       />
       <CardContent sx={{ paddingInline: 0 }}>
         <Typography
-          sx={{ color: "#5ab1bb" }}
+          sx={{ color: '#5ab1bb' }}
           gutterBottom
           variant="h6"
           component="div"
@@ -79,7 +78,7 @@ const TagCard: React.FC<Props> = ({ post }) => {
           color="text.secondary"
           className="Font_Montserrat_600"
           sx={{
-            color: "#000000CC",
+            color: '#000000CC',
             fontSize: 14,
           }}
           dangerouslySetInnerHTML={{ __html: excerptWithoutLinks }}
@@ -87,44 +86,44 @@ const TagCard: React.FC<Props> = ({ post }) => {
       </CardContent>
       <CardActions
         sx={{
-          display: "flex",
-          justifyContent: "space-between",
+          display: 'flex',
+          justifyContent: 'space-between',
           paddingInline: 0,
         }}
       >
         <Button
           sx={{
             borderRadius: 50,
-            backgroundColor: "#5AB1BB",
+            backgroundColor: '#5AB1BB',
             fontSize: 10,
-            "&:hover": {
-              backgroundColor: "#5AB1BB",
+            '&:hover': {
+              backgroundColor: '#5AB1BB',
             },
           }}
           variant="contained"
         >
           <Link
-            style={{ textDecoration: "none", color: "white" }}
+            style={{ textDecoration: 'none', color: 'white' }}
             to={`/post/${post.slug}`}
           >
             <Typography className="Font_Mulish_Button_M">
               Continue reading
             </Typography>
           </Link>
-        </Button>{" "}
+        </Button>{' '}
         <Button
           sx={{
             borderRadius: 50,
-            backgroundColor: "#163BBF",
+            backgroundColor: '#163BBF',
             fontSize: 10,
-            "&:hover": {
-              backgroundColor: "#163BBF",
+            '&:hover': {
+              backgroundColor: '#163BBF',
             },
           }}
           variant="contained"
         >
           <Link
-            style={{ textDecoration: "none", color: "white" }}
+            style={{ textDecoration: 'none', color: 'white' }}
             to={`/posts`}
           >
             <Typography className="Font_Mulish_Button_M">

@@ -1,13 +1,13 @@
-import React from "react";
-import { Container, Grid, Typography, useTheme } from "@mui/material";
-import { IGatsbyImageData } from "gatsby-plugin-image";
+import React from 'react';
+import { Container, Grid, Typography, useTheme } from '@mui/material';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
 
-import ArticleContent from "../../components/SinglePageComponents/ArticleContent";
-import NotificationComponent from "../../components/SinglePageComponents/Cards/NotificationComponent";
-import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail";
+import ArticleContent from '../../components/SinglePageComponents/ArticleContent';
+import NotificationComponent from '../../components/SinglePageComponents/Cards/NotificationComponent';
+import ThumbnailImage from '../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail';
 
-import UseCaseTitleSection from "../../components/SinglePageComponents/UseCaseTitle/UseCaseTitleSection";
-import LeavesTitleSection from "../../components/SinglePageComponents/Cards/LeafTitle/LeavesTitleSection";
+import UseCaseTitleSection from '../../components/SinglePageComponents/UseCaseTitle/UseCaseTitleSection';
+import LeavesTitleSection from '../../components/SinglePageComponents/Cards/LeafTitle/LeavesTitleSection';
 
 export interface BaseGridProps {
   singlePage: {
@@ -49,7 +49,7 @@ export interface BaseGridProps {
   renderExploreFurther?: () => React.ReactNode;
   renderRelatedArticles?: () => React.ReactNode;
   renderShareUseCard?: () => React.ReactNode;
-  titleSectionType: "usecase" | "leaves";
+  titleSectionType: 'usecase' | 'leaves';
   routePrefix: string;
 }
 
@@ -63,16 +63,17 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   renderShareUseCard,
 }) => {
   const urlRegex = /^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/;
-  const validUrl = urlRegex.test(singlePage.url ? singlePage.url : "");
+  const validUrl = urlRegex.test(singlePage.url ? singlePage.url : '');
   const theme = useTheme();
 
   //@ts-ignore
+  // prettier-ignore
   const caseStackNames = singlePage.Case_Stack?.map((item) => item.data.Name) || [];
 
   return (
     <Container maxWidth="xl">
       <Grid container>
-        {titleSectionType === "usecase" ? (
+        {titleSectionType === 'usecase' ? (
           <UseCaseTitleSection
             title={singlePage.title}
             thumbnail={singlePage.thumbnail}
@@ -106,15 +107,17 @@ const BaseGrid: React.FC<BaseGridProps> = ({
               <Typography
                 component="span"
                 sx={{
-                  fontSize: "25px",
-                  lineHeight: "31px",
-                  letterSpacing: "2%",
-                  color: "#383D3B",
+                  fontSize: '25px',
+                  lineHeight: '31px',
+                  letterSpacing: '2%',
+                  color: '#383D3B',
+                  fontWeight: 600,
                 }}
               >
-                {"Stack Includes:"}
-                {" "}
-                {caseStackNames.join(", ")}
+                {'Stack Includes:'}{' '}
+                <span style={{ fontWeight: 400 }}>
+                  {caseStackNames.join(', ')}
+                </span>
               </Typography>
             )}
           </Grid>
