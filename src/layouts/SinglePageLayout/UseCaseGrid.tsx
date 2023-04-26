@@ -11,7 +11,9 @@ const UseCaseGrid = ({ singlePage, relatedArticles }) => {
       renderExploreFurther={undefined}
       renderRelatedArticles={undefined}
       renderShareUseCard={() => <ShareUseCases />}
-      routePrefix="/usecases" titleSectionType={"usecase"}    />
+      routePrefix="/usecases"
+      titleSectionType={"usecase"}
+    />
   );
 };
 export default UseCaseGrid;

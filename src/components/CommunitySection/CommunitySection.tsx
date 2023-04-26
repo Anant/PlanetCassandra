@@ -15,13 +15,59 @@ import { FaDiscord } from 'react-icons/fa';
 const CommunitySection = () => {
   const socialIcons = [
     // { name: "Slack", url: "Hide", icon: <BsSlack style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
-    { name: "Discord", url: "https://discord.com/invite/pPjPcZN", icon: <FaDiscord style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
-    { name: "Youtube", url: "https://www.youtube.com/@PlanetCassandra", icon: <BsYoutube style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
-    { name: "Github", url: "https://github.com/PlanetCassandra", icon: <BsGithub style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
-    { name: "Twitch", url: "Hide", icon: <BsTwitch style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
-    { name: "Stackoverflow", url: "https://stackoverflow.com/questions/tagged/cassandra", icon: <BsStackOverflow style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
-    { name: "Twitter", url: "https://twitter.com/CStar_News", icon: <BsTwitter style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
-    { name: "Linkedin", url: "https://www.linkedin.com/company/apache-cassandra/", icon: <BsLinkedin style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
+    {
+      name: 'Discord',
+      url: 'https://discord.com/invite/pPjPcZN',
+      icon: (
+        <FaDiscord style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+      ),
+    },
+    {
+      name: 'Youtube',
+      url: 'https://www.youtube.com/@PlanetCassandra',
+      icon: (
+        <BsYoutube style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+      ),
+    },
+    {
+      name: 'Github',
+      url: 'https://github.com/PlanetCassandra',
+      icon: (
+        <BsGithub style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+      ),
+    },
+    {
+      name: 'Twitch',
+      url: 'Hide',
+      icon: (
+        <BsTwitch style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+      ),
+    },
+    {
+      name: 'Stackoverflow',
+      url: 'https://stackoverflow.com/questions/tagged/cassandra',
+      icon: (
+        <BsStackOverflow
+          style={{ cursor: 'pointer' }}
+          color="#FFFFFF"
+          size="32px"
+        />
+      ),
+    },
+    {
+      name: 'Twitter',
+      url: 'https://twitter.com/CStar_News',
+      icon: (
+        <BsTwitter style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+      ),
+    },
+    {
+      name: 'Linkedin',
+      url: 'https://www.linkedin.com/company/apache-cassandra/',
+      icon: (
+        <BsLinkedin style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+      ),
+    },
     // { name: "Facebook", url: "Hide", icon: <GrFacebook style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> }
   ];
   return (
@@ -35,6 +81,7 @@ const CommunitySection = () => {
         sx={{
           paddingY: 3,
         }}
+        maxWidth="xl"
       >
         <Grid justifyContent="center" container>
           <Typography
@@ -42,7 +89,8 @@ const CommunitySection = () => {
             align={'center'}
             variant="h5"
             gutterBottom
-            className="Font_Lato_Bold"
+            fontFamily={'Lato, sans-serif'}
+            fontWeight={700}
             sx={{
               fontSize: '25px',
             }}
@@ -54,7 +102,8 @@ const CommunitySection = () => {
             align={'center'}
             variant="h5"
             gutterBottom
-            className="Font_Lato_Bold"
+            fontFamily={'Lato, sans-serif'}
+            fontWeight={700}
             sx={{
               color: '#344D67',
               fontSize: '25px',
@@ -68,13 +117,18 @@ const CommunitySection = () => {
           align={'center'}
           variant="subtitle2"
           gutterBottom
-          className="Font_Lato_Bold"
+          fontFamily={'Lato, sans-serif'}
+          fontWeight={300}
           sx={{
             fontSize: '20px',
             color: '#1E1E1E',
           }}
         >
-          Welcome to Planet Cassandra, a community for Apache Cassandra®! We're a passionate and dedicated group of users, developers, and enthusiasts who are working together to make Cassandra the best it can be. Whether you're just getting started with Cassandra or you're an experienced user, there's a place for you in our community.
+          Welcome to Planet Cassandra, a community for Apache Cassandra®! We're
+          a passionate and dedicated group of users, developers, and enthusiasts
+          who are working together to make Cassandra the best it can be. Whether
+          you're just getting started with Cassandra or you're an experienced
+          user, there's a place for you in our community.
         </Typography>
 
         <Box
@@ -86,13 +140,14 @@ const CommunitySection = () => {
             margin: '20px auto',
           }}
         >
-          {socialIcons.map((icon, index) => (
-            icon.url !== "Hide" && (
-              <a href={icon.url} key={index}>
-                {icon.icon}
-              </a>
-            )
-          ))}
+          {socialIcons.map(
+            (icon, index) =>
+              icon.url !== 'Hide' && (
+                <a href={icon.url} key={index}>
+                  {icon.icon}
+                </a>
+              )
+          )}
         </Box>
       </Container>
     </Grid>
