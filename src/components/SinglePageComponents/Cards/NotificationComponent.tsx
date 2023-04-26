@@ -14,7 +14,7 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
   const theme = useTheme();
 
   // Check if the articleUrl starts with "https://planetcassandra"
-  if (articleUrl.startsWith("https://planetcassandra.org")) {
+  if (articleUrl.startsWith("https://planetcassandra.org") || articleUrl.startsWith("https://www.youtube.com")) {
     return null; // Hide the whole component
   }
 
