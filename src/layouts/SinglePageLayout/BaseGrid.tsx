@@ -67,7 +67,9 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   const theme = useTheme();
 
   //@ts-ignore
-  const caseStackNames = singlePage.Case_Stack?.map((item) => item.data.Name) || [];
+  const caseStackNames =
+    //@ts-ignore
+    singlePage.Case_Stack?.map((item) => item.data.Name) || [];
 
   return (
     <Container maxWidth="xl">
@@ -82,13 +84,14 @@ const BaseGrid: React.FC<BaseGridProps> = ({
           />
         ) : (
           <LeavesTitleSection
+            singlePage={singlePage}
             title={singlePage.title}
             thumbnail={singlePage.thumbnail}
           />
         )}
         <Grid container spacing={2}>
           <Grid item xs={12} sm={8}>
-            {validUrl && (
+            {validUrl && titleSectionType === "usecase" && (
               <NotificationComponent
                 args={{
                   notificationTitle: singlePage.title,
@@ -112,9 +115,7 @@ const BaseGrid: React.FC<BaseGridProps> = ({
                   color: "#383D3B",
                 }}
               >
-                {"Stack Includes:"}
-                {" "}
-                {caseStackNames.join(", ")}
+                {"Stack Includes:"} {caseStackNames.join(", ")}
               </Typography>
             )}
           </Grid>

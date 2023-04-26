@@ -19,7 +19,7 @@ const NotificationComponent: React.FC<{ args: NotificationProps }> = ({
   }
 
   return (
-    <Grid container sx={{ marginBottom: "40px" }}>
+    <Grid container sx={{ marginBottom: "40px", marginTop: "10px" }}>
       <Grid item>
         <Box
           sx={{
