@@ -28,7 +28,7 @@ const LeafCard: React.FC<LeafCardProps> = ({ title, date, thumbnail, description
                   textTransform: "capitalize",
                   width: "30%",
                   height: "20px",
-                  backgroundColor: index % 2 === 0 ? "#163BBF" : "#1B4AF0",
+                  backgroundColor: index % 2 === 0 ? "#326065" : "#5AB1BB",
                   borderRadius: "0px",
                   borderTopRightRadius:
                     index === tags.length - 1 ? "10px" : "0px",

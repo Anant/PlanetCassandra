@@ -43,7 +43,7 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
             xs: "300px",
             sm: "450px",
             md: "400px",
-            lg: "400px"
+            lg: "450px"
           } }}>
           {item.image && isImageLoaded ? (
             <GatsbyImage

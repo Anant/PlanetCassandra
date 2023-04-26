@@ -9,12 +9,11 @@ const YoutubeSection = () => {
   };
   return (
     <Grid sx={{ backgroundColor: '#F9F8F8' }}>
-      <Container>
+      <Container maxWidth="xl">
         <Grid
           justifyContent="center"
           alignItems="center"
           container
-          maxWidth="lg"
           spacing={3}
           sx={{ paddingY: 10 }}
         >
@@ -54,12 +53,13 @@ const YoutubeSection = () => {
             <Typography
               sx={{
                 marginTop: 5,
-                fontSize: 15,
+                fontSize: 20,
+                width: { lg: '90%' },
               }}
               variant="subtitle1"
               fontFamily="Lato, sans-serif"
               color="#1E1E1E"
-              fontWeight={500}
+              fontWeight={550}
             >
               Visit our YouTube channel and look through our extensive library
               of tutorials, quick fixes, pro tips, tricks and lunch ideas from
