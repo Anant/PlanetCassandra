@@ -2,13 +2,20 @@ import React from "react";
 import { Grid, Typography, useTheme } from "@mui/material";
 import ThumbnailImage from "../Thumbnail/Thumbnail";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import NotificationComponent from "../NotificationComponent";
+import DescriptionCard from "../DescriptionCard";
 
 interface LeavesTitleSectionProps {
+  singlePage: any;
   title: string;
   thumbnail: IGatsbyImageData | null;
 }
 
-const LeavesTitleSection: React.FC<LeavesTitleSectionProps> = ({ title, thumbnail }) => {
+const LeavesTitleSection: React.FC<LeavesTitleSectionProps> = ({
+  title,
+  thumbnail,
+  singlePage,
+}) => {
   const theme = useTheme();
 
   // Customize the component based on your requirements
@@ -19,7 +26,10 @@ const LeavesTitleSection: React.FC<LeavesTitleSectionProps> = ({ title, thumbnai
       spacing={2}
     >
       <Grid item xs={12} sm={6}>
-        <ThumbnailImage thumbnail={thumbnail} />
+        <DescriptionCard
+          //@ts-ignore
+          article={singlePage}
+        />
       </Grid>
       <Grid
         sx={{
@@ -28,23 +38,16 @@ const LeavesTitleSection: React.FC<LeavesTitleSectionProps> = ({ title, thumbnai
         }}
         item
         xs={12}
+        sm={6}
       >
-        <Typography
-          fontFamily="Roboto Condensed, sans-serif"
-          fontWeight={600}
-          sx={{
-            marginY: 2,
-            color: theme.palette.primary.darkblue,
-            fontSize: {
-              xs: "14px",
-              sm: "18px",
-              md: "16px",
-              lg: "24px",
-            },
+        <ThumbnailImage thumbnail={singlePage.thumbnail} />
+        <NotificationComponent
+          args={{
+            notificationTitle: singlePage.title,
+            //@ts-ignore
+            articleUrl: singlePage.url,
           }}
-        >
-          {title}
-        </Typography>
+        />
       </Grid>
     </Grid>
   );
