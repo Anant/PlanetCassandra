@@ -94,7 +94,7 @@ const BaseGrid: React.FC<BaseGridProps> = ({
             {validUrl && titleSectionType === "usecase" && (
               <NotificationComponent
                 args={{
-                  notificationTitle: singlePage.title,
+                  notificationTitle: "use case",
                   //@ts-ignore
                   articleUrl: singlePage.url,
                 }}
@@ -105,19 +105,21 @@ const BaseGrid: React.FC<BaseGridProps> = ({
         <Grid container spacing={{ sm: 4, lg: 7 }}>
           <Grid item xs={12} sm={8}>
             <ArticleContent content={singlePage.content} />
-            {caseStackNames && (
-              <Typography
-                component="span"
-                sx={{
-                  fontSize: "25px",
-                  lineHeight: "31px",
-                  letterSpacing: "2%",
-                  color: "#383D3B",
-                }}
-              >
-                {"Stack Includes:"} {caseStackNames.join(", ")}
-              </Typography>
-            )}
+            {caseStackNames &&
+              caseStackNames.length > 0 &&
+              titleSectionType === "usecase" && (
+                <Typography
+                  component="span"
+                  sx={{
+                    fontSize: "25px",
+                    lineHeight: "31px",
+                    letterSpacing: "2%",
+                    color: "#383D3B",
+                  }}
+                >
+                  {"Stack Includes:"} {caseStackNames.join(", ")}
+                </Typography>
+              )}
           </Grid>
           {renderRelatedArticles && (
             <Grid item xs={12} sm={4}>

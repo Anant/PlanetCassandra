@@ -43,7 +43,7 @@ const LeavesTitleSection: React.FC<LeavesTitleSectionProps> = ({
         <ThumbnailImage thumbnail={singlePage.thumbnail} />
         <NotificationComponent
           args={{
-            notificationTitle: singlePage.title,
+            notificationTitle: "resource",
             //@ts-ignore
             articleUrl: singlePage.url,
           }}
