@@ -13,6 +13,7 @@ const DidYouKnowSection = () => {
         sx={{
           paddingY: 3,
         }}
+        maxWidth="xl"
       >
         <Grid justifyContent="center" container>
           <Typography
@@ -20,25 +21,36 @@ const DidYouKnowSection = () => {
             align={'center'}
             variant="h5"
             gutterBottom
-            className="Font_Lato_Bold"
+            fontFamily={'Lato, sans-serif'}
+            fontWeight={700}
           >
             Did You
           </Typography>
-          <Typography marginX={1} align={'center'} variant="h5" gutterBottom>
+          <Typography
+            marginX={1}
+            fontFamily={'Lato, sans-serif'}
+            fontWeight={700}
+            align={'center'}
+            variant="h5"
+            gutterBottom
+          >
             Know?
           </Typography>
         </Grid>
 
         <Typography
-          className="Font_Lato_Bold"
+          fontFamily={'Lato, sans-serif'}
+          fontWeight={300}
           align={'center'}
           variant="subtitle2"
           gutterBottom
           sx={{
-            fontSize: '20px'
+            fontSize: '20px',
           }}
         >
-          Cassandra has a robust and active community of users and developers, who contribute to its development and use it in a variety of applications, ranging from e-commerce to real-time analytics.
+          Cassandra has a robust and active community of users and developers,
+          who contribute to its development and use it in a variety of
+          applications, ranging from e-commerce to real-time analytics.
         </Typography>
       </Container>
     </Grid>

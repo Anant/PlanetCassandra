@@ -1,10 +1,10 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { Grid, Typography, Button, Container, Box } from "@mui/material";
-import Carousel from "./Carousel/Carousel";
-import SendIcon from "@mui/icons-material/Send";
-import NewCarousel from "./Carousel/newCarousel";
-import { Link } from "gatsby";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Grid, Typography, Button, Container, Box } from '@mui/material';
+import Carousel from './Carousel/Carousel';
+import SendIcon from '@mui/icons-material/Send';
+import NewCarousel from './Carousel/newCarousel';
+import { Link } from 'gatsby';
 
 interface AllWpPostData {
   allWpPost: {
@@ -35,7 +35,7 @@ const HeroSection = () => {
       title,
       featuredImage,
       slug,
-    }: AllWpPostData["allWpPost"]["nodes"][0]) => ({
+    }: AllWpPostData['allWpPost']['nodes'][0]) => ({
       title,
       image: featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
       slug,
@@ -43,13 +43,13 @@ const HeroSection = () => {
   );
 
   return (
-    <Container sx={{ paddingY: 10 }}>
+    <Container maxWidth="xl" sx={{ paddingY: 10 }}>
       <Grid
         justifyContent="center"
         alignItems="center"
         rowSpacing={5}
         container
-        maxWidth="lg"
+        maxWidth="xl"
       >
         <Grid item xs={12} md={6}>
           <Typography
@@ -62,7 +62,7 @@ const HeroSection = () => {
           </Typography>
           <Grid container>
             <Typography
-              fontWeight={"bold"}
+              fontWeight={'bold'}
               fontSize={60}
               color="#344D67"
               component="h1"
@@ -73,12 +73,12 @@ const HeroSection = () => {
               Planet.
             </Typography>
             <Typography
-              fontWeight={"bold"}
+              fontWeight={'bold'}
               fontSize={60}
               component="h1"
               variant="h3"
               color="#5AB1BB"
-              align={"center"}
+              align={'center'}
               gutterBottom
               className="Font_Poppins_Bold"
             >
@@ -89,12 +89,13 @@ const HeroSection = () => {
             sx={{
               marginTop: 5,
               fontSize: 20,
+              width: '80%',
             }}
             variant="subtitle1"
             className="Font_Lato_Bold"
           >
             Where the Apache Cassandra® community gets together. Welcome to the
-            new PlanetCassandra.org{" "}
+            new PlanetCassandra.org{' '}
           </Typography>
           <Box
             sx={{
@@ -102,14 +103,14 @@ const HeroSection = () => {
             }}
           >
             <Link
-              style={{ textDecoration: "none", color: "white" }}
+              style={{ textDecoration: 'none', color: 'white' }}
               to={`/news`}
             >
               <Button
                 sx={{
                   fontSize: { xs: 11, sm: 12, md: 14, lg: 16 },
                   borderRadius: 50,
-                  backgroundColor: "#5AB1BB",
+                  backgroundColor: '#5AB1BB',
                 }}
                 variant="contained"
                 endIcon={<SendIcon />}
@@ -119,7 +120,7 @@ const HeroSection = () => {
               </Button>
             </Link>
             <Link
-              style={{ textDecoration: "none", color: "white" }}
+              style={{ textDecoration: 'none', color: 'white' }}
               to={`/leaves`}
             >
               <Button
@@ -127,7 +128,7 @@ const HeroSection = () => {
                   fontSize: { xs: 11, sm: 12, md: 14, lg: 16 },
                   borderRadius: 50,
                   marginLeft: 3,
-                  backgroundColor: "#344D67",
+                  backgroundColor: '#344D67',
                 }}
                 variant="contained"
                 endIcon={<SendIcon />}
@@ -149,24 +150,24 @@ const HeroSection = () => {
 
 export const query = graphql`
   query GET_POSTS {
-  allWpPost(filter: {authorId: {ne: "dXNlcjoy"}}) {
-    nodes {
-      title
-      slug
-      featuredImage {
-        node {
-          publicUrl
-          localFile {
-            relativePath
-            childImageSharp {
-              gatsbyImageData
+    allWpPost(filter: { authorId: { ne: "dXNlcjoy" } }) {
+      nodes {
+        title
+        slug
+        featuredImage {
+          node {
+            publicUrl
+            localFile {
+              relativePath
+              childImageSharp {
+                gatsbyImageData
+              }
             }
           }
         }
       }
     }
   }
-}
 `;
 
 export default HeroSection;

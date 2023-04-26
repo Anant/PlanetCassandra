@@ -1,8 +1,9 @@
-import React from "react";
-import { useStaticQuery, graphql, Link } from "gatsby";
-import { Grid, Typography, Button, Container, Box } from "@mui/material";
-import UseCaseCard from "../Cards/UseCaseCard";
-import { IGatsbyImageData } from "gatsby-plugin-image";
+import React from 'react';
+import { useStaticQuery, graphql, Link } from 'gatsby';
+import { Grid, Typography, Button, Container, Box } from '@mui/material';
+import UseCaseCard from '../Cards/UseCaseCard';
+import { IGatsbyImageData } from 'gatsby-plugin-image';
+import { AiOutlineArrowRight } from 'react-icons/ai';
 
 interface LogoFile {
   name: string;
@@ -27,12 +28,16 @@ interface allAirtableData {
 
 const UseCases = () => {
   const data = useStaticQuery(query);
-  const allAirtable = data.allAirtable as allAirtableData["allAirtable"];
+  const allAirtable = data.allAirtable as allAirtableData['allAirtable'];
   const allFile = data.allFile.nodes as LogoFile[];
 
   const filteredAirtable = allAirtable.nodes.slice(0, 6).map((node) => {
-    const companyName = node.data.Case_Company[0]?.data.Name.split(" ").join("").toLowerCase();
-    const logoFile = allFile.find((file) => file.name === `case.logo.${companyName}`);
+    const companyName = node.data.Case_Company[0]?.data.Name.split(' ')
+      .join('')
+      .toLowerCase();
+    const logoFile = allFile.find(
+      (file) => file.name === `case.logo.${companyName}`
+    );
 
     return {
       ...node.data,
@@ -45,12 +50,13 @@ const UseCases = () => {
       sx={{
         paddingY: 10,
       }}
+      maxWidth="xl"
     >
       <Typography
         sx={{
           fontSize: 39,
           marginBottom: 3,
-          textAlign: { xs: "center", md: "start" },
+          textAlign: { xs: 'center', md: 'start' },
         }}
         color="#344D67"
         variant="h4"
@@ -71,20 +77,24 @@ const UseCases = () => {
         ))}
       </Grid>
       <Grid marginTop={2} container justifyContent="end">
-        <Link style={{ textDecoration: "none" }} to={`/usecases`}>
+        <Link style={{ textDecoration: 'none' }} to={`/usecases`}>
           <Button
             sx={{
               borderRadius: 50,
-              backgroundColor: "#163BBF",
+              backgroundColor: '#F2545B',
               fontSize: 10,
-              "&:hover": {
-                backgroundColor: "#163BBF",
+              '&:hover': {
+                backgroundColor: '#163BBF',
               },
             }}
             variant="contained"
           >
-            <Typography className="Font_Mulish_Button_M">
-              See all use cases
+            <Typography
+              sx={{ display: 'flex', alignItems: 'center' }}
+              className="Font_Mulish_Button_M"
+            >
+              See all use cases{' '}
+              <AiOutlineArrowRight style={{ marginLeft: '8px' }} />
             </Typography>
           </Button>
         </Link>
@@ -94,36 +104,35 @@ const UseCases = () => {
 };
 
 const query = graphql`
-query UseCasesDataHomepage {
-  allAirtable(
-    filter: {table: {eq: "Cases"}}
-    sort: {data: {Case_Published: DESC}}
-  ) {
-    nodes {
-      table
-      data {
-        Case_URL
-        Case_Name
-        Case_Description
-        Case_Company {
-          data {
-            Name
+  query UseCasesDataHomepage {
+    allAirtable(
+      filter: { table: { eq: "Cases" } }
+      sort: { data: { Case_Published: DESC } }
+    ) {
+      nodes {
+        table
+        data {
+          Case_URL
+          Case_Name
+          Case_Description
+          Case_Company {
+            data {
+              Name
+            }
           }
         }
       }
     }
-  }
-  allFile(filter: {id: {ne: null}}) {
-    nodes {
-      name
-      childrenImageSharp {
-        gatsbyImageData
+    allFile(filter: { id: { ne: null } }) {
+      nodes {
+        name
+        childrenImageSharp {
+          gatsbyImageData
+        }
       }
+      totalCount
     }
-    totalCount
   }
-}
 `;
-
 
 export default UseCases;
