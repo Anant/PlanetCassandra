@@ -118,7 +118,7 @@ const CommunitySection = () => {
           variant="subtitle2"
           gutterBottom
           fontFamily={'Lato, sans-serif'}
-          fontWeight={300}
+          fontWeight={600}
           sx={{
             fontSize: '20px',
             color: '#1E1E1E',

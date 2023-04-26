@@ -53,7 +53,7 @@ const YoutubeSection = () => {
             <Typography
               sx={{
                 marginTop: 5,
-                fontSize: 15,
+                fontSize: 20,
                 width: { lg: '90%' },
               }}
               variant="subtitle1"
