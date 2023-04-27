@@ -62,6 +62,7 @@ const Footer = () => {
             <Typography
               sx={{
                 marginTop: 5,
+                width:{lg:'85%'}
               }}
               color="#5AB1BB"
               variant="subtitle1"
@@ -75,6 +76,7 @@ const Footer = () => {
               sx={{
                 fontSize: 12,
                 marginTop: 10,
+                width:{lg:'85%'}
               }}
               color={'white'}
               variant="subtitle1"
