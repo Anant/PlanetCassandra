@@ -1,5 +1,5 @@
-import React from 'react';
-import { Grid, Typography, Container, Box } from '@mui/material';
+import React from "react";
+import { Grid, Typography, Container, Box } from "@mui/material";
 import {
   BsSlack,
   BsYoutube,
@@ -8,64 +8,64 @@ import {
   BsGithub,
   BsTwitter,
   BsLinkedin,
-} from 'react-icons/bs';
-import { GrFacebook } from 'react-icons/gr';
-import { FaDiscord } from 'react-icons/fa';
+} from "react-icons/bs";
+import { GrFacebook } from "react-icons/gr";
+import { FaDiscord } from "react-icons/fa";
 
 const CommunitySection = () => {
   const socialIcons = [
     // { name: "Slack", url: "Hide", icon: <BsSlack style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> },
     {
-      name: 'Discord',
-      url: 'https://discord.com/invite/pPjPcZN',
+      name: "Discord",
+      url: "https://discord.com/invite/pPjPcZN",
       icon: (
-        <FaDiscord style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+        <FaDiscord style={{ cursor: "pointer" }} color="#FFFFFF" size="32px" />
       ),
     },
     {
-      name: 'Youtube',
-      url: 'https://www.youtube.com/@PlanetCassandra',
+      name: "Youtube",
+      url: "https://www.youtube.com/@PlanetCassandra",
       icon: (
-        <BsYoutube style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+        <BsYoutube style={{ cursor: "pointer" }} color="#FFFFFF" size="32px" />
       ),
     },
     {
-      name: 'Github',
-      url: 'https://github.com/PlanetCassandra',
+      name: "Github",
+      url: "https://github.com/PlanetCassandra",
       icon: (
-        <BsGithub style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+        <BsGithub style={{ cursor: "pointer" }} color="#FFFFFF" size="32px" />
       ),
     },
     {
-      name: 'Twitch',
-      url: 'Hide',
+      name: "Twitch",
+      url: "Hide",
       icon: (
-        <BsTwitch style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+        <BsTwitch style={{ cursor: "pointer" }} color="#FFFFFF" size="32px" />
       ),
     },
     {
-      name: 'Stackoverflow',
-      url: 'https://stackoverflow.com/questions/tagged/cassandra',
+      name: "Stackoverflow",
+      url: "https://stackoverflow.com/questions/tagged/cassandra",
       icon: (
         <BsStackOverflow
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: "pointer" }}
           color="#FFFFFF"
           size="32px"
         />
       ),
     },
     {
-      name: 'Twitter',
-      url: 'https://twitter.com/CStar_News',
+      name: "Twitter",
+      url: "https://twitter.com/PlanetCassandra",
       icon: (
-        <BsTwitter style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+        <BsTwitter style={{ cursor: "pointer" }} color="#FFFFFF" size="32px" />
       ),
     },
     {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/company/apache-cassandra/',
+      name: "Linkedin",
+      url: "https://www.linkedin.com/company/apache-cassandra/",
       icon: (
-        <BsLinkedin style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" />
+        <BsLinkedin style={{ cursor: "pointer" }} color="#FFFFFF" size="32px" />
       ),
     },
     // { name: "Facebook", url: "Hide", icon: <GrFacebook style={{ cursor: 'pointer' }} color="#FFFFFF" size="32px" /> }
@@ -73,7 +73,7 @@ const CommunitySection = () => {
   return (
     <Grid
       sx={{
-        backgroundColor: '#5AB1BB',
+        backgroundColor: "#5AB1BB",
       }}
       container
     >
@@ -85,28 +85,28 @@ const CommunitySection = () => {
       >
         <Grid justifyContent="center" container>
           <Typography
-            color={'white'}
-            align={'center'}
+            color={"white"}
+            align={"center"}
             variant="h5"
             gutterBottom
-            fontFamily={'Lato, sans-serif'}
+            fontFamily={"Lato, sans-serif"}
             fontWeight={700}
             sx={{
-              fontSize: '25px',
+              fontSize: "25px",
             }}
           >
             Become part of our
           </Typography>
           <Typography
             marginX={1}
-            align={'center'}
+            align={"center"}
             variant="h5"
             gutterBottom
-            fontFamily={'Lato, sans-serif'}
+            fontFamily={"Lato, sans-serif"}
             fontWeight={700}
             sx={{
-              color: '#344D67',
-              fontSize: '25px',
+              color: "#344D67",
+              fontSize: "25px",
             }}
           >
             growing community!
@@ -114,14 +114,14 @@ const CommunitySection = () => {
         </Grid>
 
         <Typography
-          align={'center'}
+          align={"center"}
           variant="subtitle2"
           gutterBottom
-          fontFamily={'Lato, sans-serif'}
+          fontFamily={"Lato, sans-serif"}
           fontWeight={600}
           sx={{
-            fontSize: '20px',
-            color: '#1E1E1E',
+            fontSize: "20px",
+            color: "#1E1E1E",
           }}
         >
           Welcome to Planet Cassandra, a community for Apache Cassandra®! We're
@@ -133,16 +133,16 @@ const CommunitySection = () => {
 
         <Box
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-around',
-            width: '70%',
-            margin: '20px auto',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-around",
+            width: "70%",
+            margin: "20px auto",
           }}
         >
           {socialIcons.map(
             (icon, index) =>
-              icon.url !== 'Hide' && (
+              icon.url !== "Hide" && (
                 <a href={icon.url} key={index}>
                   {icon.icon}
                 </a>
