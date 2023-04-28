@@ -137,7 +137,7 @@ const CommunitySection = () => {
             alignItems: "center",
             justifyContent: "space-around",
             width: "70%",
-            margin: "20px auto",
+            margin: "34px auto",
           }}
         >
           {socialIcons.map(

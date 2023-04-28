@@ -66,9 +66,12 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
                 {name} on {month} {day}, {year}
               </Typography>
             </Box>
-            <GatsbyImage image={featuredImage} alt={title} />
+            <GatsbyImage
+              image={featuredImage}
+              alt={title}
+              style={{ marginBottom: "30px" }}
+            />
             <Typography
-              variant="subtitle2"
               gutterBottom
               dangerouslySetInnerHTML={{ __html: content }}
             />

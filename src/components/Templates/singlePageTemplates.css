@@ -59,7 +59,10 @@
   margin-left: 30px;
   margin-bottom: 26px;
 }
-
+.articleContainer article ol {
+  margin-left: 30px;
+  margin-bottom: 26px;
+}
 .articleContainer article li,
 .articleContainer article article {
   font-family: "Roboto Condensed", sans-serif;
