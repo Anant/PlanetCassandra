@@ -15,7 +15,7 @@ const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
   process.env.ALGOLIA_API_KEY
 );
-const index = client.initIndex("PlanetCassandraNews");
+const index = client.initIndex("PlanetCassandraPosts");
 //@ts-ignore
 const SearchResults = ({ results, open, setOpen, anchor }) => {
   return (
@@ -24,7 +24,7 @@ const SearchResults = ({ results, open, setOpen, anchor }) => {
         <List>
           {/* @ts-ignore */}
           {results.map((result) => (
-            <Link to={`/news/${getSlug(result.title)}`} style={{ textDecoration: "none", color: "black" }}>
+            <Link to={`/post/${getSlug(result.title)}`} style={{ textDecoration: "none", color: "black" }}>
               <ListItem button key={result.objectID}>
                 <ListItemText primary={result.title} />
               </ListItem>
