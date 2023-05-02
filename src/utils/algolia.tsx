@@ -36,10 +36,11 @@ interface NewsAlgoliaData {
 
 const PostQuery = `
 query PostsAlgolia {
-  allWpPost(sort: {date: DESC}) {
+  allWpPost(sort: {date: DESC}, filter: {authorId: {ne: "dXNlcjoy"}}) {
     totalCount
     nodes {
       id
+      authorId
       author {
         node {
           name
