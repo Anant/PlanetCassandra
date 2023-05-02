@@ -8,24 +8,30 @@ import LeafCard from '../../components/Cards/LeafCard';
 interface SearchResultGridProps {
   hits: any[];
   cardType: 'post' | 'news' | 'leaves';
+  refreshCount: number;
+  onRefresh: () => void;
 }
 
-const SearchResultGrid: React.FC<SearchResultGridProps> = ({ hits, cardType }) => {
+const SearchResultGrid: React.FC<SearchResultGridProps> = ({
+  hits,
+  cardType,
+  refreshCount,
+  onRefresh,
+}) => {
   const [loading, setLoading] = useState(true);
-  const [retryCount, setRetryCount] = useState(0);
+  useEffect(() => {
+    if (hits.length > 0) {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+  }, [hits]);
 
   useEffect(() => {
-    if (loading && hits.length === 0) {
-      const retryTimeout = setTimeout(() => {
-        setRetryCount(retryCount + 1);
-      }, 1000);
-      return () => clearTimeout(retryTimeout);
-    } else {
-      if (hits.length > 0) {
-        setLoading(false);
-      }
+    if (loading) {
+      setTimeout(onRefresh, 1000);
     }
-  }, [loading, hits, retryCount]);
+  }, [loading, onRefresh]);
 
   const formattedHits = hits.map((hit) => ({
     title: hit.title,
@@ -72,7 +78,7 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({ hits, cardType }) =
     }
   };
 
-  
+
 
   return (
     <BaseGrid

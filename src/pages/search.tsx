@@ -69,6 +69,7 @@ const SearchPage: React.FC = () => {
   const [query, setQuery] = useState(searchValue);
   const [category, setCategory] = useState(CATEGORY_POSTS); // Set default category here
 
+
   // Load the selected category from localStorage when the component is mounted
   useEffect(() => {
     const storedCategory = localStorage.getItem("selectedCategory");
@@ -93,6 +94,12 @@ const SearchPage: React.FC = () => {
   }, []);
 
   const ConnectedSearchResultGrid = connectHits(SearchResultGrid);
+
+  const [refreshCount, setRefreshCount] = useState(0);
+
+  const handleRefresh = () => {
+    setRefreshCount(refreshCount + 1);
+  };
 
 
   return (
@@ -151,19 +158,28 @@ const SearchPage: React.FC = () => {
 
           {category == CATEGORY_POSTS && (
             <Index indexName="PlanetCassandraPosts">
-              <ConnectedSearchResultGrid cardType="post" />
+              <ConnectedSearchResultGrid
+                cardType="post"
+                refreshCount={refreshCount}
+                onRefresh={handleRefresh} />
             </Index>
           )}
 
           {category == CATEGORY_NEWS && (
             <Index indexName="PlanetCassandraNews">
-              <ConnectedSearchResultGrid cardType="news" />
+              <ConnectedSearchResultGrid
+                cardType="news"
+                refreshCount={refreshCount}
+                onRefresh={handleRefresh} />
             </Index>
           )}
 
           {category == CATEGORY_LINKS && (
             <Index indexName="CassandraResources">
-              <ConnectedSearchResultGrid cardType="leaves" />
+              <ConnectedSearchResultGrid
+                cardType="leaves"
+                refreshCount={refreshCount}
+                onRefresh={handleRefresh} />
             </Index>
           )}
         </InstantSearch>
