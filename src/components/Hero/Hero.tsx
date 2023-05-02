@@ -104,7 +104,7 @@ const HeroSection = () => {
           >
             <Link
               style={{ textDecoration: 'none', color: 'white' }}
-              to={`/news`}
+              to={`/usecases`}
             >
               <Button
                 sx={{
@@ -116,7 +116,7 @@ const HeroSection = () => {
                 endIcon={<SendIcon />}
                 className="Font_Mulish_Button_L"
               >
-                News Feed
+                Use Cases
               </Button>
             </Link>
             <Link
