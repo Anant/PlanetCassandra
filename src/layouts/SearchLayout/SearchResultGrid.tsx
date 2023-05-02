@@ -1,5 +1,4 @@
-// SearchResultGrid.tsx
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PostCard from '../../components/Cards/PostCard';
 import NewsCard from '../../components/Cards/NewsCard';
 import BaseGrid from '../BaseGrid'
@@ -12,6 +11,22 @@ interface SearchResultGridProps {
 }
 
 const SearchResultGrid: React.FC<SearchResultGridProps> = ({ hits, cardType }) => {
+  const [loading, setLoading] = useState(true);
+  const [retryCount, setRetryCount] = useState(0);
+
+  useEffect(() => {
+    if (loading && hits.length === 0) {
+      const retryTimeout = setTimeout(() => {
+        setRetryCount(retryCount + 1);
+      }, 1000);
+      return () => clearTimeout(retryTimeout);
+    } else {
+      if (hits.length > 0) {
+        setLoading(false);
+      }
+    }
+  }, [loading, hits, retryCount]);
+
   const formattedHits = hits.map((hit) => ({
     title: hit.title,
     date: hit.date,
@@ -23,10 +38,10 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({ hits, cardType }) =
   }));
 
   const renderCard = (card: {
-      preview_picture: string | undefined;
-      pubDate: any;
-      wallabag_created_at: any; title: string; author: string; date: any; slug: string | undefined; 
-}) => {
+    preview_picture: string | undefined;
+    pubDate: any;
+    wallabag_created_at: any; title: string; author: string; date: any; slug: string | undefined;
+  }) => {
     if (cardType === 'post') {
       return (
         <PostCard
@@ -46,24 +61,27 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({ hits, cardType }) =
         />
       );
     } else if (cardType === 'leaves') {
-        return (
-          <LeafCard
-                title={card.title}
-                date={card.wallabag_created_at} 
-                description={''} 
-                tags={[]}    
-          />
-        );
-      }
+      return (
+        <LeafCard
+          title={card.title}
+          date={card.wallabag_created_at}
+          description={''}
+          tags={[]}
+        />
+      );
+    }
   };
+
+  
 
   return (
     <BaseGrid
-     //@ts-ignore
+      //@ts-ignore
       cardData={formattedHits}
       itemsPerPage={12}
       //@ts-ignore
       renderItem={renderCard}
+      loading={loading}
     />
   );
 };
