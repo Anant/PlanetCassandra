@@ -23,7 +23,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 
-const CATEGORY_ALL = "all";
+const CATEGORY_USECASES = "usecases";
 const CATEGORY_POSTS = "posts";
 const CATEGORY_NEWS = "news";
 const CATEGORY_LINKS = "links";
@@ -121,6 +121,13 @@ const SearchPage: React.FC = () => {
                 >
                   Posts
                 </CategoryLink>
+                {/* <CategoryLink
+                  category={CATEGORY_USECASES}
+                  currentCategory={category}
+                  onClick={handleCategoryChange}
+                >
+                  Use Cases
+                </CategoryLink> */}
                 <CategoryLink
                   category={CATEGORY_NEWS}
                   currentCategory={category}
@@ -178,6 +185,15 @@ const SearchPage: React.FC = () => {
             <Index indexName="PlanetCassandraLeaves">
               <ConnectedSearchResultGrid
                 cardType="leaves"
+                refreshCount={refreshCount}
+                onRefresh={handleRefresh} />
+            </Index>
+          )}
+
+          {category == CATEGORY_USECASES && (
+            <Index indexName="PlanetCassandraUseCases">
+              <ConnectedSearchResultGrid
+                cardType="usecases"
                 refreshCount={refreshCount}
                 onRefresh={handleRefresh} />
             </Index>
