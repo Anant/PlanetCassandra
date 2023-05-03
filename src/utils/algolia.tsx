@@ -29,6 +29,37 @@ interface NewsAlgoliaData {
   };
 }
 
+interface UseCaseAlgoliaData {
+  allAirtable: {
+    nodes: {
+      data: {
+        Case_URL: string;
+        Case_Name: string;
+        Case_Article_Content: string;
+        Case_Description: string;
+        Case_Company: {
+          data: {
+            Name: string;
+          };
+        };
+      };
+    }[];
+  };
+}
+
+interface LeavesAlgoliaData {
+  allApiLeaves: {
+    nodes: {
+      tags: string[];
+      title: string;
+      wallabag_created_at: string;
+      description: string;
+      id: string;
+    }[];
+  };
+}
+
+
 
 
 
@@ -62,11 +93,10 @@ query UseCasesDataListing {
   ) {
     nodes {
       table
+      id
       data {
         Case_URL
         Case_Name
-        Case_Article_Content
-        Case_Description
         Case_Company {
           data {
             Name
@@ -126,7 +156,7 @@ const queries = [
   {
     query: UseCasequery,
     queryVariables: {},
-    transformer: ({ data }: { data: QueryResult }) => data.allWpPost.nodes,
+    transformer: ({ data }: { data: UseCaseAlgoliaData }) => data.allAirtable.nodes,
     indexName: 'PlanetCassandraUseCases',
     settings: {},
     mergeSettings: false,
@@ -134,7 +164,7 @@ const queries = [
   {
     query: Leavesquery,
     queryVariables: {},
-    transformer: ({ data }: { data: QueryResult }) => data.allWpPost.nodes,
+    transformer: ({ data }: { data: LeavesAlgoliaData }) => data.allApiLeaves.nodes,
     indexName: 'PlanetCassandraLeaves',
     settings: {},
     mergeSettings: false,
