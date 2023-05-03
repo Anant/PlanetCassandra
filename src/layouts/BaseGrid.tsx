@@ -57,10 +57,18 @@ const BaseGrid: React.FC<BaseGridProps> = ({ cardData, itemsPerPage, renderItem 
   const [currentItems, setCurrentItems] = useState<CardData[]>(cardData.slice(0, itemsPerPage));
 
   const fetchMoreData = () => {
-    setTimeout(() => {
-      setCurrentItems(currentItems.concat(cardData.slice(currentItems.length, currentItems.length + itemsPerPage)));
-    }, 200);
+    setCurrentItems(currentItems.concat(cardData.slice(currentItems.length, currentItems.length + itemsPerPage)));
   };
+
+  if (cardData.length === 0) {
+    return (
+      <Container maxWidth="xl" style={{ padding: '25px' }}>
+        <Typography variant="h4" align="center">
+          No Results Found
+        </Typography>
+      </Container>
+    );
+  }
 
   return (
     <Container maxWidth="xl" style={{ padding: '25px' }}>
@@ -68,30 +76,29 @@ const BaseGrid: React.FC<BaseGridProps> = ({ cardData, itemsPerPage, renderItem 
         dataLength={currentItems.length}
         next={fetchMoreData}
         hasMore={currentItems.length < cardData.length}
-        loader={<Typography variant="h4">Loading...</Typography>}
+        loader={
+          <Grid container spacing={3}>
+            {Array.from({ length: itemsPerPage }).map((_, index) => (
+              <React.Fragment key={index}>{renderSkeleton()}</React.Fragment>
+            ))}
+          </Grid>
+        }
         endMessage={
           <Typography variant="body1" align="center" fontWeight="bold">
-            Yay! You have seen it all
+            You have seen it all
           </Typography>
         }
       >
         <Grid container spacing={3}>
-          {currentItems.length > 0 ? (
-            currentItems.map((card, index) => (
-              <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-                {renderItem(card)}
-              </Grid>
-            ))
-          ) : (
-            <>
-              {Array.from({ length: itemsPerPage }).map((_, index) => (
-                <React.Fragment key={index}>{renderSkeleton()}</React.Fragment>
-              ))}
-            </>
-          )}
+          {currentItems.map((card, index) => (
+            <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+              {renderItem(card)}
+            </Grid>
+          ))}
         </Grid>
       </InfiniteScroll>
     </Container>
+
   );
 };
 

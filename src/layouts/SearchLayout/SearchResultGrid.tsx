@@ -93,9 +93,6 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({
     }
     
   };
-
-
-
   return (
     <BaseGrid
       //@ts-ignore
@@ -103,7 +100,7 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({
       itemsPerPage={12}
       //@ts-ignore
       renderItem={renderCard}
-      loading={loading}
+      // loading={loading}
     />
   );
 };
