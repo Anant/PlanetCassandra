@@ -66,46 +66,46 @@ const CardImageAndTagsComponent: React.FC<CardImageAndTagsProps> = ({
       >
         {cardTagsItems &&
           cardTagsItems.map((tag, index) => (
-            <Link
-              to={`/tags/${tag
-                .split(" ")
-                .join(".")
-                .replace(/[^a-zA-Z ]/g, "-")}/1`}
-              key={tag}
-            >
-              <Chip
-                label={tag}
-                className="tuka"
-                sx={{
-                  fontFamily: "Roboto Condensed, sans-serif",
-                  fontWeight: 700,
-                  justifyContent: "start",
-                  padding: 0,
-                  textOverflow: "initial",
-                  cursor: "pointer",
-                  textTransform: "capitalize",
-                  width: "30%",
-                  height: "20px",
-                  backgroundColor:
-                    index % 3 === 0
-                      ? theme.palette.primary.darkCyan
-                      : index % 2 === 0
-                      ? theme.palette.primary.darkerTurqoise
-                      : theme.palette.primary.turqoise,
-                  borderRadius: "0px",
-                  borderTopRightRadius:
-                    index === cardTagsItems.length - 1 ? "10px" : "0px",
-                  borderBottomRightRadius:
-                    index === cardTagsItems.length - 1 ? "10px" : "0px",
-                  borderColor: "transparent",
-                  fontSize: { xs: "6px", sm: "5px", md: "8px" },
-                  color: "#fff",
-                  "& .MuiChip-label": {
-                    padding: "0px 0px 0px 5px",
-                  },
-                }}
-              />
-            </Link>
+            // <Link
+            //   to={`/tags/${tag
+            //     .split(" ")
+            //     .join(".")
+            //     .replace(/[^a-zA-Z ]/g, "-")}/1`}
+            //   key={tag}
+            // >
+            <Chip
+              label={tag}
+              className="tuka"
+              sx={{
+                fontFamily: "Roboto Condensed, sans-serif",
+                fontWeight: 700,
+                justifyContent: "start",
+                padding: 0,
+                textOverflow: "initial",
+                cursor: "pointer",
+                textTransform: "capitalize",
+                width: "30%",
+                height: "20px",
+                backgroundColor:
+                  index % 3 === 0
+                    ? theme.palette.primary.darkCyan
+                    : index % 2 === 0
+                    ? theme.palette.primary.darkerTurqoise
+                    : theme.palette.primary.turqoise,
+                borderRadius: "0px",
+                borderTopRightRadius:
+                  index === cardTagsItems.length - 1 ? "10px" : "0px",
+                borderBottomRightRadius:
+                  index === cardTagsItems.length - 1 ? "10px" : "0px",
+                borderColor: "transparent",
+                fontSize: { xs: "6px", sm: "5px", md: "8px" },
+                color: "#fff",
+                "& .MuiChip-label": {
+                  padding: "0px 0px 0px 5px",
+                },
+              }}
+            />
+            // </Link>
           ))}
       </Box>
     </Box>
