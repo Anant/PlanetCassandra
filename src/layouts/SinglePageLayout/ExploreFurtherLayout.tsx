@@ -1,7 +1,7 @@
-import { Grid, Typography, Box, useTheme } from '@mui/material';
-import React from 'react';
+import { Grid, Typography, Box, useTheme } from "@mui/material";
+import React from "react";
 
-import SingleArticleCard from '../../components/SinglePageComponents/Cards/SingleArticleCard';
+import SingleArticleCard from "../../components/SinglePageComponents/Cards/SingleArticleCard";
 interface Article {
   id: string;
   title: string;
@@ -33,7 +33,7 @@ const ExploreFurtherLayout: React.FC<{ args: ExploreFurtherProps }> = ({
   return (
     <Box
       sx={{
-        backgroundColor: '#F3F3F3',
+        backgroundColor: "#F3F3F3",
         paddingY: { xs: 2, sm: 2, md: 4 },
         paddingX: { xs: 2, sm: 2, md: 7 },
       }}
@@ -55,10 +55,10 @@ const ExploreFurtherLayout: React.FC<{ args: ExploreFurtherProps }> = ({
                 sx={{
                   marginY: 2,
                   fontSize: { xs: 13, sm: 10, lg: 22 },
-                  fontFamily: 'Roboto Condensed, sans-serif',
+                  fontFamily: "Roboto Condensed, sans-serif",
                   fontWeight: 700,
                   color: theme.palette.primary.darkblue,
-                  textTransform: 'capitalize',
+                  textTransform: "capitalize",
                 }}
               >
                 {item.tag}
@@ -72,11 +72,12 @@ const ExploreFurtherLayout: React.FC<{ args: ExploreFurtherProps }> = ({
               {item.articles.map((article: any) => (
                 <Grid key={article.id} item>
                   <SingleArticleCard
-                    cardHeight={{ xs: '84px', sm: '54px', md: '124px' }}
-                    imageWidth={{ xs: '119px', sm: '87px', md: '200px' }}
-                    titleFontSize={{ xs: '13px', sm: '8px', md: '18px' }}
-                    dataFontSize={{ xs: '9px', sm: '6px', md: '15px' }}
+                    cardHeight={{ xs: "84px", sm: "54px", md: "124px" }}
+                    imageWidth={{ xs: "119px", sm: "87px", md: "200px" }}
+                    titleFontSize={{ xs: "13px", sm: "8px", md: "18px" }}
+                    dataFontSize={{ xs: "9px", sm: "6px", md: "15px" }}
                     item={article}
+                    routePrefix="/leaf"
                   />
                 </Grid>
               ))}
