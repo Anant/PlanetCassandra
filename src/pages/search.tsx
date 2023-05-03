@@ -175,7 +175,7 @@ const SearchPage: React.FC = () => {
           )}
 
           {category == CATEGORY_LINKS && (
-            <Index indexName="CassandraResources">
+            <Index indexName="PlanetCassandraLeaves">
               <ConnectedSearchResultGrid
                 cardType="leaves"
                 refreshCount={refreshCount}
