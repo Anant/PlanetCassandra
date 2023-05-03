@@ -3,11 +3,12 @@ import PostCard from '../../components/Cards/PostCard';
 import NewsCard from '../../components/Cards/NewsCard';
 import BaseGrid from '../BaseGrid'
 import LeafCard from '../../components/Cards/LeafCard';
+import UseCaseCard from '../../components/Cards/UseCaseCard';
 
 
 interface SearchResultGridProps {
   hits: any[];
-  cardType: 'post' | 'news' | 'leaves';
+  cardType: 'post' | 'news' | 'leaves' | 'usecases';
   refreshCount: number;
   onRefresh: () => void;
 }
@@ -28,10 +29,11 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({
   }, [hits]);
 
   useEffect(() => {
-    if (loading) {
+    if (loading && hits.length === 0) {
       setTimeout(onRefresh, 1000);
     }
-  }, [loading, onRefresh]);
+  }, [loading, onRefresh, hits]);
+  
 
   const formattedHits = hits.map((hit) => ({
     title: hit.title,
@@ -48,6 +50,7 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({
     pubDate: any;
     wallabag_created_at: any; title: string; author: string; date: any; slug: string | undefined;
   }) => {
+    
     if (cardType === 'post') {
       return (
         <PostCard
@@ -76,6 +79,19 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({
         />
       );
     }
+    else if (cardType === 'usecases') {
+      return (
+        <UseCaseCard
+          name={card.title}
+          date={card.date} // Make sure the date is available in the formattedHits array
+          description={card.description} // Make sure the description is available in the formattedHits array
+          tags={card.tags} // Make sure the tags are available in the formattedHits array
+          url={card.url} // Make sure the URL is available in the formattedHits array
+          gatsbyImageData={card.gatsbyImageData} // Make sure the gatsbyImageData is available in the formattedHits array
+        />
+      );
+    }
+    
   };
 
 
