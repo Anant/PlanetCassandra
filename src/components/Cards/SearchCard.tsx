@@ -1,6 +1,6 @@
-import React from 'react';
-import { Card, CardContent, Typography } from '@mui/material';
-import { Link } from 'gatsby';
+import React from "react";
+import { Card, CardContent, Typography, Box } from "@mui/material";
+import { Link } from "gatsby";
 
 interface SearchResultCardProps {
   title: string;
@@ -19,32 +19,58 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
 }) => {
   const formatDate = (dateStr: string) => {
     const dateObj = new Date(dateStr);
-    return dateObj.toLocaleString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
+    return dateObj.toLocaleString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
   return (
     <Link
-      style={{ textDecoration: 'none', color: 'white' }}
+      style={{ textDecoration: "none", color: "white" }}
       to={`/${cardType}/${slug}`}
     >
-      <Card style={{ height: '200px' }}>
-        <CardContent className="px-6 py-4">
-          <Typography variant="h6" component="h2">
+      <Card
+        className="px-6 py-4"
+        sx={{
+          height: "150px",
+          display: "flex",
+          flexDirection: "column",
+          "&:hover": {
+            backgroundColor: "#f9f9f9",
+          },
+        }}
+      >
+        <Box className="p-0" sx={{ flexGrow: 1, alignItems: "center" }}>
+          <Typography
+            sx={{ fontWeight: 700, fontSize: "1rem" }}
+            variant="h6"
+            component="h2"
+          >
             {title}
           </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <Typography color="textSecondary" gutterBottom>
             {formatDate(date)}
           </Typography>
           {author && (
-            <Typography color="textSecondary" gutterBottom>
+            <Typography
+              sx={{ fontWeight: 700 }}
+              color="textSecondary"
+              gutterBottom
+            >
               Author: {author}
             </Typography>
           )}
-        </CardContent>
+        </Box>
       </Card>
     </Link>
   );
