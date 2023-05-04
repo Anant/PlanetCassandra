@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Container, Grid, Skeleton, Typography } from '@mui/material';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import React, { useState } from "react";
+import { Container, Grid, Skeleton, Typography } from "@mui/material";
+import { IGatsbyImageData } from "gatsby-plugin-image";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface CardData {
   videoId: string;
@@ -14,7 +14,7 @@ interface CardData {
   link?: string; // Optional property for NewsCardGrid
   id?: string; // Optional property for NewsCardGrid
   content?: string; // Optional property for NewsCardGrid
-  author?: any // Optional property for NewsCardGrid
+  author?: any; // Optional property for NewsCardGrid
   categories?: {
     name: string;
     slug: string;
@@ -36,7 +36,6 @@ interface CardData {
   Description: string; // Optional property for Use CaseCardGrid
 }
 
-
 interface BaseGridProps {
   cardData: CardData[];
   itemsPerPage: number;
@@ -46,23 +45,33 @@ interface BaseGridProps {
 
 const renderSkeleton = () => (
   <Grid item xs={12} sm={6} md={4} lg={4}>
-    <Skeleton variant="rectangular" height={200} />
+    <Skeleton variant="rectangular" height={150} />
     <Skeleton variant="text" />
     <Skeleton variant="text" />
     <Skeleton variant="text" />
   </Grid>
 );
 
-const BaseGrid: React.FC<BaseGridProps> = ({ cardData, itemsPerPage, renderItem }) => {
-  const [currentItems, setCurrentItems] = useState<CardData[]>(cardData.slice(0, itemsPerPage));
+const BaseGrid: React.FC<BaseGridProps> = ({
+  cardData,
+  itemsPerPage,
+  renderItem,
+}) => {
+  const [currentItems, setCurrentItems] = useState<CardData[]>(
+    cardData.slice(0, itemsPerPage)
+  );
 
   const fetchMoreData = () => {
-    setCurrentItems(currentItems.concat(cardData.slice(currentItems.length, currentItems.length + itemsPerPage)));
+    setCurrentItems(
+      currentItems.concat(
+        cardData.slice(currentItems.length, currentItems.length + itemsPerPage)
+      )
+    );
   };
 
   if (cardData.length === 0) {
     return (
-      <Container maxWidth="xl" style={{ padding: '25px' }}>
+      <Container maxWidth="xl" style={{ padding: "25px" }}>
         <Typography variant="h4" align="center">
           No Results Found
         </Typography>
@@ -71,8 +80,9 @@ const BaseGrid: React.FC<BaseGridProps> = ({ cardData, itemsPerPage, renderItem 
   }
 
   return (
-    <Container maxWidth="xl" style={{ padding: '25px' }}>
+    <Container maxWidth="xl" style={{ padding: "25px" }}>
       <InfiniteScroll
+        scrollThreshold={0.5}
         dataLength={currentItems.length}
         next={fetchMoreData}
         hasMore={currentItems.length < cardData.length}
@@ -84,7 +94,12 @@ const BaseGrid: React.FC<BaseGridProps> = ({ cardData, itemsPerPage, renderItem 
           </Grid>
         }
         endMessage={
-          <Typography variant="body1" align="center" fontWeight="bold">
+          <Typography
+            sx={{ marginTop: 3 }}
+            variant="body1"
+            align="center"
+            fontWeight="bold"
+          >
             You have seen it all
           </Typography>
         }
@@ -98,7 +113,6 @@ const BaseGrid: React.FC<BaseGridProps> = ({ cardData, itemsPerPage, renderItem 
         </Grid>
       </InfiniteScroll>
     </Container>
-
   );
 };
 

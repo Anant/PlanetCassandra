@@ -6,10 +6,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import algoliasearch from "algoliasearch/lite";
 import getSlug from "speakingurl";
 import { List, ListItem, ListItemText } from "@mui/material";
-import Popper from '@mui/material/Popper';
+import Popper from "@mui/material/Popper";
 import { Link } from "gatsby";
 import { navigate } from "gatsby";
-import { useSearchValueContext } from '../../context/SearchContext';
+import { useSearchValueContext } from "../../context/SearchContext";
 
 const client = algoliasearch(
   process.env.ALGOLIA_APP_ID,
@@ -24,7 +24,10 @@ const SearchResults = ({ results, open, setOpen, anchor }) => {
         <List>
           {/* @ts-ignore */}
           {results.map((result) => (
-            <Link to={`/post/${getSlug(result.title)}`} style={{ textDecoration: "none", color: "black" }}>
+            <Link
+              to={`/post/${getSlug(result.title)}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
               <ListItem button key={result.objectID}>
                 <ListItemText primary={result.title} />
               </ListItem>
@@ -35,7 +38,6 @@ const SearchResults = ({ results, open, setOpen, anchor }) => {
     </Popper>
   );
 };
-
 
 export default function SearchBar() {
   const [searchResults, setSearchResults] = useState([]);
@@ -67,8 +69,11 @@ export default function SearchBar() {
       navigate("/search");
     }
   };
-
-
+  const handleOnClick = (e: any) => {
+    e.preventDefault();
+    addSearchValue(searchTerm);
+    navigate("/search");
+  };
 
   return (
     <Paper
@@ -91,7 +96,12 @@ export default function SearchBar() {
         onKeyDown={handleKeyDown}
         ref={anchorRef}
       />
-      <IconButton type="button" sx={{ p: "10px" }} aria-label="search">
+      <IconButton
+        onClick={(e) => handleOnClick(e)}
+        type="button"
+        sx={{ p: "10px" }}
+        aria-label="search"
+      >
         <SearchIcon />
       </IconButton>
 
@@ -105,5 +115,4 @@ export default function SearchBar() {
       )}
     </Paper>
   );
-};
-
+}
