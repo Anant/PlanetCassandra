@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Grid,
   Typography,
@@ -6,11 +6,11 @@ import {
   Button,
   Card,
   CardContent,
-} from '@mui/material';
-import { useStaticQuery, graphql } from 'gatsby';
-import TagPosts from './TagPosts';
-import './tagStyles.css';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
+} from "@mui/material";
+import { useStaticQuery, graphql } from "gatsby";
+import TagPosts from "./TagPosts";
+import "./tagStyles.css";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 interface Data {
   id: string;
@@ -50,7 +50,7 @@ const TagSection = () => {
   const { allWpTag }: AllWpTagData = useStaticQuery(query);
   const tags = allWpTag.nodes;
 
-  const [selectedTag, setSelectedTag] = useState<string | null>(tags[0].name);
+  const [selectedTag, setSelectedTag] = useState<string | null>(tags[0]?.name);
   const selectedTagData = allWpTag.nodes.filter(
     (node) => node.name === selectedTag
   );
@@ -66,7 +66,7 @@ const TagSection = () => {
       <Grid sx={{ marginY: 3 }} rowSpacing={3} columnSpacing={1} container>
         {tags.map((tag) => (
           <Grid
-            sx={{ textAlign: 'center' }}
+            sx={{ textAlign: "center" }}
             key={tag.id}
             padding={0}
             item
@@ -75,21 +75,21 @@ const TagSection = () => {
           >
             <Button
               sx={{
-                backgroundColor: '#344D67',
-                color: 'white',
+                backgroundColor: "#344D67",
+                color: "white",
                 borderRadius: 50,
                 padding: 1,
                 minWidth: 150,
-                textAlign: 'center',
+                textAlign: "center",
                 fontSize: 12,
-                ':hover': {
-                  backgroundColor: '#5ab1bb',
-                  color: 'white',
+                ":hover": {
+                  backgroundColor: "#5ab1bb",
+                  color: "white",
                 },
               }}
               variant="contained"
               onClick={() => handleClick(tag)}
-              className={selectedTag === tag.name ? `selected ` : ''}
+              className={selectedTag === tag.name ? `selected ` : ""}
             >
               {tag.name}
             </Button>

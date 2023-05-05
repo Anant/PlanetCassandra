@@ -13,9 +13,9 @@ interface WpPost {
 
 interface QueryResult {
   allWpPost: {
-    totalCount: number,
-    nodes: WpPost[],
-  }
+    totalCount: number;
+    nodes: WpPost[];
+  };
 }
 
 interface NewsAlgoliaData {
@@ -59,12 +59,6 @@ interface LeavesAlgoliaData {
   };
 }
 
-
-
-
-
-
-
 const PostQuery = `
 query PostsAlgolia {
   allWpPost(sort: {date: DESC}, filter: {authorId: {ne: "dXNlcjoy"}}) {
@@ -97,6 +91,7 @@ query UseCasesDataListing {
       data {
         Case_URL
         Case_Name
+        Case_Published
         Case_Company {
           data {
             Name
@@ -120,7 +115,7 @@ query NewsAlgolia {
     }
   }
 }
-`
+`;
 
 const Leavesquery = `
 query LeavesData {
@@ -141,34 +136,37 @@ const queries = [
     query: PostQuery,
     queryVariables: {},
     transformer: ({ data }: { data: QueryResult }) => data.allWpPost.nodes,
-    indexName: 'PlanetCassandraPosts',
+    indexName: "PlanetCassandraPosts",
     settings: {},
     mergeSettings: false,
   },
   {
     query: NewsQuery,
     queryVariables: {},
-    transformer: ({ data }: { data: NewsAlgoliaData }) => data.allFeedTtrs.nodes,
-    indexName: 'PlanetCassandraNews',
+    transformer: ({ data }: { data: NewsAlgoliaData }) =>
+      data.allFeedTtrs.nodes,
+    indexName: "PlanetCassandraNews",
     settings: {},
     mergeSettings: false,
   },
   {
     query: UseCasequery,
     queryVariables: {},
-    transformer: ({ data }: { data: UseCaseAlgoliaData }) => data.allAirtable.nodes,
-    indexName: 'PlanetCassandraUseCases',
+    transformer: ({ data }: { data: UseCaseAlgoliaData }) =>
+      data.allAirtable.nodes,
+    indexName: "PlanetCassandraUseCases",
     settings: {},
     mergeSettings: false,
   },
   {
     query: Leavesquery,
     queryVariables: {},
-    transformer: ({ data }: { data: LeavesAlgoliaData }) => data.allApiLeaves.nodes,
-    indexName: 'PlanetCassandraLeaves',
+    transformer: ({ data }: { data: LeavesAlgoliaData }) =>
+      data.allApiLeaves.nodes,
+    indexName: "PlanetCassandraLeaves",
     settings: {},
     mergeSettings: false,
   },
 ];
 
-module.exports = queries
+module.exports = queries;

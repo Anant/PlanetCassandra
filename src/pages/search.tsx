@@ -1,14 +1,10 @@
 // searchPage.tsx
 import React, { useState, useCallback, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
-import { useSearchValueContext } from '../context/SearchContext';
+import { useSearchValueContext } from "../context/SearchContext";
 import algoliasearch from "algoliasearch";
 import SearchResultGrid from "../layouts/SearchLayout/SearchResultGrid";
-import {
-  InstantSearch,
-  Index,
-  SearchBox,
-} from "react-instantsearch-dom";
+import { InstantSearch, Index, SearchBox } from "react-instantsearch-dom";
 import {
   Chip,
   Container,
@@ -17,17 +13,14 @@ import {
   InputBase,
   Paper,
 } from "@mui/material";
-import { connectHits } from 'react-instantsearch-core';
-import { connectSearchBox } from 'react-instantsearch-core';
-import SearchIcon from '@mui/icons-material/Search';
-
-
+import { connectHits } from "react-instantsearch-core";
+import { connectSearchBox } from "react-instantsearch-core";
+import SearchIcon from "@mui/icons-material/Search";
 
 const CATEGORY_USECASES = "usecases";
 const CATEGORY_POSTS = "posts";
 const CATEGORY_NEWS = "news";
 const CATEGORY_LINKS = "links";
-
 
 //@ts-ignore
 const CategoryLink = ({ category, currentCategory, onClick, children }) => (
@@ -42,7 +35,7 @@ const CategoryLink = ({ category, currentCategory, onClick, children }) => (
 
 //@ts-ignore
 const CustomSearchInput = ({ currentRefinement, refine }) => {
-  const handleChange = (event: { target: { value: any; }; }) => {
+  const handleChange = (event: { target: { value: any } }) => {
     refine(event.target.value);
   };
 
@@ -62,13 +55,11 @@ const CustomSearchInput = ({ currentRefinement, refine }) => {
 
 const ConnectedCustomSearchInput = connectSearchBox(CustomSearchInput);
 
-
 const SearchPage: React.FC = () => {
   const { searchValue } = useSearchValueContext();
 
   const [query, setQuery] = useState(searchValue);
   const [category, setCategory] = useState(CATEGORY_POSTS); // Set default category here
-
 
   // Load the selected category from localStorage when the component is mounted
   useEffect(() => {
@@ -89,9 +80,12 @@ const SearchPage: React.FC = () => {
     process.env.ALGOLIA_API_KEY
   );
 
-  const handleCategoryChange = useCallback((category: React.SetStateAction<string>) => {
-    setCategory(category);
-  }, []);
+  const handleCategoryChange = useCallback(
+    (category: React.SetStateAction<string>) => {
+      setCategory(category);
+    },
+    []
+  );
 
   const ConnectedSearchResultGrid = connectHits(SearchResultGrid);
 
@@ -100,7 +94,6 @@ const SearchPage: React.FC = () => {
   const handleRefresh = () => {
     setRefreshCount(refreshCount + 1);
   };
-
 
   return (
     <Layout>
@@ -112,7 +105,7 @@ const SearchPage: React.FC = () => {
           onSearchStateChange={({ query }) => setQuery(query)}
         >
           <Container>
-            <Grid container spacing={2} paddingTop='20px' >
+            <Grid container spacing={2} paddingTop="20px">
               <Grid item xs={4}>
                 <CategoryLink
                   category={CATEGORY_POSTS}
@@ -121,13 +114,13 @@ const SearchPage: React.FC = () => {
                 >
                   Posts
                 </CategoryLink>
-                {/* <CategoryLink
+                <CategoryLink
                   category={CATEGORY_USECASES}
                   currentCategory={category}
                   onClick={handleCategoryChange}
                 >
                   Use Cases
-                </CategoryLink> */}
+                </CategoryLink>
                 <CategoryLink
                   category={CATEGORY_NEWS}
                   currentCategory={category}
@@ -154,12 +147,15 @@ const SearchPage: React.FC = () => {
                   }}
                 >
                   <ConnectedCustomSearchInput />
-                  <IconButton type="submit" sx={{ padding: 1 }} aria-label="search">
+                  <IconButton
+                    type="submit"
+                    sx={{ padding: 1 }}
+                    aria-label="search"
+                  >
                     <SearchIcon />
                   </IconButton>
                 </Paper>
               </Grid>
-
             </Grid>
           </Container>
 
@@ -168,7 +164,8 @@ const SearchPage: React.FC = () => {
               <ConnectedSearchResultGrid
                 cardType="post"
                 refreshCount={refreshCount}
-                onRefresh={handleRefresh} />
+                onRefresh={handleRefresh}
+              />
             </Index>
           )}
 
@@ -177,16 +174,18 @@ const SearchPage: React.FC = () => {
               <ConnectedSearchResultGrid
                 cardType="news"
                 refreshCount={refreshCount}
-                onRefresh={handleRefresh} />
+                onRefresh={handleRefresh}
+              />
             </Index>
           )}
 
           {category == CATEGORY_LINKS && (
             <Index indexName="PlanetCassandraLeaves">
               <ConnectedSearchResultGrid
-                cardType="leaves"
+                cardType="leaf"
                 refreshCount={refreshCount}
-                onRefresh={handleRefresh} />
+                onRefresh={handleRefresh}
+              />
             </Index>
           )}
 
@@ -195,7 +194,8 @@ const SearchPage: React.FC = () => {
               <ConnectedSearchResultGrid
                 cardType="usecases"
                 refreshCount={refreshCount}
-                onRefresh={handleRefresh} />
+                onRefresh={handleRefresh}
+              />
             </Index>
           )}
         </InstantSearch>
@@ -203,6 +203,5 @@ const SearchPage: React.FC = () => {
     </Layout>
   );
 };
-
 
 export default SearchPage;
