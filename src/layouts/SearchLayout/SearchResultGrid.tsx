@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
-import PostCard from "../../components/Cards/PostCard";
-import NewsCard from "../../components/Cards/NewsCard";
-import BaseGrid from "../BaseGrid";
-import LeafCard from "../../components/Cards/LeafCard";
-import UseCaseCard from "../../components/Cards/UseCaseCard";
 import SearchResultCard from "../../components/Cards/SearchCard";
 import getSlug from "speakingurl";
-
+import SearchGrid from "../SearchGrid";
 interface SearchResultGridProps {
   hits: any[];
   cardType: "post" | "news" | "leaf" | "usecases";
@@ -35,34 +30,29 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({
     }
   }, [loading, onRefresh, hits]);
 
-  const formattedHits = hits.map((hit) => ({
+  let formattedHits = hits.map((hit) => ({
     title: hit.title,
     date: hit.date,
-    slug: hit.slug,
     author: hit.author?.node?.name,
     wallabag_created_at: hit.wallabag_created_at,
     pubDate: hit.pubDate,
-    preview_picture: hit.preview_picture,
   }));
-  // if (cardType === "usecases") {
-  //   formattedHits = hits.map((hit) => ({
-  //     title: hit.data.Case_Name,
-  //     date: hit.data.Case_Published,
-  //     slug: "",
-  //     author: hit.author?.node?.name,
-  //     wallabag_created_at: hit.data.Case_Published,
-  //     pubDate: hit.data.Case_Published,
-  //     preview_picture: hit.preview_picture,
-  //   }));
-  // }
+  if (cardType === "usecases") {
+    formattedHits = hits.map((hit) => ({
+      title: hit.data?.Case_Name,
+      date: hit.data?.Case_Published,
+      author: null,
+      wallabag_created_at: hit.data?.Case_Published,
+      pubDate: hit.data?.Case_Published,
+    }));
+  }
+
   const renderCard = (card: {
-    preview_picture: string | undefined;
     pubDate: any;
     wallabag_created_at: any;
     title: string;
     author: string;
     date: any;
-    slug: string | undefined;
   }) => {
     return (
       <SearchResultCard
@@ -76,7 +66,7 @@ const SearchResultGrid: React.FC<SearchResultGridProps> = ({
   };
 
   return (
-    <BaseGrid
+    <SearchGrid
       //@ts-ignore
       cardData={formattedHits}
       itemsPerPage={12}

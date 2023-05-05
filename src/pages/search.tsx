@@ -114,13 +114,13 @@ const SearchPage: React.FC = () => {
                 >
                   Posts
                 </CategoryLink>
-                {/* <CategoryLink
+                <CategoryLink
                   category={CATEGORY_USECASES}
                   currentCategory={category}
                   onClick={handleCategoryChange}
                 >
                   Use Cases
-                </CategoryLink> */}
+                </CategoryLink>
                 <CategoryLink
                   category={CATEGORY_NEWS}
                   currentCategory={category}
@@ -189,7 +189,7 @@ const SearchPage: React.FC = () => {
             </Index>
           )}
 
-          {/* {category == CATEGORY_USECASES && (
+          {category == CATEGORY_USECASES && (
             <Index indexName="PlanetCassandraUseCases">
               <ConnectedSearchResultGrid
                 cardType="usecases"
@@ -197,7 +197,7 @@ const SearchPage: React.FC = () => {
                 onRefresh={handleRefresh}
               />
             </Index>
-          )} */}
+          )}
         </InstantSearch>
       </Grid>
     </Layout>

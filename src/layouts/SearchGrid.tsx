@@ -43,32 +43,11 @@ interface BaseGridProps {
   loading: boolean;
 }
 
-const renderSkeleton = () => (
-  <Grid item xs={12} sm={6} md={4} lg={4}>
-    <Skeleton variant="rectangular" height={150} />
-    <Skeleton variant="text" />
-    <Skeleton variant="text" />
-    <Skeleton variant="text" />
-  </Grid>
-);
-
-const BaseGrid: React.FC<BaseGridProps> = ({
+const SearchGrid: React.FC<BaseGridProps> = ({
   cardData,
   itemsPerPage,
   renderItem,
 }) => {
-  const [currentItems, setCurrentItems] = useState<CardData[]>(
-    cardData.slice(0, itemsPerPage)
-  );
-
-  const fetchMoreData = () => {
-    setCurrentItems(
-      currentItems.concat(
-        cardData.slice(currentItems.length, currentItems.length + itemsPerPage)
-      )
-    );
-  };
-
   if (cardData.length === 0) {
     return (
       <Container maxWidth="xl" style={{ padding: "25px" }}>
@@ -81,39 +60,15 @@ const BaseGrid: React.FC<BaseGridProps> = ({
 
   return (
     <Container maxWidth="xl" style={{ padding: "25px" }}>
-      <InfiniteScroll
-        scrollThreshold={0.4}
-        dataLength={currentItems.length}
-        next={fetchMoreData}
-        hasMore={currentItems.length < cardData.length}
-        loader={
-          <Grid container spacing={3}>
-            {Array.from({ length: itemsPerPage }).map((_, index) => (
-              <React.Fragment key={index}>{renderSkeleton()}</React.Fragment>
-            ))}
+      <Grid container spacing={3}>
+        {cardData.map((card, index) => (
+          <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
+            {renderItem(card)}
           </Grid>
-        }
-        endMessage={
-          <Typography
-            sx={{ marginTop: 3 }}
-            variant="body1"
-            align="center"
-            fontWeight="bold"
-          >
-            You have seen it all
-          </Typography>
-        }
-      >
-        <Grid container spacing={3}>
-          {currentItems.map((card, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-              {renderItem(card)}
-            </Grid>
-          ))}
-        </Grid>
-      </InfiniteScroll>
+        ))}
+      </Grid>
     </Container>
   );
 };
 
-export default BaseGrid;
+export default SearchGrid;
