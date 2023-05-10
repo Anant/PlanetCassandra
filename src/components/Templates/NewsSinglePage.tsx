@@ -29,6 +29,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
                 </Helmet>
                 <Grid container spacing={2}> 
                 <Grid item className="articleContainer" style={{ marginInline: "30px" }}>
+                    <h1>{title}</h1>
                     <article>
                         <Typography
                             variant="subtitle2"

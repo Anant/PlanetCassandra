@@ -33,19 +33,24 @@ interface TtrsData {
 
 const News: React.FC<TtrsData> = () => {
   const { allFile, allFeedTtrs }: TtrsData = useStaticQuery(query);
-  const posts = allFeedTtrs.nodes.map((post) => {
-    const image = allFile.nodes.find((img) => img.parent.id === post.id);
-    return {
-      title: post.title,
-      pubDate: post.pubDate,
-      link: post.link,
-      id: post.id,
-      content: post.content,
-      author: post.author,
-      summary: post.summary,
-      thumbnail: image?.childImageSharp?.gatsbyImageData,
-    };
-  });
+
+
+   // Filter out nodes with links starting with "https://www.datastax.com"
+   const filteredNodes = allFeedTtrs.nodes.filter((node) => !node.link.startsWith("https://www.datastax.com"));
+
+   const posts = filteredNodes.map((post) => {
+     const image = allFile.nodes.find((img) => img.parent.id === post.id);
+     return {
+       title: post.title,
+       pubDate: post.pubDate,
+       link: post.link,
+       id: post.id,
+       content: post.content,
+       author: post.author,
+       summary: post.summary,
+       thumbnail: image?.childImageSharp?.gatsbyImageData,
+     };
+   });
 
   return (
     <Layout>
