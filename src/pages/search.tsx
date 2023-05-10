@@ -3,19 +3,17 @@ import React, { useState, useCallback, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useSearchValueContext } from "../context/SearchContext";
 import algoliasearch from "algoliasearch";
-import SearchResultGrid from "../layouts/SearchLayout/SearchResultGrid";
-import { InstantSearch, Index, SearchBox } from "react-instantsearch-dom";
+
 import {
-  Chip,
-  Container,
-  Grid,
-  IconButton,
-  InputBase,
-  Paper,
-} from "@mui/material";
-import { connectHits } from "react-instantsearch-core";
-import { connectSearchBox } from "react-instantsearch-core";
-import SearchIcon from "@mui/icons-material/Search";
+  InstantSearch,
+  RefinementList,
+  Index,
+} from "react-instantsearch-hooks-web";
+
+import { Chip, Container, Grid, Typography } from "@mui/material";
+
+import CustomHits from "../layouts/SearchLayout/HitsLayout";
+import CustomSearchBox from "../layouts/SearchLayout/CustomSearchBox";
 
 const CATEGORY_USECASES = "usecases";
 const CATEGORY_POSTS = "posts";
@@ -32,28 +30,6 @@ const CategoryLink = ({ category, currentCategory, onClick, children }) => (
     style={{ marginRight: "0.5rem" }}
   />
 );
-
-//@ts-ignore
-const CustomSearchInput = ({ currentRefinement, refine }) => {
-  const handleChange = (event: { target: { value: any } }) => {
-    refine(event.target.value);
-  };
-
-  return (
-    <InputBase
-      sx={{
-        marginLeft: 1,
-        flex: 1,
-      }}
-      placeholder="Search Planet Cassandra"
-      inputProps={{ "aria-label": "Search Planet Cassandra" }}
-      value={currentRefinement}
-      onChange={handleChange}
-    />
-  );
-};
-
-const ConnectedCustomSearchInput = connectSearchBox(CustomSearchInput);
 
 const SearchPage: React.FC = () => {
   const { searchValue } = useSearchValueContext();
@@ -87,26 +63,19 @@ const SearchPage: React.FC = () => {
     []
   );
 
-  const ConnectedSearchResultGrid = connectHits(SearchResultGrid);
-
-  const [refreshCount, setRefreshCount] = useState(0);
-
-  const handleRefresh = () => {
-    setRefreshCount(refreshCount + 1);
-  };
-
   return (
     <Layout>
       <Grid container>
         <InstantSearch
-          indexName="PlanetCassandraPosts"
+          indexName="PlanetCassandraUseCases"
           searchClient={searchClient}
-          searchState={{ query }}
-          onSearchStateChange={({ query }) => setQuery(query)}
+          insights
+          // searchState={{ query }}
+          // onSearchStateChange={({ query }) => setQuery(query)}
         >
           <Container>
             <Grid container spacing={2} paddingTop="20px">
-              <Grid item xs={4}>
+              <Grid item xs={12}>
                 <CategoryLink
                   category={CATEGORY_POSTS}
                   currentCategory={category}
@@ -137,65 +106,80 @@ const SearchPage: React.FC = () => {
                 </CategoryLink>
               </Grid>
               <Grid item xs={12}>
-                <Paper
-                  component="form"
-                  sx={{
-                    padding: "2px 4px",
-                    display: "flex",
-                    alignItems: "center",
-                    width: "100%",
-                  }}
-                >
-                  <ConnectedCustomSearchInput />
-                  <IconButton
-                    type="submit"
-                    sx={{ padding: 1 }}
-                    aria-label="search"
-                  >
-                    <SearchIcon />
-                  </IconButton>
-                </Paper>
+                <CustomSearchBox defaultQuery={query} />
               </Grid>
             </Grid>
           </Container>
 
           {category == CATEGORY_POSTS && (
             <Index indexName="PlanetCassandraPosts">
-              <ConnectedSearchResultGrid
-                cardType="post"
-                refreshCount={refreshCount}
-                onRefresh={handleRefresh}
-              />
+              <Container sx={{ marginY: 3 }}>
+                <CustomHits cardType="post" />
+              </Container>
             </Index>
           )}
 
           {category == CATEGORY_NEWS && (
             <Index indexName="PlanetCassandraNews">
-              <ConnectedSearchResultGrid
-                cardType="news"
-                refreshCount={refreshCount}
-                onRefresh={handleRefresh}
-              />
+              <Container sx={{ marginY: 3 }}>
+                <CustomHits cardType="news" />
+              </Container>
             </Index>
           )}
 
           {category == CATEGORY_LINKS && (
             <Index indexName="PlanetCassandraLeaves">
-              <ConnectedSearchResultGrid
-                cardType="leaf"
-                refreshCount={refreshCount}
-                onRefresh={handleRefresh}
-              />
+              <Container sx={{ marginY: 3 }}>
+                <CustomHits cardType="leaf" />
+              </Container>
             </Index>
           )}
 
           {category == CATEGORY_USECASES && (
             <Index indexName="PlanetCassandraUseCases">
-              <ConnectedSearchResultGrid
-                cardType="usecases"
-                refreshCount={refreshCount}
-                onRefresh={handleRefresh}
-              />
+              <Container sx={{ marginY: 3 }}>
+                <Grid container columnSpacing={2}>
+                  <Grid item xs={12} sm={4} md={3}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Function
+                        </Typography>
+
+                        <RefinementList
+                          attribute="data.Case_Function.data.Function_Name" // optional parameters
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Stack
+                        </Typography>
+
+                        <RefinementList
+                          attribute="data.Case_Stack.data.Name" // optional parameters
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Industry
+                        </Typography>
+                        <RefinementList
+                          attribute="data.Case_Industry.data.Industry_Name" // optional parameters
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} sm={8} md={9}>
+                    <CustomHits cardType="usecases" />
+                  </Grid>
+                </Grid>
+              </Container>
             </Index>
           )}
         </InstantSearch>

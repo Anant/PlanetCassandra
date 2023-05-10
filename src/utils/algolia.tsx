@@ -42,6 +42,21 @@ interface UseCaseAlgoliaData {
             Name: string;
           };
         };
+        Case_Stack: {
+          data: {
+            Name: string;
+          };
+        };
+        Case_Function: {
+          data: {
+            Function_Name: string;
+          };
+        };
+        Case_Industry: {
+          data: {
+            Industry_Name: string;
+          };
+        };
       };
     }[];
   };
@@ -95,6 +110,21 @@ query UseCasesDataListing {
         Case_Company {
           data {
             Name
+          }
+        }
+        Case_Stack {
+          data {
+            Name
+          }
+        }
+        Case_Function {
+          data {
+            Function_Name
+          }
+        }
+        Case_Industry {
+          data {
+            Industry_Name
           }
         }
       }

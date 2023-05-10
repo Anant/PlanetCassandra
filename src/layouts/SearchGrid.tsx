@@ -59,15 +59,13 @@ const SearchGrid: React.FC<BaseGridProps> = ({
   }
 
   return (
-    <Container maxWidth="xl" style={{ padding: "25px" }}>
-      <Grid container spacing={3}>
-        {cardData.map((card, index) => (
-          <Grid item xs={12} sm={6} md={4} lg={4} key={index}>
-            {renderItem(card)}
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+    <Grid container spacing={3}>
+      {cardData.map((card, index) => (
+        <Grid item xs={12} sm={6} key={index}>
+          {renderItem(card)}
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
