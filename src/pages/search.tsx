@@ -156,7 +156,7 @@ const SearchPage: React.FC = () => {
                     </Grid>
                   </Grid>
                   <Grid item xs={12} sm={8} md={9}>
-                    <CustomHits cardType="leaf" />
+                    <CustomHits cardType="post" />
                   </Grid>
                 </Grid>
               </Container>
