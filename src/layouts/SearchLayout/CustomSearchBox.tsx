@@ -1,13 +1,17 @@
 import { useSearchBox } from "react-instantsearch-hooks-web";
-import React from "react";
+import React, { useEffect } from "react";
 import { IconButton, InputBase, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-function CustomSearchBox({ props, defaultQuery }: any) {
+function CustomSearchBox({ props, defaultQuery, setDefaultQuery }: any) {
   const { query, refine, clear } = useSearchBox(props);
-
+  useEffect(() => {
+    // Update the document title using the browser API
+    refine(defaultQuery);
+  });
   const handleChange = (event: { target: { value: any } }) => {
     refine(event.target.value);
+    setDefaultQuery(event.target.value);
   };
   return (
     <>
@@ -23,6 +27,7 @@ function CustomSearchBox({ props, defaultQuery }: any) {
             marginLeft: 1,
             flex: 1,
           }}
+          defaultValue={defaultQuery}
           placeholder="Search Planet Cassandra"
           inputProps={{ "aria-label": "Search Planet Cassandra" }}
           onChange={handleChange}

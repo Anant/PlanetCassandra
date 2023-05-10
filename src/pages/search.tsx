@@ -106,7 +106,10 @@ const SearchPage: React.FC = () => {
                 </CategoryLink>
               </Grid>
               <Grid item xs={12}>
-                <CustomSearchBox defaultQuery={query} />
+                <CustomSearchBox
+                  defaultQuery={query}
+                  setDefaultQuery={setQuery}
+                />
               </Grid>
             </Grid>
           </Container>
@@ -114,7 +117,48 @@ const SearchPage: React.FC = () => {
           {category == CATEGORY_POSTS && (
             <Index indexName="PlanetCassandraPosts">
               <Container sx={{ marginY: 3 }}>
-                <CustomHits cardType="post" />
+                <Grid container columnSpacing={2}>
+                  <Grid item xs={12} sm={4} md={3}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Author
+                        </Typography>
+
+                        <RefinementList
+                          attribute="author.node.name" // optional parameters
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Tags
+                        </Typography>
+
+                        <RefinementList
+                          attribute="tags.nodes.name" // optional parameters
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Categories
+                        </Typography>
+
+                        <RefinementList
+                          attribute="categories.nodes.name" // optional parameters
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} sm={8} md={9}>
+                    <CustomHits cardType="post" />
+                  </Grid>
+                </Grid>
               </Container>
             </Index>
           )}
@@ -130,7 +174,37 @@ const SearchPage: React.FC = () => {
           {category == CATEGORY_LINKS && (
             <Index indexName="PlanetCassandraLeaves">
               <Container sx={{ marginY: 3 }}>
-                <CustomHits cardType="leaf" />
+                <Grid container columnSpacing={2}>
+                  <Grid item xs={12} sm={4} md={3}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Tags
+                        </Typography>
+
+                        <RefinementList
+                          attribute="tags" // optional parameters
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Typography
+                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                        >
+                          Domain
+                        </Typography>
+
+                        <RefinementList
+                          attribute="domain_name" // optional parameters
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12} sm={8} md={9}>
+                    <CustomHits cardType="leaf" />
+                  </Grid>
+                </Grid>
               </Container>
             </Index>
           )}

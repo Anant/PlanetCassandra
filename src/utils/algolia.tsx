@@ -9,6 +9,16 @@ interface WpPost {
   date: string;
   slug: string;
   title: string;
+  categories: {
+    nodes: {
+      name: string;
+    };
+  };
+  tags: {
+    nodes: {
+      name: string;
+    }[];
+  };
 }
 
 interface QueryResult {
@@ -70,6 +80,7 @@ interface LeavesAlgoliaData {
       wallabag_created_at: string;
       description: string;
       id: string;
+      domain_name: string;
     }[];
   };
 }
@@ -89,6 +100,16 @@ query PostsAlgolia {
       date
       slug
       title
+      categories {
+        nodes {
+          name
+        }
+      }
+      tags {
+        nodes {
+          name
+        }
+      }
     }
   }
 }
@@ -149,13 +170,18 @@ query NewsAlgolia {
 
 const Leavesquery = `
 query LeavesData {
-  allApiLeaves(limit: 100, sort: { wallabag_created_at: DESC }) {
+  allApiLeaves(
+    limit: 100
+    sort: {wallabag_created_at: DESC}
+    filter: {title: {ne: null}}
+  ) {
     nodes {
       tags
       title
       wallabag_created_at
       description
       id
+      domain_name
     }
   }
 }
