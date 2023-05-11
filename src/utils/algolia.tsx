@@ -80,6 +80,7 @@ interface LeavesAlgoliaData {
       wallabag_created_at: string;
       description: string;
       id: string;
+      alternative_id: string;
       domain_name: string;
     }[];
   };
@@ -181,6 +182,7 @@ query LeavesData {
       wallabag_created_at
       description
       id
+      alternative_id
       domain_name
     }
   }
@@ -218,11 +220,15 @@ const queries = [
     query: Leavesquery,
     queryVariables: {},
     transformer: ({ data }: { data: LeavesAlgoliaData }) =>
-      data.allApiLeaves.nodes,
+      data.allApiLeaves.nodes.map(node => ({
+        ...node,
+        objectID: node.alternative_id,  // Use alternative_id as objectID
+      })),
     indexName: "PlanetCassandraLeaves",
     settings: {},
     mergeSettings: false,
   },
+  
 ];
 
 module.exports = queries;
