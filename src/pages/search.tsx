@@ -73,7 +73,7 @@ const SearchPage: React.FC = () => {
           // searchState={{ query }}
           // onSearchStateChange={({ query }) => setQuery(query)}
         >
-          <Container>
+          <Container maxWidth="xl">
             <Grid container spacing={2} paddingTop="20px">
               <Grid item xs={12}>
                 <CategoryLink
@@ -116,7 +116,7 @@ const SearchPage: React.FC = () => {
 
           {category == CATEGORY_POSTS && (
             <Index indexName="PlanetCassandraPosts">
-              <Container sx={{ marginY: 3 }}>
+              <Container maxWidth="xl" sx={{ marginY: 3 }}>
                 <Grid container columnSpacing={2}>
                   <Grid item xs={12} sm={4} md={3}>
                     <Grid container>
@@ -165,7 +165,7 @@ const SearchPage: React.FC = () => {
 
           {category == CATEGORY_NEWS && (
             <Index indexName="PlanetCassandraNews">
-              <Container sx={{ marginY: 3 }}>
+              <Container maxWidth="xl" sx={{ marginY: 3 }}>
                 <CustomHits cardType="news" />
               </Container>
             </Index>
@@ -173,7 +173,7 @@ const SearchPage: React.FC = () => {
 
           {category == CATEGORY_LINKS && (
             <Index indexName="PlanetCassandraLeaves">
-              <Container sx={{ marginY: 3 }}>
+              <Container maxWidth="xl" sx={{ marginY: 3 }}>
                 <Grid container columnSpacing={2}>
                   <Grid item xs={12} sm={4} md={3}>
                     <Grid container>
@@ -211,7 +211,7 @@ const SearchPage: React.FC = () => {
 
           {category == CATEGORY_USECASES && (
             <Index indexName="PlanetCassandraUseCases">
-              <Container sx={{ marginY: 3 }}>
+              <Container maxWidth="xl" sx={{ marginY: 3 }}>
                 <Grid container columnSpacing={2}>
                   <Grid item xs={12} sm={4} md={3}>
                     <Grid container>

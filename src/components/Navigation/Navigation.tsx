@@ -12,6 +12,8 @@ import SearchBar from "../SearchBar/SearchBar";
 import ToggleButton from "../ToggleButton/ToggleButton";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
+import { AiFillCaretDown } from "react-icons/ai";
+
 const pages = [
   { name: "Home", route: "/" },
   { name: "Events", route: "https://blog.planetcassandra.org/events" },
@@ -33,6 +35,17 @@ function ResponsiveAppBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  //Dropdown for event
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleOpenEvent = (event: any) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleCloseEvent = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -112,20 +125,92 @@ function ResponsiveAppBar() {
             display: { xs: "none", md: "flex" },
           }}
         >
-          {pages.map((page) => (
-            <Link
-              key={page.name}
-              to={page.route}
-              style={{ textDecoration: "none" }}
-            >
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "#1E1E1E", fontSize: 12, display: "block", fontFamily: "'Inter', sans-serif",textTransform:'capitalize', fontWeight:400 }}
-              >
-                {page.name}
-              </Button>
-            </Link>
-          ))}
+          {pages.map((page) => {
+            if (page.name === "Events") {
+              return (
+                <Box key={page.name}>
+                  <Button
+                    onClick={handleOpenEvent}
+                    sx={{
+                      my: 2,
+                      color: "#1E1E1E",
+                      fontSize: 12,
+                      display: "flex",
+                      fontFamily: "'Inter', sans-serif",
+                      textTransform: "capitalize",
+                      fontWeight: 400,
+                    }}
+                    endIcon={<AiFillCaretDown size={12} />}
+                  >
+                    {page.name}
+                  </Button>
+                  <Menu
+                    onClose={handleCloseEvent}
+                    anchorEl={anchorEl}
+                    open={Boolean(anchorEl)}
+                    sx={{ p: 0 }}
+                  >
+                    <Link to={page.route} style={{ textDecoration: "none" }}>
+                      <MenuItem
+                        sx={{
+                          color: "#1E1E1E",
+                          fontSize: 12,
+                          display: "block",
+                          fontFamily: "'Inter', sans-serif",
+                          textTransform: "capitalize",
+                          fontWeight: 400,
+                        }}
+                        onClick={handleCloseEvent}
+                      >
+                        Events
+                      </MenuItem>
+                    </Link>
+                    <Link
+                      to={"/meetup-organizer-handbook"}
+                      style={{ textDecoration: "none" }}
+                    >
+                      <MenuItem
+                        sx={{
+                          color: "#1E1E1E",
+                          fontSize: 12,
+                          display: "block",
+                          fontFamily: "'Inter', sans-serif",
+                          textTransform: "capitalize",
+                          fontWeight: 400,
+                        }}
+                        onClick={handleCloseEvent}
+                      >
+                        Handbook
+                      </MenuItem>
+                    </Link>
+                  </Menu>
+                </Box>
+              );
+            } else {
+              return (
+                <Link
+                  key={page.name}
+                  to={page.route}
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: "#1E1E1E",
+                      fontSize: 12,
+                      display: "block",
+                      fontFamily: "'Inter', sans-serif",
+                      textTransform: "capitalize",
+                      fontWeight: 400,
+                    }}
+                  >
+                    {page.name}
+                  </Button>
+                </Link>
+              );
+            }
+          })}
         </Box>
         <SearchBar />
         <Box
@@ -135,14 +220,28 @@ function ResponsiveAppBar() {
         >
           <Link style={{ textDecoration: "none" }} to={`/contribute`}>
             <Button
-              sx={{ my: 2, color: "black", fontSize: 12,fontFamily: "'Inter', sans-serif",textTransform:'capitalize', fontWeight:400 }} 
+              sx={{
+                my: 2,
+                color: "black",
+                fontSize: 12,
+                fontFamily: "'Inter', sans-serif",
+                textTransform: "capitalize",
+                fontWeight: 400,
+              }}
             >
               Contribute
             </Button>
           </Link>
           <Link style={{ textDecoration: "none" }} to={`/contact`}>
             <Button
-              sx={{ my: 2, color: "black", fontSize: 12,fontFamily: "'Inter', sans-serif",textTransform:'capitalize', fontWeight:400 }}
+              sx={{
+                my: 2,
+                color: "black",
+                fontSize: 12,
+                fontFamily: "'Inter', sans-serif",
+                textTransform: "capitalize",
+                fontWeight: 400,
+              }}
             >
               Contact
             </Button>
