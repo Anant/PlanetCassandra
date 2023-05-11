@@ -2,14 +2,18 @@ import { useSearchBox } from "react-instantsearch-hooks-web";
 import React, { useEffect } from "react";
 import { IconButton, InputBase, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSearchValueContext } from "../../context/SearchContext";
 
 function CustomSearchBox({ props, defaultQuery, setDefaultQuery }: any) {
+  const { addSearchValue } = useSearchValueContext();
+
   const { query, refine, clear } = useSearchBox(props);
   useEffect(() => {
     // Update the document title using the browser API
     refine(defaultQuery);
   });
   const handleChange = (event: { target: { value: any } }) => {
+    addSearchValue(event.target.value);
     refine(event.target.value);
     setDefaultQuery(event.target.value);
   };
