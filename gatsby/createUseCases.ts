@@ -19,6 +19,7 @@ interface CompanyData {
         Case_URL: string;
         Case_Article_Content: string;
         Case_Published: string;
+        ID_Case: number;
         Case_Stack: {
           data: {
             Name: string;
@@ -99,11 +100,15 @@ export const createUseCases = async ({
   const allFile = allUseCases.data.allFile.nodes;
   const allWpCategory = allUseCases.data.allWpCategory.nodes;
 
-  const useCasesDataWithContent = useCasesData.map((node: { data: { Case_Name: any; Case_Article_Content: any; }; }) => {
+  const useCasesDataWithContent = useCasesData.map((node: { data: { Case_Name: any; Case_Article_Content: any; ID_Case: any; }; }) => {
     const wpPost = allWpCategory[0].posts.nodes.find(
-      (post: { title: any; }) => post.title === node.data.Case_Name
+      (post: { title: any; excerpt: any; }) => {
+        // remove HTML tags from excerpt and parse to number
+        const excerptNumber = Number(post.excerpt.replace(/<\/?[^>]+(>|$)/g, ""));
+        return excerptNumber === node.data.ID_Case;
+      }
     );
-    
+  
     return {
       ...node,
       data: {
@@ -112,6 +117,8 @@ export const createUseCases = async ({
       },
     };
   });
+  
+  
 
 
 
@@ -128,12 +135,11 @@ export const createUseCases = async ({
       Company: useCasesWithLogos[idx].Case_Company[0]?.data.Name,
       Case_Published: useCasesWithLogos[idx].Case_Published,
       Case_URL: useCasesWithLogos[idx].Case_URL,
-
       gatsbyImageData: useCasesWithLogos[idx].gatsbyImageData,
     })); // get the data and images for the related articles
 
     createPage({
-      path: `/usecases/${getSlug(node.Case_Name)}`,
+      path: `/usecases/${getSlug(node.Case_Name)}/${node.ID_Case}`,
       component: resolve(`src/components/Templates/UseCaseSinglePage.tsx`),
       context: {
         Description: node.Case_Description,
@@ -165,6 +171,7 @@ function getAllUseCases(graphql) {
         data {
           Case_URL
           Case_Name
+          ID_Case
           Case_Stack{
             data{
               Name

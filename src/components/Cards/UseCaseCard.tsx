@@ -12,12 +12,12 @@ import getSlug from "speakingurl";
 interface Props {
   name: string;
   description: string;
-  url: string;
   gatsbyImageData: IGatsbyImageData | null;
+  ID_Case: number;
 }
 
-const UseCaseCard = ({ name, description, url, gatsbyImageData }: Props) => {
-  let caseUrl = `/usecases/${getSlug(name)}`;
+const UseCaseCard = ({ name, description, ID_Case, gatsbyImageData }: Props) => {
+  let caseUrl = `/usecases/${getSlug(name)}/${ID_Case}`;
   // if (url && url.includes("https://planetcassandra.org")) {
   //   let newUrl = url.replace("https://planetcassandra.org/post/", "");
   //   caseUrl = `/post/${newUrl}`;

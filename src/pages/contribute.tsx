@@ -5,6 +5,7 @@ import Layout from "../components/Layout/Layout";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import YoutubeSection from "../components/YoutubeSection/YoutubeSection";
+import { Helmet } from "react-helmet";
 interface ContributingListDataInterface {
   text: string;
   cta: string;
@@ -60,6 +61,25 @@ const ContributePage = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Contribute - Planet Cassandra</title>
+        <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={"Contribute - Planet Cassandra"} />
+        <meta name="author" content={"Planet Cassandra"} />
+        {/* <meta
+          name="keywords"
+          content="Cassandra events, database conferences, webinars, meetups, NoSQL database community"
+        />
+        <meta
+          name="description"
+          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
+        />
+        <meta
+          property="og:description"
+          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
+        /> */}
+      </Helmet>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <iframe

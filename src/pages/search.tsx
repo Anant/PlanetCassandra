@@ -3,7 +3,8 @@ import React, { useState, useCallback, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useSearchValueContext } from "../context/SearchContext";
 import algoliasearch from "algoliasearch";
-
+//@ts-ignore
+import { Helmet } from 'react-helmet';
 import {
   InstantSearch,
   RefinementList,
@@ -65,6 +66,25 @@ const SearchPage: React.FC = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>Search - Planet Cassandra</title>
+        <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={"Search - Planet Cassandra"} />
+        <meta name="author" content={"Planet Cassandra"} />
+        {/* <meta
+          name="keywords"
+          content="Cassandra events, database conferences, webinars, meetups, NoSQL database community"
+        />
+        <meta
+          name="description"
+          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
+        />
+        <meta
+          property="og:description"
+          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
+        /> */}
+      </Helmet>
       <Grid container>
         <InstantSearch
           indexName="PlanetCassandraUseCases"

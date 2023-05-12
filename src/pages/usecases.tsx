@@ -15,6 +15,7 @@ interface CompanyData {
         Case_Name: string;
         Case_Description: string;
         Case_URL: string;
+        ID_Case: number;
         Case_Article_Content: string;
         Case_Company: {
           data: {
@@ -73,7 +74,7 @@ const Companies: React.FC<CompanyData> = () => {
           content="Explore various use cases for Cassandra database on Planet Cassandra. Learn how Cassandra is being used in real-world applications for data-driven solutions, including IoT, e-commerce, analytics, and more."
         />
       </Helmet>
-      <UseCaseGrid cardData={currentCompanies} />
+      <UseCaseGrid cardData={currentCompanies}/>
     </Layout>
   );
 };
@@ -89,6 +90,7 @@ const query = graphql`
         data {
           Case_URL
           Case_Name
+          ID_Case
           Case_Article_Content
           Case_Description
           Case_Company {
