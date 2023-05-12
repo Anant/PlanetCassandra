@@ -15,6 +15,7 @@ import { Chip, Container, Grid, Typography } from "@mui/material";
 import CustomHits from "../layouts/SearchLayout/HitsLayout";
 import CustomSearchBox from "../layouts/SearchLayout/CustomSearchBox";
 import { Helmet } from "react-helmet";
+import MyRefinementList from "../layouts/SearchLayout/CustomRefinementList";
 const CATEGORY_USECASES = "usecases";
 const CATEGORY_POSTS = "posts";
 const CATEGORY_NEWS = "news";
@@ -141,34 +142,46 @@ const SearchPage: React.FC = () => {
                     <Grid container>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Author
                         </Typography>
 
-                        <RefinementList
+                        <MyRefinementList
                           attribute="author.node.name" // optional parameters
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Tags
                         </Typography>
 
-                        <RefinementList
+                        <MyRefinementList
                           attribute="tags.nodes.name" // optional parameters
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Categories
                         </Typography>
 
-                        <RefinementList
+                        <MyRefinementList
                           attribute="categories.nodes.name" // optional parameters
                         />
                       </Grid>
@@ -198,23 +211,31 @@ const SearchPage: React.FC = () => {
                     <Grid container>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Tags
                         </Typography>
 
-                        <RefinementList
+                        <MyRefinementList
                           attribute="tags" // optional parameters
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Domain
                         </Typography>
 
-                        <RefinementList
+                        <MyRefinementList
                           attribute="domain_name" // optional parameters
                         />
                       </Grid>
@@ -236,33 +257,45 @@ const SearchPage: React.FC = () => {
                     <Grid container>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Function
                         </Typography>
 
-                        <RefinementList
+                        <MyRefinementList
                           attribute="data.Case_Function.data.Function_Name" // optional parameters
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Stack
                         </Typography>
 
-                        <RefinementList
+                        <MyRefinementList
                           attribute="data.Case_Stack.data.Name" // optional parameters
                         />
                       </Grid>
                       <Grid item xs={12}>
                         <Typography
-                          sx={{ fontWeight: 700, fontSize: "1.25rem" }}
+                          sx={{
+                            fontWeight: 700,
+                            fontSize: "1.25rem",
+                            fontFamily: "Roboto Condensed, sans-serif",
+                          }}
                         >
                           Industry
                         </Typography>
-                        <RefinementList
+                        <MyRefinementList
                           attribute="data.Case_Industry.data.Industry_Name" // optional parameters
                         />
                       </Grid>
