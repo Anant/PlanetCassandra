@@ -11,16 +11,16 @@ import {
   Index,
 } from "react-instantsearch-hooks-web";
 
-import { Chip, Container, Grid, Typography } from "@mui/material";
+import { Chip, Container, Grid, Typography, Divider, Box } from "@mui/material";
 
 import CustomHits from "../layouts/SearchLayout/HitsLayout";
 import CustomSearchBox from "../layouts/SearchLayout/CustomSearchBox";
-import { Helmet } from "react-helmet";
 import MyRefinementList from "../layouts/SearchLayout/CustomRefinementList";
 const CATEGORY_USECASES = "usecases";
 const CATEGORY_POSTS = "posts";
 const CATEGORY_NEWS = "news";
 const CATEGORY_LINKS = "links";
+const CATEGORY_ALL = "all";
 
 //@ts-ignore
 const CategoryLink = ({ category, currentCategory, onClick, children }) => (
@@ -98,6 +98,13 @@ const SearchPage: React.FC = () => {
             <Grid container spacing={2} paddingTop="20px">
               <Grid item xs={12}>
                 <CategoryLink
+                  category={CATEGORY_ALL}
+                  currentCategory={category}
+                  onClick={handleCategoryChange}
+                >
+                  All
+                </CategoryLink>
+                <CategoryLink
                   category={CATEGORY_POSTS}
                   currentCategory={category}
                   onClick={handleCategoryChange}
@@ -135,8 +142,16 @@ const SearchPage: React.FC = () => {
             </Grid>
           </Container>
 
-          {category == CATEGORY_POSTS && (
+          {category == CATEGORY_POSTS || category === CATEGORY_ALL ? (
             <Index indexName="PlanetCassandraPosts">
+              <Box sx={{ width: "100%" }}>
+                <Divider
+                  flexItem
+                  sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
+                >
+                  Posts
+                </Divider>
+              </Box>
               <Container maxWidth="xl" sx={{ marginY: 3 }}>
                 <Grid container columnSpacing={2}>
                   <Grid item xs={12} sm={4} md={3}>
@@ -194,18 +209,44 @@ const SearchPage: React.FC = () => {
                 </Grid>
               </Container>
             </Index>
-          )}
+          ) : null}
 
-          {category == CATEGORY_NEWS && (
+          {category === CATEGORY_NEWS || category === CATEGORY_ALL ? (
             <Index indexName="PlanetCassandraNews">
+              <Box sx={{ width: "100%" }}>
+                <Divider
+                  flexItem
+                  sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
+                >
+                  News
+                </Divider>
+              </Box>
+
               <Container maxWidth="xl" sx={{ marginY: 3 }}>
-                <CustomHits cardType="news" />
+                <Grid container justifyContent="flex-end">
+                  <Grid
+                    item
+                    xs={12}
+                    sm={category === CATEGORY_ALL ? 8 : 12}
+                    md={category === CATEGORY_ALL ? 9 : 12}
+                  >
+                    <CustomHits cardType="news" />
+                  </Grid>
+                </Grid>
               </Container>
             </Index>
-          )}
+          ) : null}
 
-          {category == CATEGORY_LINKS && (
+          {category == CATEGORY_LINKS || category === CATEGORY_ALL ? (
             <Index indexName="PlanetCassandraLeaves">
+              <Box sx={{ width: "100%" }}>
+                <Divider
+                  flexItem
+                  sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
+                >
+                  Links
+                </Divider>
+              </Box>
               <Container maxWidth="xl" sx={{ marginY: 3 }}>
                 <Grid container columnSpacing={2}>
                   <Grid item xs={12} sm={4} md={3}>
@@ -248,10 +289,18 @@ const SearchPage: React.FC = () => {
                 </Grid>
               </Container>
             </Index>
-          )}
+          ) : null}
 
-          {category == CATEGORY_USECASES && (
+          {category == CATEGORY_USECASES || category === CATEGORY_ALL ? (
             <Index indexName="PlanetCassandraUseCases">
+              <Box sx={{ width: "100%" }}>
+                <Divider
+                  flexItem
+                  sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
+                >
+                  Use Cases
+                </Divider>
+              </Box>
               <Container maxWidth="xl" sx={{ marginY: 3 }}>
                 <Grid container columnSpacing={2}>
                   <Grid item xs={12} sm={4} md={3}>
@@ -308,7 +357,7 @@ const SearchPage: React.FC = () => {
                 </Grid>
               </Container>
             </Index>
-          )}
+          ) : null}
         </InstantSearch>
       </Grid>
     </Layout>
