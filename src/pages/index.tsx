@@ -8,6 +8,8 @@ import Layout from '../components/Layout/Layout';
 import TagSection from '../components/TagSection/TagSection';
 import UseCases from '../components/UseCases/UseCases';
 import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
+//@ts-ignore
+import { Helmet } from 'react-helmet';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (

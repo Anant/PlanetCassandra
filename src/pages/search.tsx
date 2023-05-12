@@ -3,7 +3,8 @@ import React, { useState, useCallback, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useSearchValueContext } from "../context/SearchContext";
 import algoliasearch from "algoliasearch";
-
+//@ts-ignore
+import { Helmet } from 'react-helmet';
 import {
   InstantSearch,
   RefinementList,
@@ -14,7 +15,7 @@ import { Chip, Container, Grid, Typography } from "@mui/material";
 
 import CustomHits from "../layouts/SearchLayout/HitsLayout";
 import CustomSearchBox from "../layouts/SearchLayout/CustomSearchBox";
-import { Helmet } from "react-helmet";
+
 const CATEGORY_USECASES = "usecases";
 const CATEGORY_POSTS = "posts";
 const CATEGORY_NEWS = "news";
