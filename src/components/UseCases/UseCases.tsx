@@ -21,6 +21,7 @@ interface allAirtableData {
         Case_Name: string;
         Case_Description: string;
         Case_URL: string;
+        ID_Case: number;
       };
     }[];
   };
@@ -70,7 +71,7 @@ const UseCases = () => {
             <UseCaseCard
               name={useCase.Case_Name}
               description={useCase.Case_Description}
-              url={useCase.Case_URL}
+              ID_Case={useCase.ID_Case}
               gatsbyImageData={useCase.gatsbyImageData}
             />
           </Grid>
@@ -115,6 +116,7 @@ const query = graphql`
           Case_URL
           Case_Name
           Case_Description
+          ID_Case
           Case_Company {
             data {
               Name

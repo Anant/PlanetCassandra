@@ -11,6 +11,7 @@ interface CompanyDataProps {
       Case_Description: string;
       Case_URL: string;
       gatsbyImageData: IGatsbyImageData | null;
+      ID_Case: number;
     }[];
   }
 
@@ -28,7 +29,7 @@ const UseCaseGrid: React.FC<CompanyDataProps> = ({ cardData }) => {
                     //@ts-ignore
                     description={card.Case_Description}
                     //@ts-ignore
-                    url={card.Case_URL}
+                    ID_Case={card.ID_Case}
                     gatsbyImageData={card.gatsbyImageData}
                 />
             )}

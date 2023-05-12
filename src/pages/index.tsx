@@ -1,16 +1,16 @@
-import * as React from "react";
-import "../styles/global.css";
-import type { HeadFC, PageProps } from "gatsby";
-import { Container, Grid } from "@mui/material";
-import HeroSection from "../components/Hero/Hero";
-import DidYouKnowSection from "../components/DYK Section/DYK";
-import Layout from "../components/Layout/Layout";
-import TagSection from "../components/TagSection/TagSection";
-import UpcomingEvents from "../components/UpcomingEvents/UpcomingEvents";
-import UseCases from "../components/UseCases/UseCases";
-import YoutubeSection from "../components/YoutubeSection/YoutubeSection";
-import CommunitySection from "../components/CommunitySection/CommunitySection";
-import { Helmet } from "react-helmet";
+import * as React from 'react';
+import '../styles/global.css';
+import type { HeadFC, PageProps } from 'gatsby';
+import { Container, Grid } from '@mui/material';
+import HeroSection from '../components/Hero/Hero';
+import DidYouKnowSection from '../components/DYK Section/DYK';
+import Layout from '../components/Layout/Layout';
+import TagSection from '../components/TagSection/TagSection';
+import UseCases from '../components/UseCases/UseCases';
+import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
+//@ts-ignore
+import { Helmet } from 'react-helmet';
+
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>

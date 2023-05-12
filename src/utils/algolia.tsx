@@ -47,6 +47,7 @@ interface UseCaseAlgoliaData {
         Case_Name: string;
         Case_Article_Content: string;
         Case_Description: string;
+        ID_Case: number;
         Case_Company: {
           data: {
             Name: string;
@@ -129,6 +130,7 @@ query UseCasesDataListing {
         Case_URL
         Case_Name
         Case_Published
+        ID_Case
         Case_Company {
           data {
             Name

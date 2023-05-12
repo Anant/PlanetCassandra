@@ -3,7 +3,8 @@ import React, { useState, useCallback, useEffect } from "react";
 import Layout from "../components/Layout/Layout";
 import { useSearchValueContext } from "../context/SearchContext";
 import algoliasearch from "algoliasearch";
-
+//@ts-ignore
+import { Helmet } from "react-helmet";
 import {
   InstantSearch,
   RefinementList,
