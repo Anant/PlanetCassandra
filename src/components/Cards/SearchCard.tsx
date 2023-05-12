@@ -8,6 +8,7 @@ interface SearchResultCardProps {
   author?: string;
   slug?: string;
   cardType?: string;
+  ID_Case?: number;
 }
 
 const SearchResultCard: React.FC<SearchResultCardProps> = ({
@@ -16,7 +17,17 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   date,
   author,
   slug,
+  ID_Case,
 }) => {
+
+  let url
+  
+  if (cardType === "usecases" && ID_Case !== undefined) {
+    url = `/${cardType}/${slug}/${ID_Case}`;
+  } else {
+    url = `/${cardType}/${slug}`;
+  }
+  
   const formatDate = (dateStr: string) => {
     const dateObj = new Date(dateStr);
     return dateObj.toLocaleString("en-US", {
@@ -27,9 +38,10 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   };
 
   return (
+    
     <Link
       style={{ textDecoration: "none", color: "white" }}
-      to={`/${cardType}/${slug}`}
+      to={`${url}`}
     >
       <Card
         className="px-6 py-4"

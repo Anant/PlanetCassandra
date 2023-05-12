@@ -14,7 +14,8 @@ function CustomHits({ props, cardType }: any) {
     author: hit.author?.node?.name,
     wallabag_created_at: hit.wallabag_created_at,
     pubDate: hit.pubDate,
-  }));
+    ID_Case: hit.data ? hit.data.ID_Case : undefined,
+  }));  
   if (cardType === "usecases") {
     formattedHits = hits.map((hit: any) => ({
       title: hit.data?.Case_Name,
@@ -23,10 +24,12 @@ function CustomHits({ props, cardType }: any) {
       slug: "",
       wallabag_created_at: hit.data?.Case_Published,
       pubDate: hit.data?.Case_Published,
+      ID_Case: hit.data.ID_Case,
     }));
   }
 
   const renderCard = (card: {
+    ID_Case: number | undefined;
     pubDate: any;
     wallabag_created_at: any;
     title: string;
@@ -46,6 +49,7 @@ function CustomHits({ props, cardType }: any) {
         author={card.author}
         slug={urlSlug}
         cardType={cardType}
+        ID_Case={card.ID_Case}
       />
     );
   };

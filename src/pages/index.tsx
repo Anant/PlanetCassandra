@@ -6,10 +6,8 @@ import HeroSection from '../components/Hero/Hero';
 import DidYouKnowSection from '../components/DYK Section/DYK';
 import Layout from '../components/Layout/Layout';
 import TagSection from '../components/TagSection/TagSection';
-import UpcomingEvents from '../components/UpcomingEvents/UpcomingEvents';
 import UseCases from '../components/UseCases/UseCases';
 import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
-import CommunitySection from '../components/CommunitySection/CommunitySection';
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
