@@ -12,6 +12,13 @@ import YoutubeSection from '../components/YoutubeSection/YoutubeSection';
 const IndexPage: React.FC<PageProps> = () => {
   return (
     <Layout>
+      <Helmet>
+        <title>Planet Cassandra</title>
+        <meta property="og:image" content="../images/icon.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content={"Planet Cassandra"} />
+        <meta name="author" content={"Planet Cassandra"} />
+      </Helmet>
       <Grid container>
         <Grid className="heroBgImage" item xs={12}>
           <HeroSection />
