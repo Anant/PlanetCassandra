@@ -3,9 +3,29 @@ import React from "react";
 import getSlug from "speakingurl";
 import SearchGrid from "../SearchGrid";
 import SearchResultCard from "../../components/Cards/SearchCard";
-
+import { useStaticQuery, graphql } from "gatsby";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 function CustomHits({ props, cardType }: any) {
   const { hits, results, sendEvent } = useHits(props);
+  const data = useStaticQuery(graphql`
+    query LogoImages {
+      allFile(filter: { id: { ne: null } }) {
+        nodes {
+          name
+          childrenImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  `);
+  let getImage = (hit: any) => {
+    const companyName = hit.data?.Case_Name.split(" ").join("").toLowerCase();
+    const logoFile = data.allFile.nodes.find(
+      (file: any) => file.name === `case.logo.${companyName}`
+    );
+    return logoFile?.childrenImageSharp[0].gatsbyImageData || undefined;
+  };
 
   let formattedHits = hits.map((hit: any) => ({
     title: hit.title,
@@ -15,7 +35,8 @@ function CustomHits({ props, cardType }: any) {
     wallabag_created_at: hit.wallabag_created_at,
     pubDate: hit.pubDate,
     ID_Case: hit.data ? hit.data.ID_Case : undefined,
-  }));  
+    image: undefined,
+  }));
   if (cardType === "usecases") {
     formattedHits = hits.map((hit: any) => ({
       title: hit.data?.Case_Name,
@@ -25,6 +46,7 @@ function CustomHits({ props, cardType }: any) {
       wallabag_created_at: hit.data?.Case_Published,
       pubDate: hit.data?.Case_Published,
       ID_Case: hit.data.ID_Case,
+      image: getImage(hit),
     }));
   }
 
@@ -36,6 +58,7 @@ function CustomHits({ props, cardType }: any) {
     slug: string;
     author: string;
     date: any;
+    image: IGatsbyImageData;
   }) => {
     let urlSlug = getSlug(card.title);
     if (cardType == "post") {
@@ -50,6 +73,7 @@ function CustomHits({ props, cardType }: any) {
         slug={urlSlug}
         cardType={cardType}
         ID_Case={card.ID_Case}
+        image={card.image}
       />
     );
   };

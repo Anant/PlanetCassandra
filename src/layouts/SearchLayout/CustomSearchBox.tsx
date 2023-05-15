@@ -11,7 +11,8 @@ function CustomSearchBox({ props, defaultQuery, setDefaultQuery }: any) {
   useEffect(() => {
     // Update the document title using the browser API
     refine(defaultQuery);
-  });
+    setDefaultQuery(defaultQuery);
+  }, [defaultQuery]);
   const handleChange = (event: { target: { value: any } }) => {
     addSearchValue(event.target.value);
     refine(event.target.value);
@@ -32,6 +33,7 @@ function CustomSearchBox({ props, defaultQuery, setDefaultQuery }: any) {
             flex: 1,
           }}
           defaultValue={defaultQuery}
+          value={defaultQuery}
           placeholder="Search Planet Cassandra"
           inputProps={{ "aria-label": "Search Planet Cassandra" }}
           onChange={handleChange}

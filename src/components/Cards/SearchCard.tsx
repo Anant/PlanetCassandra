@@ -1,6 +1,11 @@
 import React from "react";
-import { Card, CardContent, Typography, Box } from "@mui/material";
+import { Card, Typography, Box } from "@mui/material";
 import { Link } from "gatsby";
+import {
+  StaticImage,
+  GatsbyImage,
+  IGatsbyImageData,
+} from "gatsby-plugin-image";
 
 interface SearchResultCardProps {
   title: string;
@@ -9,6 +14,7 @@ interface SearchResultCardProps {
   slug?: string;
   cardType?: string;
   ID_Case?: number;
+  image: IGatsbyImageData;
 }
 
 const SearchResultCard: React.FC<SearchResultCardProps> = ({
@@ -18,16 +24,16 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   author,
   slug,
   ID_Case,
+  image,
 }) => {
+  let url;
 
-  let url
-  
   if (cardType === "usecases" && ID_Case !== undefined) {
     url = `/${cardType}/${slug}/${ID_Case}`;
   } else {
     url = `/${cardType}/${slug}`;
   }
-  
+
   const formatDate = (dateStr: string) => {
     const dateObj = new Date(dateStr);
     return dateObj.toLocaleString("en-US", {
@@ -38,15 +44,11 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   };
 
   return (
-    
-    <Link
-      style={{ textDecoration: "none", color: "white" }}
-      to={`${url}`}
-    >
+    <Link style={{ textDecoration: "none", color: "white" }} to={`${url}`}>
       <Card
         className="px-6 py-4"
         sx={{
-          height: "150px",
+          height: "250px",
           display: "flex",
           flexDirection: "column",
           "&:hover": {
@@ -54,7 +56,46 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           },
         }}
       >
-        <Box className="p-0" sx={{ flexGrow: 1, alignItems: "center" }}>
+        {image ? (
+          <Box
+            sx={{
+              height: "150px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              borderRadius: 2,
+            }}
+          >
+            <GatsbyImage
+              className="h-100 object-cover thumbnail"
+              image={image}
+              alt={"test"}
+              style={{ width: "75%" }}
+            />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              height: "150px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+              borderRadius: 2,
+            }}
+          >
+            <StaticImage
+              src="https://i.ibb.co/Bq2J6JT/Static-Thumbnail.png"
+              className="thumbnail"
+              alt="Placeholder"
+            />
+          </Box>
+        )}
+        <Box
+          className="p-0"
+          sx={{ flexGrow: 1, alignItems: "center", marginTop: 1 }}
+        >
           <Typography
             sx={{ fontWeight: 700, fontSize: "1rem" }}
             variant="h6"
