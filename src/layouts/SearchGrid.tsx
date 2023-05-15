@@ -61,7 +61,7 @@ const SearchGrid: React.FC<BaseGridProps> = ({
   return (
     <Grid container spacing={3}>
       {cardData.map((card, index) => (
-        <Grid item xs={12} sm={6} key={index}>
+        <Grid item xs={12} sm={12} md={6} key={index}>
           {renderItem(card)}
         </Grid>
       ))}
