@@ -34,7 +34,6 @@ const CategoryLink = ({ category, currentCategory, onClick, children }) => (
 
 const SearchPage: React.FC = () => {
   const { searchValue } = useSearchValueContext();
-
   const [query, setQuery] = useState(searchValue);
   const [category, setCategory] = useState(CATEGORY_POSTS); // Set default category here
 
@@ -127,7 +126,7 @@ const SearchPage: React.FC = () => {
               </Grid>
               <Grid item xs={12}>
                 <CustomSearchBox
-                  defaultQuery={query}
+                  defaultQuery={searchValue}
                   setDefaultQuery={setQuery}
                 />
               </Grid>

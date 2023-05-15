@@ -67,12 +67,14 @@ export default function SearchBar() {
       e.preventDefault();
       addSearchValue(searchTerm);
       navigate("/search");
+      setSearchTerm("");
     }
   };
   const handleOnClick = (e: any) => {
     e.preventDefault();
     addSearchValue(searchTerm);
     navigate("/search");
+    setSearchTerm("");
   };
 
   return (
@@ -89,6 +91,7 @@ export default function SearchBar() {
       }}
     >
       <InputBase
+        value={searchTerm}
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Planet Cassandra..."
         inputProps={{ "aria-label": "search google maps" }}
