@@ -15,6 +15,7 @@ import { Chip, Container, Grid, Typography } from "@mui/material";
 
 import CustomHits from "../layouts/SearchLayout/HitsLayout";
 import CustomSearchBox from "../layouts/SearchLayout/CustomSearchBox";
+//@ts-ignore
 import { Helmet } from "react-helmet";
 import MyRefinementList from "../layouts/SearchLayout/CustomRefinementList";
 const CATEGORY_USECASES = "usecases";
