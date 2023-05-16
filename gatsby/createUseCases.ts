@@ -41,10 +41,17 @@ interface CompanyData {
           };
         }[];
         gatsbyImageData: IGatsbyImageData | null;
+        downloadedImages: {
+          id: string;
+          childImageSharp: {
+            gatsbyImageData: IGatsbyImageData;
+          }
+        }[];
       };
     }[];
   };
 }
+
 
 
 interface LogoFile {
@@ -67,19 +74,26 @@ function mapCompanyLogosToUseCases(
   allFile: LogoFile[]
 ): any[] {
   return useCasesData.map((node) => {
-    const companyName = node.data.Case_Company[0]?.data.Name.split(" ")
-      .join("")
-      .toLowerCase();
-    const logoFile = allFile.find(
-      (file) => file.name === `case.logo.${companyName}`
-    );
+    const hasCachedImage = node.data.downloadedImages?.childImageSharp?.gatsbyImageData !== undefined;
+    
+    if (hasCachedImage) {
+      return node.data;
+    } else {
+      const companyName = node.data.Case_Company[0]?.data.Name.split(" ")
+        .join("")
+        .toLowerCase();
+      const logoFile = allFile.find(
+        (file) => file.name === `case.logo.${companyName}`
+      );
 
-    return {
-      ...node.data,
-      gatsbyImageData: logoFile?.childrenImageSharp[0]?.gatsbyImageData || null,
-    };
+      return {
+        ...node.data,
+        gatsbyImageData: logoFile?.childrenImageSharp[0]?.gatsbyImageData || null,
+      };
+    }
   });
 }
+
 
 export const createUseCases = async ({
   createPage,
@@ -194,6 +208,12 @@ function getAllUseCases(graphql) {
             id
           }
           Case_Published
+        }
+        downloadedImages {
+          id
+          childImageSharp {
+            gatsbyImageData
+          }
         }
       }
       
