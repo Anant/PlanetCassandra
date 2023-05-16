@@ -116,6 +116,17 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'Airtable', 
+        imagePath: 'data.Attachments', 
+        name: 'downloadedImages',
+        type: 'array',
+        //@ts-ignore
+        prepareUrl: attachment => attachment ? attachment.url : null,
+      },
+    },    
+    {
       resolve: `gatsby-source-airtable`,
       options: {
         //Add to ENV File

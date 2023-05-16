@@ -35,6 +35,7 @@
     "gatsby-plugin-mailchimp": "^5.2.2",
     "gatsby-plugin-manifest": "^5.4.0",
     "gatsby-plugin-mdx": "^5.4.0",
+    "gatsby-plugin-remote-images": "^3.6.6",
     "gatsby-plugin-sharp": "^5.4.0",
     "gatsby-plugin-sitemap": "^6.4.0",
     "gatsby-source-airtable": "^2.3.0",
