@@ -130,6 +130,7 @@ query UseCasesDataListing {
         Case_URL
         Case_Name
         Case_Published
+        Case_Description
         ID_Case
         Case_Company {
           data {
@@ -165,6 +166,7 @@ query NewsAlgolia {
       title
       id
       link
+      contentSnippet
       pubDate
     }
   }
