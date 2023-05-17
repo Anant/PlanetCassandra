@@ -8,7 +8,6 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 
 function CustomHits({ props, cardType }: any) {
   const { hits, results, sendEvent } = useHits(props);
-  console.log("🚀 ~ file: HitsLayout.tsx:10 ~ CustomHits ~ hits:", hits);
   const data = useStaticQuery(graphql`
     query LogoImages {
       allAirtable(
@@ -72,8 +71,10 @@ function CustomHits({ props, cardType }: any) {
     pubDate: hit.pubDate,
     ID_Case: hit.data ? hit.data.ID_Case : undefined,
     image:
-      hit.featuredImage?.node.localFile.childImageSharp.gatsbyImageData ||
-      test(hit),
+      cardType !== "leaf"
+        ? hit.featuredImage?.node.localFile.childImageSharp.gatsbyImageData ||
+          test(hit)
+        : undefined,
   }));
 
   if (cardType === "usecases") {
