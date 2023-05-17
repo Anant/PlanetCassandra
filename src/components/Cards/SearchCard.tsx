@@ -8,6 +8,7 @@ import {
 } from "gatsby-plugin-image";
 
 interface SearchResultCardProps {
+  id: string;
   title: string;
   date: string;
   author?: string;
@@ -18,6 +19,7 @@ interface SearchResultCardProps {
 }
 
 const SearchResultCard: React.FC<SearchResultCardProps> = ({
+  id,
   cardType,
   title,
   date,
@@ -71,7 +73,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
               className="h-100 object-cover thumbnail"
               image={image}
               alt={"test"}
-              style={{ width: "75%" }}
+              style={{ width: cardType == "usecases" ? "75%" : "100%" }}
             />
           </Box>
         ) : (

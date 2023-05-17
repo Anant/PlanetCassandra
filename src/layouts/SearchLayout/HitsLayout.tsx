@@ -1,5 +1,5 @@
 import { useHits } from "react-instantsearch-hooks-web";
-import React from "react";
+import React, { useMemo } from "react";
 import getSlug from "speakingurl";
 import SearchGrid from "../SearchGrid";
 import SearchResultCard from "../../components/Cards/SearchCard";
@@ -11,8 +11,8 @@ function CustomHits({ props, cardType }: any) {
   const data = useStaticQuery(graphql`
     query LogoImages {
       allAirtable(
-        filter: {table: {eq: "Cases"}}
-        sort: {data: {Case_Published: DESC}}
+        filter: { table: { eq: "Cases" } }
+        sort: { data: { Case_Published: DESC } }
       ) {
         nodes {
           data {
@@ -24,19 +24,45 @@ function CustomHits({ props, cardType }: any) {
               gatsbyImageData
             }
           }
+          parent {
+            id
+          }
+        }
+      }
+      allFile(filter: { id: { ne: null } }) {
+        nodes {
+          name
+          childrenImageSharp {
+            gatsbyImageData
+          }
+          parent {
+            id
+          }
         }
       }
     }
   `);
 
   let getImage = (ID_Case: number) => {
-    const caseData = data.allAirtable.nodes.find((node: any) => node.data.ID_Case === ID_Case);
-    console.log(caseData)
-    return caseData?.downloadedImages[0]?.childImageSharp.gatsbyImageData || undefined;
-    
+    const caseData = data.allAirtable.nodes.find(
+      (node: any) => node.data.ID_Case === ID_Case
+    );
+    return (
+      caseData?.downloadedImages[0]?.childImageSharp.gatsbyImageData ||
+      undefined
+    );
   };
 
+  let images = data.allFile.nodes;
+  const test = (hit: any) => {
+    let a = [hit].map((card) => {
+      const image = images.find((img: any) => img.parent?.id === card.id);
+      return image?.childrenImageSharp[0].gatsbyImageData || undefined;
+    });
+    return a[0] || undefined;
+  };
   let formattedHits = hits.map((hit: any) => ({
+    id: hit.id,
     title: hit.title,
     date: hit.date,
     slug: hit.slug ? hit.slug : "",
@@ -44,11 +70,16 @@ function CustomHits({ props, cardType }: any) {
     wallabag_created_at: hit.wallabag_created_at,
     pubDate: hit.pubDate,
     ID_Case: hit.data ? hit.data.ID_Case : undefined,
-    image: undefined,
+    image:
+      cardType !== "leaf"
+        ? hit.featuredImage?.node.localFile.childImageSharp.gatsbyImageData ||
+          test(hit)
+        : undefined,
   }));
 
   if (cardType === "usecases") {
     formattedHits = hits.map((hit: any) => ({
+      id: hit.id,
       title: hit.data?.Case_Name,
       date: hit.data?.Case_Published,
       author: null,
@@ -61,6 +92,7 @@ function CustomHits({ props, cardType }: any) {
   }
 
   const renderCard = (card: {
+    id: string;
     ID_Case: number | undefined;
     pubDate: any;
     wallabag_created_at: any;
@@ -77,6 +109,7 @@ function CustomHits({ props, cardType }: any) {
 
     return (
       <SearchResultCard
+        id={card.id}
         title={card.title}
         date={card.pubDate || card.date || card.wallabag_created_at}
         author={card.author}
