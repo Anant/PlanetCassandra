@@ -44,7 +44,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
 
   return (
     <Grid
-      sx={{ borderBottom: "1px solid black", marginBottom: 5 }}
+      sx={{ borderBottom: "1px solid black", marginBottom: 5, paddingY: 2 }}
       container
       spacing={2}
     >
