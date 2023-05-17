@@ -90,8 +90,8 @@ const SearchPage: React.FC = () => {
           indexName="PlanetCassandraUseCases"
           searchClient={searchClient}
           insights
-          // searchState={{ query }}
-          // onSearchStateChange={({ query }) => setQuery(query)}
+        // searchState={{ query }}
+        // onSearchStateChange={({ query }) => setQuery(query)}
         >
           <Container maxWidth="xl">
             <Grid container spacing={2} paddingTop="20px">
@@ -148,7 +148,14 @@ const SearchPage: React.FC = () => {
                   flexItem
                   sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
                 >
-                  Posts
+                  <Typography
+                    sx={{
+                      fontFamily: "Roboto Condensed, sans-serif",
+                      fontWeight: 700,
+                      fontSize: "2rem",
+                    }}>
+                    Posts
+                  </Typography>
                 </Divider>
               </Box>
               <Container maxWidth="xl" sx={{ marginY: 3 }}>
@@ -217,7 +224,14 @@ const SearchPage: React.FC = () => {
                   flexItem
                   sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
                 >
-                  News
+                  <Typography
+                    sx={{
+                      fontFamily: "Roboto Condensed, sans-serif",
+                      fontWeight: 700,
+                      fontSize: "2rem",
+                    }}>
+                      News
+                      </Typography>
                 </Divider>
               </Box>
 
@@ -243,7 +257,13 @@ const SearchPage: React.FC = () => {
                   flexItem
                   sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
                 >
-                  Links
+                  <Typography
+                    sx={{
+                      fontFamily: "Roboto Condensed, sans-serif",
+                      fontWeight: 700,
+                      fontSize: "2rem",
+                    }}>
+                      Links</Typography>
                 </Divider>
               </Box>
               <Container maxWidth="xl" sx={{ marginY: 3 }}>
@@ -297,7 +317,14 @@ const SearchPage: React.FC = () => {
                   flexItem
                   sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
                 >
-                  Use Cases
+                  <Typography
+                    sx={{
+                      fontFamily: "Roboto Condensed, sans-serif",
+                      fontWeight: 700,
+                      fontSize: "2rem",
+                    }}>
+                      Use Cases
+                      </Typography>
                 </Divider>
               </Box>
               <Container maxWidth="xl" sx={{ marginY: 3 }}>
