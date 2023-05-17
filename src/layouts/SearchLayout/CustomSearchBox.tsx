@@ -32,7 +32,6 @@ function CustomSearchBox({ props, defaultQuery, setDefaultQuery }: any) {
             marginLeft: 1,
             flex: 1,
           }}
-          defaultValue={defaultQuery}
           value={defaultQuery}
           placeholder="Search Planet Cassandra"
           inputProps={{ "aria-label": "Search Planet Cassandra" }}

@@ -19,6 +19,15 @@ interface WpPost {
       name: string;
     }[];
   };
+  featuredImage: {
+    node: {
+      localFile: {
+        childImageSharp: {
+          gatsbyImageData: any;
+        };
+      };
+    };
+  };
 }
 
 interface QueryResult {
@@ -69,6 +78,12 @@ interface UseCaseAlgoliaData {
           };
         };
       };
+      downloadedImages: {
+        id: string;
+        childImageSharp: {
+          gatsbyImageData: any;
+        };
+      }[];
     }[];
   };
 }
@@ -112,6 +127,15 @@ query PostsAlgolia {
           name
         }
       }
+      featuredImage {
+        node {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
     }
   }
 }
@@ -151,6 +175,12 @@ query UseCasesDataListing {
           data {
             Industry_Name
           }
+        }
+      }
+      downloadedImages {
+        id
+        childImageSharp {
+          gatsbyImageData
         }
       }
     }
@@ -224,15 +254,14 @@ const queries = [
     query: Leavesquery,
     queryVariables: {},
     transformer: ({ data }: { data: LeavesAlgoliaData }) =>
-      data.allApiLeaves.nodes.map(node => ({
+      data.allApiLeaves.nodes.map((node) => ({
         ...node,
-        objectID: node.alternative_id,  // Use alternative_id as objectID
+        objectID: node.alternative_id, // Use alternative_id as objectID
       })),
     indexName: "PlanetCassandraLeaves",
     settings: {},
     mergeSettings: false,
   },
-  
 ];
 
 module.exports = queries;
