@@ -41,13 +41,13 @@ interface CompanyData {
           };
         }[];
         gatsbyImageData: IGatsbyImageData | null;
-        downloadedImages: {
-          id: string;
-          childImageSharp: {
-            gatsbyImageData: IGatsbyImageData;
-          }
-        }[];
       };
+      downloadedImages: {
+        id: string;
+        childImageSharp: {
+          gatsbyImageData: IGatsbyImageData;
+        }
+      }[];
     }[];
   };
 }
@@ -74,10 +74,13 @@ function mapCompanyLogosToUseCases(
   allFile: LogoFile[]
 ): any[] {
   return useCasesData.map((node) => {
-    const hasCachedImage = node.data.downloadedImages?.childImageSharp?.gatsbyImageData !== undefined;
+    const hasCachedImage = node.downloadedImages[0]?.childImageSharp?.gatsbyImageData !== undefined;
     
     if (hasCachedImage) {
-      return node.data;
+      return {
+        ...node.data,
+        gatsbyImageData: node.downloadedImages[0]?.childImageSharp?.gatsbyImageData || null,
+      };
     } else {
       const companyName = node.data.Case_Company[0]?.data.Name.split(" ")
         .join("")
