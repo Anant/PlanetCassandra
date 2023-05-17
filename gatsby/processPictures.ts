@@ -31,6 +31,8 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
     'https://docs.d2iq.com/mesosphere/dcos/services/cassandra/2.9.0-3.11.6/security/',
     '/www.an10.io/',
     'itnext.io',
+    'https://susant.medium.com/simple-way-to-install-cassandra-in-windows-10-6497e93989e6',
+    'https://jaxenter.com/apache-cassandra-4-1-177390.html',
     '/www.an10.io/',
     'baeldung.com',
     '/levelup.gitconnected',
