@@ -24,6 +24,12 @@ interface CompanyData {
         }[];
         gatsbyImageData: IGatsbyImageData | null;
       };
+      downloadedImages: {
+        id: string;
+        childImageSharp: {
+          gatsbyImageData: IGatsbyImageData;
+        }
+      }[];
     }[];
   };
 }
@@ -41,16 +47,9 @@ const Companies: React.FC<CompanyData> = () => {
   const allFile = data.allFile.nodes as LogoFile[];
 
   const currentCompanies = allAirtable.nodes.map((node) => {
-    const companyName = node.data.Case_Company[0]?.data.Name.split(' ')
-      .join('')
-      .toLowerCase();
-    const logoFile = allFile.find(
-      (file) => file.name === `case.logo.${companyName}`
-    );
-
     return {
       ...node.data,
-      gatsbyImageData: logoFile?.childrenImageSharp[0]?.gatsbyImageData || null,
+      gatsbyImageData: node?.downloadedImages[0]?.childImageSharp?.gatsbyImageData || null,
     };
   });
   return (
@@ -97,6 +96,12 @@ const query = graphql`
             data {
               Name
             }
+          }
+        }
+        downloadedImages {
+          id
+          childImageSharp {
+            gatsbyImageData
           }
         }
       }
