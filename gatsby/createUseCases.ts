@@ -77,7 +77,10 @@ function mapCompanyLogosToUseCases(
     const hasCachedImage = node.downloadedImages[0]?.childImageSharp?.gatsbyImageData !== undefined;
     
     if (hasCachedImage) {
-      return node.data;
+      return {
+        ...node.data,
+        gatsbyImageData: node.downloadedImages[0]?.childImageSharp?.gatsbyImageData || null,
+      };
     } else {
       const companyName = node.data.Case_Company[0]?.data.Name.split(" ")
         .join("")
