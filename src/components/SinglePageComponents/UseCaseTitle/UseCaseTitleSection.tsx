@@ -48,7 +48,7 @@ const UseCaseTitleSection: React.FC<UseCaseTitleSectionProps> = ({
       container
       spacing={2}
     >
-      <Grid item xs={12} sm={6}>
+      <Grid sx={{ display: "flex" }} item xs={12} sm={6}>
         <ThumbnailImage thumbnail={thumbnail} />
       </Grid>
       <Grid
