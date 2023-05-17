@@ -28,7 +28,6 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   ID_Case,
   image,
 }) => {
-  console.log("🚀 ~ file: SearchCard.tsx:31 ~ image:", image);
   let url;
 
   if (cardType === "usecases" && ID_Case !== undefined) {

@@ -48,7 +48,6 @@ function CustomHits({ props, cardType }: any) {
     const caseData = data.allAirtable.nodes.find(
       (node: any) => node.data.ID_Case === ID_Case
     );
-    console.log(caseData);
     return (
       caseData?.downloadedImages[0]?.childImageSharp.gatsbyImageData ||
       undefined
@@ -56,7 +55,6 @@ function CustomHits({ props, cardType }: any) {
   };
 
   let images = data.allFile.nodes;
-  console.log("🚀 ~ file: HitsLayout.tsx:33 ~ CustomHits ~ images:", images);
   const test = (hit: any) => {
     let a = [hit].map((card) => {
       const image = images.find((img: any) => img.parent?.id === card.id);
