@@ -1,19 +1,17 @@
 import { useHits } from "react-instantsearch-hooks-web";
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import getSlug from "speakingurl";
 import SearchGrid from "../SearchGrid";
 import SearchResultCard from "../../components/Cards/SearchCard";
 import { useStaticQuery, graphql } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
-function CustomHits({ props, cardType }: any) {
+function CustomHits({ props, cardType, setNumHits }: any) {
   const { hits, results, sendEvent } = useHits(props);
+
   const data = useStaticQuery(graphql`
     query LogoImages {
-      allAirtable(
-        filter: { table: { eq: "Cases" } }
-        sort: { data: { Case_Published: DESC } }
-      ) {
+      allAirtable(filter: {}, sort: { data: { Case_Published: DESC } }) {
         nodes {
           data {
             ID_Case
@@ -40,6 +38,16 @@ function CustomHits({ props, cardType }: any) {
           }
         }
       }
+      allApiLeaves(limit: 100, sort: { wallabag_created_at: DESC }) {
+        nodes {
+          tags
+          title
+          wallabag_created_at
+          description
+          id
+          alternative_id
+        }
+      }
     }
   `);
 
@@ -54,13 +62,26 @@ function CustomHits({ props, cardType }: any) {
   };
 
   let images = data.allFile.nodes;
-  const test = (hit: any) => {
+  const newsImage = (hit: any) => {
     let a = [hit].map((card) => {
-      const image = images.find((img: any) => img.parent?.id === card.id);
-      return image?.childrenImageSharp[0].gatsbyImageData || undefined;
+      const filteredImages = images.filter(
+        (img: any) => img.parent && img.parent.id === card?.id
+      );
+      const image = filteredImages[0];
+      return image?.childrenImageSharp[0]?.gatsbyImageData || undefined;
     });
     return a[0] || undefined;
   };
+  const allLeaves = data.allApiLeaves.nodes;
+
+  const leafImage = (hit: any) => {
+    const leaf = allLeaves.find(
+      (leaf: any) => leaf.alternative_id === hit.objectID
+    );
+    let test = newsImage(leaf);
+    return test;
+  };
+
   let formattedHits = hits.map((hit: any) => ({
     id: hit.id,
     title: hit.title,
@@ -73,8 +94,8 @@ function CustomHits({ props, cardType }: any) {
     image:
       cardType !== "leaf"
         ? hit.featuredImage?.node.localFile.childImageSharp.gatsbyImageData ||
-          test(hit)
-        : undefined,
+          newsImage(hit)
+        : leafImage(hit),
   }));
 
   if (cardType === "usecases") {
