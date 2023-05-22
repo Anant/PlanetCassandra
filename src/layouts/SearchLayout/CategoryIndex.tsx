@@ -23,7 +23,13 @@ function CategoryIndex({
           <Box sx={{ width: "100%" }}>
             <Divider
               flexItem
-              sx={{ width: "100%", fontSize: "30px", color: "#5ab1bb" }}
+              sx={{
+                width: "100%",
+                fontSize: "30px",
+                color: "#5ab1bb",
+                fontFamily: "Roboto Condensed, sans-serif",
+                fontWeight: 700,
+              }}
             >
               {title}
             </Divider>
