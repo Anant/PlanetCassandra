@@ -8,6 +8,9 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 
 function CustomHits({ props, cardType, setNumHits }: any) {
   const { hits, results, sendEvent } = useHits(props);
+  useEffect(() => {
+    setNumHits(hits.length);
+  }, [hits]);
 
   const data = useStaticQuery(graphql`
     query LogoImages {

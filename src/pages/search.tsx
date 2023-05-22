@@ -86,7 +86,7 @@ const SearchPage: React.FC = (props) => {
           searchClient={searchClient}
           insights
         >
-          <Container maxWidth="xl">
+          <Container maxWidth="xl" sx={{ marginY: 2 }}>
             <Grid container spacing={2} paddingTop="20px">
               <Grid item xs={12}>
                 {categoryData.map((data) => (
@@ -110,6 +110,7 @@ const SearchPage: React.FC = (props) => {
           </Container>
           {(category === CATEGORY_USECASES || category === CATEGORY_ALL) && (
             <CategoryIndex
+              category={category}
               cardType={"usecases"}
               indexName={"PlanetCassandraUseCases"}
               title={"Use Cases"}
@@ -128,6 +129,7 @@ const SearchPage: React.FC = (props) => {
           )}
           {(category === CATEGORY_POSTS || category === CATEGORY_ALL) && (
             <CategoryIndex
+              category={category}
               cardType={"post"}
               indexName={"PlanetCassandraPosts"}
               title={"Posts"}
@@ -140,6 +142,7 @@ const SearchPage: React.FC = (props) => {
           )}
           {(category === CATEGORY_NEWS || category === CATEGORY_ALL) && (
             <CategoryIndex
+              category={category}
               cardType={"news"}
               indexName={"PlanetCassandraNews"}
               title={"News"}
@@ -148,6 +151,7 @@ const SearchPage: React.FC = (props) => {
           )}
           {(category === CATEGORY_LINKS || category === CATEGORY_ALL) && (
             <CategoryIndex
+              category={category}
               cardType={"leaf"}
               indexName={"PlanetCassandraLeaves"}
               title={"Links"}
