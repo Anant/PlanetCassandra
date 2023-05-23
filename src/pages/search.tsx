@@ -49,14 +49,14 @@ const categoryData = [
 const SearchPage: React.FC = (props) => {
   const { searchValue } = useSearchValueContext();
   const [query, setQuery] = useState(searchValue);
-  const [category, setCategory] = useState<string>(CATEGORY_POSTS);
+  const [category, setCategory] = useState<string>(CATEGORY_ALL);
 
   useEffect(() => {
     const storedCategory = localStorage.getItem("selectedCategory");
     if (storedCategory) {
       setCategory(JSON.parse(storedCategory));
     }
-  }, []);
+  }, [searchValue]);
 
   useEffect(() => {
     localStorage.setItem("selectedCategory", JSON.stringify(category));
