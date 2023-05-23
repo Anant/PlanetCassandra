@@ -1,12 +1,16 @@
 import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import { Box, Typography, Button } from "@mui/material";
+
+import {
+  Box,
+  Typography,
+  Button,
+  CardContent,
+  CardActions,
+  Card,
+} from "@mui/material";
 import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
-import { CiFacebook, CiLinkedin, CiTwitter } from "react-icons/ci";
 import { Link } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import getSlug from "speakingurl";
 
 interface Props {
@@ -16,7 +20,12 @@ interface Props {
   ID_Case: number;
 }
 
-const UseCaseCard = ({ name, description, ID_Case, gatsbyImageData }: Props) => {
+const UseCaseCard = ({
+  name,
+  description,
+  ID_Case,
+  gatsbyImageData,
+}: Props) => {
   let caseUrl = `/usecases/${getSlug(name)}/${ID_Case}`;
   // if (url && url.includes("https://planetcassandra.org")) {
   //   let newUrl = url.replace("https://planetcassandra.org/post/", "");
@@ -57,9 +66,10 @@ const UseCaseCard = ({ name, description, ID_Case, gatsbyImageData }: Props) => 
             }}
           >
             <GatsbyImage
-              className="w-full h-100 object-cover thumbnail"
+              className="w-full h-100 object-contain thumbnail"
               image={gatsbyImageData}
               alt={name}
+              imgStyle={{ objectFit: "contain" }}
             />
           </Box>
         ) : (
