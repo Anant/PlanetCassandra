@@ -68,7 +68,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
   const newsImage = (hit: any) => {
     let a = [hit].map((card) => {
       const filteredImages = images.filter(
-        (img: any) => img.parent && img.parent.id === card?.id
+        (img: any) => img.parent && img.parent.id == card?.id
       );
       const image = filteredImages[0];
       return image?.childrenImageSharp[0]?.gatsbyImageData || undefined;
@@ -79,7 +79,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
 
   const leafImage = (hit: any) => {
     const leaf = allLeaves.find(
-      (leaf: any) => leaf.alternative_id === hit.objectID
+      (leaf: any) => leaf.alternative_id == hit.objectID
     );
     let test = newsImage(leaf);
     return test;
