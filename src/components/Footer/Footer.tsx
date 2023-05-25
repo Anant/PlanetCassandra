@@ -1,10 +1,10 @@
-import React from 'react';
-import { Grid, Typography, Container, Box, Button } from '@mui/material';
-import { StaticImage } from 'gatsby-plugin-image';
-import { Input, ConfigProvider } from 'antd';
-import { AiOutlineSend } from 'react-icons/ai';
-import { Link } from 'gatsby';
-import CommunitySection from '../CommunitySection/CommunitySection';
+import React from "react";
+import { Grid, Typography, Container, Box, Button } from "@mui/material";
+import { StaticImage } from "gatsby-plugin-image";
+import { Input, ConfigProvider } from "antd";
+import { AiOutlineSend } from "react-icons/ai";
+import { Link } from "gatsby";
+import CommunitySection from "../CommunitySection/CommunitySection";
 
 const Footer = () => {
   const { Search } = Input;
@@ -23,7 +23,7 @@ const Footer = () => {
           paddingY={{ xs: 2, sm: 5, md: 10 }}
         >
           <Grid
-            sx={{ textAlign: { xs: 'center', md: 'start' } }}
+            sx={{ textAlign: { xs: "center", md: "start" } }}
             item
             xs={12}
             md={6}
@@ -36,33 +36,33 @@ const Footer = () => {
             />
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
+                display: "flex",
+                justifyContent: "space-between",
                 marginTop: 5,
-                width: '60%',
-                marginInline: { xs: 'auto', md: 0 },
+                width: "60%",
+                marginInline: { xs: "auto", md: 0 },
               }}
             >
-              <Link style={{ textDecoration: 'none', color: 'white' }} to={`/`}>
-                <Typography color={'white'}>What's New?</Typography>
+              <Link style={{ textDecoration: "none", color: "white" }} to={`/`}>
+                <Typography color={"white"}>What's New?</Typography>
               </Link>
               <Link
-                style={{ textDecoration: 'none', color: 'white' }}
+                style={{ textDecoration: "none", color: "white" }}
                 to={`https://blog.planetcassandra.org/events/`}
               >
-                <Typography color={'white'}>Events</Typography>
+                <Typography color={"white"}>Events</Typography>
               </Link>
               <Link
-                style={{ textDecoration: 'none', color: 'white' }}
+                style={{ textDecoration: "none", color: "white" }}
                 to={`/usecases`}
               >
-                <Typography color={'white'}>Use Cases</Typography>
+                <Typography color={"white"}>Use Cases</Typography>
               </Link>
             </Box>
             <Typography
               sx={{
                 marginTop: 5,
-                width:{lg:'85%'}
+                width: { lg: "85%" },
               }}
               color="#5AB1BB"
               variant="subtitle1"
@@ -76,9 +76,9 @@ const Footer = () => {
               sx={{
                 fontSize: 12,
                 marginTop: 10,
-                width:{lg:'85%'}
+                width: { lg: "85%" },
               }}
-              color={'white'}
+              color={"white"}
               variant="subtitle1"
             >
               © 2009-2023 The Apache Software Foundation under the terms of the
@@ -91,22 +91,22 @@ const Footer = () => {
           <Grid item xs={12} md={6}>
             <Box
               sx={{
-                backgroundColor: '#5AB1BB',
+                backgroundColor: "#5AB1BB",
                 padding: 3,
                 borderRadius: 5,
-                margin: 'auto',
+                margin: "auto",
               }}
             >
-              <Typography marginBottom={2} variant="h4" color={'white'}>
-                Get Involved with PlanetCassandra!
+              <Typography marginBottom={2} variant="h4" color={"white"}>
+                Get Involved with Planet Cassandra!
               </Typography>
-              <Typography variant="subtitle2" color={'black'}>
+              <Typography variant="subtitle2" color={"black"}>
                 We believe that the power of the Planet Cassandra community lies
                 in the contributions of its members. Do you have content,
                 articles, videos, or use cases you want to share with the world?
               </Typography>
               <Link
-                style={{ textDecoration: 'none', color: 'white' }}
+                style={{ textDecoration: "none", color: "white" }}
                 to={`https://planetcassandra.org/contribute/`}
               >
                 <Button
@@ -114,7 +114,7 @@ const Footer = () => {
                     fontSize: { xs: 11, sm: 15, md: 12, lg: 14 },
                     borderRadius: 50,
                     margin: 2,
-                    backgroundColor: '#344D67',
+                    backgroundColor: "#344D67",
                   }}
                   variant="contained"
                   className="Font_Mulish_Button_L"

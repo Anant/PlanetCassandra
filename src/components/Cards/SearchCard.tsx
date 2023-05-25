@@ -70,10 +70,11 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
             }}
           >
             <GatsbyImage
-              className="h-100 object-cover thumbnail"
+              className="h-100 object-contain thumbnail"
               image={image}
               alt={"test"}
               style={{ width: cardType == "usecases" ? "75%" : "100%" }}
+              imgStyle={{ objectFit: "contain" }}
             />
           </Box>
         ) : (

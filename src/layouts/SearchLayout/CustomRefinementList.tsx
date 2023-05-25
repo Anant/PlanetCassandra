@@ -1,35 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { RefinementList } from "react-instantsearch-hooks-web";
-
-const MyRefinementList = ({ attribute }: any) => {
-  //   const [totalItems, setTotalItems] = useState(0);
-  //   console.log(
-  //     "🚀 ~ file: CustomRefinementList.tsx:6 ~ MyRefinementList ~ totalItems:",
-  //     totalItems
-  //   );
-  //   const [limit, setLimit] = useState(100);
-
-  //   const [hasCalculatedTotalItems, setHasCalculatedTotalItems] = useState(false);
-
-  //   const handleTransformItems = (items: any) => {
-  //     if (hasCalculatedTotalItems === false) {
-  //       console.log("entered", hasCalculatedTotalItems);
-
-  //       setTotalItems(items.length);
-  //       setHasCalculatedTotalItems(true);
-  //     }
-  //     return items;
-  //   };
-  //   useEffect(() => {
-  //     if (hasCalculatedTotalItems === true) {
-  //       console.log("entered here");
-
-  //       setLimit(7);
-  //     }
-  //   }, [hasCalculatedTotalItems]);
-
+import {
+  RefinementList,
+  useRefinementList,
+} from "react-instantsearch-hooks-web";
+import { Typography } from "@mui/material";
+const MyRefinementList = ({ attribute, label }: any) => {
   return (
     <>
+      <Typography
+        sx={{
+          fontWeight: 700,
+          fontSize: "1.25rem",
+          fontFamily: "Roboto Condensed, sans-serif",
+        }}
+      >
+        {label}
+      </Typography>
       <RefinementList attribute={attribute} showMore={true} limit={7} />
     </>
   );
