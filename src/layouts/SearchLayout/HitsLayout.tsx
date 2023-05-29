@@ -105,11 +105,11 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     formattedHits = hits.map((hit: any) => ({
       id: hit.id,
       title: hit.data?.Case_Name,
-      date: hit.data?.Case_Published,
+      date: hit.data?.Created,
       author: null,
       slug: "",
-      wallabag_created_at: hit.data?.Case_Published,
-      pubDate: hit.data?.Case_Published,
+      wallabag_created_at: hit.data?.Created,
+      pubDate: hit.data?.Created,
       ID_Case: hit.data.ID_Case,
       image: getImage(hit.data.ID_Case),
     }));
