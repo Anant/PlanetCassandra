@@ -80,13 +80,13 @@ const SearchPage: React.FC = (props) => {
         <meta property="og:title" content={"Search - Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
       </Helmet>
-      <Grid container>
-        <InstantSearch
-          indexName="PlanetCassandraUseCases"
-          searchClient={searchClient}
-          insights
-        >
-          <Container maxWidth="xl" sx={{ marginY: 2 }}>
+      <Container maxWidth="xl" sx={{ marginY: 2 }}>
+        <Grid container>
+          <InstantSearch
+            indexName="PlanetCassandraUseCases"
+            searchClient={searchClient}
+            insights
+          >
             <Grid container spacing={2} paddingTop="20px">
               <Grid item xs={12}>
                 {categoryData.map((data) => (
@@ -107,62 +107,62 @@ const SearchPage: React.FC = (props) => {
                 />
               </Grid>
             </Grid>
-          </Container>
-          {(category === CATEGORY_USECASES || category === CATEGORY_ALL) && (
-            <CategoryIndex
-              category={category}
-              cardType={"usecases"}
-              indexName={"PlanetCassandraUseCases"}
-              title={"Use Cases"}
-              refinementLists={[
-                {
-                  attribute: "data.Case_Function.data.Function_Name",
-                  label: "Function",
-                },
-                { attribute: "data.Case_Stack.data.Name", label: "Stack" },
-                {
-                  attribute: "data.Case_Industry.data.Industry_Name",
-                  label: "Industry",
-                },
-              ]}
-            />
-          )}
-          {(category === CATEGORY_POSTS || category === CATEGORY_ALL) && (
-            <CategoryIndex
-              category={category}
-              cardType={"post"}
-              indexName={"PlanetCassandraPosts"}
-              title={"Posts"}
-              refinementLists={[
-                { attribute: "author.node.name", label: "Author" },
-                { attribute: "tags.nodes.name", label: "Tags" },
-                { attribute: "categories.nodes.name", label: "Categories" },
-              ]}
-            />
-          )}
-          {(category === CATEGORY_NEWS || category === CATEGORY_ALL) && (
-            <CategoryIndex
-              category={category}
-              cardType={"news"}
-              indexName={"PlanetCassandraNews"}
-              title={"News"}
-              refinementLists={[]}
-            />
-          )}
-          {(category === CATEGORY_LINKS || category === CATEGORY_ALL) && (
-            <CategoryIndex
-              category={category}
-              cardType={"leaf"}
-              indexName={"PlanetCassandraLeaves"}
-              title={"Links"}
-              refinementLists={[
-                { attribute: "tags", label: "Tags" },
-                { attribute: "domain_name", label: "Domain" },
-              ]}
-            />
-          )}
-        </InstantSearch>
-      </Grid>
+            {(category === CATEGORY_USECASES || category === CATEGORY_ALL) && (
+              <CategoryIndex
+                category={category}
+                cardType={"usecases"}
+                indexName={"PlanetCassandraUseCases"}
+                title={"Use Cases"}
+                refinementLists={[
+                  {
+                    attribute: "data.Case_Function.data.Function_Name",
+                    label: "Function",
+                  },
+                  { attribute: "data.Case_Stack.data.Name", label: "Stack" },
+                  {
+                    attribute: "data.Case_Industry.data.Industry_Name",
+                    label: "Industry",
+                  },
+                ]}
+              />
+            )}
+            {(category === CATEGORY_POSTS || category === CATEGORY_ALL) && (
+              <CategoryIndex
+                category={category}
+                cardType={"post"}
+                indexName={"PlanetCassandraPosts"}
+                title={"Posts"}
+                refinementLists={[
+                  { attribute: "author.node.name", label: "Author" },
+                  { attribute: "tags.nodes.name", label: "Tags" },
+                  { attribute: "categories.nodes.name", label: "Categories" },
+                ]}
+              />
+            )}
+            {(category === CATEGORY_NEWS || category === CATEGORY_ALL) && (
+              <CategoryIndex
+                category={category}
+                cardType={"news"}
+                indexName={"PlanetCassandraNews"}
+                title={"News"}
+                refinementLists={[]}
+              />
+            )}
+            {(category === CATEGORY_LINKS || category === CATEGORY_ALL) && (
+              <CategoryIndex
+                category={category}
+                cardType={"leaf"}
+                indexName={"PlanetCassandraLeaves"}
+                title={"Links"}
+                refinementLists={[
+                  { attribute: "tags", label: "Tags" },
+                  { attribute: "domain_name", label: "Domain" },
+                ]}
+              />
+            )}
+          </InstantSearch>
+        </Grid>
+      </Container>
     </Layout>
   );
 };

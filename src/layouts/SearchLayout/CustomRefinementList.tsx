@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import {
-  RefinementList,
-  useRefinementList,
-} from "react-instantsearch-hooks-web";
+import React from "react";
+import { RefinementList } from "react-instantsearch-hooks-web";
 import { Typography } from "@mui/material";
+import { AiOutlineDown, AiOutlineUp } from "react-icons/ai";
+
 const MyRefinementList = ({ attribute, label }: any) => {
   return (
     <>
@@ -16,7 +15,26 @@ const MyRefinementList = ({ attribute, label }: any) => {
       >
         {label}
       </Typography>
-      <RefinementList attribute={attribute} showMore={true} limit={7} />
+      <RefinementList
+        translations={{
+          //@ts-ignore
+          showMoreButtonText(options) {
+            const IconComponent = options.isShowingMore
+              ? AiOutlineUp
+              : AiOutlineDown;
+            const buttonText = options.isShowingMore ? "See less" : "See more";
+
+            return (
+              <>
+                <IconComponent style={{ marginRight: "5px" }} /> {buttonText}
+              </>
+            );
+          },
+        }}
+        attribute={attribute}
+        showMore={true}
+        limit={7}
+      />
     </>
   );
 };
