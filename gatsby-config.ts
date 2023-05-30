@@ -26,6 +26,7 @@ const config: GatsbyConfig = {
         "WP_GRAPHQL", 
         "GA_TRACKING_ID",
         "AIRTABLE_KEY_1",
+        "AIRTABLE_BASE",
         "AIRTABLE_KEY_2",
         "YOUTUBE_API_KEY",
         "LEAVES_URL",
@@ -129,32 +130,31 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-airtable`,
       options: {
-        //Add to ENV File
         apiKey: process.env.AIRTABLE_KEY_1,
         tables: [
           {
-            baseId: `appkXvRXvfrCvUx1Y`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Cases`,
             tableView: `Cases_Published`,
             tableLinks: ['Case_Company','Case_Function','Case_Industry','Case_Stack'],
           },
           {
-            baseId: `appkXvRXvfrCvUx1Y`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Company`,
             tableLinks: ['Cases'],
           },
           {
-            baseId: `appkXvRXvfrCvUx1Y`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Functions`,
             tableLinks: ['Cases'],
           },
           {
-            baseId: `appkXvRXvfrCvUx1Y`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Industry`,
             tableLinks: ['Cases'],
           },
           {
-            baseId: `appkXvRXvfrCvUx1Y`,
+            baseId: process.env.AIRTABLE_BASE,
             tableName: `Stack`,
             tableLinks: ['Cases'],
           },
@@ -175,14 +175,6 @@ const config: GatsbyConfig = {
         //Add to ENV File
         apiKey:  process.env.AIRTABLE_KEY_2,
         tables: [
-          // {
-          //   baseId: "appKPpuxHmcbNwiY5",
-          //   tableName: `Company`,
-          // },
-          // {
-          //   baseId: "appXnvVlKiaI5Qv4A",
-          //   tableName: `Glossary Main Page`,
-          // },
           {
             baseId: "apppWYJ52GKjoDHHG",
             tableName: `Content Production`,
