@@ -102,6 +102,7 @@ const SearchPage: React.FC = (props) => {
               </Grid>
               <Grid item xs={12}>
                 <CustomSearchBox
+                  placeholderText={"Search Planet Cassandra"}
                   defaultQuery={searchValue}
                   setDefaultQuery={setQuery}
                 />

@@ -42,7 +42,11 @@ const Companies: React.FC<any> = () => {
           searchClient={searchClient}
           insights
         >
-          <CustomSearchBox defaultQuery={query} setDefaultQuery={setQuery} />
+          <CustomSearchBox
+            placeholderText={"Search Use Cases"}
+            defaultQuery={query}
+            setDefaultQuery={setQuery}
+          />
           <CategoryIndex
             category={"usecases"}
             cardType={"usecases"}
