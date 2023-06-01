@@ -28,7 +28,7 @@ const ShareUseCases: React.FC = () => {
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <iframe
-            src="https://airtable.com/embed/shrYlu3mjtCiBTlOG?prefill_Type=Case&hide_Type=true"
+            src={process.env.USE_CASES_AIRTABLE_FORM}
             width="100%"
             height="533"
           ></iframe>
