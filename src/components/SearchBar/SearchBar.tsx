@@ -68,6 +68,7 @@ export default function SearchBar() {
       addSearchValue(searchTerm);
       navigate("/search");
       setSearchTerm("");
+      localStorage.setItem("selectedCategory", JSON.stringify("all"));
     }
   };
   const handleOnClick = (e: any) => {
@@ -75,6 +76,7 @@ export default function SearchBar() {
     addSearchValue(searchTerm);
     navigate("/search");
     setSearchTerm("");
+    localStorage.setItem("selectedCategory", JSON.stringify("all"));
   };
 
   return (

@@ -156,6 +156,7 @@ query UseCasesDataListing {
         Case_Published
         Case_Description
         ID_Case
+        Created
         Case_Company {
           data {
             Name
