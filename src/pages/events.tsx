@@ -1,49 +1,35 @@
-import React, { useState } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
-import Layout from '../components/Layout/Layout';
-import { Container, Grid, Pagination } from '@mui/material';
-import EventCardGrid from '../layouts/EventCardGrid';
+import React, { useState } from "react";
+import { useStaticQuery, graphql } from "gatsby";
+import Layout from "../components/Layout/Layout";
+import { Container, Grid, Pagination } from "@mui/material";
+import EventCardGrid from "../layouts/EventCardGrid";
 //@ts-ignore
-import { Helmet } from 'react-helmet';
-interface AllEventsData {
-  allFile: {
-    nodes: {
-      parent: {
-        id: string;
-        table: string;
-      };
-      childImageSharp: {
-        gatsbyImageData: any;
-      };
-    }[];
-  };
-  allAirtable: {
-    nodes: {
-      table: string;
-      id: string;
-      data: {
-        Title: string;
-        Publish_date: string;
-        Eventbrite_Description: string;
-        Cover_Image: {
-          url: string;
+import { Helmet } from "react-helmet";
+interface EventsData {
+  allApiEvents: {
+    edges: {
+      node: {
+        events: {
+          alternative_id: string;
+          author: string;
+          date: string;
+          title: string;
         }[];
       };
     }[];
   };
 }
 
-const Events: React.FC<AllEventsData> = () => {
-  const { allAirtable, allFile }: AllEventsData = useStaticQuery(query);
-  const cardData = allAirtable.nodes;
-  const images = allFile.nodes;
+const Events: React.FC<EventsData> = () => {
+  const data = useStaticQuery(query);
 
-  const events = cardData.map((card) => {
-    const image = images.find((img) => img.parent.id === card.id);
+  const cardData = data.allApiEvents.edges[0].node.events;
+
+  const events = cardData.map((card: any) => {
     return {
-      title: card.data.Title,
-      date: card.data.Publish_date,
-      thumbnail: image?.childImageSharp?.gatsbyImageData,
+      title: card.title,
+      date: card.date,
+      thumbnail: undefined,
     };
   });
 
@@ -55,9 +41,9 @@ const Events: React.FC<AllEventsData> = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           property="og:title"
-          content={'Upcoming Events - Planet Cassandra'}
+          content={"Upcoming Events - Planet Cassandra"}
         />
-        <meta name="author" content={'Planet Cassandra'} />
+        <meta name="author" content={"Planet Cassandra"} />
         <meta
           name="keywords"
           content="Cassandra events, database conferences, webinars, meetups, NoSQL database community"
@@ -77,40 +63,15 @@ const Events: React.FC<AllEventsData> = () => {
 };
 
 const query = graphql`
-  {
-    allFile(filter: { parent: { id: { ne: null } } }) {
-      nodes {
-        parent {
-          ... on Airtable {
-            id
-            table
-          }
-        }
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-    allAirtable(
-      filter: {
-        table: { eq: "Content Production" }
-        data: {
-          Title: { ne: null }
-          Publish_date: { ne: null }
-          Cover_Image: { elemMatch: { url: { ne: null } } }
-        }
-      }
-      sort: { data: { Publish_date: DESC } }
-    ) {
-      nodes {
-        table
-        id
-        data {
-          Title
-          Publish_date
-          Eventbrite_Description
-          Cover_Image {
-            url
+  query EventsData {
+    allApiEvents {
+      edges {
+        node {
+          events {
+            alternative_id
+            author
+            date
+            title
           }
         }
       }

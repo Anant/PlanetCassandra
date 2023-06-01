@@ -144,6 +144,17 @@ const config: GatsbyConfig = {
     //   },
     // },
     {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: "ApiEvents",
+        imagePath: "events[].image.url",
+        name: "downloadedImages",
+        type: "array",
+        //@ts-ignore
+        prepareUrl: (url) => (url ? url : null),
+      },
+    },
+    {
       resolve: `gatsby-source-airtable`,
       options: {
         apiKey: process.env.AIRTABLE_KEY_1,

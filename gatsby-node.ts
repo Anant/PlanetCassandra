@@ -7,8 +7,7 @@ import { createUseCases } from "./gatsby/createUseCases";
 import { createTTRSS } from "./gatsby/createTtrss";
 import { createLeaves } from "./gatsby/createLeaves";
 import { createVideos } from "./gatsby/createVideos";
-import { processPictures } from './gatsby/processPictures'
-
+import { processPictures } from "./gatsby/processPictures";
 
 export const createPages: GatsbyNode["createPages"] = async ({
   actions,
@@ -28,5 +27,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   await createUseCases({ createPage, graphql });
   await createTTRSS({ createPage, graphql });
   await createVideos({ createPage, graphql });
+  await createEvents({ createPage, graphql });
+
   // await createEvents({ graphql, createNodeId, getCache });
 };
