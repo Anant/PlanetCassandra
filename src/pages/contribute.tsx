@@ -9,24 +9,24 @@ import { Helmet } from "react-helmet";
 interface ContributingListDataInterface {
   text: string;
   cta: string;
-  link: string;
+  link: any;
 }
 const ContributePage = () => {
   const contributingListData: ContributingListDataInterface[] = [
     {
       text: `Use Cases: If you've built an application or solution using Cassandra, we would love to hear about it! Sharing your use case can help inspire others and showcase the versatility and power of the technology.`,
       cta: `Add Use Case`,
-      link: `https://airtable.com/embed/shrYlu3mjtCiBTlOG?prefill_Type=Case&hide_Type=true`,
+      link: process.env.USE_CASES_AIRTABLE_FORM,
     },
     {
       text: `Resources: Have you written an article, created a video, or developed other educational materials related to Apache Cassandra®? We welcome contributions of resources that can help others learn more about this powerful database technology.`,
       cta: `Add an Article or Video`,
-      link: `https://airtable.com/embed/shr3vL0c2LrB4cwZ6?prefill_Type=Link&hide_Type=true`,
+      link: process.env.RESOURCES_AIRTABLE_FORM,
     },
     {
       text: `Blog Posts: Our blog is a great platform for sharing your insights, tips, and experiences with the broader Apache Cassandra® community. Whether you're a seasoned veteran or a newcomer with fresh ideas, we want to hear from you!`,
       cta: `Submit a Blog Post`,
-      link: `https://airtable.com/embed/shrEifAn99ub2Ny6g?prefill_Type=Post&hide_Type=true`,
+      link: process.env.BLOG_POSTS_AIRTABLE_FORM,
     },
     {
       text: `Join Planet Cassandra Team: Of course, one of the most valuable contributions you can make is to the Planet Cassandra team itself. We'd love to get your help to manage the content editing, publishing process.`,
