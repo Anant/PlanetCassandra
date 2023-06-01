@@ -12,6 +12,7 @@ function CategoryIndex({
   refinementLists,
   title,
   category,
+  hideTitle,
 }: any) {
   const [numHits, setNumHits] = useState(10);
 
@@ -23,7 +24,12 @@ function CategoryIndex({
       }}
     >
       <Index indexName={indexName}>
-        <Box sx={{ width: "100%", display: numHits === 0 ? "none" : "block" }}>
+        <Box
+          sx={{
+            width: "100%",
+            display: numHits === 0 || hideTitle ? "none" : "block",
+          }}
+        >
           <Divider
             flexItem
             sx={{
@@ -37,7 +43,7 @@ function CategoryIndex({
             {title}
           </Divider>
         </Box>
-        <Container maxWidth="xl" sx={{ marginY: 3 }}>
+        <Box sx={{ marginY: 3 }}>
           <Grid container columnSpacing={2}>
             <Grid
               item
@@ -71,7 +77,7 @@ function CategoryIndex({
               <CustomHits cardType={cardType} setNumHits={setNumHits} />
             </Grid>
           </Grid>
-        </Container>
+        </Box>
       </Index>
     </Box>
   );

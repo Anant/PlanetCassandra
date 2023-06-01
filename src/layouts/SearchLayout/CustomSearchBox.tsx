@@ -4,7 +4,12 @@ import { IconButton, InputBase, Paper } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useSearchValueContext } from "../../context/SearchContext";
 
-function CustomSearchBox({ props, defaultQuery, setDefaultQuery }: any) {
+function CustomSearchBox({
+  props,
+  defaultQuery,
+  setDefaultQuery,
+  placeholderText,
+}: any) {
   const { addSearchValue } = useSearchValueContext();
 
   const { query, refine, clear } = useSearchBox(props);
@@ -33,7 +38,7 @@ function CustomSearchBox({ props, defaultQuery, setDefaultQuery }: any) {
             flex: 1,
           }}
           value={defaultQuery}
-          placeholder="Search Planet Cassandra"
+          placeholder={placeholderText}
           inputProps={{ "aria-label": "Search Planet Cassandra" }}
           onChange={handleChange}
         />
