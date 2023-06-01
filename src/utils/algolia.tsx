@@ -44,6 +44,8 @@ interface NewsAlgoliaData {
       title: string;
       id: string;
       author: string;
+      link: string;
+      pubDate: string;
     }[];
   };
 }
@@ -57,6 +59,7 @@ interface UseCaseAlgoliaData {
         Case_Article_Content: string;
         Case_Description: string;
         ID_Case: number;
+        Created: string;
         Case_Company: {
           data: {
             Name: string;
@@ -78,12 +81,6 @@ interface UseCaseAlgoliaData {
           };
         };
       };
-      downloadedImages: {
-        id: string;
-        childImageSharp: {
-          gatsbyImageData: any;
-        };
-      }[];
     }[];
   };
 }
@@ -178,12 +175,6 @@ query UseCasesDataListing {
           }
         }
       }
-      downloadedImages {
-        id
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
     }
   }
 }
@@ -192,12 +183,10 @@ query UseCasesDataListing {
 const NewsQuery = `
 query NewsAlgolia {
   allFeedTtrs {
-    totalCount
     nodes {
       title
       id
       link
-      contentSnippet
       pubDate
     }
   }

@@ -122,25 +122,25 @@
   background-color: #f5f5f5;
 }
 .ais-RefinementList-showMore {
-  margin: 10px 0;
   width: 100%;
   cursor: pointer;
   outline: 0;
-  color: #fff;
-
-  background-color: #5ab1bb;
-  border-color: #5ab1bb;
-  display: inline-block;
-  font-weight: 400;
+  color: #5ab1bb;
+  background-color: transparent;
+  display: flex; /* Set display to flex */
+  align-items: center; /* Vertically center the text and icon */
+  justify-content: flex-start; /* Align button to the left */
+  font-weight: 600;
   line-height: 1.5;
   text-align: center;
   border: 1px solid transparent;
-  padding: 6px 12px;
-  font-size: 16px;
+  padding: 0px 12px;
+  font-size: 14px;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 .ais-RefinementList-showMore--disabled {
   display: none;
 }
