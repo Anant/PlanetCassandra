@@ -101,10 +101,32 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         <meta name="description" content={Description} />
         <meta name="keywords" content={title} />
         <meta name="author" content={Company} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://planetcassandra.org/",
+            "@type": "WebPage",
+            name: title,
+            description: Description,
+            keywords: title,
+            author: {
+              "@type": "Organization",
+              name: title,
+            },
+          })}
+        </script>
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={Description} />
-        {/* <meta property="og:image" content={gatsbyImageData} /> */}
+        {/* Other meta tags you may consider adding */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="twitter:card" content="summary_large_image" />
+        {/* Twitter Card */}
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={Description} />
+        <meta name="twitter:image" content={"../../images/icon.png"} />
       </Helmet>
       <UseCaseGrid
         singlePage={baseGridProps.singlePage}

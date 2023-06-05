@@ -79,6 +79,29 @@ const SearchPage: React.FC = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content={"Search - Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://planetcassandra.org/",
+            "@type": "WebPage",
+            name: "Search - Planet Cassandra",
+            keywords: "Planet Cassandra search",
+            author: {
+              "@type": "Organization",
+              name: "Search - Planet Cassandra",
+            },
+          })}
+        </script>
+        {/* Open Graph */}
+        <meta property="og:title" content={"Search - Planet Cassandra"} />
+
+        {/* Other meta tags you may consider adding */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={"Search - Planet Cassandra"} />
+        <meta name="twitter:image" content={"../../images/icon.png"} />
       </Helmet>
       <Container maxWidth="xl" sx={{ marginY: 2 }}>
         <Grid container>

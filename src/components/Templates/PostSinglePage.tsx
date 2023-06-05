@@ -47,7 +47,38 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
       <Container>
         <Helmet>
           <title>{title}</title>
-          <meta name={title} content={tags.join(",")} />
+          <meta name="description" content={content} />
+          <meta name="keywords" content={tags[0]} />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+          <script type="application/ld+json">
+            {JSON.stringify({
+              "@context": "https://planetcassandra.org/",
+              "@type": "WebPage",
+              name: title,
+              description: content,
+              keywords: title,
+              author: {
+                "@type": "Organization",
+                name: title,
+              },
+            })}
+          </script>
+          {/* Open Graph */}
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={content} />
+          {/* Other meta tags you may consider adding */}
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
+          />
+          <meta name="robots" content="index, follow" />
+          <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="twitter:card" content="summary_large_image" />
+          {/* Twitter Card */}
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={content} />
+          <meta name="twitter:image" content={"../../images/icon.png"} />
         </Helmet>
         <div className="articleContainer" style={{ marginInline: "30px" }}>
           <article>

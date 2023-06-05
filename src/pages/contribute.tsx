@@ -67,7 +67,7 @@ const ContributePage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content={"Contribute - Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
-        {/* <meta
+        <meta
           name="keywords"
           content="Cassandra events, database conferences, webinars, meetups, NoSQL database community"
         />
@@ -75,10 +75,33 @@ const ContributePage = () => {
           name="description"
           content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
         />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://planetcassandra.org/",
+            "@type": "WebPage",
+            name: "Contribute - Planet Cassandra",
+            keywords: "Contribute - Planet Cassandra",
+            author: {
+              "@type": "Organization",
+              name: "Contribute - Planet Cassandra",
+            },
+          })}
+        </script>
+        {/* Open Graph */}
+        <meta property="og:title" content={"Contribute - Planet Cassandra"} />
         <meta
           property="og:description"
           content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
-        /> */}
+        />
+        {/* Other meta tags you may consider adding */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={"Contribute - Planet Cassandra"} />
+        <meta name="twitter:image" content={"../../images/icon.png"} />
       </Helmet>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
