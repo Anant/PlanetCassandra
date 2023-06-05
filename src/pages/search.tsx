@@ -75,10 +75,11 @@ const SearchPage: React.FC = (props) => {
     <Layout>
       <Helmet>
         <title>Search - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={"Search - Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
+        <meta
+          name="description"
+          content="Search the Planet Cassandra website for the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Find articles, guides, and community discussions to enhance your Cassandra expertise."
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://planetcassandra.org/",
@@ -93,6 +94,11 @@ const SearchPage: React.FC = (props) => {
         </script>
         {/* Open Graph */}
         <meta property="og:title" content={"Search - Planet Cassandra"} />
+        <meta
+          property="og:description"
+          content="Search the Planet Cassandra website for the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Find articles, guides, and community discussions to enhance your Cassandra expertise."
+        />
+        <meta property="og:image" content="../images/icon.png" />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -101,7 +107,11 @@ const SearchPage: React.FC = (props) => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={"Search - Planet Cassandra"} />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Search the Planet Cassandra website for the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Find articles, guides, and community discussions to enhance your Cassandra expertise."
+        />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <Container maxWidth="xl" sx={{ marginY: 2 }}>
         <Grid container>

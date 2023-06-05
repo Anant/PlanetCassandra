@@ -16,10 +16,11 @@ const IndexPage: React.FC<PageProps> = () => {
     <Layout>
       <Helmet>
         <title>Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={"Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
+        <meta
+          name="description"
+          content="Welcome to Planet Cassandra! Stay updated with the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Explore our articles, guides, and community to enhance your Cassandra expertise."
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://planetcassandra.org/",
@@ -36,8 +37,10 @@ const IndexPage: React.FC<PageProps> = () => {
         <meta property="og:title" content={"Planet Cassandra"} />
         <meta
           property="og:description"
-          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
+          content="Welcome to Planet Cassandra! Stay updated with the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Explore our articles, guides, and community to enhance your Cassandra expertise."
         />
+        <meta property="og:image" content="../images/icon.png" />
+
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -45,7 +48,11 @@ const IndexPage: React.FC<PageProps> = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={"Planet Cassandra"} />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Welcome to Planet Cassandra! Stay updated with the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Explore our articles, guides, and community to enhance your Cassandra expertise."
+        />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <Grid container>
         <Grid className="heroBgImage" item xs={12}>

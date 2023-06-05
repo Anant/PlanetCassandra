@@ -57,8 +57,6 @@ const News: React.FC<TtrsData> = () => {
     <Layout>
       <Helmet>
         <title>News - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={"Planet Cassandra"} />
         <meta
           name="keywords"
@@ -88,6 +86,8 @@ const News: React.FC<TtrsData> = () => {
           property="og:description"
           content="Stay updated with the latest news and updates on Cassandra database on Planet Cassandra. Get insights on new features, updates, events, and announcements related to Cassandra and the NoSQL database community."
         />
+        <meta property="og:image" content="../images/icon.png" />
+
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -95,7 +95,11 @@ const News: React.FC<TtrsData> = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={"News - Planet Cassandra"} />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Stay updated with the latest news and updates on Cassandra database on Planet Cassandra. Get insights on new features, updates, events, and announcements related to Cassandra and the NoSQL database community."
+        />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <NewsCardGrid cardData={posts} />
     </Layout>

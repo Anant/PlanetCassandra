@@ -26,6 +26,8 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
         <Helmet>
           <title>{title}</title>
           <meta name={title} content={summary} />
+          <meta name="description" content={summary} />
+
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://planetcassandra.org/",
@@ -42,7 +44,10 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           {/* Open Graph */}
           <meta property="og:title" content={title} />
           <meta property="og:description" content={content} />
+          <meta property="og:image" content="../../images/icon.png" />
+
           {/* Twitter Card */}
+          <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={content} />
           <meta name="twitter:image" content={"../../images/icon.png"} />

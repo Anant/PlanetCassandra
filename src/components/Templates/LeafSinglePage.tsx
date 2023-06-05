@@ -74,6 +74,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const {
     pageContext: { node, relatedArticles, tagSets, images },
   } = props;
+  console.log("🚀 ~ file: LeafSinglePage.tsx:76 ~ node:", node);
 
   const allRelatedArticles = findThumbnails(relatedArticles, images);
   const singlePageNode = findThumbnails([node], images);
@@ -84,9 +85,8 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
       <Helmet>
         <title>{node.title}</title>
         <meta name="description" content={node.description} />
-        <meta name="keywords" content={node.tags[0]} />
+        <meta name="keywords" content={node.tags.join(", ")} />
         <meta name="author" content={node.origin_url} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <script type="application/ld+json">
           {JSON.stringify({
@@ -104,12 +104,15 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         {/* Open Graph */}
         <meta property="og:title" content={node.title} />
         <meta property="og:description" content={node.description} />
+        <meta property="og:image" content="../../images/icon.png" />
+
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="twitter:card" content="summary_large_image" />
+
         {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={node.title} />
         <meta name="twitter:description" content={node.description} />
         <meta name="twitter:image" content={"../../images/icon.png"} />

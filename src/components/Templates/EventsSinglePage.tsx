@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
 import { Container, Typography } from "@mui/material";
-
 interface EventsSinglePageProps {
   pageContext: {
     Title: string;
@@ -44,6 +43,8 @@ const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
           {/* Open Graph */}
           <meta property="og:title" content={Title} />
           <meta property="og:description" content={Eventbrite_Description} />
+          <meta property="og:image" content="../../images/icon.png" />
+
           {/* Other meta tags you may consider adding */}
           <meta
             name="viewport"
@@ -51,8 +52,8 @@ const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
           />
           <meta name="robots" content="index, follow" />
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-          <meta name="twitter:card" content="summary_large_image" />
           {/* Twitter Card */}
+          <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={Title} />
           <meta name="twitter:description" content={Eventbrite_Description} />
           <meta name="twitter:image" content={"../../images/icon.png"} />

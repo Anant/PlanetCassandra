@@ -52,8 +52,6 @@ const Posts: React.FC<Props> = (props: Props) => {
     <Layout>
       <Helmet>
         <title>Latest Posts - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={"Planet Cassandra"} />
         <meta
           name="keywords"
@@ -83,6 +81,8 @@ const Posts: React.FC<Props> = (props: Props) => {
           property="og:description"
           content="Explore the latest posts on Planet Cassandra, a hub for Cassandra database news, tutorials, and insights. Get expert tips and tricks for using Cassandra in your applications."
         />
+        <meta property="og:image" content="../images/icon.png" />
+
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -93,7 +93,11 @@ const Posts: React.FC<Props> = (props: Props) => {
           name="twitter:title"
           content={"Latest Posts - Planet Cassandra"}
         />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Explore the latest posts on Planet Cassandra, a hub for Cassandra database news, tutorials, and insights. Get expert tips and tricks for using Cassandra in your applications."
+        />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <PostCardGrid cardData={posts} />
     </Layout>

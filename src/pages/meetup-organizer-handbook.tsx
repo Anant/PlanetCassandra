@@ -22,8 +22,6 @@ const HandbookPage = () => {
     <Layout>
       <Helmet>
         <title>Handbook - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={"Planet Cassandra"} />
 
         <script type="application/ld+json">
@@ -40,6 +38,8 @@ const HandbookPage = () => {
         </script>
         {/* Open Graph */}
         <meta property="og:title" content={"Handbook - Planet Cassandra"} />
+        <meta property="og:image" content="../images/icon.png" />
+
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -47,7 +47,7 @@ const HandbookPage = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={"Handbook - Planet Cassandra"} />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <Grid container>
         <Grid item xs={12}>

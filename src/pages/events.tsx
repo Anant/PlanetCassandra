@@ -51,8 +51,6 @@ const Events: React.FC<AllEventsData> = () => {
     <Layout>
       <Helmet>
         <title>Upcoming Events - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={"Planet Cassandra"} />
         <meta
           name="keywords"
@@ -83,6 +81,8 @@ const Events: React.FC<AllEventsData> = () => {
           property="og:description"
           content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
         />
+        <meta property="og:image" content="../images/icon.png" />
+
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -93,7 +93,11 @@ const Events: React.FC<AllEventsData> = () => {
           name="twitter:title"
           content={"Upcoming Events - Planet Cassandra"}
         />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
+        />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <EventCardGrid cardData={events} />
     </Layout>

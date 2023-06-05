@@ -42,8 +42,6 @@ const Videos: React.FC<VideoData> = () => {
     <Layout>
       <Helmet>
         <title>Video Library - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={"Planet Cassandra"} />
         <meta
           name="keywords"
@@ -73,6 +71,8 @@ const Videos: React.FC<VideoData> = () => {
           property="og:description"
           content="Explore a collection of informative and educational videos on Cassandra database on Planet Cassandra. Watch videos on various topics related to Cassandra, including tutorials, demonstrations, case studies, and best practices, to learn more about this popular NoSQL database."
         />
+        <meta property="og:image" content="../images/icon.png" />
+
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -83,7 +83,11 @@ const Videos: React.FC<VideoData> = () => {
           name="twitter:title"
           content={"Video Library - Planet Cassandra"}
         />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Explore a collection of informative and educational videos on Cassandra database on Planet Cassandra. Watch videos on various topics related to Cassandra, including tutorials, demonstrations, case studies, and best practices, to learn more about this popular NoSQL database."
+        />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <VideoCardGrid cardData={videos} />
     </Layout>

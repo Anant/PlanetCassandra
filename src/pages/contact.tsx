@@ -10,10 +10,11 @@ const ContactUs: React.FC = () => {
     <Layout>
       <Helmet>
         <title>Contact - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={"Planet Cassandra"} />
-
+        <meta
+          name="description"
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+        />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://planetcassandra.org/",
@@ -28,6 +29,13 @@ const ContactUs: React.FC = () => {
         </script>
         {/* Open Graph */}
         <meta property="og:title" content={"Contact - Planet Cassandra"} />
+        <meta
+          property="og:description"
+          content={
+            "Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+          }
+        />
+        <meta property="og:image" content="../images/icon.png" />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,7 +44,12 @@ const ContactUs: React.FC = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={"Contact - Planet Cassandra"} />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+        />
+
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <Container maxWidth="xl" sx={{ padding: 6 }}>
         <Box my={4}>

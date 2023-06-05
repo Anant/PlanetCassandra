@@ -63,17 +63,14 @@ const ContributePage = () => {
     <Layout>
       <Helmet>
         <title>Contribute - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={"Contribute - Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
+        <meta
+          name="description"
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+        />
         <meta
           name="keywords"
           content="Cassandra events, database conferences, webinars, meetups, NoSQL database community"
-        />
-        <meta
-          name="description"
-          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
         />
 
         <script type="application/ld+json">
@@ -92,8 +89,9 @@ const ContributePage = () => {
         <meta property="og:title" content={"Contribute - Planet Cassandra"} />
         <meta
           property="og:description"
-          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
         />
+        <meta property="og:image" content="../images/icon.png" />
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -101,7 +99,11 @@ const ContributePage = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={"Contribute - Planet Cassandra"} />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta
+          name="twitter:description"
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+        />
+        <meta name="twitter:image" content={"../images/icon.png"} />
       </Helmet>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
