@@ -56,7 +56,12 @@ const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={Title} />
           <meta name="twitter:description" content={Eventbrite_Description} />
-          <meta name="twitter:image" content={"../../images/icon.png"} />
+          <meta
+            name="twitter:image"
+            content={
+              "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+            }
+          />
         </Helmet>
         <div style={{ marginInline: "30px" }}>
           <Typography variant="h4">{Title}</Typography>

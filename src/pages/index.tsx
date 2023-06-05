@@ -39,7 +39,10 @@ const IndexPage: React.FC<PageProps> = () => {
           property="og:description"
           content="Welcome to Planet Cassandra! Stay updated with the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Explore our articles, guides, and community to enhance your Cassandra expertise."
         />
-        <meta property="og:image" content="../images/icon.png" />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -52,7 +55,10 @@ const IndexPage: React.FC<PageProps> = () => {
           name="twitter:description"
           content="Welcome to Planet Cassandra! Stay updated with the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Explore our articles, guides, and community to enhance your Cassandra expertise."
         />
-        <meta name="twitter:image" content={"../images/icon.png"} />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <Grid container>
         <Grid className="heroBgImage" item xs={12}>

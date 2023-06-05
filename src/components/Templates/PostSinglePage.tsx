@@ -66,7 +66,12 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           {/* Open Graph */}
           <meta property="og:title" content={title} />
           <meta property="og:description" content={content} />
-          <meta property="og:image" content="../../images/icon.png" />
+          <meta
+            property="og:image"
+            content={
+              "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+            }
+          />
 
           {/* Other meta tags you may consider adding */}
           <meta
@@ -79,7 +84,12 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={content} />
-          <meta name="twitter:image" content={"../../images/icon.png"} />
+          <meta
+            name="twitter:image"
+            content={
+              "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+            }
+          />
         </Helmet>
         <div className="articleContainer" style={{ marginInline: "30px" }}>
           <article>

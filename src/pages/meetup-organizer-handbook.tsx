@@ -38,7 +38,10 @@ const HandbookPage = () => {
         </script>
         {/* Open Graph */}
         <meta property="og:title" content={"Handbook - Planet Cassandra"} />
-        <meta property="og:image" content="../images/icon.png" />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -47,7 +50,10 @@ const HandbookPage = () => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={"Handbook - Planet Cassandra"} />
-        <meta name="twitter:image" content={"../images/icon.png"} />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <Grid container>
         <Grid item xs={12}>

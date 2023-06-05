@@ -48,7 +48,10 @@ const Companies: React.FC<any> = () => {
           property="og:description"
           content="Explore various use cases for Cassandra database on Planet Cassandra. Learn how Cassandra is being used in real-world applications for data-driven solutions, including IoT, e-commerce, analytics, and more."
         />
-        <meta property="og:image" content="../images/icon.png" />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,7 +64,10 @@ const Companies: React.FC<any> = () => {
           name="twitter:description"
           content="Explore various use cases for Cassandra database on Planet Cassandra. Learn how Cassandra is being used in real-world applications for data-driven solutions, including IoT, e-commerce, analytics, and more."
         />
-        <meta name="twitter:image" content={"../images/icon.png"} />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <Container maxWidth="xl" sx={{ marginY: 3 }}>
         <InstantSearch

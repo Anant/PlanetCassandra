@@ -86,7 +86,10 @@ const News: React.FC<TtrsData> = () => {
           property="og:description"
           content="Stay updated with the latest news and updates on Cassandra database on Planet Cassandra. Get insights on new features, updates, events, and announcements related to Cassandra and the NoSQL database community."
         />
-        <meta property="og:image" content="../images/icon.png" />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -99,7 +102,10 @@ const News: React.FC<TtrsData> = () => {
           name="twitter:description"
           content="Stay updated with the latest news and updates on Cassandra database on Planet Cassandra. Get insights on new features, updates, events, and announcements related to Cassandra and the NoSQL database community."
         />
-        <meta name="twitter:image" content={"../images/icon.png"} />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <NewsCardGrid cardData={posts} />
     </Layout>

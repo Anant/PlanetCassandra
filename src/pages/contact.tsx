@@ -35,7 +35,10 @@ const ContactUs: React.FC = () => {
             "Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
           }
         />
-        <meta property="og:image" content="../images/icon.png" />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,7 +52,10 @@ const ContactUs: React.FC = () => {
           content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
         />
 
-        <meta name="twitter:image" content={"../images/icon.png"} />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <Container maxWidth="xl" sx={{ padding: 6 }}>
         <Box my={4}>

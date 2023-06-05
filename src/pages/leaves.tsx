@@ -79,7 +79,10 @@ const Leaves: React.FC<AllLeavesData> = () => {
           property="og:description"
           content="Explore the benefits and features of Cassandra leaves on Planet Cassandra. Learn how Cassandra leaves, also known as secondary indexes, can improve query performance and enable more flexible data retrieval in your Cassandra database applications."
         />
-        <meta property="og:image" content="../images/icon.png" />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -92,7 +95,10 @@ const Leaves: React.FC<AllLeavesData> = () => {
           name="twitter:description"
           content="Explore the benefits and features of Cassandra leaves on Planet Cassandra. Learn how Cassandra leaves, also known as secondary indexes, can improve query performance and enable more flexible data retrieval in your Cassandra database applications."
         />
-        <meta name="twitter:image" content={"../images/icon.png"} />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <LeafCardGrid cardData={leaves} />
     </Layout>

@@ -71,7 +71,10 @@ const Videos: React.FC<VideoData> = () => {
           property="og:description"
           content="Explore a collection of informative and educational videos on Cassandra database on Planet Cassandra. Watch videos on various topics related to Cassandra, including tutorials, demonstrations, case studies, and best practices, to learn more about this popular NoSQL database."
         />
-        <meta property="og:image" content="../images/icon.png" />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,7 +90,10 @@ const Videos: React.FC<VideoData> = () => {
           name="twitter:description"
           content="Explore a collection of informative and educational videos on Cassandra database on Planet Cassandra. Watch videos on various topics related to Cassandra, including tutorials, demonstrations, case studies, and best practices, to learn more about this popular NoSQL database."
         />
-        <meta name="twitter:image" content={"../images/icon.png"} />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <VideoCardGrid cardData={videos} />
     </Layout>

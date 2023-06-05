@@ -98,7 +98,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
     <Layout>
       <Helmet>
         <title>{title}</title>
-        <meta name="description" content={Description} />
+        <meta name="description" content={title} />
         <meta name="keywords" content={title} />
         <meta name="author" content={Company} />
 
@@ -107,7 +107,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
             name: title,
-            description: Description,
+            description: title,
             keywords: title,
             author: {
               "@type": "Organization",
@@ -117,8 +117,13 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         </script>
         {/* Open Graph */}
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={Description} />
-        <meta property="og:image" content="../../images/icon.png" />
+        <meta property="og:description" content={title} />
+        <meta
+          property="og:image"
+          content={
+            "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+          }
+        />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -128,8 +133,13 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={Description} />
-        <meta name="twitter:image" content={"../../images/icon.png"} />
+        <meta name="twitter:description" content={title} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+          }
+        />
       </Helmet>
       <UseCaseGrid
         singlePage={baseGridProps.singlePage}
