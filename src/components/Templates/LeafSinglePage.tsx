@@ -74,7 +74,6 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const {
     pageContext: { node, relatedArticles, tagSets, images },
   } = props;
-  console.log("🚀 ~ file: LeafSinglePage.tsx:76 ~ node:", node);
 
   const allRelatedArticles = findThumbnails(relatedArticles, images);
   const singlePageNode = findThumbnails([node], images);
