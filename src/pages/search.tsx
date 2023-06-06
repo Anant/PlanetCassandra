@@ -75,10 +75,49 @@ const SearchPage: React.FC = (props) => {
     <Layout>
       <Helmet>
         <title>Search - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={"Search - Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
+        <meta
+          name="description"
+          content="Search the Planet Cassandra website for the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Find articles, guides, and community discussions to enhance your Cassandra expertise."
+        />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://planetcassandra.org/",
+            "@type": "WebPage",
+            name: "Search - Planet Cassandra",
+            keywords: "Planet Cassandra search",
+            author: {
+              "@type": "Organization",
+              name: "Search - Planet Cassandra",
+            },
+          })}
+        </script>
+        {/* Open Graph */}
+        <meta property="og:title" content={"Search - Planet Cassandra"} />
+        <meta
+          property="og:description"
+          content="Search the Planet Cassandra website for the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Find articles, guides, and community discussions to enhance your Cassandra expertise."
+        />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
+
+        {/* Other meta tags you may consider adding */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={"Search - Planet Cassandra"} />
+        <meta
+          name="twitter:description"
+          content="Search the Planet Cassandra website for the latest news, tutorials, and resources about Cassandra, the distributed NoSQL database. Find articles, guides, and community discussions to enhance your Cassandra expertise."
+        />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <Container maxWidth="xl" sx={{ marginY: 2 }}>
         <Grid container>
