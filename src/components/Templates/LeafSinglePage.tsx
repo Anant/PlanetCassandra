@@ -83,7 +83,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
     <Layout>
       <Helmet>
         <title>{node.title}</title>
-        <meta name="description" content={node.description} />
+        <meta name="description" content={node.title} />
         <meta name="keywords" content={node.tags.join(", ")} />
         <meta name="author" content={node.origin_url} />
 
@@ -92,7 +92,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
             name: node.title,
-            description: node.description,
+            description: node.title,
             keywords: node.title,
             author: {
               "@type": "Organization",
@@ -102,7 +102,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         </script>
         {/* Open Graph */}
         <meta property="og:title" content={node.title} />
-        <meta property="og:description" content={node.description} />
+        <meta property="og:description" content={node.title} />
         <meta
           property="og:image"
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
@@ -116,7 +116,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={node.title} />
-        <meta name="twitter:description" content={node.description} />
+        <meta name="twitter:description" content={node.title} />
         <meta
           name="twitter:image"
           content={
