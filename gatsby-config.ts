@@ -17,6 +17,8 @@ const config: GatsbyConfig = {
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-react-helmet`,
+    "gatsby-plugin-robots-txt",
     {
       resolve: "gatsby-plugin-env-variables",
       options: {
@@ -60,6 +62,14 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://planetcassandra.org/",
+        sitemap: "https://planetcassandra.org/sitemap-index.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.ALGOLIA_APP_ID,
@@ -77,6 +87,7 @@ const config: GatsbyConfig = {
       },
       __key: "pages",
     },
+
     {
       resolve: `gatsby-source-wordpress`,
       options: {

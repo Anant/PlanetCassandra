@@ -63,22 +63,53 @@ const ContributePage = () => {
     <Layout>
       <Helmet>
         <title>Contribute - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={"Contribute - Planet Cassandra"} />
         <meta name="author" content={"Planet Cassandra"} />
-        {/* <meta
+        <meta
+          name="description"
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+        />
+        <meta
           name="keywords"
           content="Cassandra events, database conferences, webinars, meetups, NoSQL database community"
         />
-        <meta
-          name="description"
-          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
-        />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://planetcassandra.org/",
+            "@type": "WebPage",
+            name: "Contribute - Planet Cassandra",
+            keywords: "Contribute - Planet Cassandra",
+            author: {
+              "@type": "Organization",
+              name: "Contribute - Planet Cassandra",
+            },
+          })}
+        </script>
+        {/* Open Graph */}
+        <meta property="og:title" content={"Contribute - Planet Cassandra"} />
         <meta
           property="og:description"
-          content="Stay updated with the latest events and happenings related to Cassandra database on Planet Cassandra. Discover upcoming events, conferences, webinars, meetups, and other activities related to Cassandra and NoSQL database community."
-        /> */}
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+        />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
+        {/* Other meta tags you may consider adding */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={"Contribute - Planet Cassandra"} />
+        <meta
+          name="twitter:description"
+          content="Get in touch with Planet Cassandra for all your Cassandra database needs and queries. We provide expert guidance and support to help you optimize your Cassandra database implementation."
+        />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
       </Helmet>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
