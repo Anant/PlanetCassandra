@@ -98,13 +98,48 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
     <Layout>
       <Helmet>
         <title>{title}</title>
-        <meta name="description" content={Description} />
+        <meta name="description" content={title} />
         <meta name="keywords" content={title} />
         <meta name="author" content={Company} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://planetcassandra.org/",
+            "@type": "WebPage",
+            name: title,
+            description: title,
+            keywords: title,
+            author: {
+              "@type": "Organization",
+              name: title,
+            },
+          })}
+        </script>
+        {/* Open Graph */}
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={Description} />
-        {/* <meta property="og:image" content={gatsbyImageData} /> */}
+        <meta property="og:description" content={title} />
+        <meta
+          property="og:image"
+          content={
+            "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+          }
+        />
+
+        {/* Other meta tags you may consider adding */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={title} />
+        <meta
+          name="twitter:image"
+          content={
+            "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+          }
+        />
       </Helmet>
       <UseCaseGrid
         singlePage={baseGridProps.singlePage}

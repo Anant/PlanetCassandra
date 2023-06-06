@@ -1,11 +1,11 @@
 // src/pages/posts.tsx
-import React from 'react';
-import { graphql } from 'gatsby';
-import Layout from '../components/Layout/Layout';
-import PostCardGrid from '../layouts/PostCardGrid';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/Layout/Layout";
+import PostCardGrid from "../layouts/PostCardGrid";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 //@ts-ignore
-import { Helmet } from 'react-helmet';
+import { Helmet } from "react-helmet";
 
 interface Props {
   data: {
@@ -52,10 +52,7 @@ const Posts: React.FC<Props> = (props: Props) => {
     <Layout>
       <Helmet>
         <title>Latest Posts - Planet Cassandra</title>
-        <meta property="og:image" content="../images/icon.png" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="og:title" content={'Latest Posts - Planet Cassandra'} />
-        <meta name="author" content={'Planet Cassandra'} />
+        <meta name="author" content={"Planet Cassandra"} />
         <meta
           name="keywords"
           content="Planet Cassandra, Cassandra database, Cassandra news, Cassandra tutorials, Cassandra insights"
@@ -64,59 +61,90 @@ const Posts: React.FC<Props> = (props: Props) => {
           name="description"
           content="Explore the latest posts on Planet Cassandra, a hub for Cassandra database news, tutorials, and insights. Get expert tips and tricks for using Cassandra in your applications."
         />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://planetcassandra.org/",
+            "@type": "WebPage",
+            name: "Latest Posts - Planet Cassandra",
+            keywords:
+              "Planet Cassandra, Cassandra database, Cassandra news, Cassandra tutorials, Cassandra insights",
+            author: {
+              "@type": "Organization",
+              name: "Latest Posts - Planet Cassandra",
+            },
+          })}
+        </script>
+        {/* Open Graph */}
+        <meta property="og:title" content={"Latest Posts - Planet Cassandra"} />
         <meta
           property="og:description"
           content="Explore the latest posts on Planet Cassandra, a hub for Cassandra database news, tutorials, and insights. Get expert tips and tricks for using Cassandra in your applications."
+        />
+        <meta
+          property="og:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
+        />
+
+        {/* Other meta tags you may consider adding */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={"Latest Posts - Planet Cassandra"}
+        />
+        <meta
+          name="twitter:description"
+          content="Explore the latest posts on Planet Cassandra, a hub for Cassandra database news, tutorials, and insights. Get expert tips and tricks for using Cassandra in your applications."
+        />
+        <meta
+          name="twitter:image"
+          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
         />
       </Helmet>
       <PostCardGrid cardData={posts} />
     </Layout>
   );
 };
-{
-  /* <Helmet>
-        <title>{node.title}</title>
-        <meta name="description" content={node.description} /> -- chatgpt 
-          <meta name="keywords" content={node.tags[0]} /> -- chatgpt
-          <meta property="og:description" content={node.description} />
-      </Helmet> */
-}
 export const query = graphql`
-query Posts {
-  allWpPost(sort: {date: DESC}, filter: {authorId: {ne: "dXNlcjoy"}}) {
-    totalCount
-    nodes {
-      categories {
-        nodes {
-          name
-          slug
-          count
-        }
-      }
-      author {
-        node {
-          avatar {
-            url
+  query Posts {
+    allWpPost(sort: { date: DESC }, filter: { authorId: { ne: "dXNlcjoy" } }) {
+      totalCount
+      nodes {
+        categories {
+          nodes {
+            name
+            slug
+            count
           }
-          name
         }
-      }
-      date
-      slug
-      title
-      featuredImage {
-        node {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
+        author {
+          node {
+            avatar {
+              url
+            }
+            name
+          }
+        }
+        date
+        slug
+        title
+        featuredImage {
+          node {
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
             }
           }
         }
+        excerpt
       }
-      excerpt
     }
   }
-}
 `;
 
 export default Posts;
