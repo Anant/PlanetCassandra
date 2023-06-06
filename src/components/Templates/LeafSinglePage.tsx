@@ -83,46 +83,46 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
     <Layout>
       <Helmet>
         <title>{node.title}</title>
-        <meta name="description" content={node.title} />
+        <meta name="description" content={node.description} />
         <meta name="keywords" content={node.tags.join(", ")} />
         <meta name="author" content={node.origin_url} />
 
-        <script type="application/ld+json">
+        {/* <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
             name: node.title,
-            description: node.title,
+            description: node.description,
             keywords: node.title,
             author: {
               "@type": "Organization",
               name: node.title,
             },
           })}
-        </script>
-        {/* Open Graph */}
-        <meta property="og:title" content={node.title} />
-        <meta property="og:description" content={node.title} />
+        </script> */}
+
+        {/* <meta property="og:title" content={node.title} />
+        <meta property="og:description" content={node.description} />
         <meta
           property="og:image"
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
         />
 
-        {/* Other meta tags you may consider adding */}
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-        {/* Twitter Card */}
+
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={node.title} />
-        <meta name="twitter:description" content={node.title} />
+        <meta name="twitter:description" content={node.description} />
         <meta
           name="twitter:image"
           content={
             "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
           }
-        />
+        /> */}
       </Helmet>
       <LeaftGrid
         singlePage={singlePageNode[0]}
