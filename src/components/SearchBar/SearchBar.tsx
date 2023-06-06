@@ -25,7 +25,7 @@ const SearchResults = ({ results, open, setOpen, anchor }) => {
           {/* @ts-ignore */}
           {results.map((result) => (
             <Link
-              to={`/post/${getSlug(result.title)}`}
+              to={`/post/${result.slug}`}
               style={{ textDecoration: "none", color: "black" }}
             >
               <ListItem button key={result.objectID}>

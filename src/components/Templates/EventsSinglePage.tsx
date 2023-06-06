@@ -27,7 +27,7 @@ const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
           <meta name="keywords" content={Title} />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-          <script type="application/ld+json">
+          {/* <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://planetcassandra.org/",
               "@type": "WebPage",
@@ -40,19 +40,18 @@ const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
               },
             })}
           </script>
-          {/* Open Graph */}
+
           <meta property="og:title" content={Title} />
           <meta property="og:description" content={Eventbrite_Description} />
           <meta property="og:image" content="../../images/icon.png" />
 
-          {/* Other meta tags you may consider adding */}
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
           <meta name="robots" content="index, follow" />
           <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-          {/* Twitter Card */}
+
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={Title} />
           <meta name="twitter:description" content={Eventbrite_Description} />
@@ -61,7 +60,7 @@ const EventsSinglePage: React.FC<EventsSinglePageProps> = ({
             content={
               "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
             }
-          />
+          /> */}
         </Helmet>
         <div style={{ marginInline: "30px" }}>
           <Typography variant="h4">{Title}</Typography>
