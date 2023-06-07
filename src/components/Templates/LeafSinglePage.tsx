@@ -83,11 +83,11 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
     <Layout>
       <Helmet>
         <title>{node.title}</title>
-        <meta name="description" content={node.description} />
+        <meta name="description" content={node.description.slice(0, 50)} />
         <meta name="keywords" content={node.tags.join(", ")} />
         <meta name="author" content={node.origin_url} />
 
-        {/* <script type="application/ld+json">
+        <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
@@ -99,30 +99,31 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
               name: node.title,
             },
           })}
-        </script> */}
+        </script>
 
-        {/* <meta property="og:title" content={node.title} />
-        <meta property="og:description" content={node.description} />
+        <meta property="og:title" content={node.title} />
+        <meta property="og:description" content={node.description.slice(0.5)} />
         <meta
           property="og:image"
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
         />
 
-
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={node.title} />
-        <meta name="twitter:description" content={node.description} />
+        <meta
+          name="twitter:description"
+          content={node.description.slice(0, 50)}
+        />
         <meta
           name="twitter:image"
           content={
             "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
           }
-        /> */}
+        />
       </Helmet>
       <LeaftGrid
         singlePage={singlePageNode[0]}
