@@ -31,7 +31,7 @@ const ContributePage = () => {
     {
       text: `Join Planet Cassandra Team: Of course, one of the most valuable contributions you can make is to the Planet Cassandra team itself. We'd love to get your help to manage the content editing, publishing process.`,
       cta: `Join our Discord Channel`,
-      link: `https://discord.gg/skV5Cenw`,
+      link: `https://discord.com/invite/pPjPcZN`,
     },
   ];
 
