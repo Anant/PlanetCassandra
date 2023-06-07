@@ -83,16 +83,16 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
     <Layout>
       <Helmet>
         <title>{node.title}</title>
-        <meta name="description" content={node.description.slice(0, 50)} />
+        <meta name="description" content={node.description.slice(0, 40)} />
         <meta name="keywords" content={node.tags.join(", ")} />
-        <meta name="author" content={node.origin_url} />
+        <meta name="author" content={node.url} />
 
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
             name: node.title,
-            description: node.description,
+            description: node.description.slice(0, 40),
             keywords: node.title,
             author: {
               "@type": "Organization",
@@ -102,7 +102,10 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         </script>
 
         <meta property="og:title" content={node.title} />
-        <meta property="og:description" content={node.description.slice(0.5)} />
+        <meta
+          property="og:description"
+          content={node.description.slice(0, 40)}
+        />
         <meta
           property="og:image"
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
@@ -116,7 +119,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         <meta name="twitter:title" content={node.title} />
         <meta
           name="twitter:description"
-          content={node.description.slice(0, 50)}
+          content={node.description.slice(0, 40)}
         />
         <meta
           name="twitter:image"

@@ -47,7 +47,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
       <Container>
         <Helmet>
           <title>{title}</title>
-          <meta name="description" content={content} />
+          <meta name="description" content={content.slice(0, 40)} />
           <meta name="keywords" content={tags.join(", ")} />
 
           <script type="application/ld+json">
@@ -55,7 +55,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
               "@context": "https://planetcassandra.org/",
               "@type": "WebPage",
               name: title,
-              description: content,
+              description: content.slice(0, 40),
               keywords: title,
               author: {
                 "@type": "Organization",
@@ -65,7 +65,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           </script>
           {/* Open Graph */}
           <meta property="og:title" content={title} />
-          <meta property="og:description" content={content} />
+          <meta property="og:description" content={content.slice(0, 40)} />
           <meta
             property="og:image"
             content={
@@ -83,7 +83,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title} />
-          <meta name="twitter:description" content={content} />
+          <meta name="twitter:description" content={content.slice(0, 40)} />
           <meta
             name="twitter:image"
             content={
