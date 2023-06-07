@@ -94,11 +94,19 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
   };
   const baseGridProps = mapUseCasesToProps(props);
 
+  function htmlToText(html: any) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    return doc.body.textContent || null;
+  }
+  let metaTagContent = htmlToText(Case_Article_Content);
+  const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
+
   return (
     <Layout>
       <Helmet>
         <title>{title}</title>
-        <meta name="description" content={title} />
+        <meta name="description" content={metaDescription} />
         <meta name="keywords" content={title} />
         <meta name="author" content={Company} />
 
@@ -107,7 +115,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
             name: title,
-            description: title,
+            description: metaDescription,
             keywords: title,
             author: {
               "@type": "Organization",
@@ -117,7 +125,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         </script>
         {/* Open Graph */}
         <meta property="og:title" content={title} />
-        <meta property="og:description" content={title} />
+        <meta property="og:description" content={metaDescription} />
         <meta
           property="og:image"
           content={
@@ -133,7 +141,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={title} />
+        <meta name="twitter:description" content={metaDescription} />
         <meta
           name="twitter:image"
           content={

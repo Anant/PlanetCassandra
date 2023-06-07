@@ -20,7 +20,14 @@ interface PostSinglePageProps {
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
   pageContext: { id, title, author, content, summary, link },
 }) => {
-  const metaDescription = summary ? summary.slice(0, 40) : title;
+  function htmlToText(html: any) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    return doc.body.textContent || null;
+  }
+  let metaTagContent = htmlToText(summary);
+  const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
+
   return (
     <Layout>
       <Container>

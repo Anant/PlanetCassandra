@@ -81,6 +81,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const metaDescription = node.description
     ? node.description.slice(0, 40)
     : node.title;
+
   return (
     <Layout>
       <Helmet>

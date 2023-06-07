@@ -42,7 +42,13 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
   const month = monthNames[dateObj.getMonth()];
   const day = dateObj.getDate();
   const year = dateObj.getFullYear();
-  const metaDescription = content ? content.slice(0, 40) : title;
+  function htmlToText(html: any) {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, "text/html");
+    return doc.body.textContent || null;
+  }
+  let metaTagContent = htmlToText(content);
+  const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
 
   return (
     <Layout>
