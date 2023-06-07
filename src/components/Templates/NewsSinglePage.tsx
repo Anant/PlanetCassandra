@@ -20,20 +20,21 @@ interface PostSinglePageProps {
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
   pageContext: { id, title, author, content, summary, link },
 }) => {
+  const metaDescription = summary ? summary.slice(0, 40) : title;
   return (
     <Layout>
       <Container>
         <Helmet>
           <title>{title}</title>
           <meta name="title" content={title} />
-          <meta name="description" content={summary.slice(0, 40)} />
+          <meta name="description" content={metaDescription} />
 
           <script type="application/ld+json">
             {JSON.stringify({
               "@context": "https://planetcassandra.org/",
               "@type": "WebPage",
               name: title,
-              description: summary.slice(0, 40),
+              description: metaDescription,
               keywords: title,
               author: {
                 "@type": "Organization",
@@ -43,7 +44,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           </script>
           {/* Open Graph */}
           <meta property="og:title" content={title} />
-          <meta property="og:description" content={summary.slice(0, 40)} />
+          <meta property="og:description" content={metaDescription} />
           <meta
             property="og:image"
             content={
@@ -54,7 +55,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title} />
-          <meta name="twitter:description" content={summary.slice(0, 40)} />
+          <meta name="twitter:description" content={metaDescription} />
           <meta
             name="twitter:image"
             content={

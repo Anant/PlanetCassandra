@@ -78,12 +78,14 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const allRelatedArticles = findThumbnails(relatedArticles, images);
   const singlePageNode = findThumbnails([node], images);
   const allTagSets = findThumbnailsForTagSets(tagSets, images);
-
+  const metaDescription = node.description
+    ? node.description.slice(0, 40)
+    : node.title;
   return (
     <Layout>
       <Helmet>
         <title>{node.title}</title>
-        <meta name="description" content={node.description.slice(0, 40)} />
+        <meta name="description" content={metaDescription} />
         <meta name="keywords" content={node.tags.join(", ")} />
         <meta name="author" content={node.url} />
 
@@ -92,7 +94,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
             name: node.title,
-            description: node.description.slice(0, 40),
+            description: metaDescription,
             keywords: node.title,
             author: {
               "@type": "Organization",
@@ -102,10 +104,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         </script>
 
         <meta property="og:title" content={node.title} />
-        <meta
-          property="og:description"
-          content={node.description.slice(0, 40)}
-        />
+        <meta property="og:description" content={metaDescription} />
         <meta
           property="og:image"
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
@@ -117,10 +116,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={node.title} />
-        <meta
-          name="twitter:description"
-          content={node.description.slice(0, 40)}
-        />
+        <meta name="twitter:description" content={metaDescription} />
         <meta
           name="twitter:image"
           content={
