@@ -7,6 +7,8 @@ import { Box, Container, Typography } from "@mui/material";
 import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
 import { GatsbyImage } from "gatsby-plugin-image";
 import "./singlePageTemplates.css";
+import { convert } from "html-to-text";
+
 interface PostSinglePageProps {
   pageContext: {
     id: string;
@@ -42,12 +44,8 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
   const month = monthNames[dateObj.getMonth()];
   const day = dateObj.getDate();
   const year = dateObj.getFullYear();
-  function htmlToText(html: any) {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    return doc.body.textContent || null;
-  }
-  let metaTagContent = htmlToText(content);
+  const metaTagContent = convert(content);
+
   const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
 
   return (

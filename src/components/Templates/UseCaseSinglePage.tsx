@@ -9,7 +9,7 @@ import { BaseGridProps } from "../../layouts/SinglePageLayout/BaseGrid";
 import UseCaseGrid from "../../layouts/SinglePageLayout/UseCaseGrid";
 import "../../components/Layout/Layout.css";
 import "./singlePageTemplates.css";
-
+import { convert } from "html-to-text";
 interface UseCasesSinglePageProps {
   pageContext: {
     id: string;
@@ -94,12 +94,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
   };
   const baseGridProps = mapUseCasesToProps(props);
 
-  function htmlToText(html: any) {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    return doc.body.textContent || null;
-  }
-  let metaTagContent = htmlToText(Case_Article_Content);
+  const metaTagContent = convert(Case_Article_Content);
   const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
 
   return (

@@ -5,6 +5,7 @@ import Layout from "../Layout/Layout";
 import { Button, Container, Grid, Typography } from "@mui/material";
 import "./singlePageTemplates.css";
 import { Link } from "gatsby";
+import { convert } from "html-to-text";
 
 interface PostSinglePageProps {
   pageContext: {
@@ -20,12 +21,8 @@ interface PostSinglePageProps {
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
   pageContext: { id, title, author, content, summary, link },
 }) => {
-  function htmlToText(html: any) {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, "text/html");
-    return doc.body.textContent || null;
-  }
-  let metaTagContent = htmlToText(summary);
+  const metaTagContent = convert(summary);
+
   const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
 
   return (
