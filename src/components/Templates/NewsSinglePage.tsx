@@ -20,7 +20,6 @@ interface PostSinglePageProps {
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
   pageContext: { id, title, author, content, summary, link },
 }) => {
-  console.log("🚀 ~ file: NewsSinglePage.tsx:23 ~ title:", title);
   return (
     <Layout>
       <Container>
