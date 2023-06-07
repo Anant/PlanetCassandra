@@ -29,7 +29,6 @@ const NewsLetterCard: React.FC<Props> = ({
     setOpen(false);
   };
   const handleSubmit = async () => {
-    console.log(email);
     const res = await addToMailchimp(email);
     setMessage(res.msg);
     setOpen(true);
