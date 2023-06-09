@@ -1,54 +1,70 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal TypeScript starter
-</h1>
+# Gatsby Project 
 
-## 🚀 Quick start
+This project is built using Gatsby. It uses Algolia for content indexing, with separate environments for development and production linked to Airtable and two WordPress instances.
 
-1.  **Create a Gatsby site.**
+## Prerequisites
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+You need to have the following installed on your machine before following the instructions below:
+- Node.js and npm
+- Gatsby CLI
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby
-    ```
+## Getting Started
 
-2.  **Start developing.**
+1. Clone this repository to your local machine.
+\`\`\`
+git clone https://github.com/your_username/your_repository.git
+\`\`\`
+2. Install the project dependencies.
+\`\`\`
+cd your_repository
+npm install
+\`\`\`
+3. Create a .env file at the root of your project and add the environment variables mentioned below. Remember, the development and production environments have separate variables.
 
-    Navigate into your new site’s directory and start it up.
+\`\`\`
+ALGOLIA_APP_ID=
+ALGOLIA_API_KEY=
+ALGOLIA_ADMIN_KEY=
+WP_GRAPHQL=
+WP_GRAPHQL_DEV=
+GA_TRACKING_ID=
+AIRTABLE_BASE=
+AIRTABLE_KEY_1=
+AIRTABLE_KEY_2=
+YOUTUBE_API_KEY=
+LEAVES_URL=
+EVENTS_URL=
+BLOG_POSTS_AIRTABLE_FORM=
+USE_CASES_AIRTABLE_FORM=
+RESOURCES_AIRTABLE_FORM=
+\`\`\`
+Fill in the correct values for each variable. Never share your private keys or add them to the public repository.
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## Development
 
-3.  **Open the code and start customizing!**
+Start the development server.
+\`\`\`
+gatsby develop
+\`\`\`
+Your site is now running at `http://localhost:8000`.
 
-    Your site is now running at http://localhost:8000!
+## Build
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+Before building, ensure Algolia has indexed the content. Then, run the following command to create a production build of your site.
 
-4.  **Learn more**
+\`\`\`
+gatsby build
+\`\`\`
+## Deployment
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+This will create a static version of your website in the `public` folder in the root directory of your application. This can be deployed using various hosting options like Netlify, Vercel, GitHub pages, etc.
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+Remember, it's important to keep your environment variables secure and update them according to your current development or production environment.
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+## Contributing
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+Please read `CONTRIBUTING.md` for details on our code of conduct, and the process for submitting pull requests.
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
+## License
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
+This project is licensed under the MIT License - see the `LICENSE.md` file for details.
