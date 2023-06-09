@@ -1,4 +1,4 @@
-import { useHits } from "react-instantsearch-hooks-web";
+import { useHits, useInstantSearch } from "react-instantsearch-hooks-web";
 import React, { useMemo, useState, useEffect } from "react";
 import getSlug from "speakingurl";
 import SearchGrid from "../SearchGrid";
@@ -8,6 +8,8 @@ import { IGatsbyImageData } from "gatsby-plugin-image";
 
 function CustomHits({ props, cardType, setNumHits }: any) {
   const { hits, results, sendEvent } = useHits(props);
+  const { status } = useInstantSearch();
+
   useEffect(() => {
     setNumHits(hits.length);
   }, [hits]);
@@ -146,6 +148,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
   };
   return (
     <SearchGrid
+      loading={status}
       //@ts-ignore
       cardData={formattedHits}
       itemsPerPage={12}

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Grid, Skeleton, Typography } from "@mui/material";
 import { IGatsbyImageData } from "gatsby-plugin-image";
-import InfiniteScroll from "react-infinite-scroll-component";
 
 interface CardData {
   videoId: string;
@@ -40,15 +39,31 @@ interface BaseGridProps {
   cardData: CardData[];
   itemsPerPage: number;
   renderItem: (card: CardData) => React.ReactNode;
-  loading: boolean;
+  loading: string;
 }
 
 const SearchGrid: React.FC<BaseGridProps> = ({
   cardData,
   itemsPerPage,
   renderItem,
+  loading,
 }) => {
-  if (cardData.length === 0) {
+  const renderSkeleton = () => (
+    <Grid container spacing={2}>
+      {Array.from({ length: 10 }, (_, index) => (
+        <Grid item xs={12} sm={6} md={6} lg={6} key={index}>
+          <Skeleton variant="rectangular" height={150} />
+          <Skeleton variant="text" />
+          <Skeleton variant="text" />
+          <Skeleton variant="text" />
+        </Grid>
+      ))}
+    </Grid>
+  );
+  if (loading === "loading" || loading === "stalled") {
+    renderSkeleton();
+  }
+  if (cardData.length === 0 && loading === "idle") {
     return (
       <Container maxWidth="xl" style={{ padding: "25px" }}>
         <Typography variant="h4" align="center">
