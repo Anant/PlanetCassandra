@@ -73,7 +73,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
               className="h-100 object-contain thumbnail"
               image={image}
               alt={"test"}
-              style={{ width: "100%" }}
+              style={{ width: cardType == "usecases" ? "85%" : "100%" }}
               imgStyle={{ objectFit: "contain" }}
             />
           </Box>

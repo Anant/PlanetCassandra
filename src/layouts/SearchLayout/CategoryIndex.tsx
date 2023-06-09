@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CustomHits from "./HitsLayout";
 
-import { Index } from "react-instantsearch-hooks-web";
+import { Index, Pagination } from "react-instantsearch-hooks-web";
 import { Container, Grid, Divider, Box } from "@mui/material";
 
 import MyRefinementList from "./CustomRefinementList";
@@ -69,12 +69,19 @@ function CategoryIndex({
               </Grid>
             </Grid>
             <Grid
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
               item
               xs={12}
               sm={category === "news" ? 12 : 8}
               md={category === "news" ? 12 : 9}
             >
               <CustomHits cardType={cardType} setNumHits={setNumHits} />
+              <Pagination padding={2} />
             </Grid>
           </Grid>
         </Box>
