@@ -11,17 +11,17 @@ You need to have the following installed on your machine before following the in
 ## Getting Started
 
 1. Clone this repository to your local machine.
-\`\`\`
+```shell
 git clone https://github.com/your_username/your_repository.git
-\`\`\`
+```
 2. Install the project dependencies.
-\`\`\`
+```shell
 cd your_repository
 npm install
-\`\`\`
+```
 3. Create a .env file at the root of your project and add the environment variables mentioned below. Remember, the development and production environments have separate variables.
 
-\`\`\`
+```shell
 ALGOLIA_APP_ID=
 ALGOLIA_API_KEY=
 ALGOLIA_ADMIN_KEY=
@@ -37,24 +37,28 @@ EVENTS_URL=
 BLOG_POSTS_AIRTABLE_FORM=
 USE_CASES_AIRTABLE_FORM=
 RESOURCES_AIRTABLE_FORM=
-\`\`\`
+```
 Fill in the correct values for each variable. Never share your private keys or add them to the public repository.
 
 ## Development
 
 Start the development server.
-\`\`\`
+```shell
 gatsby develop
-\`\`\`
+```
+or
+```shell
+npm run develop
+```
 Your site is now running at `http://localhost:8000`.
 
 ## Build
 
-Before building, ensure Algolia has indexed the content. Then, run the following command to create a production build of your site.
+Before building, ensure Algolia has indexed the content. Then, run the following command to create a production build of your site. ### This will index the data in algolia
 
-\`\`\`
+```shell
 gatsby build
-\`\`\`
+```
 ## Deployment
 
 This will create a static version of your website in the `public` folder in the root directory of your application. This can be deployed using various hosting options like Netlify, Vercel, GitHub pages, etc.
