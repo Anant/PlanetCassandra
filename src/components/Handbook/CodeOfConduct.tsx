@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 const CodeOfConduct: React.FC<any> = () => {
@@ -41,10 +41,15 @@ const CodeOfConduct: React.FC<any> = () => {
         }}
       >
         The code of conduct applies to all Cassandra community spaces, including
-        events:{" "}
-        <a href="https://www.figma.com/exit?url=https%3A%2F%2Fconstantia.io%2Fcode-of-conduct%2F">
-          https://constantia.io/code-of-conduct/.
-        </a>
+        events{" "}
+        <Button 
+              variant="contained" 
+              color="primary" 
+              onClick={() => window.open('https://www.apache.org/foundation/policies/conduct.html', '_blank')} 
+              style={{marginTop: '0px'}}
+            >
+              View the Apache Software Foundation Code of Conduct
+            </Button>
       </Typography>
     </>
   );
