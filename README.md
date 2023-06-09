@@ -54,7 +54,7 @@ Your site is now running at `http://localhost:8000`.
 
 ## Build
 
-Before building, ensure Algolia has indexed the content. Then, run the following command to create a production build of your site. ### This will index the data in algolia
+Before building, ensure Algolia has indexed the content. Then, run the following command to create a production build of your site. This will index the data in algolia
 
 ```shell
 gatsby build
