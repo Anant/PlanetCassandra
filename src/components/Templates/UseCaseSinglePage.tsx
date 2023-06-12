@@ -94,8 +94,8 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
   };
   const baseGridProps = mapUseCasesToProps(props);
 
-  const metaTagContent = convert(Case_Article_Content);
-  const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
+  const metaDescription = convert(Description);
+
 
   return (
     <Layout>
@@ -112,10 +112,10 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
             name: title,
             description: metaDescription,
             keywords: title,
-            author: {
-              "@type": "Organization",
-              name: title,
-            },
+            // author: {
+            //   "@type": "Organization",
+            //   name: title,
+            // },
           })}
         </script>
         {/* Open Graph */}

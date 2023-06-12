@@ -60,9 +60,6 @@ const SearchGrid: React.FC<BaseGridProps> = ({
       ))}
     </Grid>
   );
-  if (loading === "loading" || loading === "stalled") {
-    renderSkeleton();
-  }
   if (cardData.length === 0 && loading === "idle") {
     return (
       <Container maxWidth="xl" style={{ padding: "25px" }}>
@@ -72,7 +69,10 @@ const SearchGrid: React.FC<BaseGridProps> = ({
       </Container>
     );
   }
-
+  if (cardData.length === 0) {
+    return renderSkeleton();
+  }
+  
   return (
     <Grid container spacing={3}>
       {cardData.map((card, index) => (

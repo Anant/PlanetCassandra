@@ -21,9 +21,7 @@ interface PostSinglePageProps {
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
   pageContext: { id, title, author, content, summary, link },
 }) => {
-  const metaTagContent = convert(summary);
-
-  const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
+  const metaDescription = convert(summary);
 
   return (
     <Layout>
@@ -40,10 +38,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
               name: title,
               description: metaDescription,
               keywords: title,
-              author: {
-                "@type": "Organization",
-                name: title,
-              },
+              author: author,
             })}
           </script>
           {/* Open Graph */}
