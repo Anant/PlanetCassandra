@@ -10,6 +10,7 @@ import {
 interface SearchResultCardProps {
   id: string;
   title: string;
+  description: string;
   date: string;
   author?: string;
   slug?: string;
@@ -23,6 +24,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   cardType,
   title,
   date,
+  description,
   author,
   slug,
   ID_Case,
@@ -106,6 +108,15 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           >
             {title}
           </Typography>
+          {description && (
+            <Typography
+              sx={{ fontSize: "0.95rem" }} 
+              variant="body2"
+              color="textSecondary"
+            >
+              {description.substring(0, 160) + "..."}
+            </Typography>
+          )}
         </Box>
         <Box
           sx={{
@@ -114,7 +125,11 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
             alignItems: "center",
           }}
         >
-          <Typography color="textSecondary" gutterBottom>
+          <Typography 
+          color="textSecondary" 
+          gutterBottom
+          sx={{ fontWeight: 700 }}
+          >
             {formatDate(date)}
           </Typography>
           {author && (

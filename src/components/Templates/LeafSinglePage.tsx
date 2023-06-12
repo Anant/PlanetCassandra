@@ -3,9 +3,6 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
 import "./singlePageTemplates.css";
-import BaseGrid, {
-  BaseGridProps,
-} from "../../layouts/SinglePageLayout/BaseGrid";
 import LeaftGrid from "../../layouts/SinglePageLayout/LeafGrid";
 import "../../components/Layout/Layout.css";
 import { IGatsbyImageData } from "gatsby-plugin-image";
@@ -78,15 +75,13 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const allRelatedArticles = findThumbnails(relatedArticles, images);
   const singlePageNode = findThumbnails([node], images);
   const allTagSets = findThumbnailsForTagSets(tagSets, images);
-  const metaDescription = node.description
-    ? node.description.slice(0, 40)
-    : node.title;
+
 
   return (
     <Layout>
       <Helmet>
         <title>{node.title}</title>
-        <meta name="description" content={metaDescription} />
+        <meta name="description" content={node.description} />
         <meta name="keywords" content={node.tags.join(", ")} />
         <meta name="author" content={node.url} />
 
@@ -95,7 +90,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
             "@context": "https://planetcassandra.org/",
             "@type": "WebPage",
             name: node.title,
-            description: metaDescription,
+            description: node.description,
             keywords: node.title,
             author: {
               "@type": "Organization",
@@ -105,7 +100,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         </script>
 
         <meta property="og:title" content={node.title} />
-        <meta property="og:description" content={metaDescription} />
+        <meta property="og:description" content={node.description} />
         <meta
           property="og:image"
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
@@ -117,7 +112,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={node.title} />
-        <meta name="twitter:description" content={metaDescription} />
+        <meta name="twitter:description" content={node.description} />
         <meta
           name="twitter:image"
           content={

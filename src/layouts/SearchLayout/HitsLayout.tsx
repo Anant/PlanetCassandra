@@ -107,6 +107,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     formattedHits = hits.map((hit: any) => ({
       id: hit.id,
       title: hit.data?.Case_Name,
+      description: hit.data?.Case_Description,
       date: hit.data?.Created,
       author: null,
       slug: "",
@@ -123,6 +124,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     pubDate: any;
     wallabag_created_at: any;
     title: string;
+    description: string;
     slug: string;
     author: string;
     date: any;
@@ -137,6 +139,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
       <SearchResultCard
         id={card.id}
         title={card.title}
+        description={card.description}
         date={card.pubDate || card.date || card.wallabag_created_at}
         author={card.author}
         slug={urlSlug}

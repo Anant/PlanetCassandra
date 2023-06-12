@@ -19,34 +19,20 @@ interface PostSinglePageProps {
     name: string;
     date: Date;
     avatar: string;
+    excerpt: string;
   };
 }
 
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
-  pageContext: { id, title, tags, content, featuredImage, name, date, avatar },
+  pageContext: { id, title, tags, content, featuredImage, name, date, excerpt },
 }) => {
-  const dateStr = date;
-  const dateObj = new Date(dateStr);
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const month = monthNames[dateObj.getMonth()];
-  const day = dateObj.getDate();
-  const year = dateObj.getFullYear();
-  const metaTagContent = convert(content);
+  const metaDescription = convert(excerpt);
 
-  const metaDescription = metaTagContent ? metaTagContent.slice(0, 40) : title;
+  let dateObj = new Date(date);
+  let year = dateObj.getFullYear();
+  let month = dateObj.getMonth() + 1; // getMonth() is zero-based, so we add 1
+  let day = dateObj.getDate();
+
 
   return (
     <Layout>
