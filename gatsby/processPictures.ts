@@ -1,6 +1,7 @@
 // gatsby/processPictures.ts
 import { CreatePagesArgs } from "gatsby";
 import fetchThumbnail from '../src/utils/fetch-thumbnail'
+import fetchPostThumbnail from "../src/utils/fetch-postthumb";
 
 interface ProcessPicturesArgs {
   createNode: CreatePagesArgs["actions"]["createNode"];
@@ -60,7 +61,7 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
   const thumbnailPromises = filteredNodes.map((node, index) => {
     return new Promise((resolve) => {
       setTimeout(() => {
-        fetchThumbnail(node, createNode, createNodeId, getCache).then(() => {
+        fetchPostThumbnail(node, createNode, createNodeId, getCache).then(() => {
           resolve(true);
         });
       }, index * 200);
@@ -92,6 +93,7 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
           id: node.id,
           url: node.link,
           origin_url: node.link,
+          preview_picture: node.preview_picture,
         };
         fetchThumbnail(newNode, createNode, createNodeId, getCache).then(() => {
           resolve(true);
