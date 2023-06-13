@@ -75,7 +75,9 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const allRelatedArticles = findThumbnails(relatedArticles, images);
   const singlePageNode = findThumbnails([node], images);
   const allTagSets = findThumbnailsForTagSets(tagSets, images);
-
+  const metaImage = node.url
+    ? node.url
+    : "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp";
   return (
     <Layout>
       <Helmet>
@@ -100,10 +102,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
 
         <meta property="og:title" content={node.title} />
         <meta property="og:description" content={node.description} />
-        <meta
-          property="og:image"
-          content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-        />
+        <meta property="og:image" content={metaImage} />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow" />
@@ -112,12 +111,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={node.title} />
         <meta name="twitter:description" content={node.description} />
-        <meta
-          name="twitter:image"
-          content={
-            "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-          }
-        />
+        <meta name="twitter:image" content={metaImage} />
       </Helmet>
       <LeaftGrid
         singlePage={singlePageNode[0]}
