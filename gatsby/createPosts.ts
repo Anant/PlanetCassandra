@@ -8,6 +8,8 @@ interface PostNode {
   title: string;
   id: string;
   content: string;
+  excerpt: string;
+  date: Date;
   tags: {
     nodes: {
       name: string;
@@ -22,7 +24,7 @@ interface PostNode {
       };
     };
   };
-  date: Date;
+  
   author: {
     node: {
       name: string;
@@ -55,6 +57,8 @@ export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
         id
         authorId
         content
+        excerpt
+        date
         tags {
           nodes {
             name
@@ -69,7 +73,6 @@ export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
             }
           }
         }
-        date
         author {
           node {
             name
@@ -118,6 +121,7 @@ export const createPosts = async ({ createPage, graphql }: CreatePostsArgs) => {
         title: node.title,
         tags: node.tags?.nodes.map((tag) => tag.name),
         content: node.content,
+        excerpt: node.excerpt,
         featuredImage:
           node.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData,
         tagSets: tagSets,
