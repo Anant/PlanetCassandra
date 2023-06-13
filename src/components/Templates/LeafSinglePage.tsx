@@ -76,7 +76,6 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const singlePageNode = findThumbnails([node], images);
   const allTagSets = findThumbnailsForTagSets(tagSets, images);
 
-
   return (
     <Layout>
       <Helmet>
@@ -91,7 +90,7 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
             "@type": "WebPage",
             name: node.title,
             description: node.description,
-            keywords: node.title,
+            keywords: node.tags.join(", "),
             author: {
               "@type": "Organization",
               name: node.title,
