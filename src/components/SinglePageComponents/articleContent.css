@@ -1,5 +1,6 @@
 .articleContainer {
   margin: 0 0 50px 0;
+  text-align: justify;
 }
 .articleContainer img {
   height: auto !important;

@@ -31,6 +31,7 @@ const MyRefinementList = ({ attribute, label }: any) => {
             );
           },
         }}
+        sortBy={["count"]}
         attribute={attribute}
         showMore={true}
         limit={7}
