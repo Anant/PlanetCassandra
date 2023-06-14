@@ -75,8 +75,8 @@ const LeafSinglePage: React.FC<LeafSinglePageProps> = (props) => {
   const allRelatedArticles = findThumbnails(relatedArticles, images);
   const singlePageNode = findThumbnails([node], images);
   const allTagSets = findThumbnailsForTagSets(tagSets, images);
-  const metaImage = node.url
-    ? node.url
+  const metaImage = node.preview_picture
+    ? node.preview_picture
     : "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp";
   return (
     <Layout>
