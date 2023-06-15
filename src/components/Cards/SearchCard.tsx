@@ -10,6 +10,7 @@ import {
 interface SearchResultCardProps {
   id: string;
   title: string;
+  description: string;
   date: string;
   author?: string;
   slug?: string;
@@ -23,6 +24,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   cardType,
   title,
   date,
+  description,
   author,
   slug,
   ID_Case,
@@ -50,7 +52,6 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
       <Card
         className="px-6 py-4"
         sx={{
-          height: "250px",
           display: "flex",
           flexDirection: "column",
           "&:hover": {
@@ -61,7 +62,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         {image ? (
           <Box
             sx={{
-              height: "150px",
+              height: "200px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -73,14 +74,14 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
               className="h-100 object-contain thumbnail"
               image={image}
               alt={"test"}
-              style={{ width: cardType == "usecases" ? "75%" : "100%" }}
+              style={{ width: cardType == "usecases" ? "85%" : "100%" }}
               imgStyle={{ objectFit: "contain" }}
             />
           </Box>
         ) : (
           <Box
             sx={{
-              height: "150px",
+              height: "200px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -100,12 +101,31 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           sx={{ flexGrow: 1, alignItems: "center", marginTop: 1 }}
         >
           <Typography
-            sx={{ fontWeight: 700, fontSize: "1rem" }}
+            sx={{
+              height: "80px",
+              fontWeight: 700,
+              fontSize: "1rem",
+              fontFamily: "Roboto Condensed, sans-serif",
+            }}
+            className="textTruncate-3"
             variant="h6"
             component="h2"
           >
             {title}
           </Typography>
+          {description && (
+            <Typography
+              sx={{
+                marginY: 1,
+                fontSize: "0.90rem",
+                fontFamily: "Roboto Condensed, sans-serif",
+              }}
+              color="textSecondary"
+              className="textTruncate-3"
+            >
+              {description}
+            </Typography>
+          )}
         </Box>
         <Box
           sx={{
@@ -114,7 +134,11 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
             alignItems: "center",
           }}
         >
-          <Typography color="textSecondary" gutterBottom>
+          <Typography
+            color="textSecondary"
+            gutterBottom
+            sx={{ fontWeight: 700 }}
+          >
             {formatDate(date)}
           </Typography>
           {author && (

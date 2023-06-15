@@ -1,13 +1,16 @@
-import { useHits } from "react-instantsearch-hooks-web";
+import { useHits, useInstantSearch } from "react-instantsearch-hooks-web";
 import React, { useMemo, useState, useEffect } from "react";
 import getSlug from "speakingurl";
 import SearchGrid from "../SearchGrid";
 import SearchResultCard from "../../components/Cards/SearchCard";
 import { useStaticQuery, graphql } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { convert } from "html-to-text";
 
 function CustomHits({ props, cardType, setNumHits }: any) {
   const { hits, results, sendEvent } = useHits(props);
+  const { status } = useInstantSearch();
+
   useEffect(() => {
     setNumHits(hits.length);
   }, [hits]);
@@ -85,9 +88,25 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     return test;
   };
 
+  function getDescription(hit: any) {
+    if (hit.excerpt) {
+      // If it's from posts
+      return convert(hit.excerpt);
+    } else if (hit.summary) {
+      // If it's from news
+      return convert(hit.summary);
+    } else if (hit.description) {
+      // If it's from leaves
+      return hit.description;
+    } else {
+      return "";
+    }
+  }
+
   let formattedHits = hits.map((hit: any) => ({
     id: hit.id,
     title: hit.title,
+    description: getDescription(hit),
     date: hit.date,
     slug: hit.slug ? hit.slug : "",
     author: hit.author?.node?.name,
@@ -105,6 +124,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     formattedHits = hits.map((hit: any) => ({
       id: hit.id,
       title: hit.data?.Case_Name,
+      description: hit.data?.Case_Description,
       date: hit.data?.Created,
       author: null,
       slug: "",
@@ -121,6 +141,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     pubDate: any;
     wallabag_created_at: any;
     title: string;
+    description: string;
     slug: string;
     author: string;
     date: any;
@@ -135,6 +156,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
       <SearchResultCard
         id={card.id}
         title={card.title}
+        description={card.description}
         date={card.pubDate || card.date || card.wallabag_created_at}
         author={card.author}
         slug={urlSlug}
@@ -146,6 +168,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
   };
   return (
     <SearchGrid
+      loading={status}
       //@ts-ignore
       cardData={formattedHits}
       itemsPerPage={12}

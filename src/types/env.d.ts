@@ -3,6 +3,7 @@ declare module "*.png";
 declare module "showdown";
 declare module "react-jotform-embed";
 declare module "react-helmet";
+declare module "html-to-text";
 declare namespace NodeJS {
   export interface ProcessEnv {
     ALGOLIA_APP_ID: string;

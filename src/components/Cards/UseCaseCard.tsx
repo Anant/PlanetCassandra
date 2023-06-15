@@ -38,7 +38,7 @@ const UseCaseCard = ({
     <Card
       sx={{
         padding: 2,
-        height: "450px",
+        height: "400px",
         borderRadius: 5,
         margin: { xs: "auto", md: 0 },
         display: "flex",
@@ -101,7 +101,7 @@ const UseCaseCard = ({
         </Typography>
         <Typography
           variant="body2"
-          className="Font_Montserrat_550 truncateDescription"
+          className="Font_Montserrat_550 textTruncate-3"
           color="text.secondary"
         >
           {description}
@@ -109,6 +109,7 @@ const UseCaseCard = ({
       </CardContent>
       <CardActions
         sx={{
+          marginTop: 2,
           display: "flex",
           justifyContent: "end",
           paddingInline: 0,
