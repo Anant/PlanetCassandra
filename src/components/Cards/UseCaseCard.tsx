@@ -38,7 +38,6 @@ const UseCaseCard = ({
     <Card
       sx={{
         padding: 2,
-        height: "450px",
         borderRadius: 5,
         margin: { xs: "auto", md: 0 },
         display: "flex",
@@ -109,6 +108,7 @@ const UseCaseCard = ({
       </CardContent>
       <CardActions
         sx={{
+          marginTop: 2,
           display: "flex",
           justifyContent: "end",
           paddingInline: 0,
