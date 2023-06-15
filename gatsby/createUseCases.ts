@@ -14,6 +14,9 @@ interface CompanyData {
     nodes: {
       table: string;
       data: {
+        Attachments: {
+          url: string;
+        }[];
         Case_Name: string;
         Case_Description: string;
         Case_URL: string;
@@ -46,13 +49,11 @@ interface CompanyData {
         id: string;
         childImageSharp: {
           gatsbyImageData: IGatsbyImageData;
-        }
+        };
       }[];
     }[];
   };
 }
-
-
 
 interface LogoFile {
   name: string;
@@ -74,12 +75,14 @@ function mapCompanyLogosToUseCases(
   allFile: LogoFile[]
 ): any[] {
   return useCasesData.map((node) => {
-    const hasCachedImage = node.downloadedImages[0]?.childImageSharp?.gatsbyImageData !== undefined;
-    
+    const hasCachedImage =
+      node.downloadedImages[0]?.childImageSharp?.gatsbyImageData !== undefined;
+
     if (hasCachedImage) {
       return {
         ...node.data,
-        gatsbyImageData: node.downloadedImages[0]?.childImageSharp?.gatsbyImageData || null,
+        gatsbyImageData:
+          node.downloadedImages[0]?.childImageSharp?.gatsbyImageData || null,
       };
     } else {
       const companyName = node.data.Case_Company[0]?.data.Name.split(" ")
@@ -91,12 +94,12 @@ function mapCompanyLogosToUseCases(
 
       return {
         ...node.data,
-        gatsbyImageData: logoFile?.childrenImageSharp[0]?.gatsbyImageData || null,
+        gatsbyImageData:
+          logoFile?.childrenImageSharp[0]?.gatsbyImageData || null,
       };
     }
   });
 }
-
 
 export const createUseCases = async ({
   createPage,
@@ -117,29 +120,36 @@ export const createUseCases = async ({
   const allFile = allUseCases.data.allFile.nodes;
   const allWpCategory = allUseCases.data.allWpCategory.nodes;
 
-  const useCasesDataWithContent = useCasesData.map((node: { data: { Case_Name: any; Case_Article_Content: any; ID_Case: any; }; }) => {
-    const wpPost = allWpCategory[0].posts.nodes.find(
-      (post: { title: any; excerpt: any; }) => {
-        // remove HTML tags from excerpt and parse to number
-        const excerptNumber = Number(post.excerpt.replace(/<\/?[^>]+(>|$)/g, ""));
-        return excerptNumber === node.data.ID_Case;
-      }
-    );
-  
-    return {
-      ...node,
-      data: {
-        ...node.data,
-        Case_Article_Content: wpPost ? wpPost.content : node.data.Case_Article_Content,
-      },
-    };
-  });
-  
-  
+  const useCasesDataWithContent = useCasesData.map(
+    (node: {
+      data: { Case_Name: any; Case_Article_Content: any; ID_Case: any };
+    }) => {
+      const wpPost = allWpCategory[0].posts.nodes.find(
+        (post: { title: any; excerpt: any }) => {
+          // remove HTML tags from excerpt and parse to number
+          const excerptNumber = Number(
+            post.excerpt.replace(/<\/?[^>]+(>|$)/g, "")
+          );
+          return excerptNumber === node.data.ID_Case;
+        }
+      );
 
+      return {
+        ...node,
+        data: {
+          ...node.data,
+          Case_Article_Content: wpPost
+            ? wpPost.content
+            : node.data.Case_Article_Content,
+        },
+      };
+    }
+  );
 
-
-  const useCasesWithLogos = mapCompanyLogosToUseCases(useCasesDataWithContent, allFile);
+  const useCasesWithLogos = mapCompanyLogosToUseCases(
+    useCasesDataWithContent,
+    allFile
+  );
 
   useCasesWithLogos.forEach((node, index) => {
     // Generate random related articles
@@ -170,80 +180,82 @@ export const createUseCases = async ({
         Case_Stack: node.Case_Stack,
         Case_Function: node.Case_Function,
         Case_Industry: node.Case_Industry,
+        imageUrl: node.Attachments[0].url,
       },
     });
-    
   });
 };
 
 //@ts-ignore
 function getAllUseCases(graphql) {
-  return  graphql(`
-  query UseCasesData {
-    allAirtable(
-      filter: {table: {eq: "Cases"}}
-      sort: {data: {Case_Published: DESC}}
-    ) {
-      nodes {
-        data {
-          Case_URL
-          Case_Name
-          ID_Case
-          Case_Stack{
-            data{
-              Name
+  return graphql(`
+    query UseCasesData {
+      allAirtable(
+        filter: { table: { eq: "Cases" } }
+        sort: { data: { Case_Published: DESC } }
+      ) {
+        nodes {
+          data {
+            Attachments {
+              url
             }
+            Case_URL
+            Case_Name
+            ID_Case
+            Case_Stack {
+              data {
+                Name
+              }
+            }
+            Case_Function {
+              data {
+                Function_Name
+              }
+            }
+            Case_Industry {
+              data {
+                Industry_Name
+              }
+            }
+            Case_Company {
+              data {
+                Name
+              }
+              id
+            }
+            Case_Published
           }
-          Case_Function{
-            data{
-              Function_Name
-            }
-          }
-          Case_Industry{
-            data{
-              Industry_Name
-            }
-          }
-          Case_Company {
-            data {
-              Name
-            }
+          downloadedImages {
             id
+            childImageSharp {
+              gatsbyImageData
+            }
           }
-          Case_Published
         }
-        downloadedImages {
-          id
-          childImageSharp {
+      }
+      allFile(filter: { id: { ne: null } }) {
+        nodes {
+          name
+          childrenImageSharp {
             gatsbyImageData
           }
         }
       }
-      
-    }
-    allFile(filter: { id: { ne: null } }) {
-      nodes {
-        name
-        childrenImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-    allWpCategory(filter: {name: {eq: "Use Cases"}}) {
-      nodes {
-        id
-        name
-        posts {
-          nodes {
-            id
-            title
-            authorId
-            content
-            excerpt
+      allWpCategory(filter: { name: { eq: "Use Cases" } }) {
+        nodes {
+          id
+          name
+          posts {
+            nodes {
+              id
+              title
+              authorId
+              content
+              excerpt
+            }
           }
         }
       }
     }
-  }
   `);
 }

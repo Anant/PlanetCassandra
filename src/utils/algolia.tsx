@@ -1,6 +1,7 @@
 // gatsby-config.js
 interface WpPost {
   totalCount: Number;
+  excerpt: string;
   author: {
     node: {
       name: string;
@@ -46,6 +47,7 @@ interface NewsAlgoliaData {
       author: string;
       link: string;
       pubDate: string;
+      summary: string;
     }[];
   };
 }
@@ -106,6 +108,7 @@ query PostsAlgolia {
     nodes {
       id
       authorId
+      excerpt
       author {
         node {
           name
@@ -188,6 +191,7 @@ query NewsAlgolia {
       id
       link
       pubDate
+      summary
     }
   }
 }

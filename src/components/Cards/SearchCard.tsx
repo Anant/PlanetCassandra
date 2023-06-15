@@ -52,7 +52,6 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
       <Card
         className="px-6 py-4"
         sx={{
-          height: "250px",
           display: "flex",
           flexDirection: "column",
           "&:hover": {
@@ -63,7 +62,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         {image ? (
           <Box
             sx={{
-              height: "150px",
+              height: "200px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -82,7 +81,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         ) : (
           <Box
             sx={{
-              height: "150px",
+              height: "200px",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -102,7 +101,13 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           sx={{ flexGrow: 1, alignItems: "center", marginTop: 1 }}
         >
           <Typography
-            sx={{ fontWeight: 700, fontSize: "1rem" }}
+            sx={{
+              height: "80px",
+              fontWeight: 700,
+              fontSize: "1rem",
+              fontFamily: "Roboto Condensed, sans-serif",
+            }}
+            className="textTruncate-3"
             variant="h6"
             component="h2"
           >
@@ -110,11 +115,15 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           </Typography>
           {description && (
             <Typography
-              sx={{ fontSize: "0.95rem" }} 
-              variant="body2"
+              sx={{
+                marginY: 1,
+                fontSize: "0.90rem",
+                fontFamily: "Roboto Condensed, sans-serif",
+              }}
               color="textSecondary"
+              className="textTruncate-3"
             >
-              {description.substring(0, 160) + "..."}
+              {description}
             </Typography>
           )}
         </Box>
@@ -125,10 +134,10 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
             alignItems: "center",
           }}
         >
-          <Typography 
-          color="textSecondary" 
-          gutterBottom
-          sx={{ fontWeight: 700 }}
+          <Typography
+            color="textSecondary"
+            gutterBottom
+            sx={{ fontWeight: 700 }}
           >
             {formatDate(date)}
           </Typography>
