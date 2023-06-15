@@ -15,13 +15,17 @@ interface PostSinglePageProps {
     author: string;
     summary: string;
     link: string;
+    image: any;
   };
 }
 
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
-  pageContext: { id, title, author, content, summary, link },
+  pageContext: { id, title, author, content, summary, link, image },
 }) => {
   const metaDescription = convert(summary);
+  const metaImage = image?.images?.fallback?.src
+    ? `https://planetcassandra.org${image?.images?.fallback?.src}`
+    : "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp";
 
   return (
     <Layout>
@@ -44,23 +48,13 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           {/* Open Graph */}
           <meta property="og:title" content={title} />
           <meta property="og:description" content={metaDescription} />
-          <meta
-            property="og:image"
-            content={
-              "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-            }
-          />
+          <meta property="og:image" content={metaImage} />
 
           {/* Twitter Card */}
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={metaDescription} />
-          <meta
-            name="twitter:image"
-            content={
-              "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-            }
-          />
+          <meta name="twitter:image" content={metaImage} />
           {/* Other meta tags you may consider adding */}
           <meta
             name="viewport"

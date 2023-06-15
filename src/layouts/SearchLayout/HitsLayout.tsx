@@ -5,6 +5,7 @@ import SearchGrid from "../SearchGrid";
 import SearchResultCard from "../../components/Cards/SearchCard";
 import { useStaticQuery, graphql } from "gatsby";
 import { IGatsbyImageData } from "gatsby-plugin-image";
+import { convert } from "html-to-text";
 
 function CustomHits({ props, cardType, setNumHits }: any) {
   const { hits, results, sendEvent } = useHits(props);
@@ -87,9 +88,25 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     return test;
   };
 
+  function getDescription(hit: any) {
+    if (hit.excerpt) {
+      // If it's from posts
+      return convert(hit.excerpt);
+    } else if (hit.summary) {
+      // If it's from news
+      return convert(hit.summary);
+    } else if (hit.description) {
+      // If it's from leaves
+      return hit.description;
+    } else {
+      return "";
+    }
+  }
+
   let formattedHits = hits.map((hit: any) => ({
     id: hit.id,
     title: hit.title,
+    description: getDescription(hit),
     date: hit.date,
     slug: hit.slug ? hit.slug : "",
     author: hit.author?.node?.name,

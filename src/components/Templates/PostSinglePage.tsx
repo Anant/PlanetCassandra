@@ -27,12 +27,14 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
   pageContext: { id, title, tags, content, featuredImage, name, date, excerpt },
 }) => {
   const metaDescription = convert(excerpt);
+  const metaImage = featuredImage?.images?.fallback?.src
+    ? `https://planetcassandra.org${featuredImage?.images?.fallback?.src}`
+    : "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp";
 
   let dateObj = new Date(date);
   let year = dateObj.getFullYear();
   let month = dateObj.getMonth() + 1; // getMonth() is zero-based, so we add 1
   let day = dateObj.getDate();
-
 
   return (
     <Layout>
@@ -58,12 +60,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           {/* Open Graph */}
           <meta property="og:title" content={title} />
           <meta property="og:description" content={metaDescription} />
-          <meta
-            property="og:image"
-            content={
-              "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-            }
-          />
+          <meta property="og:image" content={metaImage} />
 
           {/* Other meta tags you may consider adding */}
           <meta
@@ -76,12 +73,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={metaDescription} />
-          <meta
-            name="twitter:image"
-            content={
-              "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-            }
-          />
+          <meta name="twitter:image" content={metaImage} />
         </Helmet>
         <div className="articleContainer" style={{ marginInline: "30px" }}>
           <article>

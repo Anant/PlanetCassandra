@@ -12,6 +12,7 @@ import "./singlePageTemplates.css";
 import { convert } from "html-to-text";
 interface UseCasesSinglePageProps {
   pageContext: {
+    imageUrl: string;
     id: string;
     title: string;
     Description: string;
@@ -60,6 +61,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
       Case_Stack,
       Case_Function,
       Case_Industry,
+      imageUrl,
     },
   } = props;
   const mapUseCasesToProps = (
@@ -94,8 +96,10 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
   };
   const baseGridProps = mapUseCasesToProps(props);
 
+  const metaImage = imageUrl
+    ? imageUrl
+    : "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp";
   const metaDescription = convert(Description);
-
 
   return (
     <Layout>
@@ -121,12 +125,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         {/* Open Graph */}
         <meta property="og:title" content={title} />
         <meta property="og:description" content={metaDescription} />
-        <meta
-          property="og:image"
-          content={
-            "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-          }
-        />
+        <meta property="og:image" content={metaImage} />
 
         {/* Other meta tags you may consider adding */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -137,12 +136,7 @@ const UseCasesSinglePage: React.FC<UseCasesSinglePageProps> = (props) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={metaDescription} />
-        <meta
-          name="twitter:image"
-          content={
-            "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
-          }
-        />
+        <meta name="twitter:image" content={metaImage} />
       </Helmet>
       <UseCaseGrid
         singlePage={baseGridProps.singlePage}
