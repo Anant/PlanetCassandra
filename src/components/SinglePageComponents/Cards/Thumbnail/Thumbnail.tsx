@@ -27,6 +27,7 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
           alt="logo"
           style={{
             width: "70%",
+            objectFit:'contain'
           }}
         />
       ) : (
@@ -36,6 +37,7 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
           alt="Placeholder"
           style={{
             width: "70%",
+            objectFit:'contain'
           }}
         />
       )}
