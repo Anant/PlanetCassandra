@@ -86,7 +86,6 @@ const ShareUseCases: React.FC = () => {
             }}
           >
             Share Use Case{" "}
-            <RiArrowRightCircleLine style={{ marginLeft: "8px" }} size={20} />
           </Typography>
         </Button>
       </Box>
