@@ -1,6 +1,12 @@
 .articleContainer article img {
   height: auto !important;
 }
+.articleContainer figure{ 
+  overflow-x:scroll;
+}
+.articleContainer table{
+  width: 100%;
+}
 .articleContainer article p,
 .articleContainer article span {
   font-size: 22px;
@@ -56,4 +62,14 @@
   overflow-x: auto;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+@media screen and (max-width:1024px) {
+  .articleContainer td{
+    font-size: 18px;
+  }
+}
+@media screen and (max-width:768px) {
+  .articleContainer td{
+    font-size: 14px;
+  }
 }
