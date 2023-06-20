@@ -8,7 +8,7 @@ import { InstantSearch } from "react-instantsearch-hooks-web";
 import algoliasearch from "algoliasearch";
 import CustomSearchBox from "../layouts/SearchLayout/CustomSearchBox";
 import { Container } from "@mui/material";
-
+import HeroBannerUseCases from "../components/UseCases/HeroBannerUseCases";
 const Companies: React.FC<any> = () => {
   const [query, setQuery] = useState("");
   const searchClient = algoliasearch(
@@ -69,6 +69,7 @@ const Companies: React.FC<any> = () => {
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
         />
       </Helmet>
+      <HeroBannerUseCases />
       <Container maxWidth="xl" sx={{ marginY: 3 }}>
         <InstantSearch
           indexName="PlanetCassandraUseCases"
