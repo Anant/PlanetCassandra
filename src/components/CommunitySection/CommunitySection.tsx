@@ -114,7 +114,7 @@ const CommunitySection = () => {
         </Grid>
 
         <Typography
-          align={"center"}
+          align={"justify"}
           variant="subtitle2"
           gutterBottom
           fontFamily={"Lato, sans-serif"}

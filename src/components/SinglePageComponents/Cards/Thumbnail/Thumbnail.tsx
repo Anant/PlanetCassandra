@@ -26,7 +26,10 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
           image={thumbnail}
           alt="logo"
           style={{
-            width: "70%",
+            width: "50%",
+            margin:'auto',
+            objectFit:'contain',
+            borderRadius:'5px'
           }}
         />
       ) : (
@@ -35,7 +38,10 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
           className="thumbnail"
           alt="Placeholder"
           style={{
-            width: "70%",
+            width: "50%",
+            margin:'auto',
+            objectFit:'contain',
+            borderRadius:'5px'
           }}
         />
       )}
