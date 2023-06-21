@@ -68,6 +68,9 @@
   display: block;
   margin-top: 15px;
 }
+.thumbnail-img-box img{
+  object-fit: contain !important;
+}
 @media screen and (max-width:1024px) {
   .articleContainer td{
     font-size: 18px;
