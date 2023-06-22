@@ -11,6 +11,7 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
 }: ThumbnailInterface) => {
   return (
     <Box
+    className='thumbnail-img-box'
       sx={{
         display: "flex",
         flexGrow: 1,
@@ -22,11 +23,13 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
     >
       {thumbnail ? (
         <GatsbyImage
-          className="thumbnail"
           image={thumbnail}
           alt="logo"
           style={{
-            width: "70%",
+            width: "50%",
+            margin:'auto',
+            objectFit:"contain",
+            borderRadius:'5px'
           }}
         />
       ) : (
@@ -35,7 +38,10 @@ const ThumbnailImage: React.FC<ThumbnailInterface> = ({
           className="thumbnail"
           alt="Placeholder"
           style={{
-            width: "70%",
+            width: "50%",
+            margin:'auto',
+            objectFit:"contain",
+            borderRadius:'5px'
           }}
         />
       )}
