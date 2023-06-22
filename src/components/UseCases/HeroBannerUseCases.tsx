@@ -37,18 +37,19 @@ function HeroBannerUseCases({}: Props) {
           ></iframe>
         </Box>
       </Modal>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          backgroundImage: `url(${HeroBanner})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          paddingY: 4,
-        }}
-      >
-        <Container maxWidth="xl">
+      <Container maxWidth="xl">
+        <Box
+          sx={{
+            paddingInline: 5,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            backgroundImage: `url(${HeroBanner})`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            paddingY: 4,
+          }}
+        >
           <Grid container>
             <Grid item xs={12} sm={6}>
               <Typography
@@ -153,8 +154,8 @@ function HeroBannerUseCases({}: Props) {
               </Box>
             </Grid>
           </Grid>
-        </Container>
-      </Box>
+        </Box>
+      </Container>
     </>
   );
 }
