@@ -83,12 +83,14 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
             display: { xs: "flex", md: "none" },
           }}
         >
-          <StaticImage
-            height={35}
-            width={35}
-            src="../../images/icon.png"
-            alt="Illustration Image"
-          />
+          <Link to="/">
+            <StaticImage
+              height={35}
+              width={35}
+              src="../../images/icon.png"
+              alt="Illustration Image"
+            />
+          </Link>
           {!openNav ? (
             <Button onClick={handleOpenNavMenu}>
               <AiOutlineMenu
