@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
 import { Box, Container, Typography } from "@mui/material";
-import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 import { GatsbyImage } from "gatsby-plugin-image";
 import "./singlePageTemplates.css";
 import { convert } from "html-to-text";
@@ -42,10 +42,12 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
     : "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp";
 
   let dateObj = new Date(date);
-  let year = dateObj.getFullYear();
-  let month = dateObj.getMonth() + 1; // getMonth() is zero-based, so we add 1
-  let day = dateObj.getDate();
 
+  let formattedDate = dateObj.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
   return (
     <Layout>
       <Container>
@@ -95,8 +97,9 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
                 height={50}
                 style={{ borderRadius: "50%" }}
               />
+
               <Typography className="author-component">
-                {name} on {month} {day}, {year}
+                {name} on {formattedDate}
               </Typography>
             </Box>
             <Box
@@ -105,7 +108,6 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
             >
               <GatsbyImage image={featuredImage} alt={title} />
             </Box>
-
             <Typography
               gutterBottom
               dangerouslySetInnerHTML={{ __html: content }}
