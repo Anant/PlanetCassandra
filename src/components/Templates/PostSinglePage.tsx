@@ -24,7 +24,7 @@ interface PostSinglePageProps {
 }
 
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
-  pageContext: { id, title, tags, content, featuredImage, name, date, excerpt },
+  pageContext: { id, title, tags, content, featuredImage, name, date, excerpt, avatar },
 }) => {
   const metaDescription = convert(excerpt);
   const metaImage = featuredImage?.images?.fallback?.src
