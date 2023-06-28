@@ -24,7 +24,17 @@ interface PostSinglePageProps {
 }
 
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
-  pageContext: { id, title, tags, content, featuredImage, name, date, excerpt },
+  pageContext: {
+    id,
+    title,
+    tags,
+    content,
+    featuredImage,
+    name,
+    date,
+    excerpt,
+    avatar,
+  },
 }) => {
   const metaDescription = convert(excerpt);
   const metaImage = featuredImage?.images?.fallback?.src
@@ -79,24 +89,23 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
           <article>
             <Typography className="title-component">{title}</Typography>
             <Box sx={{ display: "flex", alignItems: "center", marginY: 4 }}>
-              {/* <StaticImage
-                src="https://secure.gravatar.com/avatar/b1e26b5e4ab1c95642d2fe570ab84839?s=96&d=mm&r=g"
-                alt="Avatar"
-                layout="fixed"
-                width={25}
-                height={25}
-                style={{ borderRadius: '50%' }}
-              /> */}
-
+              <img
+                src={avatar}
+                width={50}
+                height={50}
+                style={{ borderRadius: "50%" }}
+              />
               <Typography className="author-component">
                 {name} on {month} {day}, {year}
               </Typography>
             </Box>
-            <GatsbyImage
-              image={featuredImage}
-              alt={title}
-              style={{ marginBottom: "30px" }}
-            />
+            <Box
+              className="thumbnail-img-box img"
+              sx={{ width: "100%", marginBottom: "30px", textAlign: "center" }}
+            >
+              <GatsbyImage image={featuredImage} alt={title} />
+            </Box>
+
             <Typography
               gutterBottom
               dangerouslySetInnerHTML={{ __html: content }}

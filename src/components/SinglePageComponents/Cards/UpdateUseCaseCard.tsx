@@ -2,8 +2,7 @@ import { Typography, Box, Button, Modal, useTheme } from "@mui/material";
 import { RiArrowRightCircleLine } from "@react-icons/all-files/ri/RiArrowRightCircleLine";
 import React, { useState } from "react";
 import { StaticImage } from "gatsby-plugin-image";
-import ShareIcon from "../../../images/ShareNetwork.png";
-const ShareUseCases: React.FC = () => {
+const UpdateUseCaseCard: React.FC = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -38,9 +37,9 @@ const ShareUseCases: React.FC = () => {
       </Modal>
       <Box
         sx={{
-          background:
-            "linear-gradient(67.68deg, #5AB1BB -23.68%, #344D67 92.21%)",
-          borderRadius: "8px",
+          border: "2px solid #5AB1BB",
+          boxShadow: "0px 0px 3.85574px #CDCDCD",
+          borderRadius: "25.1908px",
           padding: { xs: 2, sm: 3, lg: 4 },
           paddingY: { lg: 4 },
           display: "flex",
@@ -52,7 +51,7 @@ const ShareUseCases: React.FC = () => {
         <Typography
           sx={{
             marginTop: 1,
-            color: theme.palette.primary.white,
+            color: "#0A2273",
             fontSize: { xs: 16, sm: 20, lg: 30 },
             fontFamily: "Montserrat, sans-serif",
             fontWeight: 700,
@@ -69,7 +68,7 @@ const ShareUseCases: React.FC = () => {
           >
             {" "}
             <StaticImage
-              src="../../../images/ShareNetwork.png"
+              src="../../../images/PuzzlePiece.png"
               alt="HandbookLogo"
               style={{
                 width: "100%",
@@ -78,68 +77,106 @@ const ShareUseCases: React.FC = () => {
               }}
             />
           </Box>
-          Want to share your use case?
+          Have something to add?
         </Typography>
         <Typography
           sx={{
             marginTop: 1,
-            color: "black",
+            color: "#303030",
             fontSize: { xs: 13, sm: 10, lg: 20 },
             fontFamily: "Montserrat, sans-serif",
             fontWeight: 700,
             textAlign: "left",
           }}
         >
-          Planet Cassandra is the home page for the Cassandra Community, and we
-          would love to share your use case.
+          Add your own contribution to this case and become a part of the
+          Cassandra community.
         </Typography>
         <Typography
           sx={{
             marginTop: 1,
-            color: theme.palette.primary.white,
+            color: "#4E4D4D",
             fontSize: { xs: 13, md: 10, lg: 20 },
             fontFamily: "Montserrat, sans-serif",
-            fontWeight: 500,
+            fontWeight: 400,
             textAlign: "left",
           }}
         >
-          Show off what you've done & help others learn following your example &
-          contribution.
+          We are open for any suggestions, corrections and improvements on the
+          use cases from your side. We are in this together, and we build
+          together!
         </Typography>
-        <Button
+        <Box
           sx={{
-            marginY: 2,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
             width: "100%",
-            marginTop: 2,
-            paddingX: 1.75,
-            paddingY: 1,
-            borderRadius: "10px",
-            backgroundColor: theme.palette.primary.turqoise,
-            "&:hover": {
-              backgroundColor: theme.palette.primary.turqoise,
-            },
+            marginY: 2,
           }}
-          onClick={handleOpen}
-          variant="contained"
         >
-          <Typography
+          <Button
             sx={{
-              m: 0,
-              textDecoration: "none",
-              color: "white",
-              display: "flex",
-              alignItems: "center",
-              fontSize: { xs: 13, sm: 10, md: 18 },
-              fontFamily: "Montserrat, sans-serif",
-              fontWeight: 400,
+              marginTop: 2,
+              paddingX: 1.75,
+              paddingY: 1,
+              borderRadius: "10px",
+              backgroundColor: theme.palette.primary.turqoise,
+              "&:hover": {
+                backgroundColor: theme.palette.primary.turqoise,
+              },
             }}
+            onClick={handleOpen}
+            variant="contained"
           >
-            Add your own Use Case
-          </Typography>
-        </Button>
+            <Typography
+              sx={{
+                m: 0,
+                textDecoration: "none",
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+                fontSize: { xs: 13, sm: 10, md: 18 },
+                fontFamily: "Montserrat, sans-serif",
+                fontWeight: 400,
+              }}
+            >
+              Update Use Case
+            </Typography>
+          </Button>
+          <Button
+            sx={{
+              marginTop: 2,
+              paddingX: 1.75,
+              paddingY: 1,
+              borderRadius: "10px",
+              backgroundColor: theme.palette.primary.turqoise,
+              "&:hover": {
+                backgroundColor: theme.palette.primary.turqoise,
+              },
+            }}
+            onClick={handleOpen}
+            variant="contained"
+          >
+            <Typography
+              sx={{
+                m: 0,
+                textDecoration: "none",
+                color: "white",
+                display: "flex",
+                alignItems: "center",
+                fontSize: { xs: 13, sm: 10, md: 18 },
+                fontFamily: "Montserrat, sans-serif",
+                fontWeight: 400,
+              }}
+            >
+              List of contributors
+            </Typography>
+          </Button>
+        </Box>
       </Box>
     </>
   );
 };
 
-export default ShareUseCases;
+export default UpdateUseCaseCard;
