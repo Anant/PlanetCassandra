@@ -46,7 +46,7 @@ const NewCarousel: React.FC<Props> = ({ items }) => {
           >
             {item.image && isImageLoaded ? (
               <GatsbyImage
-                style={{ height: "80%" }}
+                style={{ height: "80%",objectFit:'contain' }}
                 image={items[currentIndex].image}
                 alt="Logo"
                 onError={() => setIsImageLoaded(false)}
