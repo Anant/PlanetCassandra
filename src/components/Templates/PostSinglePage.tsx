@@ -24,7 +24,17 @@ interface PostSinglePageProps {
 }
 
 const PostSinglePage: React.FC<PostSinglePageProps> = ({
-  pageContext: { id, title, tags, content, featuredImage, name, date, excerpt, avatar },
+  pageContext: {
+    id,
+    title,
+    tags,
+    content,
+    featuredImage,
+    name,
+    date,
+    excerpt,
+    avatar,
+  },
 }) => {
   const metaDescription = convert(excerpt);
   const metaImage = featuredImage?.images?.fallback?.src
@@ -35,7 +45,11 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
   let year = dateObj.getFullYear();
   let month = dateObj.getMonth() + 1; // getMonth() is zero-based, so we add 1
   let day = dateObj.getDate();
-
+  let formattedDate = dateObj.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
   return (
     <Layout>
       <Container>
@@ -87,7 +101,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
               />
 
               <Typography className="author-component">
-                {name} on {month} {day}, {year}
+                {name} on {formattedDate}
               </Typography>
             </Box>
             <GatsbyImage
