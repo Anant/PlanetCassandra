@@ -90,8 +90,8 @@ const ShareUseCases: React.FC = () => {
             textAlign: "left",
           }}
         >
-          Planet Cassandra is the home page for the Cassandra Community, and we
-          would love to share your use case.
+          Planet Cassandra is the home page for the Cassandra Community, where
+          everyone in the community can share their use cases.
         </Typography>
         <Typography
           sx={{
