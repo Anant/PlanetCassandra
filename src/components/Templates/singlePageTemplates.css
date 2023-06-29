@@ -4,6 +4,8 @@
 .articleContainer figure {
   overflow-x: scroll;
 }
+
+.articleContainer img:not([src^='http'], [src^='https']),
 .articleContainer img[src^='data:image'] {
   display: none;
 }
