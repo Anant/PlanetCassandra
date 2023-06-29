@@ -15,7 +15,7 @@ import { AiOutlineMenu } from "@react-icons/all-files/ai/AiOutlineMenu";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 const pages = [
   { name: "Home", route: "/" },
-  { name: "Events", route: "https://blog.planetcassandra.org/events" },
+  { name: "Events", route: "https://blog.planetcassandra.org/eventspage" },
   { name: "News", route: "/news" },
   { name: "Use Cases", route: "/usecases" },
   { name: "Posts", route: "/posts" },
