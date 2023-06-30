@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { TextField, Button, Typography, Snackbar, Alert } from "@mui/material";
+import { TextField, Button, Typography, Box } from "@mui/material";
 import axios from "axios";
-
+import { StaticImage } from "gatsby-plugin-image";
 const CustomForm: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
   const [open, setOpen] = useState(false);
 
@@ -50,73 +51,90 @@ const CustomForm: React.FC = () => {
       )
       .then((response: any) => {
         setOpen(true);
+        reset();
       })
       .catch((error: any) => {});
   };
 
   return (
     <>
-      <Typography
-        sx={{
-          fontWeight: 700,
-          fontSize: "1.25rem",
-          fontFamily: "Roboto Condensed, sans-serif",
-          textAlign: "center",
-          marginY: 3,
-        }}
-      >
-        Submission form
-      </Typography>
-      <form style={{ marginBottom: "20px" }} onSubmit={handleSubmit(onSubmit)}>
-        <TextField
-          {...register("name", { required: true })}
-          label="Name"
-          variant="outlined"
-          error={errors.name ? true : false}
-          helperText={errors.name ? "Name is required" : ""}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-          label="Email"
-          variant="outlined"
-          error={errors.email ? true : false}
-          helperText={errors.email ? "Valid email is required" : ""}
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          {...register("description", { required: true })}
-          label="Description"
-          variant="outlined"
-          error={errors.description ? true : false}
-          helperText={errors.description ? "Description is required" : ""}
-          fullWidth
-          margin="normal"
-        />
-        <Button
-          sx={{ backgroundColor: "#344D67" }}
-          variant="contained"
-          type="submit"
-        >
-          Submit
-        </Button>
-        <Snackbar
-          open={open}
-          autoHideDuration={3000}
-          onClose={() => setOpen(false)}
-          message="Form was submitted sucesfully"
-        >
-          <Alert
-            onClose={() => setOpen(false)}
-            severity="success"
-            sx={{ width: "100%" }}
+      {open ? (
+        <Box sx={{ width: "100%", textAlign: "center", marginY: 3 }}>
+          <StaticImage
+            src="../../images/SubmissionConfirmation.png"
+            className="thumbnail"
+            alt="Placeholder"
+          />
+          <Button
+            sx={{
+              backgroundColor: "#344D67",
+              display: "block",
+              margin: "auto",
+            }}
+            onClick={() => setOpen(false)}
+            variant="contained"
+            type="submit"
           >
-            Form was submitted sucesfully!
-          </Alert>
-        </Snackbar>
-      </form>
+            Go back
+          </Button>
+        </Box>
+      ) : (
+        <>
+          <Typography
+            sx={{
+              fontWeight: 700,
+              fontSize: "1.25rem",
+              fontFamily: "Roboto Condensed, sans-serif",
+              textAlign: "center",
+              marginY: 3,
+            }}
+          >
+            Submission form
+          </Typography>
+          <form
+            style={{ marginBottom: "20px" }}
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            <TextField
+              {...register("name", { required: true })}
+              label="Name *"
+              variant="outlined"
+              error={errors.name ? true : false}
+              helperText={errors.name ? "Name is required" : ""}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              {...register("email", {
+                required: true,
+                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+              })}
+              label="Email *"
+              variant="outlined"
+              error={errors.email ? true : false}
+              helperText={errors.email ? "Valid email is required" : ""}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              {...register("description", { required: false })}
+              label="Description"
+              variant="outlined"
+              error={errors.description ? true : false}
+              helperText={errors.description ? "Description is required" : ""}
+              fullWidth
+              margin="normal"
+            />
+            <Button
+              sx={{ backgroundColor: "#344D67" }}
+              variant="contained"
+              type="submit"
+            >
+              Submit
+            </Button>
+          </form>
+        </>
+      )}
     </>
   );
 };
