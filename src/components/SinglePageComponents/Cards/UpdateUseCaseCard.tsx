@@ -102,8 +102,8 @@ const UpdateUseCaseCard: React.FC = () => {
             textAlign: "left",
           }}
         >
-          We are open for any suggestions, corrections and improvements on the
-          use cases from your side. We are in this together, and we build
+          You are welcomed to contribute with any suggestions, corrections and
+          improvements on the use cases. We are in this together, and we build
           together!
         </Typography>
         <Box

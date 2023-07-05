@@ -71,8 +71,8 @@ function HeroBannerUseCases({}: Props) {
                 }}
               >
                 The Use Cases Catalog offers a collection of real-life examples
-                that demonstrate how our solutions are applied in different
-                situations.
+                that demonstrate how Apache Cassandra solutions are applied in
+                different situations.
               </Typography>
               <Typography
                 sx={{
@@ -83,9 +83,9 @@ function HeroBannerUseCases({}: Props) {
                 }}
               >
                 Whether you're seeking inspiration or researching potential
-                applications, our Use Case repository is a valuable resource to
-                explore the diverse possibilities of our solutions and their
-                real-world impact.
+                applications, this Use Case repository is a valuable resource to
+                explore the diverse possibilities of Cassandra solutions and the
+                real-world impacts they have.
               </Typography>
             </Grid>
             <Grid
