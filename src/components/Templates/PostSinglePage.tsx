@@ -106,8 +106,11 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
               className="thumbnail-img-box img"
               sx={{ width: "100%", marginBottom: "30px", textAlign: "center" }}
             >
-              <img src={metaImage} />
-              {/* <GatsbyImage image={featuredImage} alt={title} /> */}
+              <GatsbyImage
+                image={featuredImage}
+                alt={title}
+                imgStyle={{ objectFit: "contain" }}
+              />
             </Box>
             <Typography
               gutterBottom
