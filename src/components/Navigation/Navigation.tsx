@@ -2,18 +2,17 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import SearchBar from "../SearchBar/SearchBar";
-import ToggleButton from "../ToggleButton/ToggleButton";
 import { StaticImage } from "gatsby-plugin-image";
 import { Link } from "gatsby";
 import { AiFillCaretDown } from "react-icons/ai";
-
+import MobileNav from "./MobileNav";
+import { AiOutlineMenu } from "@react-icons/all-files/ai/AiOutlineMenu";
+import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
 const pages = [
   { name: "Home", route: "/" },
   { name: "Events", route: "https://blog.planetcassandra.org/eventspage" },
@@ -24,13 +23,13 @@ const pages = [
   { name: "Videos", route: "/videos" },
 ];
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ openNav, setOpenNav }: any) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
+    setOpenNav(!openNav);
   };
 
   const handleCloseNavMenu = () => {
@@ -61,7 +60,7 @@ function ResponsiveAppBar() {
           display: "flex",
           justifyContent: "space-between",
           flexGrow: 1,
-          marginX: 5,
+          marginX: 1,
         }}
         disableGutters
       >
@@ -80,18 +79,33 @@ function ResponsiveAppBar() {
         <Box
           sx={{
             flexGrow: 1,
+            justifyContent: "space-between",
             display: { xs: "flex", md: "none" },
           }}
         >
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleOpenNavMenu}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Link to="/">
+            <StaticImage
+              height={35}
+              width={35}
+              src="../../images/icon.png"
+              alt="Illustration Image"
+            />
+          </Link>
+          {!openNav ? (
+            <Button onClick={handleOpenNavMenu}>
+              <AiOutlineMenu
+                style={{ width: "33px", height: "23px" }}
+                color="black"
+              />
+            </Button>
+          ) : (
+            <Button onClick={handleOpenNavMenu}>
+              <AiOutlineClose
+                style={{ width: "33px", height: "23px" }}
+                color="black"
+              />
+            </Button>
+          )}
           <Menu
             id="menu-appbar"
             anchorEl={anchorElNav}
@@ -212,7 +226,10 @@ function ResponsiveAppBar() {
             }
           })}
         </Box>
-        <SearchBar />
+        <Box display={{ xs: "none", sm: "flex" }}>
+          <SearchBar />
+        </Box>
+
         <Box
           sx={{
             display: { xs: "none", md: "flex" },
@@ -248,6 +265,7 @@ function ResponsiveAppBar() {
           </Link>
         </Box>
       </Toolbar>
+      {openNav ? <MobileNav /> : null}
     </AppBar>
   );
 }

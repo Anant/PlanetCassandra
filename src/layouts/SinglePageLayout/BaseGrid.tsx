@@ -1,13 +1,13 @@
-import React from 'react';
-import { Container, Grid, Typography, useTheme } from '@mui/material';
-import { IGatsbyImageData } from 'gatsby-plugin-image';
+import React from "react";
+import { Container, Grid, Typography, useTheme } from "@mui/material";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
-import ArticleContent from '../../components/SinglePageComponents/ArticleContent';
-import NotificationComponent from '../../components/SinglePageComponents/Cards/NotificationComponent';
-import ThumbnailImage from '../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail';
+import ArticleContent from "../../components/SinglePageComponents/ArticleContent";
+import NotificationComponent from "../../components/SinglePageComponents/Cards/NotificationComponent";
+import ThumbnailImage from "../../components/SinglePageComponents/Cards/Thumbnail/Thumbnail";
 
-import UseCaseTitleSection from '../../components/SinglePageComponents/UseCaseTitle/UseCaseTitleSection';
-import LeavesTitleSection from '../../components/SinglePageComponents/Cards/LeafTitle/LeavesTitleSection';
+import UseCaseTitleSection from "../../components/SinglePageComponents/UseCaseTitle/UseCaseTitleSection";
+import LeavesTitleSection from "../../components/SinglePageComponents/Cards/LeafTitle/LeavesTitleSection";
 
 export interface BaseGridProps {
   singlePage: {
@@ -49,7 +49,9 @@ export interface BaseGridProps {
   renderExploreFurther?: () => React.ReactNode;
   renderRelatedArticles?: () => React.ReactNode;
   renderShareUseCard?: () => React.ReactNode;
-  titleSectionType: 'usecase' | 'leaves';
+  renderUpdateUseCaseCard?: () => React.ReactNode;
+
+  titleSectionType: "usecase" | "leaves";
   routePrefix: string;
 }
 
@@ -61,9 +63,10 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   renderExploreFurther,
   renderRelatedArticles,
   renderShareUseCard,
+  renderUpdateUseCaseCard,
 }) => {
   const urlRegex = /^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/;
-  const validUrl = urlRegex.test(singlePage.url ? singlePage.url : '');
+  const validUrl = urlRegex.test(singlePage.url ? singlePage.url : "");
   const theme = useTheme();
 
   //@ts-ignore
@@ -73,7 +76,7 @@ const BaseGrid: React.FC<BaseGridProps> = ({
   return (
     <Container maxWidth="xl">
       <Grid container>
-        {titleSectionType === 'usecase' ? (
+        {titleSectionType === "usecase" ? (
           <UseCaseTitleSection
             title={singlePage.title}
             thumbnail={singlePage.thumbnail}
@@ -130,15 +133,18 @@ const BaseGrid: React.FC<BaseGridProps> = ({
               </Grid>
             </Grid>
           )}
-          {renderShareUseCard && (
+          {renderShareUseCard || renderUpdateUseCaseCard ? (
             <Grid item xs={12} sm={4}>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
-                  {renderShareUseCard()}
+                  {renderShareUseCard && renderShareUseCard()}
+                </Grid>
+                <Grid item xs={12}>
+                  {renderUpdateUseCaseCard && renderUpdateUseCaseCard()}
                 </Grid>
               </Grid>
             </Grid>
-          )}
+          ) : null}
         </Grid>
         <Grid sx={{ marginBottom: 4 }} item xs={12}>
           {renderExploreFurther && (

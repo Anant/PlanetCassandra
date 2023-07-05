@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import React from "react";
 import Layout from "../Layout/Layout";
 import { Box, Container, Typography } from "@mui/material";
-import { IGatsbyImageData, StaticImage } from "gatsby-plugin-image";
+import { IGatsbyImageData } from "gatsby-plugin-image";
 import { GatsbyImage } from "gatsby-plugin-image";
 import "./singlePageTemplates.css";
 import { convert } from "html-to-text";
@@ -104,11 +104,12 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
                 {name} on {formattedDate}
               </Typography>
             </Box>
-            <GatsbyImage
-              image={featuredImage}
-              alt={title}
-              style={{ marginBottom: "30px" }}
-            />
+            <Box
+              className="thumbnail-img-box img"
+              sx={{ width: "100%", marginBottom: "30px", textAlign: "center" }}
+            >
+              <GatsbyImage image={featuredImage} alt={title} />
+            </Box>
             <Typography
               gutterBottom
               dangerouslySetInnerHTML={{ __html: content }}

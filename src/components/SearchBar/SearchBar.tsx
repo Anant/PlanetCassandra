@@ -94,7 +94,17 @@ export default function SearchBar() {
     >
       <InputBase
         value={searchTerm}
-        sx={{ ml: 1, flex: 1 }}
+        sx={{
+          "& input": {
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            fontSize: { xs: "10px", md: "15px" },
+            // Additional styling properties for the input component
+          },
+          ml: 1,
+          flex: 1,
+        }}
         placeholder="Search Planet Cassandra..."
         inputProps={{ "aria-label": "search google maps" }}
         onChange={handleInputChange}

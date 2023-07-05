@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import ReactMarkdown from "react-markdown";
-import ReactDOMServer from 'react-dom/server';
+import ReactDOMServer from "react-dom/server";
 import { Box, Typography, useTheme } from "@mui/material";
 import { BsBookmark, BsShare, BsThreeDots } from "react-icons/bs";
 
@@ -15,9 +15,15 @@ interface ArticleProps {
 const getContents = (content: string) => {
   if (content) {
     // Check if the content is in Markdown format
-    if (content.startsWith('#') || content.startsWith('*') || content.startsWith('_')) {
+    if (
+      content.startsWith("#") ||
+      content.startsWith("*") ||
+      content.startsWith("_")
+    ) {
       // If yes, render the Markdown content as HTML
-      return ReactDOMServer.renderToString(<ReactMarkdown>{content}</ReactMarkdown>);
+      return ReactDOMServer.renderToString(
+        <ReactMarkdown>{content}</ReactMarkdown>
+      );
     } else {
       // If not, return the original content
       return content;
@@ -32,11 +38,11 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
   const theme = useTheme();
 
   const author = published_by;
- 
+
   const dateCreated = new Date(wallabag_created_at).toLocaleDateString();
 
   const formattedContent = content?.replace(/<[^>]+>/g, "") ?? ""; // Add the nullish coalescing operator here
-  
+
   const lines = getContents(formattedContent)?.split("\n") ?? [];
 
   const handleBookmarkClick = () => {
@@ -69,31 +75,34 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             }}
           >
             {dateCreated}
-          </Typography>          
-          {reading_time && (
-          <Typography sx={{ fontSize: { xs: "14px", sm: "10px", md: "22px" } }}>
-            <span
-              style={{
-                color: "#7C7C7C",
-                marginRight: "5px",
-                fontFamily: "Roboto Condensed, sans-serif",
-              }}
-            >
-              {" "}
-              Reading time:
-            </span>
-            <span
-              style={{
-                color: theme.palette.primary.main,
-                fontWeight: 600,
-                fontFamily: "Roboto Condensed, sans-serif",
-              }}
-            >
-              {reading_time ? reading_time : "N/A"}{" "}
-            </span>
           </Typography>
-        )}
-        </Box>{/*}
+          {reading_time && (
+            <Typography
+              sx={{ fontSize: { xs: "14px", sm: "10px", md: "22px" } }}
+            >
+              <span
+                style={{
+                  color: "#7C7C7C",
+                  marginRight: "5px",
+                  fontFamily: "Roboto Condensed, sans-serif",
+                }}
+              >
+                {" "}
+                Reading time:
+              </span>
+              <span
+                style={{
+                  color: theme.palette.primary.main,
+                  fontWeight: 600,
+                  fontFamily: "Roboto Condensed, sans-serif",
+                }}
+              >
+                {reading_time ? reading_time : "N/A"}{" "}
+              </span>
+            </Typography>
+          )}
+        </Box>
+        {/*}
         <Box
           sx={{
             display: "flex",
@@ -145,6 +154,7 @@ const DescriptionCard: FC<{ article: ArticleProps }> = ({
             fontSize: { sm: "24px", md: "60px" },
             fontFamily: "Roboto Condensed, sans-serif",
             lineHeight: { sm: "30px", md: "73.5px" },
+            wordWrap: "break-word",
           }}
         >
           {title}
