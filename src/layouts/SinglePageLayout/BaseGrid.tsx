@@ -139,9 +139,9 @@ const BaseGrid: React.FC<BaseGridProps> = ({
                 <Grid item xs={12}>
                   {renderShareUseCard && renderShareUseCard()}
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                   {renderUpdateUseCaseCard && renderUpdateUseCaseCard()}
-                </Grid>
+                </Grid> */}
               </Grid>
             </Grid>
           ) : null}
