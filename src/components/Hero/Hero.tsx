@@ -93,8 +93,8 @@ const HeroSection = () => {
             variant="subtitle1"
             className="Font_Lato_Bold"
           >
-            Where the Apache Cassandra® community gets together. Welcome to the
-            new PlanetCassandra.org{" "}
+            Welcome to Planet Cassandra. A place for the Apache Cassandra® user
+            community to share with each other.{" "}
           </Typography>
           <Box
             sx={{
