@@ -7,12 +7,14 @@ type ShareComponentProps = {
   dataFontSize?: { sm: string; md: string };
   quote: string;
   url: string;
+  color: string;
 };
 
 const ShareComponent: React.FC<ShareComponentProps> = ({
   dataFontSize,
   quote,
   url,
+  color,
 }) => {
   return (
     <Box
@@ -29,7 +31,11 @@ const ShareComponent: React.FC<ShareComponentProps> = ({
             alignItems: "center",
           }}
         >
-          <AiOutlineShareAlt style={{ color: "#FFA62B" }} />  Share
+          <AiOutlineShareAlt
+            size={20}
+            style={{ color: color ? "#5AB1BB" : "#FFA62B" }}
+          />
+            Share
         </Typography>
       </FacebookShareButton>
     </Box>
