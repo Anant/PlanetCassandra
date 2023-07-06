@@ -164,6 +164,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          marginTop: 2,
         }}
       >
         <Link
