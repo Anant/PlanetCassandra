@@ -18,7 +18,7 @@ interface Resource {
 const Resources: Resource[] = [
   {
     name: "Events",
-    href: "https://blog.planetcassandra.org/eventspage",
+    href: "https://prodcassandra.wpengine.com/eventspage/",
     target: "_blank",
   },
   { name: "Handbook", href: "/meetup-organizer-handboo" },
