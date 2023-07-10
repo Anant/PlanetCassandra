@@ -107,7 +107,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
             image={image}
             alt={"test"}
             style={{ width: cardType == "usecases" ? "85%" : "100%" }}
-            imgStyle={{ objectFit: "contain" }}
+            imgStyle={{ objectFit: "contain", borderRadius: "16px" }}
           />
         </Box>
       ) : (
