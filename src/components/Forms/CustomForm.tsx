@@ -96,7 +96,10 @@ const CustomForm: React.FC = () => {
             onSubmit={handleSubmit(onSubmit)}
           >
             <TextField
-              {...register("name", { required: true })}
+              {...register("name", {
+                required: true,
+                pattern: /^[a-zA-Z]+$/,
+              })}
               label="Name *"
               variant="outlined"
               error={errors.name ? true : false}
