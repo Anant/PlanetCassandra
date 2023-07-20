@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Grid, Typography, Container, Box } from "@mui/material";
+import { Grid, Typography, Container, Box, Avatar } from "@mui/material";
 import Layout from "../components/Layout/Layout";
 import { StaticImage } from "gatsby-plugin-image";
 import { Helmet } from "react-helmet";
+import HeroBanner from "../images/EventsBg.png";
+import PcShirt from '../images/PCTshirt.png'
 // import JotformEmbed from "react-jotform-embed";
 
 const ContactUs: React.FC = () => {
@@ -57,45 +59,100 @@ const ContactUs: React.FC = () => {
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
         />
       </Helmet>
-      <Container maxWidth="xl" sx={{ padding: 6 }}>
-        <Box my={4}>
+      <Box
+        sx={{
+          paddingInline: 5,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          backgroundImage: `url(${HeroBanner})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          paddingY: 2,  // Reducing padding
+          height: "65vh"
+        }}
+      >
+        <Container maxWidth="xl" sx={{ padding: 6 }}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <Typography
                 variant="h1"
-                fontFamily="Poppins, sans-serif"
+                fontFamily="Montserrat"
                 sx={{
-                  color: "#1E1E1E",
-                  fontSize: { xs: 30, sm: 45, xl: 60 },
+                  color: "#FFF",
+                  leadingTrim: "both",
+                  textEdge: "cap",
+                  fontSize: 40,
+                  fontStyle: "normal",
                   fontWeight: 400,
+                  lineHeight: "131.5%",
+                  letterSpacing: "1.2px",
                 }}
               >
-                Get in Touch
+                Will they find the
+                <span style={{
+                  fontWeight: 700,
+                  letterSpacing: "-2.4px"
+                }}> knowledge </span>
+                they are
+                <span style={{
+                  color: "#5AB1BB",
+                  fontWeight: 700,
+                  letterSpacing: "-2.8px"
+                }}> looking for?</span>
               </Typography>
               <Typography
                 sx={{
                   marginTop: { xs: 5, sm: 2, lg: 5 },
-                  color: "#383D3B",
+                  color: "#FFF",
                   fontSize: { xs: 16, sm: 10, md: 22 },
                 }}
                 fontFamily="Roboto Condensed, sans-serif"
                 fontWeight={400}
               >
-                If you have any questions, comments, or suggestions about Planet
-                Cassandra or our community, please don't hesitate to get in
-                touch with us using the contact form. We value your feedback and
-                are always eager to hear from members of our community. Thank
-                you for your interest in Planet Cassandra, and we look forward
-                to connecting with you!
-                <StaticImage
-                  src="../images/contactUs_half.jpg"
-                  alt="Contact Us Image"
-                  placeholder="blurred"
-                  layout="fullWidth"
-                  style={{ borderRadius: "50px" }}
-                />
+                Calling all contributors! If you've got a passion for sharing your knowledge and skills, here's your chance.
+              </Typography>
+              <Typography
+                sx={{
+                  marginTop: { xs: 5, sm: 2, lg: 5 },
+                  color: "#FFF",
+                  fontSize: { xs: 16, sm: 10, md: 22 },
+                }}
+                fontFamily="Roboto Condensed, sans-serif"
+                fontWeight={400}
+              >
+                Fill out the form below and let us know you’d like to contribute. Your expertise could help build a better community and build your recognition. We’ll contact you and come up with something that fits in a way you can contribute.
+              </Typography>
+              <Typography
+                sx={{
+                  marginTop: { xs: 5, sm: 2, lg: 5 },
+                  color: "#FFF",
+                  fontSize: { xs: 16, sm: 10, md: 22 },
+                }}
+                fontFamily="Roboto Condensed, sans-serif"
+                fontWeight={400}
+              >
+                Get ready to join the group of Planet Cassandra contributors and claim your free Planet Cassandra Contributor T-shirt!
               </Typography>
             </Grid>
+            <Grid item xs={12} sm={6}>
+              <Box
+                sx={{
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <img src={PcShirt} alt="Planet Cassandra T-Shirt" />
+              </Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+      <Container maxWidth="xl" sx={{ padding: 6 }}>
+        <Box my={4}>
+          <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
               <Box
                 sx={{
@@ -109,7 +166,6 @@ const ContactUs: React.FC = () => {
                   },
                 }}
               >
-                {/* <JotformEmbed src="https://form.jotform.com/231082464101342" /> */}
                 <iframe
                   title="Contact us"
                   src={"https://form.jotform.com/231082464101342"}
@@ -119,9 +175,132 @@ const ContactUs: React.FC = () => {
                 ></iframe>
               </Box>
             </Grid>
+
+
+            <Grid item xs={12} sm={6}>
+              <Typography
+                variant="h1"
+                fontFamily="Montserrat"
+                sx={{
+                  color: "#344D67",
+                  leadingTrim: "both",
+                  textEdge: "cap",
+                  fontSize: 40,
+                  fontStyle: "normal",
+                  fontWeight: 700,
+                  lineHeight: "131.5%",
+                  letterSpacing: "1.2px",
+                }}
+              >
+                What you need to do?
+              </Typography>
+
+              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2, paddingTop: 6 }}>
+                <Avatar style={{ backgroundColor: "#5AB1BB", color: "white", width: 49, height: 49 }}>
+                  1
+                </Avatar>
+                <Box>
+                  <Typography
+                    sx={{
+                      color: "#161616",
+                      fontSize: 25,
+                      fontFamily: "Montserrat",
+                      fontWeight: 600,
+                      lineHeight: "131.5%",
+                      letterSpacing: "0.75px",
+                    }}
+                  >
+                    Fill out the Form
+                  </Typography>
+                  <Typography
+                    sx={{
+                      marginTop: 1,
+                      color: "#344D67",
+                      fontSize: 22,
+                      fontFamily: "Montserrat",
+                      fontWeight: 400,
+                      lineHeight: "131.5%",
+                      letterSpacing: "0.66px",
+                    }}
+                  >
+                    Complete the form below to express your interest in contributing to the community of Planet Cassandra.
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2, paddingTop: 6 }}>
+                <Avatar style={{ backgroundColor: "#5AB1BB", color: "white", width: 49, height: 49 }}>
+                  2
+                </Avatar>
+                <Box>
+                  <Typography
+                    sx={{
+                      color: "#161616",
+                      fontSize: 25,
+                      fontFamily: "Montserrat",
+                      fontWeight: 600,
+                      lineHeight: "131.5%",
+                      letterSpacing: "0.75px",
+                    }}
+                  >
+                    Submit Your Contribution
+                  </Typography>
+                  <Typography
+                    sx={{
+                      marginTop: 1,
+                      color: "#344D67",
+                      fontSize: 22,
+                      fontFamily: "Montserrat",
+                      fontWeight: 400,
+                      lineHeight: "131.5%",
+                      letterSpacing: "0.66px",
+                    }}
+                  >
+                    Share your valuable contribution, such as a use case, article, video, or tutorial once you get contacted by the team of Planet Cassandra.
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Box sx={{ display: "flex", alignItems: "flex-start", gap: 2, paddingTop: 6 }}>
+                <Avatar style={{ backgroundColor: "#5AB1BB", color: "white", width: 49, height: 49 }}>
+                  3
+                </Avatar>
+                <Box>
+                  <Typography
+                    sx={{
+                      color: "#161616",
+                      fontSize: 25,
+                      fontFamily: "Montserrat",
+                      fontWeight: 600,
+                      lineHeight: "131.5%",
+                      letterSpacing: "0.75px",
+                    }}
+                  >
+                    Get Your T-Shirt
+                  </Typography>
+                  <Typography
+                    sx={{
+                      marginTop: 1,
+                      color: "#344D67",
+                      fontSize: 22,
+                      fontFamily: "Montserrat",
+                      fontWeight: 400,
+                      lineHeight: "131.5%",
+                      letterSpacing: "0.66px",
+                    }}
+                  >
+                    If your contribution is accepted, as a token of our appreciation for your effort and knowledge contributed to our community, we will send you a free Planet Cassandra Contributor T-shirt. Shipping is worldwide!
+                  </Typography>
+                </Box>
+              </Box>
+            </Grid>
+
+
+
           </Grid>
         </Box>
       </Container>
+
     </Layout>
   );
 };
