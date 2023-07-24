@@ -13,23 +13,6 @@ const CustomForm: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   const onSubmit = (data: any) => {
-    // axios
-    //   .get(
-    //     `https://api.airtable.com/v0/${process.env.AIRTABLE_BASE}/Cases?maxRecords=1&filterByFormula={Case_Name}="Intuit"`,
-    //     {
-    //       headers: {
-    //         Authorization: `Bearer ${process.env.AIRTABLE_KEY_1} `,
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   )
-    //   .then((response: { data: { records: string | any[] } }) => {
-    //     if (response.data.records.length > 0) {
-    //     }
-    //   })
-    //   .catch((error: any) => {
-    //     console.error(error);
-    //   });
 
     axios
       .post(
@@ -80,17 +63,7 @@ const CustomForm: React.FC = () => {
         </Box>
       ) : (
         <>
-          <Typography
-            sx={{
-              fontWeight: 700,
-              fontSize: "1.25rem",
-              fontFamily: "Roboto Condensed, sans-serif",
-              textAlign: "center",
-              marginY: 3,
-            }}
-          >
-            Submission form
-          </Typography>
+    
           <form
             style={{ marginBottom: "20px" }}
             onSubmit={handleSubmit(onSubmit)}
@@ -121,7 +94,7 @@ const CustomForm: React.FC = () => {
             />
             <TextField
               {...register("description", { required: false })}
-              label="Description"
+              label="Message"
               variant="outlined"
               error={errors.description ? true : false}
               helperText={errors.description ? "Description is required" : ""}

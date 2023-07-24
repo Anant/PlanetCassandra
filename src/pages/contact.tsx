@@ -5,6 +5,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Helmet } from "react-helmet";
 import HeroBanner from "../images/EventsBg.png";
 import PcShirt from '../images/PCTshirt.png'
+import CustomForm from "../components/Forms/CustomForm";
 // import JotformEmbed from "react-jotform-embed";
 
 const ContactUs: React.FC = () => {
@@ -166,13 +167,14 @@ const ContactUs: React.FC = () => {
                   },
                 }}
               >
-                <iframe
+                {/* <iframe
                   title="Contact us"
                   src={"https://form.jotform.com/231082464101342"}
                   width="100%"
                   frameBorder="0"
                   scrolling="no"
-                ></iframe>
+                ></iframe> */}
+                <CustomForm />
               </Box>
             </Grid>
 
