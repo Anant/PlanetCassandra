@@ -111,6 +111,7 @@ const SingleArticleCard: FC<SingleArticleCardProps> = ({
             />
             {isShared && (
               <ShareComponent
+                color="#FFA62B"
                 dataFontSize={dataFontSize}
                 url={item.url}
                 quote={item.title}
