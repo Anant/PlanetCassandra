@@ -67,10 +67,11 @@ const Footer = () => {
               color="#5AB1BB"
               variant="subtitle1"
             >
-              Planet Cassandra is a hub for all things Apache Cassandra. From
-              tutorials and guides, to discussions and updates, we're here to
-              help you get the most out of Cassandra. Connect with us and become
-              part of our growing community today
+              Planet Cassandra is a service for the Apache Cassandra® user
+              community to share with each other. From tutorials and guides, to
+              discussions and updates, we're here to help you get the most out
+              of Cassandra. Connect with us and become part of our growing
+              community today.
             </Typography>
             <Typography
               sx={{
