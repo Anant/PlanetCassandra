@@ -225,7 +225,7 @@ const ContactUs: React.FC = () => {
                       letterSpacing: "0.66px",
                     }}
                   >
-                    Complete the form below to express your interest in contributing to the community of Planet Cassandra.
+                    Complete the form below to express your interest in contributing content to Planet Cassandra
                   </Typography>
                 </Box>
               </Box>
@@ -258,7 +258,7 @@ const ContactUs: React.FC = () => {
                       letterSpacing: "0.66px",
                     }}
                   >
-                    Share your valuable contribution, such as a use case, article, video, or tutorial once you get contacted by the team of Planet Cassandra.
+                    Share your valuable contribution, such as a use case, article, video, or tutorial, once you are contacted by the Planet Cassandra editorial team
                   </Typography>
                 </Box>
               </Box>
@@ -291,7 +291,7 @@ const ContactUs: React.FC = () => {
                       letterSpacing: "0.66px",
                     }}
                   >
-                    If your contribution is accepted, as a token of our appreciation for your effort and knowledge contributed to our community, we will send you a free Planet Cassandra Contributor T-shirt. Shipping is worldwide!
+                    As a token of appreciation for your contribution to our community, we’ll send you a Planet Cassandra Contributor t-shirt upon acceptance of your submission.
                   </Typography>
                 </Box>
               </Box>
