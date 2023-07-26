@@ -51,7 +51,10 @@ async function getAllLeaves(graphql) {
     allApiLeaves(
       sort: { wallabag_created_at: DESC }
       limit: 200
-      filter: { title: { ne: null } }
+      filter: { 
+        title: { ne: null },
+        domain_name: { ne: "www.guru99.com" }
+      }
     ) {
       nodes {
         content
