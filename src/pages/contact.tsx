@@ -60,22 +60,12 @@ const ContactUs: React.FC = () => {
           content="https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp"
         />
       </Helmet>
-      <Box
-        sx={{
-          paddingInline: 5,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          backgroundImage: `url(${HeroBanner})`,
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          paddingY: 2,  // Reducing padding
-          height: "65vh"
-        }}
-      >
-        <Container maxWidth="xl" sx={{ padding: 6 }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
+
+      <Container maxWidth="xl" sx={{ padding: 6 }}>
+        <Grid container spacing={3} sx={{backgroundImage: `url(${HeroBanner})`}}>
+          <Grid item xs={12} sm={6}>
+
+
               <Typography
                 variant="h1"
                 fontFamily="Montserrat"
@@ -135,22 +125,26 @@ const ContactUs: React.FC = () => {
               >
                 Get ready to join the group of Planet Cassandra contributors and claim your free Planet Cassandra Contributor T-shirt!
               </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Box
-                sx={{
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img src={PcShirt} alt="Planet Cassandra T-Shirt" />
-              </Box>
-            </Grid>
+
           </Grid>
-        </Container>
-      </Box>
+
+          <Grid item xs={12} sm={6}>
+            <Box
+              sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img src={PcShirt} alt="Planet Cassandra T-Shirt" />
+            </Box>
+          </Grid>
+
+        </Grid>
+
+      </Container>
+
       <Container maxWidth="xl" sx={{ padding: 6 }}>
         <Box my={4}>
           <Grid container spacing={3}>
@@ -303,7 +297,7 @@ const ContactUs: React.FC = () => {
         </Box>
       </Container>
 
-    </Layout>
+    </Layout >
   );
 };
 export default ContactUs;
