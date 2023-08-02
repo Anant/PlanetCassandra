@@ -23,27 +23,31 @@ export const createLeaves = async ({ createPage, graphql }: CreateLeavesArgs) =>
   }
   //@ts-ignore
   allLeaves.data.allApiLeaves.nodes.forEach((node) => {
-    const relatedArticles = findRelatedArticles(
-      allLeaves.data.allApiLeaves.nodes,
-      node
-    );
-    const tagSets = findThreeTagSets(
-      allLeaves.data.allApiLeaves.nodes,
-      node
-    );
-    const images = allLeaves.data?.allFile.nodes;
-    createPage({
-      path: `/leaf/${getSlug(node.title)}`,
-      component: resolve(`src/components/Templates/LeafSinglePage.tsx`),
-      context: {
-        node,
-        relatedArticles,
-        tagSets,
-        images,
-      },
-    });
+    // Skip the problematic node
+    if (node.preview_picture !== "https://blog.stratio.com/wp-content/uploads/2015/07/link.jpg") {
+      const relatedArticles = findRelatedArticles(
+        allLeaves.data.allApiLeaves.nodes,
+        node
+      );
+      const tagSets = findThreeTagSets(
+        allLeaves.data.allApiLeaves.nodes,
+        node
+      );
+      const images = allLeaves.data?.allFile.nodes;
+      createPage({
+        path: `/leaf/${getSlug(node.title)}`,
+        component: resolve(`src/components/Templates/LeafSinglePage.tsx`),
+        context: {
+          node,
+          relatedArticles,
+          tagSets,
+          images,
+        },
+      });
+    }
   });
 }
+
 //@ts-ignore
 async function getAllLeaves(graphql) {
   return await graphql(`
