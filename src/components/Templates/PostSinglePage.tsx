@@ -42,7 +42,9 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
     : "https://planetcassandra-stage.netlify.app/static/8715e2d2275d886278d5bf60602d5315/38943/LogoWithText.webp";
 
   let dateObj = new Date(date);
-
+  let year = dateObj.getFullYear();
+  let month = dateObj.getMonth() + 1; // getMonth() is zero-based, so we add 1
+  let day = dateObj.getDate();
   let formattedDate = dateObj.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",

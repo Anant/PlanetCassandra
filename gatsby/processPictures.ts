@@ -49,6 +49,7 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
     'zeppelin.apache.org',
     'https://docs.datastax.com/en/articles/cassandra/cassandrathenandnow.html',
     'https://www.datastax.com/why-so-many-ai-initiatives-fail',
+    'https://blog.stratio.com/stratio-lucene-based-index-for-cassandra-now-plugin',
   ];
 
   const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(
