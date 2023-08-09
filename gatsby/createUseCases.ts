@@ -171,6 +171,7 @@ export const createUseCases = async ({
       context: {
         Description: node.Case_Description,
         title: node.Case_Name,
+        cardTotle: node.Case_Title,
         Case_Article_Content: node.Case_Article_Content,
         RelatedArticles: relatedArticles,
         gatsbyImageData: node.gatsbyImageData,
@@ -201,6 +202,7 @@ function getAllUseCases(graphql) {
             }
             Case_URL
             Case_Name
+            Case_Title
             ID_Case
             Case_Stack {
               data {

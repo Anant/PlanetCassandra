@@ -6,7 +6,8 @@ import {
   GatsbyImage,
   IGatsbyImageData,
 } from "gatsby-plugin-image";
-import SendIcon from "@mui/icons-material/Send";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Divider from '@mui/material/Divider';
 import ShareComponent from "../SinglePageComponents/Cards/SingleArticleSubCard/CardShare";
 interface SearchResultCardProps {
   id: string;
@@ -59,57 +60,25 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         },
       }}
     >
+    {image ? (
       <Box
         sx={{
+          height: "200px",
           display: "flex",
-          justifyContent: "space-between",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          borderRadius: 2,
         }}
       >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Box
-            sx={{
-              width: "10px",
-              height: "10px",
-              borderRadius: "50%",
-              backgroundColor: "#5AB1BB",
-              marginRight: "10px",
-            }}
-          />
-          <Typography
-            color="textSecondary"
-            sx={{ fontWeight: 500, textTransform: "uppercase", fontSize: 12 }}
-          >
-            {cardType === "usecases"
-              ? "Use Case"
-              : cardType === "leaf"
-              ? "Link"
-              : cardType}
-          </Typography>
-        </Box>
-
-        <Typography color="textSecondary" gutterBottom sx={{ fontWeight: 500 }}>
-          {formatDate(date)}
-        </Typography>
+        <GatsbyImage
+          className="h-100 object-contain thumbnail"
+          image={image}
+          alt={"test"}
+          style={{ width: cardType == "usecases" ? "85%" : "100%" }}
+          imgStyle={{ objectFit: "contain", borderRadius: "16px" }}
+        />
       </Box>
-      {image ? (
-        <Box
-          sx={{
-            height: "200px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            overflow: "hidden",
-            borderRadius: 2,
-          }}
-        >
-          <GatsbyImage
-            className="h-100 object-contain thumbnail"
-            image={image}
-            alt={"test"}
-            style={{ width: cardType == "usecases" ? "85%" : "100%" }}
-            imgStyle={{ objectFit: "contain", borderRadius: "16px" }}
-          />
-        </Box>
       ) : (
         <Box
           sx={{
@@ -128,13 +97,14 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           />
         </Box>
       )}
+      <Divider sx={{ margin: "15px 3px", borderColor: "#5AB1BB" }} />
       <Box
         className="p-0"
         sx={{ flexGrow: 1, alignItems: "center", marginTop: 1 }}
       >
         <Typography
           sx={{
-            height: "80px",
+            height: "35px",
             fontWeight: 700,
             fontSize: "1rem",
             fontFamily: "Roboto Condensed, sans-serif",
@@ -143,7 +113,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           variant="h6"
           component="h2"
         >
-          {title}
+          Company: {title}
         </Typography>
         {description && (
           <Typography
@@ -167,33 +137,34 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           marginTop: 2,
         }}
       >
+        <Typography color="textSecondary" gutterBottom sx={{ fontWeight: 700 }}>
+          {formatDate(date)}
+        </Typography>
         <Link
           style={{
             textDecoration: "none",
-            color: "white",
             textAlign: "center",
+            marginLeft: "auto"
           }}
           to={url}
         >
           <Button
             sx={{
-              borderRadius: 50,
               fontSize: 12,
-              backgroundColor: "#5AB1BB",
+              color: "#5AB1BB",
             }}
-            variant="contained"
-            endIcon={<SendIcon />}
+            endIcon={<ArrowForwardIcon />}
           >
             Continue reading{" "}
           </Button>
         </Link>
 
-        <ShareComponent
+        {/* <ShareComponent
           color="#FFA62B"
           dataFontSize={{ sm: "18px", md: "18px" }}
           url={`https://planetcassandra.org/${url}`}
           quote={"test"}
-        />
+        /> */}
       </Box>
     </Card>
   );
