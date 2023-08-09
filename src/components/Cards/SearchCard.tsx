@@ -60,25 +60,25 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         },
       }}
     >
-    {image ? (
-      <Box
-        sx={{
-          height: "200px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
-          borderRadius: 2,
-        }}
-      >
-        <GatsbyImage
-          className="h-100 object-contain thumbnail"
-          image={image}
-          alt={"test"}
-          style={{ width: cardType == "usecases" ? "85%" : "100%" }}
-          imgStyle={{ objectFit: "contain", borderRadius: "16px" }}
-        />
-      </Box>
+      {image ? (
+        <Box
+          sx={{
+            height: "200px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            overflow: "hidden",
+            borderRadius: 2,
+          }}
+        >
+          <GatsbyImage
+            className="h-100 object-contain thumbnail"
+            image={image}
+            alt={"test"}
+            style={{ width: cardType == "usecases" ? "85%" : "100%" }}
+            imgStyle={{ objectFit: "contain", borderRadius: "16px" }}
+          />
+        </Box>
       ) : (
         <Box
           sx={{
@@ -97,6 +97,17 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           />
         </Box>
       )}
+      <Typography
+        variant="h6" // This roughly corresponds to font-size: 20px in MUI's default theme
+        style={{
+          color: '#383D3B',
+          fontFamily: 'Montserrat, sans-serif', // Fallback to sans-serif if Montserrat isn't available
+          fontWeight: 600,
+          lineHeight: 1.225, // 122.5% is the same as 1.225
+          letterSpacing: '-0.4px',
+          paddingTop: '10px'
+        }}
+      >Basic Title</Typography>
       <Divider sx={{ margin: "15px 3px", borderColor: "#5AB1BB" }} />
       <Box
         className="p-0"
@@ -104,10 +115,12 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
       >
         <Typography
           sx={{
-            height: "35px",
-            fontWeight: 700,
-            fontSize: "1rem",
-            fontFamily: "Roboto Condensed, sans-serif",
+            color: "#283B4F",
+            fontWeight: 600,
+            fontSize: "16px",
+            fontFamily: "Montserrat, sans-serif",
+            lineHeight: "131.5%", // equivalent to 1.315
+            letterSpacing: "0.48px",
           }}
           className="textTruncate-3"
           variant="h6"
@@ -115,19 +128,24 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         >
           Company: {title}
         </Typography>
+
         {description && (
           <Typography
             sx={{
               marginY: 1,
-              fontSize: "0.90rem",
-              fontFamily: "Roboto Condensed, sans-serif",
+              fontSize: "16px",
+              fontFamily: "Montserrat, sans-serif",
+              fontWeight: 500,
+              lineHeight: "131.5%", // equivalent to 1.315
+              letterSpacing: "0.48px",
+              color: "#796F82",
             }}
-            color="textSecondary"
             className="textTruncate-3"
           >
             {description}
           </Typography>
         )}
+
       </Box>
       <Box
         sx={{
@@ -137,9 +155,19 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           marginTop: 2,
         }}
       >
-        <Typography color="textSecondary" gutterBottom sx={{ fontWeight: 700 }}>
+        <Typography
+          color="#383D3B"
+          gutterBottom
+          sx={{
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "16px",
+            fontWeight: 600,
+            lineHeight: "145.959%", // equivalent to 23.353px
+          }}
+        >
           {formatDate(date)}
         </Typography>
+
         <Link
           style={{
             textDecoration: "none",
@@ -150,13 +178,18 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         >
           <Button
             sx={{
-              fontSize: 12,
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: "16px",
+              fontWeight: 700,
+              lineHeight: "131.5%", // equivalent to 21.04px
+              letterSpacing: "-0.64px",
               color: "#5AB1BB",
             }}
             endIcon={<ArrowForwardIcon />}
           >
-            Continue reading{" "}
+            Continue reading
           </Button>
+
         </Link>
 
         {/* <ShareComponent
