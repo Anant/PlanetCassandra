@@ -153,6 +153,7 @@ query UseCasesDataListing {
       data {
         Case_URL
         Case_Name
+        Case_Title
         Case_Published
         Case_Description
         ID_Case

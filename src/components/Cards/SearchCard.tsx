@@ -6,7 +6,8 @@ import {
   GatsbyImage,
   IGatsbyImageData,
 } from "gatsby-plugin-image";
-import SendIcon from "@mui/icons-material/Send";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Divider from '@mui/material/Divider';
 import ShareComponent from "../SinglePageComponents/Cards/SingleArticleSubCard/CardShare";
 interface SearchResultCardProps {
   id: string;
@@ -59,38 +60,6 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
         },
       }}
     >
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Box
-            sx={{
-              width: "10px",
-              height: "10px",
-              borderRadius: "50%",
-              backgroundColor: "#5AB1BB",
-              marginRight: "10px",
-            }}
-          />
-          <Typography
-            color="textSecondary"
-            sx={{ fontWeight: 500, textTransform: "uppercase", fontSize: 12 }}
-          >
-            {cardType === "usecases"
-              ? "Use Case"
-              : cardType === "leaf"
-              ? "Link"
-              : cardType}
-          </Typography>
-        </Box>
-
-        <Typography color="textSecondary" gutterBottom sx={{ fontWeight: 500 }}>
-          {formatDate(date)}
-        </Typography>
-      </Box>
       {image ? (
         <Box
           sx={{
@@ -128,36 +97,55 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           />
         </Box>
       )}
+      <Typography
+        variant="h6" // This roughly corresponds to font-size: 20px in MUI's default theme
+        style={{
+          color: '#383D3B',
+          fontFamily: 'Montserrat, sans-serif', // Fallback to sans-serif if Montserrat isn't available
+          fontWeight: 600,
+          lineHeight: 1.225, // 122.5% is the same as 1.225
+          letterSpacing: '-0.4px',
+          paddingTop: '10px'
+        }}
+      >Basic Title</Typography>
+      <Divider sx={{ margin: "15px 3px", borderColor: "#5AB1BB" }} />
       <Box
         className="p-0"
         sx={{ flexGrow: 1, alignItems: "center", marginTop: 1 }}
       >
         <Typography
           sx={{
-            height: "80px",
-            fontWeight: 700,
-            fontSize: "1rem",
-            fontFamily: "Roboto Condensed, sans-serif",
+            color: "#283B4F",
+            fontWeight: 600,
+            fontSize: "16px",
+            fontFamily: "Montserrat, sans-serif",
+            lineHeight: "131.5%", // equivalent to 1.315
+            letterSpacing: "0.48px",
           }}
           className="textTruncate-3"
           variant="h6"
           component="h2"
         >
-          {title}
+          Company: {title}
         </Typography>
+
         {description && (
           <Typography
             sx={{
               marginY: 1,
-              fontSize: "0.90rem",
-              fontFamily: "Roboto Condensed, sans-serif",
+              fontSize: "16px",
+              fontFamily: "Montserrat, sans-serif",
+              fontWeight: 500,
+              lineHeight: "131.5%", // equivalent to 1.315
+              letterSpacing: "0.48px",
+              color: "#796F82",
             }}
-            color="textSecondary"
             className="textTruncate-3"
           >
             {description}
           </Typography>
         )}
+
       </Box>
       <Box
         sx={{
@@ -167,33 +155,49 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           marginTop: 2,
         }}
       >
+        <Typography
+          color="#383D3B"
+          gutterBottom
+          sx={{
+            fontFamily: "Montserrat, sans-serif",
+            fontSize: "16px",
+            fontWeight: 600,
+            lineHeight: "145.959%", // equivalent to 23.353px
+          }}
+        >
+          {formatDate(date)}
+        </Typography>
+
         <Link
           style={{
             textDecoration: "none",
-            color: "white",
             textAlign: "center",
+            marginLeft: "auto"
           }}
           to={url}
         >
           <Button
             sx={{
-              borderRadius: 50,
-              fontSize: 12,
-              backgroundColor: "#5AB1BB",
+              fontFamily: "Montserrat, sans-serif",
+              fontSize: "16px",
+              fontWeight: 700,
+              lineHeight: "131.5%", // equivalent to 21.04px
+              letterSpacing: "-0.64px",
+              color: "#5AB1BB",
             }}
-            variant="contained"
-            endIcon={<SendIcon />}
+            endIcon={<ArrowForwardIcon />}
           >
-            Continue reading{" "}
+            Continue reading
           </Button>
+
         </Link>
 
-        <ShareComponent
+        {/* <ShareComponent
           color="#FFA62B"
           dataFontSize={{ sm: "18px", md: "18px" }}
           url={`https://planetcassandra.org/${url}`}
           quote={"test"}
-        />
+        /> */}
       </Box>
     </Card>
   );
