@@ -100,6 +100,7 @@ const query = graphql`
         table
         data {
           Case_URL
+          Case_Title
           Case_Name
           Case_Description
           ID_Case

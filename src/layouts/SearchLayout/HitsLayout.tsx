@@ -124,6 +124,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     formattedHits = hits.map((hit: any) => ({
       id: hit.id,
       title: hit.data?.Case_Name,
+      cardTitle:hit.data?.Case_Title,
       description: hit.data?.Case_Description,
       date: hit.data?.Created,
       author: null,

@@ -235,20 +235,6 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
             display: { xs: "none", md: "flex" },
           }}
         >
-          <Link style={{ textDecoration: "none" }} to={`/contribute`}>
-            <Button
-              sx={{
-                my: 2,
-                color: "black",
-                fontSize: 12,
-                fontFamily: "'Inter', sans-serif",
-                textTransform: "capitalize",
-                fontWeight: 400,
-              }}
-            >
-              Contribute
-            </Button>
-          </Link>
           <Link style={{ textDecoration: "none" }} to={`/contact`}>
             <Button
               sx={{
@@ -260,7 +246,7 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
                 fontWeight: 400,
               }}
             >
-              Contact
+              Contribute
             </Button>
           </Link>
         </Box>
