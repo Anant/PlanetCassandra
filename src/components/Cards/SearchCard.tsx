@@ -107,7 +107,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           letterSpacing: '-0.4px',
           paddingTop: '10px'
         }}
-      >Basic Title</Typography>
+      ></Typography>
       <Divider sx={{ margin: "15px 3px", borderColor: "#5AB1BB" }} />
       <Box
         className="p-0"
