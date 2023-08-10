@@ -69,31 +69,9 @@ function MobileNav({}: Props) {
                   fontFamily: "Montserrat, sans-serif",
                   fontWeight: 500,
                 }}
-                to={"/contribute"}
-              >
-                Contribute{" "}
-              </Link>
-            </Button>
-            <Button
-              sx={{
-                textAlign: "left",
-                fontSize: 22,
-                display: "block",
-                marginLeft: 1,
-                "&:hover": {
-                  backgroundColor: "transparent",
-                },
-              }}
-            >
-              <Link
-                style={{
-                  color: "black",
-                  fontFamily: "Montserrat, sans-serif",
-                  fontWeight: 500,
-                }}
                 to={"/contact"}
               >
-                Contact{" "}
+                Contribute{" "}
               </Link>
             </Button>
           </Box>
