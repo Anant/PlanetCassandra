@@ -12,6 +12,7 @@ import ShareComponent from "../SinglePageComponents/Cards/SingleArticleSubCard/C
 interface SearchResultCardProps {
   id: string;
   title: string;
+  cardTitle: string;
   description: string;
   date: string;
   author?: string;
@@ -25,6 +26,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
   id,
   cardType,
   title,
+  cardTitle,
   date,
   description,
   author,
@@ -107,7 +109,7 @@ const SearchResultCard: React.FC<SearchResultCardProps> = ({
           letterSpacing: '-0.4px',
           paddingTop: '10px'
         }}
-      >Basic Title</Typography>
+      >{cardTitle || '' }</Typography>
       <Divider sx={{ margin: "15px 3px", borderColor: "#5AB1BB" }} />
       <Box
         className="p-0"
