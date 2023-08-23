@@ -142,6 +142,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
     pubDate: any;
     wallabag_created_at: any;
     title: string;
+    cardTitle: string;
     description: string;
     slug: string;
     author: string;
@@ -157,6 +158,7 @@ function CustomHits({ props, cardType, setNumHits }: any) {
       <SearchResultCard
         id={card.id}
         title={card.title}
+        cardTitle={card.cardTitle}
         description={card.description}
         date={card.pubDate || card.date || card.wallabag_created_at}
         author={card.author}
