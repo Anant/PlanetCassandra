@@ -1,11 +1,15 @@
 import React from 'react';
-import { Grid, Typography, Container, Box } from '@mui/material';
+import BannerBackground from '../../images/BannerBackground.png';
+import Tshirts from '../../images/TShirts.png';
+import { Grid, Typography, Container, Button } from '@mui/material';
 
 const DidYouKnowSection = () => {
   return (
     <Grid
       sx={{
-        backgroundColor: '#5AB1BB',
+        backgroundImage: `url(${BannerBackground})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
       }}
       container
     >
@@ -15,43 +19,71 @@ const DidYouKnowSection = () => {
         }}
         maxWidth="xl"
       >
-        <Grid justifyContent="center" container>
-          <Typography
-            color={'white'}
-            align={'center'}
-            variant="h5"
-            gutterBottom
-            fontFamily={'Lato, sans-serif'}
-            fontWeight={700}
+        <Grid container spacing={3}>
+          {/* Left side */}
+          <Grid item xs={12} md={6}>
+            <Typography
+              sx={{
+                color: '#F9F8F8',
+                fontFamily: 'Poppins',
+                fontSize: '26px',
+                fontStyle: 'normal',
+                fontWeight: 500,
+                lineHeight: '122.5%',
+                letterSpacing: '0.52px',
+              }}
+              gutterBottom
+            >
+              Claim Your <span style={{ color: '#5AB1BB', fontWeight: 700 }}>Free</span> Planet
+              <span style={{ fontWeight: 700 }}> Cassandra Contributor T-shirt!</span>
+            </Typography>
+            <Typography
+              sx={{
+                color: '#FFF',
+                fontFamily: 'Lato',
+                fontSize: '18px',
+                fontStyle: 'normal',
+                fontWeight: 300,
+                lineHeight: '122.5%',
+                letterSpacing: '0.36px',
+              }}
+              gutterBottom
+            >
+              Make your contribution and score a FREE Planet Cassandra Contributor T-Shirt!
+              We value our incredible Cassandra community, and we want to express our gratitude
+              by sending an exclusive Planet Cassandra Contributor T-Shirt you can wear with pride.
+            </Typography>
+            <Button
+              sx={{
+                borderRadius: '16.583px',
+                background: '#5AB1BB',
+                color: '#FFF',
+                textAlign: 'center',
+                fontSize: '18px',
+                fontStyle: 'normal',
+                fontWeight: 500,
+                lineHeight: '24px',
+                letterSpacing: '0.36px',
+                width: "180px"
+              }}
+            >
+              Claim Now
+            </Button>
+          </Grid>
+          {/* Right side */}
+          <Grid
+            item
+            xs={12}
+            md={6}
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
           >
-            Did You
-          </Typography>
-          <Typography
-            marginX={1}
-            fontFamily={'Lato, sans-serif'}
-            fontWeight={700}
-            align={'center'}
-            variant="h5"
-            gutterBottom
-          >
-            Know?
-          </Typography>
+            <img src={Tshirts} alt="T-shirts" style={{ maxWidth: '100%' }} />
+          </Grid>
         </Grid>
-
-        <Typography
-          fontFamily={'Lato, sans-serif'}
-          fontWeight={550}
-          align={'center'}
-          variant="subtitle2"
-          gutterBottom
-          sx={{
-            fontSize: '20px',
-          }}
-        >
-          Cassandra has a robust and active community of users and developers,
-          who contribute to its development and use it in a variety of
-          applications, ranging from e-commerce to real-time analytics.
-        </Typography>
       </Container>
     </Grid>
   );
