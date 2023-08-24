@@ -26,11 +26,12 @@ const DidYouKnowSection = () => {
               sx={{
                 color: '#F9F8F8',
                 fontFamily: 'Poppins',
-                fontSize: '26px',
+                fontSize: '25px',
                 fontStyle: 'normal',
                 fontWeight: 500,
                 lineHeight: '122.5%',
                 letterSpacing: '0.52px',
+                paddingBottom: 2
               }}
               gutterBottom
             >
@@ -46,6 +47,7 @@ const DidYouKnowSection = () => {
                 fontWeight: 300,
                 lineHeight: '122.5%',
                 letterSpacing: '0.36px',
+                paddingBottom: 5
               }}
               gutterBottom
             >
