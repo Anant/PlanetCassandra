@@ -2,6 +2,8 @@ import React from 'react';
 import BannerBackground from '../../images/BannerBackground.png';
 import Tshirts from '../../images/TShirts.png';
 import { Grid, Typography, Container, Button } from '@mui/material';
+import { navigate } from 'gatsby';
+
 
 const DidYouKnowSection = () => {
   return (
@@ -56,6 +58,7 @@ const DidYouKnowSection = () => {
               by sending an exclusive Planet Cassandra Contributor T-Shirt you can wear with pride.
             </Typography>
             <Button
+              onClick={() => navigate('/contact')}
               sx={{
                 borderRadius: '16.583px',
                 background: '#5AB1BB',
