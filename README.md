@@ -1,6 +1,6 @@
-# Gatsby Project 
+# PlanetCassandra.org
 
-This project is built using Gatsby. It uses Algolia for content indexing, with separate environments for development and production linked to Airtable and two WordPress instances.
+This project is built using Gatsby. It uses Algolia for content indexing, with separate environments for development and production linked to Airtable and two WordPress instances. If you are interested in contributing to this project, please go to [PlanetCassandra's Contribute Page](https://planetcassandra.org/contact/) and send us a message. You can also drop into the [website-help](https://discord.gg/2Gqup4GZrg) channel on the PlanetCassandra Discord server and ask how you can help. 
 
 ## Prerequisites
 
