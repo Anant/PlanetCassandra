@@ -180,7 +180,7 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
                       </MenuItem>
                     </Link>
                     <Link
-                      to={"/meetup-organizer-handbook"}
+                      to={"https://cassandra.apache.org/_/events.html"}
                       style={{ textDecoration: "none" }}
                     >
                       <MenuItem
