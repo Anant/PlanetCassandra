@@ -102,10 +102,10 @@ const config: GatsbyConfig = {
         type: {
           Post:
             process.env.NODE_ENV === "development"
-              ? { limit: 500 }
-              : { limit: 500 },
+              ? { limit: 1000 }
+              : { limit: 1000 },
           Page: {
-            limit: 500,
+            limit: 1000,
           },
         },
       },
