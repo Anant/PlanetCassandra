@@ -194,7 +194,7 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
                         }}
                         onClick={handleCloseEvent}
                       >
-                        Handbook
+                        Apache Events
                       </MenuItem>
                     </Link>
                   </Menu>

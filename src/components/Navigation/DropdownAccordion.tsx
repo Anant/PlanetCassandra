@@ -21,7 +21,7 @@ const Resources: Resource[] = [
     href: "https://prodcassandra.wpengine.com/eventspage/",
     target: "_blank",
   },
-  { name: "Handbook", href: "https://cassandra.apache.org/_/events.html" },
+  { name: "Apache Events", href: "https://cassandra.apache.org/_/events.html" },
 ];
 
 export default function DropdownAccordion(): JSX.Element {
