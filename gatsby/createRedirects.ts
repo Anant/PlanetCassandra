@@ -10,5 +10,21 @@ export const createRedirects = (createRedirect: Actions["createRedirect"]) => {
     redirectInBrowser: true,
   });
 
+   
+   createRedirect({
+    fromPath: "/t-shirt/",
+    toPath: "/contact/",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
+
+  
+  createRedirect({
+    fromPath: "/contribute/",
+    toPath: "/contact/",
+    isPermanent: true,
+    redirectInBrowser: true,
+  });
+
   // Add more redirects here as needed
 };
