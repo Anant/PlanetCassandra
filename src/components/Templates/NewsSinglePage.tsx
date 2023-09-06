@@ -79,7 +79,7 @@ const PostSinglePage: React.FC<PostSinglePageProps> = ({
             </article>
             <Link style={{ textDecoration: "none", marginLeft: 3 }} to={link}>
               <Button variant="contained" color="primary">
-                Continue Reading
+                See Original
               </Button>
             </Link>
           </Grid>
