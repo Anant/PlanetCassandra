@@ -249,6 +249,20 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
               Contribute
             </Button>
           </Link>
+          <Link style={{ textDecoration: "none" }} to={`https://cassandra.apache.org/_/index.html`}>
+            <Button
+              sx={{
+                my: 2,
+                color: "black",
+                fontSize: 12,
+                fontFamily: "'Inter', sans-serif",
+                textTransform: "capitalize",
+                fontWeight: 400,
+              }}
+            >
+              Apache Cassandra
+            </Button>
+          </Link>
         </Box>
       </Toolbar>
       {openNav ? <MobileNav /> : null}
