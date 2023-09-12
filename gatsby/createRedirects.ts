@@ -12,7 +12,7 @@ export const createRedirects = (createRedirect: Actions["createRedirect"]) => {
 
    
    createRedirect({
-    fromPath: "/t-shirt/",
+    fromPath: "/tshirt/",
     toPath: "/contact/",
     isPermanent: true,
     redirectInBrowser: true,
