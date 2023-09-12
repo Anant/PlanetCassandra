@@ -75,6 +75,28 @@ function MobileNav({}: Props) {
               </Link>
             </Button>
           </Box>
+          <Button
+              sx={{
+                textAlign: "left",
+                fontSize: 22,
+                display: "block",
+                marginLeft: 1,
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
+              }}
+            >
+              <Link
+                style={{
+                  color: "black",
+                  fontFamily: "Montserrat, sans-serif",
+                  fontWeight: 500,
+                }}
+                to={"https://cassandra.apache.org/_/index.html"}
+              >
+                Apache Cassandra{" "}
+              </Link>
+            </Button>
         </Box>
       </Box>
       <Box sx={{ position: "absolute", left: "45%", marginTop: "-15px" }}>
