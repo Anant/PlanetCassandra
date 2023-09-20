@@ -8,6 +8,7 @@ import Layout from "../components/Layout/Layout";
 import TagSection from "../components/TagSection/TagSection";
 import UseCases from "../components/UseCases/UseCases";
 import YoutubeSection from "../components/YoutubeSection/YoutubeSection";
+import DiscordSection from '../components/Discord Section/DiscordSection'
 //@ts-ignore
 import { Helmet } from "react-helmet";
 
@@ -70,12 +71,12 @@ const IndexPage: React.FC<PageProps> = () => {
         <Grid className="tagSectionBgImage" item xs={12}>
           <TagSection />
         </Grid>
-        {/* <Grid className="eventsBgImage" item xs={12}>
-            <UpcomingEvents />
-          </Grid> */}
         <Grid className="useCasesBgImage" item xs={12}>
           <UseCases />
         </Grid>
+        <Grid className="eventsBgImage" item xs={12}>
+           <DiscordSection />
+          </Grid>
         <Grid item xs={12}>
           <YoutubeSection />
         </Grid>
