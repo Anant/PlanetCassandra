@@ -50,11 +50,9 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
     'https://docs.datastax.com/en/articles/cassandra/cassandrathenandnow.html',
     'https://www.datastax.com/why-so-many-ai-initiatives-fail',
     'https://blog.stratio.com/stratio-lucene-based-index-for-cassandra-now-plugin',
-    'https://blog.pythian.com/wp-content/uploads/Pythian-124.png',
+    'https://blog.pythian.com',
     'https://opengraph.githubassets.com/26e83c3a84314b4da6ca628e22c8ddd6f484e405ea124c015ca938c43df48',
     'https://opengraph.githubassets.com/f1829a744f0081c13d12241bc12767b843a54c9298db83ebd1d0220e3cda76a6/datastax',
-
-
   ];
 
   const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(
