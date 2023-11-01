@@ -112,7 +112,7 @@ const ContactUs: React.FC = () => {
                 fontFamily="Roboto Condensed, sans-serif"
                 fontWeight={400}
               >
-                Fill out the form below and let us know you’d like to contribute. Your expertise could help build a better community and build your recognition. We’ll contact you and come up with something that fits in a way you can contribute.
+                Fill out the form below and let us know you’d like to contribute to Planet Cassandra - whether it’s a use case, video, blog or another contribution. Your expertise could help build a better community and build your recognition. We’ll contact you and come up with something that fits in a way you can contribute.
               </Typography>
               <Typography
                 sx={{
