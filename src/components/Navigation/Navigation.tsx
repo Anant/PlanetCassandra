@@ -13,7 +13,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import MobileNav from "./MobileNav";
 import { AiOutlineMenu } from "@react-icons/all-files/ai/AiOutlineMenu";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
-import ApacheLogo from '../../images/apache_cassandra_logo_icon.png';
+import ApacheLogoIcon from '../../images/apache_cassandra_icon.png';
 
 const pages = [
   { name: "Home", route: "/" },
@@ -269,7 +269,7 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
           >
             Apache Cassandra
             <img
-              src={ApacheLogo}
+              src={ApacheLogoIcon}
               alt="Apache Cassandra Logo"
               style={{
                 width: "auto", 
