@@ -58,7 +58,6 @@ async function getAllLeaves(graphql) {
       filter: { 
         title: { ne: null },
         domain_name: { 
-          ne: "www.guru99.com",
           ne: "blog.pythian.com"
         }
       }
