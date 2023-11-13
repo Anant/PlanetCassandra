@@ -53,6 +53,8 @@ export const processPictures = async ({ createNode, createNodeId, getCache, grap
     'https://blog.pythian.com',
     'https://opengraph.githubassets.com/26e83c3a84314b4da6ca628e22c8ddd6f484e405ea124c015ca938c43df48',
     'https://opengraph.githubassets.com/f1829a744f0081c13d12241bc12767b843a54c9298db83ebd1d0220e3cda76a6/datastax',
+    'https://www.datastax.com/blog/headline-skypoint-how-to-train-your-llm-dragon',
+
   ];
 
   const filteredNodes = allLeavesPictures?.data?.allApiLeaves?.nodes.filter(
