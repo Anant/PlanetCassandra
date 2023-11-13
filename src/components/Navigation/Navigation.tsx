@@ -13,6 +13,8 @@ import { AiFillCaretDown } from "react-icons/ai";
 import MobileNav from "./MobileNav";
 import { AiOutlineMenu } from "@react-icons/all-files/ai/AiOutlineMenu";
 import { AiOutlineClose } from "@react-icons/all-files/ai/AiOutlineClose";
+import ApacheLogoIcon from '../../images/apache_cassandra_icon.png';
+
 const pages = [
   { name: "Home", route: "/" },
   { name: "Events", route: "https://prodcassandra.wpengine.com/eventspage/" },
@@ -250,19 +252,32 @@ function ResponsiveAppBar({ openNav, setOpenNav }: any) {
             </Button>
           </Link>
           <Link style={{ textDecoration: "none" }} to={`https://cassandra.apache.org/_/index.html`}>
-            <Button
-              sx={{
-                my: 2,
-                color: "black",
-                fontSize: 12,
-                fontFamily: "'Inter', sans-serif",
-                textTransform: "capitalize",
-                fontWeight: 400,
+          <Button
+            sx={{
+              my: 2,
+              color: "black",
+              fontSize: 12,
+              fontFamily: "'Inter', sans-serif",
+              textTransform: "capitalize",
+              fontWeight: 400,
+              display: "flex",
+              alignItems: "center",
+              border: "1px solid #5AB1BB",
+              borderRadius: "6px",
+              padding: "5px",
+            }}
+          >
+            Apache Cassandra
+            <img
+              src={ApacheLogoIcon}
+              alt="Apache Cassandra Logo"
+              style={{
+                width: "auto", 
+                height: "20px",
               }}
-            >
-              Apache Cassandra
-            </Button>
-          </Link>
+            />
+          </Button>
+        </Link>
         </Box>
       </Toolbar>
       {openNav ? <MobileNav /> : null}
