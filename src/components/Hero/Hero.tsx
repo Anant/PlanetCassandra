@@ -93,9 +93,9 @@ const HeroSection = () => {
             variant="subtitle1"
             className="Font_Lato_Bold"
           >
-          Apache Cassandra® a robust and active community of users and developers,
-          who contribute to its development and use it in a variety of
-          applications, ranging from e-commerce to real-time analytics.{" "}
+            Apache Cassandra® has a robust and active community of users and developers, who contribute to
+            its development and use it in a variety of applications,
+            ranging from e-commerce to real-time analytics. {" "}
           </Typography>
           <Box
             sx={{
