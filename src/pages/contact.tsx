@@ -62,69 +62,69 @@ const ContactUs: React.FC = () => {
       </Helmet>
 
       <Container maxWidth="xl" sx={{ padding: 6 }}>
-        <Grid container spacing={3} sx={{backgroundImage: `url(${HeroBanner})`}}>
+        <Grid container spacing={3} sx={{ backgroundImage: `url(${HeroBanner})` }}>
           <Grid item xs={12} sm={6}>
 
 
-              <Typography
-                variant="h1"
-                fontFamily="Montserrat"
-                sx={{
-                  color: "#FFF",
-                  leadingTrim: "both",
-                  textEdge: "cap",
-                  fontSize: 40,
-                  fontStyle: "normal",
-                  fontWeight: 400,
-                  lineHeight: "131.5%",
-                  letterSpacing: "1.2px",
-                }}
-              >
-                Will they find the
-                <span style={{
-                  fontWeight: 700,
-                  letterSpacing: "-2.4px"
-                }}> knowledge </span>
-                they are
-                <span style={{
-                  color: "#5AB1BB",
-                  fontWeight: 700,
-                  letterSpacing: "-2.8px"
-                }}> looking for?</span>
-              </Typography>
-              <Typography
-                sx={{
-                  marginTop: { xs: 5, sm: 2, lg: 5 },
-                  color: "#FFF",
-                  fontSize: { xs: 16, sm: 10, md: 22 },
-                }}
-                fontFamily="Roboto Condensed, sans-serif"
-                fontWeight={400}
-              >
-                Calling all contributors! If you've got a passion for sharing your knowledge and skills, here's your chance.
-              </Typography>
-              <Typography
-                sx={{
-                  marginTop: { xs: 5, sm: 2, lg: 5 },
-                  color: "#FFF",
-                  fontSize: { xs: 16, sm: 10, md: 22 },
-                }}
-                fontFamily="Roboto Condensed, sans-serif"
-                fontWeight={400}
-              >
-                Fill out the form below and let us know you’d like to contribute to Planet Cassandra - whether it’s a use case, video, blog or another contribution. Your expertise could help build a better community and build your recognition. We’ll contact you and come up with something that fits in a way you can contribute.
-              </Typography>
-              <Typography
-                sx={{
-                  marginTop: { xs: 5, sm: 2, lg: 5 },
-                  color: "#FFF",
-                  fontSize: { xs: 16, sm: 10, md: 22 },
-                }}
-                fontFamily="Roboto Condensed, sans-serif"
-                fontWeight={400}
-              >
-                Get ready to join the group of Planet Cassandra contributors and claim your free Planet Cassandra Contributor T-shirt!
-              </Typography>
+            <Typography
+              variant="h1"
+              fontFamily="Montserrat"
+              sx={{
+                color: "#FFF",
+                leadingTrim: "both",
+                textEdge: "cap",
+                fontSize: 40,
+                fontStyle: "normal",
+                fontWeight: 400,
+                lineHeight: "131.5%",
+                letterSpacing: "1.2px",
+              }}
+            >
+              Will they find the
+              <span style={{
+                fontWeight: 700,
+                letterSpacing: "-2.4px"
+              }}> knowledge </span>
+              they are
+              <span style={{
+                color: "#5AB1BB",
+                fontWeight: 700,
+                letterSpacing: "-2.8px"
+              }}> looking for?</span>
+            </Typography>
+            <Typography
+              sx={{
+                marginTop: { xs: 5, sm: 2, lg: 5 },
+                color: "#FFF",
+                fontSize: { xs: 16, sm: 10, md: 22 },
+              }}
+              fontFamily="Roboto Condensed, sans-serif"
+              fontWeight={400}
+            >
+              Calling all contributors! If you've got a passion for sharing your knowledge and skills, here's your chance.
+            </Typography>
+            <Typography
+              sx={{
+                marginTop: { xs: 5, sm: 2, lg: 5 },
+                color: "#FFF",
+                fontSize: { xs: 16, sm: 10, md: 22 },
+              }}
+              fontFamily="Roboto Condensed, sans-serif"
+              fontWeight={400}
+            >
+              Fill out the form below and let us know you’d like to contribute to Planet Cassandra - whether it’s a use case, video, blog or another contribution. Your expertise could help build a better community and build your recognition. We’ll contact you and come up with something that fits in a way you can contribute.
+            </Typography>
+            <Typography
+              sx={{
+                marginTop: { xs: 5, sm: 2, lg: 5 },
+                color: "#FFF",
+                fontSize: { xs: 16, sm: 10, md: 22 },
+              }}
+              fontFamily="Roboto Condensed, sans-serif"
+              fontWeight={400}
+            >
+              Get ready to join the group of Planet Cassandra contributors and claim your free Planet Cassandra Contributor T-shirt!
+            </Typography>
 
           </Grid>
 
@@ -290,6 +290,27 @@ const ContactUs: React.FC = () => {
                 </Box>
               </Box>
             </Grid>
+            <Container maxWidth="xl" sx={{ padding: 6 }}>
+              <Typography variant="h4" sx={{ marginBottom: 2, fontWeight: 600 }}>
+                About Planet Cassandra
+              </Typography>
+              <Typography sx={{ color: "#344D67", fontSize: 18, lineHeight: 1.6 }}>
+                As community around the Apache Cassandra project, Planet Cassandra aims to compliment the wider ecosystem.
+              </Typography>
+              <Typography sx={{ color: "#344D67", fontSize: 18, lineHeight: 1.6, marginTop: 2 }}>
+                Planet Cassandra is a place where content from vendors or that promoting a vendor can be submitted. Planet Cassandra also acts as an aggregator of existing external web content.
+              </Typography>
+              <Typography sx={{ color: "#344D67", fontSize: 18, lineHeight: 1.6, marginTop: 2 }}>
+                This makes it a facilitator to the broader ecosystem, and a place where commercial actors can be active where they otherwise cannot be within the project. Formally, within the ASF projects only individual contributors are recognised to ensure a vendor-neutral and sustainable open source project, see The Apache Way for more on this.
+              </Typography>
+              <Typography sx={{ color: "#344D67", fontSize: 18, lineHeight: 1.6, marginTop: 2 }}>
+                Everything official and formal to the Cassandra project is found on cassandra.apache.org. This includes all documentation, technical blog posts (especially those from our committers), and information about approved events.
+              </Typography>
+              <Typography sx={{ color: "#344D67", fontSize: 18, lineHeight: 1.6, marginTop: 2 }}>
+                The Apache Cassandra project recognises that success of the project is bound to the commercial success of entities in its ecosystem, and in line with the ASF's commercially friendly but vendor-neutral ethos, embraces Planet Cassandra in this mission.
+              </Typography>
+            </Container>
+
 
 
 
