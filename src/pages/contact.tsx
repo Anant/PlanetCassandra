@@ -144,6 +144,42 @@ const ContactUs: React.FC = () => {
         </Grid>
 
       </Container>
+      <Grid
+      sx={{
+        backgroundColor: "#5AB1BB",
+        marginTop:-5,
+      }}
+      container
+    >
+      <Container
+        sx={{
+          paddingY: 3,
+        }}
+        maxWidth="xl"
+      >
+        <Grid justifyContent="center" container>
+          <Container>
+        <Typography
+          align={"justify"}
+          variant="subtitle2"
+          gutterBottom
+          fontFamily={"Lato, sans-serif"}
+          fontWeight={600}
+          sx={{
+            fontSize: "20px",
+            color: "#1E1E1E",
+          }}
+        >
+          As community around the Apache Cassandra project, Planet Cassandra aims to compliment the wider ecosystem.
+Planet Cassandra is a place where content from vendors or that promoting a vendor can be submitted. Planet Cassandra also acts as an aggregator of existing external web content.
+This makes it a facilitator to the broader ecosystem, and a place where commercial actors can be active where they otherwise cannot be within the project. Formally, within the ASF projects only individual contributors are recognised to ensure a vendor-neutral and sustainable open source project, see The Apache Way for more on this.
+Everything official and formal to the Cassandra project is found on cassandra.apache.org. This includes all documentation, technical blog posts (especially those from our committers), and information about approved events.
+The Apache Cassandra project recognises that success of the project is bound to the commercial success of entities in its ecosystem, and in line with the ASF's commercially friendly but vendor-neutral ethos, embraces Planet Cassandra in this mission.
+        </Typography>
+</Container>
+</Grid>
+</Container>
+</Grid>
 
       <Container maxWidth="xl" sx={{ padding: 6 }}>
         <Box my={4}>
