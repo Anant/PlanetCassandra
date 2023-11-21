@@ -93,9 +93,7 @@ const HeroSection = () => {
             variant="subtitle1"
             className="Font_Lato_Bold"
           >
-            Apache Cassandra® has a robust and active community of users and developers, who contribute to
-            its development and use it in a variety of applications,
-            ranging from e-commerce to real-time analytics. {" "}
+            Planet Cassandra is a robust and active community of users and developers who contribute to the success of Apache Cassandra® in a variety of applications, ranging from e-commerce to real-time analytics. {" "}
           </Typography>
           <Box
             sx={{
