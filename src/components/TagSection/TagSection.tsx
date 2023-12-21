@@ -48,8 +48,7 @@ interface AllWpTagData {
 
 const TagSection = () => {
   const { allWpTag }: AllWpTagData = useStaticQuery(query);
-  const tags = allWpTag.nodes;
-
+  const tags = allWpTag.nodes.filter(tag => tag.name !== "DATASTAX" && tag.name !== "ASTRA DB");
   const [selectedTag, setSelectedTag] = useState<string | null>(tags[0]?.name);
   const selectedTagData = allWpTag.nodes.filter(
     (node) => node.name === selectedTag
