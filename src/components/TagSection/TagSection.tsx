@@ -72,7 +72,7 @@ const TagSection = () => {
             md={2}
             xs={12}
           >
-            <Button
+            {/* <Button
               sx={{
                 backgroundColor: "#344D67",
                 color: "white",
@@ -91,7 +91,7 @@ const TagSection = () => {
               className={selectedTag === tag.name ? `selected ` : ""}
             >
               {tag.name}
-            </Button>
+            </Button> */}
           </Grid>
         ))}
       </Grid>
