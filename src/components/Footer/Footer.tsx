@@ -58,6 +58,12 @@ const Footer = () => {
               >
                 <Typography color={"white"}>Use Cases</Typography>
               </Link>
+              <Link
+                style={{ textDecoration: "none", color: "white" }}
+                to={`https://prodcassandra.wpengine.com/changelog/`}
+              >
+                <Typography color={"white"}>ChangeLog</Typography>
+              </Link>
             </Box>
             <Typography
               sx={{
