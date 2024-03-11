@@ -204,19 +204,19 @@ const config: GatsbyConfig = {
         maxVideos: 50, // Defaults to 50
       },
     },
-    {
-      resolve: `gatsby-source-airtable`,
-      options: {
-        //Add to ENV File
-        apiKey: process.env.AIRTABLE_KEY_2,
-        tables: [
-          {
-            baseId: "apppWYJ52GKjoDHHG",
-            tableName: `Content Production`,
-          },
-        ],
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-airtable`,
+    //   options: {
+    //     //Add to ENV File
+    //     apiKey: process.env.AIRTABLE_KEY_2,
+    //     tables: [
+    //       {
+    //         baseId: "apppWYJ52GKjoDHHG",
+    //         tableName: `Content Production`,
+    //       },
+    //     ],
+    //   },
+    // },
     {
       resolve: "gatsby-source-apiserver",
       options: {
