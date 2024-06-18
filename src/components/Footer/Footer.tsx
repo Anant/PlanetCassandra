@@ -92,7 +92,7 @@ const Footer = () => {
               Apache License 2.0. Apache, the Apache feather logo, Apache
               Cassandra, Cassandra, and the Cassandra logo, are either
               registered trademarks or trademarks of The Apache Software
-              Foundation.
+              Foundation. Sponsored by Anant Corporation and Datastax, and Developed by Anant Corporation.
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
