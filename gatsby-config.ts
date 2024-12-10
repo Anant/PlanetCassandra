@@ -125,7 +125,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-rss-feed`,
       options: {
         //Add to ENV File
-        url: `https://ttrss.anant.systems/public.php?op=rss&id=1&is_cat=1&q=&key=f4wpuv5bdcb47d9b5dc`,
+        url: `https://ttrss.anant.systems/public.php?op=rss&id=-4&is_cat=0&q=&key=ivtlb666ffc889f3009`,
         name: `TTRS`,
         // Optional
         // Read parser document: https://github.com/bobby-brennan/rss-parser#readme
