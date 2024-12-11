@@ -3,6 +3,7 @@ from cassandra.auth import PlainTextAuthProvider
 import uuid
 import requests
 
+
 # Add these lines to fetch and parse the JSON data from the provided URL
 response = requests.get("http://167.172.142.105:5000/cassandra-leaves")
 data = response.json()
@@ -19,8 +20,8 @@ cloud_config = {
     'secure_connect_bundle': './secure-connect-bucephalus.zip'
 }
 auth_provider = PlainTextAuthProvider(
-    username="uopQvSTLoIMMIDlDRTPkUQGu",
-    password="GXR2xOKO1CZ8I5,QJ.R6r.2m_jDpWzB_fQFmw4b71tDw,,B4rP64zMmkMJKU4TeB5,qsSpuMT65eBzSXc,+4XokL1v82GSe3-Tn_KQ4HPwjGptgL+oE6lIOa1bE6pumB"
+    username=process.env.username,
+    password=process.env.password
 )
 
 cluster = Cluster(cloud=cloud_config, auth_provider=auth_provider)
