@@ -27,7 +27,7 @@ const CustomForm: React.FC = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}`,
+            Authorization: `Bearer patmulTUgmFdsrSNw.b749d0c7edbb33d8ade4f3c612384ed17ce6e53875c609e12f0f53a2963b8cfd`,
             "Content-Type": "application/json",
           },
         }
