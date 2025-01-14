@@ -28,7 +28,18 @@ export const createTTRSS = async ({ createPage, graphql }: CreateTTRSSArgs) => {
     return image?.childrenImageSharp[0]?.gatsbyImageData || undefined;
   };
 
-  allFeedTtrs.data.allFeedTtrs.nodes.forEach(
+  // Titles to exclude
+  const excludedTitles = [
+    "Why We’re Moving to a Source Available License",
+    "YugabyteDB Anywhere Incremental Backups 101"
+  ];
+
+  // Filter out any nodes with the excluded titles
+  const filteredTtrsNodes = allFeedTtrs.data.allFeedTtrs.nodes.filter(
+    (node: { title: string }) => !excludedTitles.includes(node.title)
+  );
+
+  filteredTtrsNodes.data.allFeedTtrs.nodes.forEach(
     (node: {
       title: any;
       id: any;
