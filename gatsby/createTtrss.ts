@@ -39,7 +39,7 @@ export const createTTRSS = async ({ createPage, graphql }: CreateTTRSSArgs) => {
     (node: { title: string }) => !excludedTitles.includes(node.title)
   );
 
-  filteredTtrsNodes.data.allFeedTtrs.nodes.forEach(
+  filteredTtrsNodes.forEach(
     (node: {
       title: any;
       id: any;
@@ -66,6 +66,7 @@ export const createTTRSS = async ({ createPage, graphql }: CreateTTRSSArgs) => {
     }
   );
 };
+
 //@ts-ignore
 async function getAllFeedTtrs(graphql) {
   return await graphql(`
